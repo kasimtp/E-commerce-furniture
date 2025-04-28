@@ -8,7 +8,7 @@ import { BiCartAlt } from "react-icons/bi";
 
 const Navbar = () => {
   return (
-    <div className="w-full">
+    <div className="w-full font-Poppins">
       {/* Top Banner */}
       <div className="h-10 flex items-center justify-center bg-blue-800 px-2">
         <p className="text-amber-50 text-xs md:text-sm uppercase text-center">
@@ -24,7 +24,7 @@ const Navbar = () => {
         </div>
 
         {/* Nav Links */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 mt-14 text-sm font-semibold capitalize">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 mt-14 text-[16px] font-medium capitalize">
           <NavLink to={"/"} className="hover:text-blue-800">
             Home
           </NavLink>
@@ -43,7 +43,7 @@ const Navbar = () => {
         </div>
 
         {/* Icons */}
-        <div className="flex items-center space-x-5 text-lg md:text-xl mt-2 md:mt-0">
+        <div className="flex items-center space-x-5 text-lg md:text-3xl   pt-14 md:mt-0">
           <BsSearch className="cursor-pointer hover:text-blue-800" />
           <AiOutlineHeart className="cursor-pointer hover:text-blue-800" />
           <MdPermContactCalendar className="cursor-pointer hover:text-blue-800" />

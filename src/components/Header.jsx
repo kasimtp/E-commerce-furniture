@@ -3,7 +3,7 @@ import bg from "../assets/bg.jpg";
 
 const Header = () => {
   return (
-    <div className="mt-0">
+    <div className="mt-0 font-Poppins">
       <div
         className="h-[500px] md:h-[590px] bg-fixed bg-cover bg-center px-4 md:px-10 relative"
         style={{ backgroundImage: `url(${bg})` }}
