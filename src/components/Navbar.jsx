@@ -31,14 +31,15 @@ const Navbar = () => {
           <NavLink to={"/shope"} className="hover:text-blue-800">
             Shop
           </NavLink>
-          <NavLink to={"/contact"} className="hover:text-blue-800">
-            Cart
-          </NavLink>
+          
           <NavLink to={"/blog"} className="hover:text-blue-800">
             Blog
           </NavLink>
           <NavLink to={"/cart"} className="hover:text-blue-800">
-            Contact
+          cart
+          </NavLink>
+          <NavLink to={"/contact"} className="hover:text-blue-800">
+          contact
           </NavLink>
         </div>
 
