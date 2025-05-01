@@ -1,3 +1,4 @@
+import Cart from "../components/Cart";
 import Categories from "../components/Categories";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -16,6 +17,7 @@ const Home = () => {
       <Popular />
       <Banner />
       <Footer />
+      <Cart/>
 
     </div>
   );
