@@ -45,10 +45,20 @@ const Navbar = () => {
 
         {/* Icons */}
         <div className="flex items-center space-x-5 text-lg md:text-3xl   pt-14 md:mt-0">
-          <BsSearch className="cursor-pointer hover:text-blue-800" />
+
+          <NavLink to={'/search'}>
+          < BsSearch className="cursor-pointer hover:text-blue-800" />
+          </NavLink>
           <AiOutlineHeart className="cursor-pointer hover:text-blue-800" />
+
+          <NavLink to={"/Login"}>
           <MdPermContactCalendar className="cursor-pointer hover:text-blue-800" />
+
+          </NavLink>
+
+
           <BiCartAlt className="cursor-pointer hover:text-blue-800" />
+          
         </div>
       </div>
     </div>

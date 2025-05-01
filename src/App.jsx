@@ -6,6 +6,8 @@ import Shope from './pages/Shope'
 import Contact from './pages/Contact'
 import Blog from './pages/Blog'
 import Cart from './pages/Cart'
+import Login from './components/Login'
+import SearchBar from './components/SearchBar'
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
         <Route path='/cart' element={<Cart />} />
         <Route path='/contact' element={<Contact/>} />
         <Route path='/blog' element={<Blog/>} />
+        <Route path='/login' element={<Login/>} />
+        <Route path='/search' element={<SearchBar/>} />
         
       </Routes>
 
