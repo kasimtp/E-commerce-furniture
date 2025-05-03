@@ -11,54 +11,87 @@ const Navbar = () => {
     <div className="w-full font-Poppins">
       {/* Top Banner */}
       <div className="h-10 flex items-center justify-center bg-blue-800 px-2">
-        <p className="text-amber-50 text-xs md:text-sm uppercase text-center">
+        <p className="text-white text-xs md:text-sm uppercase text-center">
           Free Shipping on Orders over $70
         </p>
       </div>
 
       {/* Main Navbar */}
-      <div className="flex flex-col border-b-1 md:flex-row md:justify-between items-center px-4 md:px-10 lg:px-20 -mt-14 gap-4 md:gap-0">
-        {/* Logo */}
-        <div className="   flex  justify-center md:justify-start">
-          <img src={logo} alt="Logo" className=" max-w-[130px] mt-12" />
+      <div className="flex items-center justify-between px-4 md:px-10 lg:px-38 h-28 py-4 shadow-sm bg-white">
+        {/* Logo on the Left */}
+        <div>
+          <img src={logo} alt="Logo" className="w-[120px]" />
         </div>
 
-        {/* Nav Links */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 mt-14 text-[16px] font-medium capitalize">
-          <NavLink to={"/"} className="hover:text-blue-800">
-            Home
-          </NavLink>
-          <NavLink to={"/shope"} className="hover:text-blue-800">
-            Shop
-          </NavLink>
-          
-          <NavLink to={"/blog"} className="hover:text-blue-800">
-            Blog
-          </NavLink>
-          <NavLink to={"/cart"} className="hover:text-blue-800">
-          cart
-          </NavLink>
-          <NavLink to={"/contact"} className="hover:text-blue-800">
-          contact
-          </NavLink>
-        </div>
+        {/* Nav Links and Icons Grouped Right */}
+        <div className="flex items-center gap-8">
+          {/* Nav Links */}
+          <div className="flex items-center gap-12 text-[17px] font-medium capitalize">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+              }
+            >
+              Home
+            </NavLink>
 
-        {/* Icons */}
-        <div className="flex items-center space-x-5 text-lg md:text-3xl   pt-14 md:mt-0">
+            <NavLink
+              to="/shop"
+              className={({ isActive }) =>
+                isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+              }
+            >
+              Shop
+            </NavLink>
 
-          <NavLink to={'/search'}>
-          < BsSearch className="cursor-pointer hover:text-blue-800" />
-          </NavLink>
-          <AiOutlineHeart className="cursor-pointer hover:text-blue-800" />
+            <NavLink to="/cart" 
+               className={({ isActive }) =>
+                isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+              }>
+              Cart
+            </NavLink>
+            <NavLink to="/blog"    className={({ isActive }) =>
+                isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+              }>
+              Blog
+            </NavLink>
+            <NavLink to="/contact"    className={({ isActive }) =>
+                isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+              }>
+              Contact
+            </NavLink>
+          </div>
 
-          <NavLink to={"/Login"}>
-          <MdPermContactCalendar className="cursor-pointer hover:text-blue-800" />
+          {/* Icons with Badges */}
+          <div className="flex items-center space-x-5 text-3xl">
+            <NavLink to="/search">
+              <BsSearch    className={({ isActive }) =>
+                isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+              } />
+            </NavLink>
 
-          </NavLink>
+            <div className="relative">
+              <AiOutlineHeart className="cursor-pointer hover:text-blue-800" />
+              <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+                0
+              </span>
+            </div>
 
+            <NavLink to="/login" className="relative">
+              <MdPermContactCalendar className="cursor-pointer hover:text-blue-800" />
+              <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+                0
+              </span>
+            </NavLink>
 
-          <BiCartAlt className="cursor-pointer hover:text-blue-800" />
-          
+            <NavLink to="/shoppingcart" className="relative">
+              <BiCartAlt className="cursor-pointer hover:text-blue-800" />
+              <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+                0
+              </span>
+            </NavLink>
+          </div>
         </div>
       </div>
     </div>

@@ -5,9 +5,11 @@ import Home from "./pages/Home"
 import Shope from './pages/Shope'
 import Contact from './pages/Contact'
 import Blog from './pages/Blog'
-import Cart from './pages/Cart'
 import Login from './components/Login'
 import SearchBar from './components/SearchBar'
+import CartPage from './pages/CartPage'
+import Cart from './components/Cart'
+
 
 const App = () => {
   return (
@@ -17,12 +19,14 @@ const App = () => {
       <Routes>
 
         <Route path='/' element={<Home/>} />
-        <Route path='/shope' element={<Shope />} />
-        <Route path='/cart' element={<Cart />} />
+        <Route path='/shop' element={<Shope />} />
+        <Route path='/shoppingcart' element={<Cart />} />
+        <Route path='/cart' element={<CartPage/>}/>
         <Route path='/contact' element={<Contact/>} />
         <Route path='/blog' element={<Blog/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/search' element={<SearchBar/>} />
+        
         
       </Routes>
 

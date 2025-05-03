@@ -17,7 +17,7 @@ const Home = () => {
       <Popular />
       <Banner />
       <Footer />
-      <Cart/>
+      {/* <Cart/> */}
 
     </div>
   );
