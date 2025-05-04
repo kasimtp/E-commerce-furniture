@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, X } from 'lucide-react';
 import { useNavigate } from 'react-router';
-import { motion, AnimatePresence } from 'framer-motion';
+import {  AnimatePresence } from 'framer-motion';
 
 const SearchBar = () => {
   const [isOpen, setIsOpen] = useState(true);

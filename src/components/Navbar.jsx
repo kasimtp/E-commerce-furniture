@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/logo.png";
+import logotext from "../assets/StoreLogo1.png";
 import { NavLink } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -17,76 +17,88 @@ const Navbar = () => {
       </div>
 
       {/* Main Navbar */}
-      <div className="flex items-center justify-between px-4 md:px-10 lg:px-38 h-28 py-4 shadow-sm bg-white">
-        {/* Logo on the Left */}
-        <div>
-          <img src={logo} alt="Logo" className="w-[120px]" />
+      <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-10 lg:px-16 py-4 shadow-sm bg-red-200 h-[100px] space-y-4 md:space-y-0">
+        
+        {/* Logo */}
+        <div className="flex justify-center md:justify-start w-full md:w-auto">
+          <img
+            src={logotext}
+            alt="Logo"
+            className="w-full max-w-[150px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[300px] h-auto object-contain"
+          />
         </div>
 
-        {/* Nav Links and Icons Grouped Right */}
-        <div className="flex items-center gap-8">
-          {/* Nav Links */}
-          <div className="flex items-center gap-12 text-[17px] font-medium capitalize">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
-              }
-            >
-              Home
-            </NavLink>
+        {/* Nav Links */}
+        <div className="hidden md:flex items-center gap-8 text-[17px] font-medium capitalize">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/shop"
+            className={({ isActive }) =>
+              isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+            }
+          >
+            Shop
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+            }
+          >
+            Cart
+          </NavLink>
+          <NavLink
+            to="/blog"
+            className={({ isActive }) =>
+              isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+            }
+          >
+            Blog
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+            }
+          >
+            Contact
+          </NavLink>
+        </div>
 
-            <NavLink
-              to="/shop"
-              className={({ isActive }) =>
-                isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
-              }
-            >
-              Shop
-            </NavLink>
+        {/* Icons */}
+        <div className="flex items-center gap-4 text-xl sm:text-2xl">
+          <NavLink to="/search" className="hover:text-blue-800">
+            <BsSearch />
+          </NavLink>
 
-            <NavLink to="/cart" 
-               className={({ isActive }) =>
-                isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
-              }>
-              Cart
-            </NavLink>
-            <NavLink to="/blog"    className={({ isActive }) =>
-                isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
-              }>
-              Blog
-            </NavLink>
-            <NavLink to="/contact"    className={({ isActive }) =>
-                isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
-              }>
-              Contact
+          <div className="relative">
+            <NavLink to="/wishlist" className="hover:text-blue-800">
+              <AiOutlineHeart />
+              <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+                0
+              </span>
             </NavLink>
           </div>
 
-          {/* Icons with Badges */}
-          <div className="flex items-center space-x-5 text-3xl">
-            <NavLink to="/search">
-              <BsSearch    className={({ isActive }) =>
-                isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
-              } />
-            </NavLink>
-
-            <div className="relative">
-              <AiOutlineHeart className="cursor-pointer hover:text-blue-800" />
-              <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
-                0
-              </span>
-            </div>
-
-            <NavLink to="/login" className="relative">
-              <MdPermContactCalendar className="cursor-pointer hover:text-blue-800" />
+          <div className="relative">
+            <NavLink to="/login" className="hover:text-blue-800">
+              <MdPermContactCalendar />
               <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
                 0
               </span>
             </NavLink>
+          </div>
 
-            <NavLink to="/shoppingcart" className="relative">
-              <BiCartAlt className="cursor-pointer hover:text-blue-800" />
+          <div className="relative">
+            <NavLink to="/shoppingcart" className="hover:text-blue-800">
+              <BiCartAlt />
               <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
                 0
               </span>

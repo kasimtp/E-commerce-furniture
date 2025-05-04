@@ -9,7 +9,7 @@ const Footer = () => {
         
         {/* Woostify Section */}
         <div className="flex flex-col gap-6">
-          <h2 className="text-3xl font-bold text-gray-800">Woostify</h2>
+          <h2 className="text-3xl font-bold text-gray-800 capitalize">albero</h2>
           <p className="text-base">
             You can easily edit this paragraph to talk about your brand as well as your products to your potential customers.
           </p>
@@ -71,7 +71,7 @@ const Footer = () => {
 
       {/* Bottom Copyright */}
       <div className="border-t border-gray-300 mt-10 py-6 text-center text-gray-500 text-sm">
-        © {new Date().getFullYear()} Woostify. Privacy Policy. All rights reserved. Designed & developed by Woostify.
+        © {new Date().getFullYear()} albero. Privacy Policy. All rights reserved. Designed & developed by Woostify.
       </div>
     </footer>
   );
