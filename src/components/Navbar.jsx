@@ -1,12 +1,68 @@
-import React from "react";
-import logotext from "../assets/StoreLogo1.png";
+import React, { useState } from "react";
+import logotext from "../assets/FurnitureLogo.png";
 import { NavLink } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
-import { MdPermContactCalendar } from "react-icons/md";
+import { MdPermContactCalendar, MdMenu, MdClose } from "react-icons/md";
 import { BiCartAlt } from "react-icons/bi";
 
 const Navbar = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const navLinks = (
+    <>
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive ? "text-blue-800 font-semibold " : "hover:text-blue-800"
+        }
+        onClick={() => setIsMobileMenuOpen(false)}
+      >
+        <p className="lg:text-[20px] text-[16px]">Home</p>
+      </NavLink>
+      <NavLink
+        to="/shop"
+        className={({ isActive }) =>
+          isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+        }
+        onClick={() => setIsMobileMenuOpen(false)}
+      >
+         <p className="lg:text-[20px] text-[16px]">Shop</p>
+      </NavLink>
+      <NavLink
+        to="/cart"
+        className={({ isActive }) =>
+          isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+        }
+        onClick={() => setIsMobileMenuOpen(false)}
+      >
+         <p className="lg:text-[20px] text-[16px]">Cart</p>
+      </NavLink>
+      <NavLink
+        to="/blog"
+        className={({ isActive }) =>
+          isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+        }
+        onClick={() => setIsMobileMenuOpen(false)}
+      >
+         <p className="lg:text-[20px] text-[16px]">Blog</p>
+      </NavLink>
+      <NavLink
+        to="/contact"
+        className={({ isActive }) =>
+          isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
+        }
+        onClick={() => setIsMobileMenuOpen(false)}
+      >
+         <p className="lg:text-[20px] text-[16px]">Contact</p>
+      </NavLink>
+    </>
+  );
+
   return (
     <div className="w-full font-Poppins">
       {/* Top Banner */}
@@ -17,63 +73,54 @@ const Navbar = () => {
       </div>
 
       {/* Main Navbar */}
-      <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-10 lg:px-16 py-4 shadow-sm bg-red-200 h-[100px] space-y-4 md:space-y-0">
-        
-        {/* Logo */}
-        <div className="flex justify-center md:justify-start w-full md:w-auto">
+      <div className="flex flex-col md:flex-row items-center justify-between h-20 md:h-28  bg-amber-200  px-4 md:px-10 lg:px-16 md:py-4  shadow-sm space-y-1 md:space-y-0 relative">
+        {/* Logo and Hamburger */}
+        <div className="flex  -ml-9 place-content-center -mt-4 gap-4 md:mt-[17px] items-center">
+          {/* Hamburger Menu Icon (Mobile Only) */}
+          <button
+            className="md:hidden text-4xl text-blue-800"
+            onClick={toggleMobileMenu}
+          >
+            {isMobileMenuOpen ? <MdClose /> : <MdMenu />}
+          </button>
+
+          {/* Logo */}
           <img
             src={logotext}
             alt="Logo"
-            className="w-full max-w-[150px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[300px] h-auto object-contain"
+            className="w-[130px]  sm:w-[150px] md:w-[100px] md:mb-4 lg:w-[250px]"
           />
+
+          {/* Mobile Icons */}
+          <div className="flex text-3xl  space-x-6 md:hidden">
+            <div className="relative ">
+              <NavLink to="/wishlist" className="hover:text-blue-800">
+                <AiOutlineHeart />
+                <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+                  0
+                </span>
+              </NavLink>
+            </div>
+
+            <div className="relative">
+              <NavLink to="/shoppingcart" className="hover:text-blue-800">
+                <BiCartAlt />
+                <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+                  0
+                </span>
+              </NavLink>
+            </div>
+          </div>
         </div>
 
-        {/* Nav Links */}
-        <div className="hidden md:flex items-center gap-8 text-[17px] font-medium capitalize">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
-            }
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/shop"
-            className={({ isActive }) =>
-              isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
-            }
-          >
-            Shop
-          </NavLink>
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
-            }
-          >
-            Cart
-          </NavLink>
-          <NavLink
-            to="/blog"
-            className={({ isActive }) =>
-              isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
-            }
-          >
-            Blog
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
-            }
-          >
-            Contact
-          </NavLink>
+        <div className="flex space-x-8">
+          {/* Desktop Nav */}
+        <div className="hidden  bg-amber-8  md:flex items-center gap-8 text-[17px] font-medium capitalize">
+          {navLinks}
         </div>
 
-        {/* Icons */}
-        <div className="flex items-center gap-4 text-xl sm:text-2xl">
+        {/* Desktop Icons */}
+        <div className="hidden md:flex  space-x-2 items-center gap-4 text-xl sm:text-4xl">
           <NavLink to="/search" className="hover:text-blue-800">
             <BsSearch />
           </NavLink>
@@ -105,6 +152,14 @@ const Navbar = () => {
             </NavLink>
           </div>
         </div>
+        </div>
+
+        {/* Mobile Nav Menu */}
+        {isMobileMenuOpen && (
+          <div className="absolute top-full left-0 w-full bg-white shadow-md py-4  px-6 flex flex-col gap-4 text-[17px] font-medium capitalize md:hidden z-20">
+            {navLinks}
+          </div>
+        )}
       </div>
     </div>
   );
