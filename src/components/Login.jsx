@@ -1,11 +1,72 @@
-import React, { useState } from 'react';
+import  { useEffect, useState } from 'react';
+import {  useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+import {toast} from "react-toastify"
+
+
+
+import { useContext } from 'react';
+
+
 
 const Login = () => {
   const [state, setState] = useState('Sign Up');
+
+  const [token, setToken] = useContext('AppContext')
+
+  const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [password, setPassword] = useState('')
+
+  const navigate = useNavigate()
+
+  const onSubmitHandler = async (event) => {
+    event.preventDefault()
+
+    //api call
+    try {
+      if(state === 'Sign Up') {
+        const {data} = await axios.post('http://localhost:4000/api/user/register',{name,password,email})
+
+        if (data.success) {
+          localStorage.setItem('token',data.token)
+          setToken(data.token)
+        } else {
+          toast.error (data.message)
+        }
+      } else {
+
+        const {data} = await axios.post('http://localhost:4000/api/user/login',{email, password})
+
+        if(data.success) {
+          localStorage.setItem('token',data.token)
+          setToken(data.token)
+        }else {
+          toast.error(data.message)
+        }
+      }
+      
+    } catch (error) {
+      toast.error(error.message)
+      
+    }
+
+  }
+
+  useEffect(()=> {
+    if (token) {
+      navigate('/')
+    }
+  },[token])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+
+    <form onSubmit={onSubmitHandler}>
+
+   
+
+    <div className="min-h-screen bg-gray-100 font-semibold flex items-center justify-center ">
       <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md">
         <h2 className="text-3xl font-bold text-center mb-6">
           {state === 'Sign Up' ? 'Create Account' : 'Login'}
@@ -35,6 +96,7 @@ const Login = () => {
             <input
               type="email"
               id="email"
+              onChange={(e)=> setEmail(e.target.value)}
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="you@example.com"
             />
@@ -46,7 +108,7 @@ const Login = () => {
             </label>
             <input
               type="password"
-              id="password"
+              id="password" onChange={(e)=>setPassword(e.target.value)}
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="••••••••"
             />
@@ -89,6 +151,7 @@ const Login = () => {
         </form>
       </div>
     </div>
+    </form>
   );
 };
 
