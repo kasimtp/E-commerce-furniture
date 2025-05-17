@@ -73,7 +73,7 @@ const Navbar = () => {
       </div>
 
       {/* Main Navbar */}
-      <div className="flex flex-col md:flex-row items-center justify-between h-20 md:h-28  bg-amber-200  px-4 md:px-10 lg:px-16 md:py-4  shadow-sm space-y-1 md:space-y-0 relative">
+      <div className="flex flex-col md:flex-row items-center justify-between h-20 md:h-28    px-4 md:px-10 lg:px-16 md:py-4  shadow-sm space-y-1 md:space-y-0 relative">
         {/* Logo and Hamburger */}
         <div className="flex  -ml-9 place-content-center -mt-4 gap-4 md:mt-[17px] items-center">
           {/* Hamburger Menu Icon (Mobile Only) */}

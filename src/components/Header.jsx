@@ -1,7 +1,10 @@
 import React from "react";
 import bg from "../assets/bg.jpg";
+import { useNavigate } from "react-router";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="mt-0 font-Poppins">
       <div
@@ -27,6 +30,19 @@ const Header = () => {
           <button className="mt-6 bg-[#0047ff] text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-[#0035c5] transition duration-300">
             Shop Now
           </button>
+
+          {/* Logout Button */}
+          <div className="mt-4">
+            <button
+              onClick={() => {
+                localStorage.removeItem("token"); 
+                navigate("/login");
+              }}
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            >
+              <p className="text-[22px] font-semibold">Logout</p>
+            </button>
+          </div>
         </div>
       </div>
     </div>
