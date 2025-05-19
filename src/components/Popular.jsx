@@ -3,8 +3,10 @@ import sofa1 from "../assets/sofa 1.jpg";
 import chair1 from "../assets/chair 1.jpg";
 import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
+import { useState } from "react";
 
 const Popular = () => {
+
   const items = [
     {
       image: table,
@@ -35,6 +37,12 @@ const Popular = () => {
       discount: false,
     },
   ];
+
+  const [Product, setProduct] = useState([])
+
+  console.log("prd",Product);
+  
+
 
   return (
     <div className="w-full">

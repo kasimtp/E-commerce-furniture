@@ -15,6 +15,12 @@ const productSlice = createSlice({
     }
 })
 
+console.log("newprd",setProdcut);
+
+
+
+
+
 
 export const {setProdcut} = productSlice.actions
 export default productSlice.reducer
