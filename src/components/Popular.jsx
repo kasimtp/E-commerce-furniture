@@ -1,46 +1,62 @@
-import table from "../assets/table.jpg";
-import sofa1 from "../assets/sofa 1.jpg";
-import chair1 from "../assets/chair 1.jpg";
+// import table from "../assets/table.jpg";
+// import sofa1 from "../assets/sofa 1.jpg";
+// import chair1 from "../assets/chair 1.jpg";
 import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getData } from "../../../admin/src/utils/ProductList";
 
 const Popular = () => {
 
-  const items = [
-    {
-      image: table,
-      title: "Chair Black",
-      extraText: "⭐⭐⭐⭐⭐",
-      price: 33.0,
-      discount: true,
-    },
-    {
-      image: chair1,
-      title: "Swing (Copy)",
-      extraText: "",
-      price: 45.0,
-      discount: false,
-    },
-    {
-      image: sofa1,
-      title: "Swing",
-      extraText: "⭐⭐⭐⭐⭐",
-      price: 55.0,
-      discount: true,
-    },
-    {
-      image: table,
-      title: "Sofa Mini",
-      extraText: "",
-      price: 60.0,
-      discount: false,
-    },
-  ];
+  // const items = [
+  //   {
+  //     image: table,
+  //     title: "Chair Black",
+  //     extraText: "⭐⭐⭐⭐⭐",
+  //     price: 33.0,
+  //     discount: true,
+  //   },
+  //   {
+  //     image: chair1,
+  //     title: "Swing (Copy)",
+  //     extraText: "",
+  //     price: 45.0,
+  //     discount: false,
+  //   },
+  //   {
+  //     image: sofa1,
+  //     title: "Swing",
+  //     extraText: "⭐⭐⭐⭐⭐",
+  //     price: 55.0,
+  //     discount: true,
+  //   },
+  //   {
+  //     image: table,
+  //     title: "Sofa Mini",
+  //     extraText: "",
+  //     price: 60.0,
+  //     discount: false,
+  //   },
+  // ];
 
-  const [Product, setProduct] = useState([])
+  const [product, setProduct] = useState([])
 
-  console.log("prd",Product);
+  // get data from backend utils folder
+    const fetchInfo = async () => {
+    const response = await getData()
+    console.log(response.data)
+    if (response.data) {
+      setProduct(response.data);
+    }
+  };
+
+    useEffect(() => {
+    fetchInfo();
+  }, []);
+
+
+
+  console.log("prd",product);
   
 
 
@@ -56,7 +72,7 @@ const Popular = () => {
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-24 px-6 w-[90%] mx-auto">
-        {items.map((item, index) => (
+        {product.map((item, index) => (
           <div key={index} className="flex flex-col gap-4 p-4 rounded-lg shadow-lg w-full h-[550px]">
             {/* Image */}
             <div className="relative overflow-hidden h-[300px]">
