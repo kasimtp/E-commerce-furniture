@@ -9,7 +9,7 @@ const AppContextProvider = (props) => {
 
   const value = {
     token,
-    setToken,
+    setToken,  
   };
 
   return (
