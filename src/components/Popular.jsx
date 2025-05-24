@@ -1,6 +1,4 @@
-// import table from "../assets/table.jpg";
-// import sofa1 from "../assets/sofa 1.jpg";
-// import chair1 from "../assets/chair 1.jpg";
+
 import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import { useEffect, useState } from "react";
@@ -8,36 +6,7 @@ import { getData } from "../../../admin/src/utils/ProductList";
 
 const Popular = () => {
 
-  // const items = [
-  //   {
-  //     image: table,
-  //     title: "Chair Black",
-  //     extraText: "⭐⭐⭐⭐⭐",
-  //     price: 33.0,
-  //     discount: true,
-  //   },
-  //   {
-  //     image: chair1,
-  //     title: "Swing (Copy)",
-  //     extraText: "",
-  //     price: 45.0,
-  //     discount: false,
-  //   },
-  //   {
-  //     image: sofa1,
-  //     title: "Swing",
-  //     extraText: "⭐⭐⭐⭐⭐",
-  //     price: 55.0,
-  //     discount: true,
-  //   },
-  //   {
-  //     image: table,
-  //     title: "Sofa Mini",
-  //     extraText: "",
-  //     price: 60.0,
-  //     discount: false,
-  //   },
-  // ];
+  
 
   const [product, setProduct] = useState([])
 
@@ -91,13 +60,13 @@ const Popular = () => {
 
             {/* Text Section */}
             <div className="flex flex-col items-center justify-between flex-grow text-center">
-              <p className="text-lg font-semibold">{item.title}</p>
+              <p className="text-lg font-semibold">{item.name}</p>
 
-              {item.extraText && (
+              {/* {item.extraText && (
                 <p className="text-[18px] font-medium text-yellow-500 mt-2">
                   {item.extraText}
                 </p>
-              )}
+              )} */}
 
               {/* Price and Add to Cart */}
               <div className="flex flex-col items-center gap-2 mt-4 ">

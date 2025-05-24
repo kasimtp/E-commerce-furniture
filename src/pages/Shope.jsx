@@ -1,25 +1,35 @@
-import table from "../assets/table.jpg";
-import sofa1 from "../assets/sofa 1.jpg";
-import chair1 from "../assets/chair 1.jpg";
-import chair2 from "../assets/chair 1.jpg";
+
 import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import Footer from "../components/Footer";
+import { useEffect, useState } from "react";
+import { getData } from "../../../admin/src/utils/ProductList";
 
 const Shope = () => {
-  const items = [
-    { image: table, title: "Chair Black", extraText: "⭐⭐⭐⭐⭐", price: 33.0, discount: true },
-    { image: chair1, title: "Swing (Copy)", extraText: "", price: 45.0, discount: false },
-    { image: sofa1, title: "Swing", extraText: "⭐⭐⭐⭐⭐", price: 55.0, discount: true },
-    { image: table, title: "Sofa Mini", extraText: "", price: 60.0, discount: false },
-    { image: chair2, title: "Sofa Mini", extraText: "", price: 60.0, discount: false },
-  ];
+;
+
+
+const [product, setProduct] = useState([])
+
+  // get data from backend utils folder
+    const fetchInfo = async () => {
+    const response = await getData()
+    console.log(response.data)
+    if (response.data) {
+      setProduct(response.data);
+    }
+  };
+
+    useEffect(() => {
+    fetchInfo();
+  }, []);
+
 
   return (
     <div className="w-full font-Poppins pt-12">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center px-6 lg:px-16 mb-8 gap-4">
-        <p className="text-lg">Showing all {items.length} results</p>
+        <p className="text-lg">Showing all {product.length} results</p>
         <div className="flex items-center gap-4 w-full md:w-auto">
           <label htmlFor="sort" className="text-sm font-medium text-gray-700">
             Sort by
@@ -41,7 +51,7 @@ const Shope = () => {
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-6 lg:px-16 mb-16">
-        {items.map((item, index) => (
+        {product.map((item, index) => (
           <div
             key={index}
             className="flex flex-col gap-4 p-4 rounded-lg shadow-lg w-full h-[500px] bg-white"
@@ -63,7 +73,7 @@ const Shope = () => {
 
             {/* Text Section */}
             <div className="flex flex-col items-center justify-between text-center flex-grow">
-              <p className="text-lg font-semibold">{item.title}</p>
+              <p className="text-lg font-semibold">{item.name}</p>
 
               {item.extraText && (
                 <p className="text-yellow-500 text-[18px] font-medium mt-2">{item.extraText}</p>
