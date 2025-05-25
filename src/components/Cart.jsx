@@ -2,27 +2,43 @@ import React, { useState } from 'react';
 import { X, Trash2 } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
-import table from '../assets/table.jpg';
-import sofa1 from '../assets/sofa 1.jpg';
-import chair1 from '../assets/chair 1.jpg';
-import chair2 from '../assets/chair 1.jpg'; // duplicate
 
-const dummyCartItems = [
-  { id: 1, image: table, title: 'Chair Black', quantity: 1, price: 33.0 },
-  { id: 2, image: chair1, title: 'Swing (Copy)', quantity: 2, price: 45.0 },
-  { id: 3, image: sofa1, title: 'Swing', quantity: 1, price: 55.0 },
-];
+import { useEffect } from 'react';
+
+
 
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [cartItems, setCartItems] = useState(dummyCartItems);
+  
+  const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
 
-  const handleRemove = (id) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
+   useEffect(() => {
+    const userId = localStorage.getItem("id");
+    console.log(userId);
+
+    if (userId) {
+      fetch(`http://localhost:3000/api/get-cart/${userId}`)
+        .then(response => response.json())
+        .then(data => { 
+          console.log("Fetched Data:", data);
+          // setCartItems(Array.isArray(data.cartItems) ? data.cartItems : []);
+          setCartItems(data)
+        })
+        .catch(error => console.error("Error fetching cart items:", error));
+    }
+  }, []);
+
+    const totalPrice = cartItems.reduce((acc, item) => {
+    const price = parseFloat(item.product.price) || 0;
+    return acc + price;
+  }, 0);
+
+    const handleRemove = (id) => {
+    const updatedCart = cartItems.filter(item => item.id !== id);
+    setCartItems(updatedCart); // assuming you're managing cartItems via state
   };
 
-  const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
 
   return (
     <AnimatePresence>
@@ -81,11 +97,11 @@ const Cart = () => {
               {cartItems.map(item => (
                 <div key={item.id} className="flex items-center justify-between p-4 border-b">
                   <div className="flex items-center space-x-4">
-                    <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
+                    <img src={item.product.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
                     <div>
                       <h3 className="text-md font-semibold">{item.title}</h3>
-                      <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
-                      <p className="text-sm font-bold text-red-600">${(item.price * item.quantity).toFixed(2)}</p>
+                      <p className="text-sm text-gray-500">Qty: {item.product.quantity}</p>
+                      <p className="text-sm font-bold text-red-600">${(item.product.price * item.quantity).toFixed(2)}</p>
                     </div>
                   </div>
                   <button onClick={() => handleRemove(item.id)}>
@@ -96,7 +112,7 @@ const Cart = () => {
 
               <div className="p-4 flex justify-between items-center font-bold text-lg border-t">
                 <span>Total</span>
-                <span>${total}</span>
+                <span>${totalPrice}</span>
               </div>
 
               <div className="p-4">

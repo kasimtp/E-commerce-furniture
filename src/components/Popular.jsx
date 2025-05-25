@@ -1,33 +1,57 @@
-
 import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import { getData } from "../../../admin/src/utils/ProductList";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const Popular = () => {
+  const navigate = useNavigate();
+  const [product, setProduct] = useState([]);
 
-  
-
-  const [product, setProduct] = useState([])
-
-  // get data from backend utils folder
-    const fetchInfo = async () => {
-    const response = await getData()
-    console.log(response.data)
-    if (response.data) {
-      setProduct(response.data);
+  // Fetch product data
+  const fetchInfo = async () => {
+    try {
+      const response = await getData();
+      if (response.data) {
+        setProduct(response.data);
+      }
+    } catch (error) {
+      console.error("Failed to fetch products:", error);
     }
   };
 
-    useEffect(() => {
+  useEffect(() => {
     fetchInfo();
   }, []);
 
+  const handleClick = (id) => {
+    const user = localStorage.getItem("id");
 
-
-  console.log("prd",product);
-  
-
+    if (user) {
+      fetch("http://localhost:5000/post-cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user,
+          product: id,
+          quantity: 1,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Cart Data:", data);
+          toast.success("Product added to cart!");
+        })
+        .catch((error) => {
+          console.error("Error adding to cart:", error);
+          toast.error("Failed to add to cart");
+        });
+    } else {
+      alert("Please login to add to cart.");
+      navigate("/Login");
+    }
+  };
 
   return (
     <div className="w-full">
@@ -42,7 +66,10 @@ const Popular = () => {
       {/* Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-24 px-6 w-[90%] mx-auto">
         {product.map((item, index) => (
-          <div key={index} className="flex flex-col gap-4 p-4 rounded-lg shadow-lg w-full h-[550px]">
+          <div
+            key={index}
+            className="flex flex-col gap-4 p-4 rounded-lg shadow-lg w-full h-[550px]"
+          >
             {/* Image */}
             <div className="relative overflow-hidden h-[300px]">
               <img
@@ -62,24 +89,24 @@ const Popular = () => {
             <div className="flex flex-col items-center justify-between flex-grow text-center">
               <p className="text-lg font-semibold">{item.name}</p>
 
-              {/* {item.extraText && (
-                <p className="text-[18px] font-medium text-yellow-500 mt-2">
-                  {item.extraText}
-                </p>
-              )} */}
-
               {/* Price and Add to Cart */}
-              <div className="flex flex-col items-center gap-2 mt-4 ">
-                {/* Price */}
+              <div className="flex flex-col items-center gap-2 mt-4">
                 <div className="flex items-center gap-1 hover:text-blue-600">
                   <BsCurrencyDollar className="text-xl" />
-                  <span className="text-lg font-semibold ">{item.price.toFixed(2)}</span>
+                  <span className="text-lg font-semibold">
+                    {item.price.toFixed(2)}
+                  </span>
                 </div>
 
-                {/* Add to Cart */}
-                <div className="flex flex-row items-center gap-2 hover:bg-neutral-200 border border-amber-100 hover:border-black   bg-white p-2 rounded-md shadow-md cursor-pointer">
+                {/* Add to Cart Button */}
+                <div
+                  className="flex flex-row items-center gap-2 hover:bg-neutral-200 border border-amber-100 hover:border-black bg-white p-2 rounded-md shadow-md cursor-pointer"
+                  onClick={() => handleClick(item._id)}
+                >
                   <BsCart2 className="text-xl text-black" />
-                  <span className="text-sm font-semibold text-black">Add To Cart</span>
+                  <span className="text-sm font-semibold text-black">
+                    Add To Cart
+                  </span>
                 </div>
               </div>
             </div>

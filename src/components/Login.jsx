@@ -26,6 +26,7 @@ const Login = () => {
 
         if (data.success) {
           localStorage.setItem("token", data.token);
+          localStorage.setItem("id", data.user._id); 
           setToken(data.token);
           toast.success("Registered successfully");
         } else {
@@ -39,6 +40,7 @@ const Login = () => {
 
         if (data.success) {
           localStorage.setItem("token", data.token);
+          localStorage.setItem("id", data.user._id);
           setToken(data.token);
           toast.success("Logged in successfully");
         } else {
