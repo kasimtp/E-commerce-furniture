@@ -1,58 +1,56 @@
-import React, { useState } from 'react';
-import { X, Trash2 } from 'lucide-react';
-import { useNavigate } from 'react-router';
-import { motion, AnimatePresence } from 'framer-motion';
-
-import { useEffect } from 'react';
-
-
+import React, { useState, useEffect } from "react";
+import { X, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(true);
-  
   const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
 
-   useEffect(() => {
+  useEffect(() => {
     const userId = localStorage.getItem("id");
-    console.log(userId);
+    console.log("User-ID:", userId);
 
     if (userId) {
-      fetch(`http://localhost:3000/api/get-cart/${userId}`)
-        .then(response => response.json())
-        .then(data => { 
-          console.log("Fetched Data:", data);
-          // setCartItems(Array.isArray(data.cartItems) ? data.cartItems : []);
-          setCartItems(data)
+      fetch(`http://localhost:5000/api/get-cart/${userId}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Cart  not found");
+          }
+          return response.json();
         })
-        .catch(error => console.error("Error fetching cart items:", error));
+        .then((data) => {
+          console.log("Fetched Data:", data);
+          setCartItems(data);
+        })
+        .catch((error) => console.error("Error fetching cart items:", error));
     }
   }, []);
 
-    const totalPrice = cartItems.reduce((acc, item) => {
+  const totalPrice = cartItems.reduce((acc, item) => {
     const price = parseFloat(item.product.price) || 0;
     return acc + price;
   }, 0);
 
-    const handleRemove = (id) => {
-    const updatedCart = cartItems.filter(item => item.id !== id);
-    setCartItems(updatedCart); // assuming you're managing cartItems via state
+  const handleRemove = (id) => {
+    const updatedCart = cartItems.filter((item) => item._id !== id);
+    setCartItems(updatedCart);
   };
-
 
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ x: '100%' }}
+          initial={{ x: "100%" }}
           animate={{ x: 0 }}
-          exit={{ x: '100%' }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          exit={{ x: "100%" }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-white shadow-lg z-50 flex flex-col"
         >
           <div className="flex items-center justify-between p-4 border-b">
             <h2 className="text-lg font-semibold">
-              SHOPPING CART{' '}
+              SHOPPING CART{" "}
               <span className="ml-1 px-2 py-1 text-white bg-blue-700 rounded-full text-sm">
                 {cartItems.length}
               </span>
@@ -86,7 +84,7 @@ const Cart = () => {
               </div>
               <p className="text-gray-700 mb-4">No products in the cart.</p>
               <button
-                onClick={() => navigate('/shop')}
+                onClick={() => navigate("/shop")}
                 className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-full transition"
               >
                 Continue Shopping
@@ -94,17 +92,30 @@ const Cart = () => {
             </div>
           ) : (
             <div className="flex-1 overflow-y-auto">
-              {cartItems.map(item => (
-                <div key={item.id} className="flex items-center justify-between p-4 border-b">
+              {cartItems.map((item) => (
+                <div
+                  key={item._id}
+                  className="flex items-center justify-between p-4 border-b"
+                >
                   <div className="flex items-center space-x-4">
-                    <img src={item.product.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
+                    <img
+                      src={item.product.image}
+                      alt={item.product.title}
+                      className="w-16 h-16 object-cover rounded"
+                    />
                     <div>
-                      <h3 className="text-md font-semibold">{item.title}</h3>
-                      <p className="text-sm text-gray-500">Qty: {item.product.quantity}</p>
-                      <p className="text-sm font-bold text-red-600">${(item.product.price * item.quantity).toFixed(2)}</p>
+                      <h3 className="text-md font-semibold">
+                        {item.product.title}
+                      </h3>
+                      <p className="text-sm text-gray-500">
+                        Qty: {item.quantity}
+                      </p>
+                      <p className="text-sm font-bold text-red-600">
+                        ${(item.product.price * item.quantity).toFixed(2)}
+                      </p>
                     </div>
                   </div>
-                  <button onClick={() => handleRemove(item.id)}>
+                  <button onClick={() => handleRemove(item._id)}>
                     <Trash2 className="text-gray-500 hover:text-red-600" />
                   </button>
                 </div>
@@ -112,7 +123,7 @@ const Cart = () => {
 
               <div className="p-4 flex justify-between items-center font-bold text-lg border-t">
                 <span>Total</span>
-                <span>${totalPrice}</span>
+                <span>${totalPrice.toFixed(2)}</span>
               </div>
 
               <div className="p-4">

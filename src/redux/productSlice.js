@@ -9,13 +9,13 @@ const productSlice = createSlice({
     name:"product", 
     initialState:initialState,
     reducers:{
-        setProdcut:(state,action)=>{
+        setprodcut:(state,action)=>{
             state.cart_item.push(action.payload)
         }                    
     }
 })
 
-console.log("newprd",setProdcut);
+
 
 
 

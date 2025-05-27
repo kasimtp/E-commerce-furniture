@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { getData } from "../../../admin/src/utils/ProductList";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { useDispatch } from 'react-redux'
 
 const Popular = () => {
-  const navigate = useNavigate();
+  
+    const dispatch = useDispatch()
   const [product, setProduct] = useState([]);
 
   // Fetch product data
@@ -24,12 +26,13 @@ const Popular = () => {
   useEffect(() => {
     fetchInfo();
   }, []);
+  const navigate = useNavigate();
 
   const handleClick = (id) => {
     const user = localStorage.getItem("id");
 
     if (user) {
-      fetch("http://localhost:5000/post-cart", {
+      fetch("http://localhost:5000/api/post-cart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -82,7 +85,7 @@ const Popular = () => {
                   5% OFF
                 </div>
               )}
-              <CiHeart className="absolute top-4 right-4 text-5xl text-black bg-white p-2 rounded-full shadow-md  cursor-pointer" />
+              <CiHeart className="absolute top-4 right-4 text-5xl text-black bg-white p-2 rounded-full shadow-md cursor-pointer" />
             </div>
 
             {/* Text Section */}
@@ -104,9 +107,9 @@ const Popular = () => {
                   onClick={() => handleClick(item._id)}
                 >
                   <BsCart2 className="text-xl text-black" />
-                  <span className="text-sm font-semibold text-black">
+                  <button className="text-sm font-semibold text-black">
                     Add To Cart
-                  </span>
+                  </button>
                 </div>
               </div>
             </div>
