@@ -4,6 +4,8 @@ import { CiHeart } from "react-icons/ci";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import { getData } from "../../../admin/src/utils/ProductList";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const Shope = () => {
 ;
@@ -23,6 +25,36 @@ const [product, setProduct] = useState([])
     useEffect(() => {
     fetchInfo();
   }, []);
+
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+      const user = localStorage.getItem("id");
+  
+      if (user) {
+        fetch("http://localhost:5000/api/post-cart", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user,
+            product: id,
+            quantity: 1,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Cart Data:", data);
+            toast.success("Product added to cart!");
+          })
+          .catch((error) => {
+            console.error("Error adding to cart:", error);
+            toast.error("Failed to add to cart");
+          });
+      } else {
+        alert("Please login to add to cart.");
+        navigate("/Login");
+      }
+    };
 
 
   return (
@@ -86,9 +118,14 @@ const [product, setProduct] = useState([])
                   <span className="text-lg font-semibold">{item.price.toFixed(2)}</span>
                 </div>
 
-                <div className="flex items-center gap-2 hover:bg-neutral-200 border border-gray-100 hover:border-black bg-white px-4 py-2 rounded-md shadow-md cursor-pointer">
+              <div
+                  className="flex flex-row items-center gap-2 hover:bg-neutral-200 border border-amber-100 hover:border-black bg-white p-2 rounded-md shadow-md cursor-pointer"
+                  onClick={() => handleClick(item._id)}
+                >
                   <BsCart2 className="text-xl text-black" />
-                  <span className="text-sm font-semibold text-black">Add To Cart</span>
+                  <button className="text-sm font-semibold text-black">
+                    Add To Cart
+                  </button>
                 </div>
               </div>
             </div>

@@ -5,9 +5,26 @@ import { BsSearch } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdPermContactCalendar, MdMenu, MdClose } from "react-icons/md";
 import { BiCartAlt } from "react-icons/bi";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
+    useEffect(() => {
+      const userId = localStorage.getItem("id");
+      if (userId) {
+        fetch(`http://localhost:5000/api/get-cart/${userId}`)
+          .then((res) => {
+            if (!res.ok) throw new Error("Cart not found");
+            return res.json();
+          })
+          .then((data) => setCartItems(data))
+          .catch((err) => console.error("Error fetching cart items:", err));
+      }
+    }, []);
+  
+
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -147,7 +164,7 @@ const Navbar = () => {
             <NavLink to="/shoppingcart" className="hover:text-blue-800">
               <BiCartAlt />
               <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
-                0
+                 {cartItems.length}
               </span>
             </NavLink>
           </div>

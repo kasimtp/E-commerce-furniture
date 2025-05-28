@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+ import React, { useState, useEffect } from "react";
 import { X, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,32 +10,31 @@ const Cart = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem("id");
-    console.log("User-ID:", userId);
-
     if (userId) {
       fetch(`http://localhost:5000/api/get-cart/${userId}`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Cart  not found");
-          }
-          return response.json();
+        .then((res) => {
+          if (!res.ok) throw new Error("Cart not found");
+          return res.json();
         })
-        .then((data) => {
-          console.log("Fetched Data:", data);
-          setCartItems(data);
-        })
-        .catch((error) => console.error("Error fetching cart items:", error));
+        .then((data) => setCartItems(data))
+        .catch((err) => console.error("Error fetching cart items:", err));
     }
   }, []);
 
   const totalPrice = cartItems.reduce((acc, item) => {
     const price = parseFloat(item.product.price) || 0;
-    return acc + price;
+    return acc + price * item.quantity;
   }, 0);
 
   const handleRemove = (id) => {
-    const updatedCart = cartItems.filter((item) => item._id !== id);
-    setCartItems(updatedCart);
+    fetch(`http://localhost:5000/api/delete-cart/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to delete item");
+        setCartItems((prev) => prev.filter((item) => item._id !== id));
+      })
+      .catch((err) => console.error("Error deleting item:", err));
   };
 
   return (
@@ -50,8 +49,8 @@ const Cart = () => {
         >
           <div className="flex items-center justify-between p-4 border-b">
             <h2 className="text-lg font-semibold">
-              SHOPPING CART{" "}
-              <span className="ml-1 px-2 py-1 text-white bg-blue-700 rounded-full text-sm">
+              SHOPPING CART
+              <span className="ml-2 px-2 py-1 text-white bg-blue-700 rounded-full text-sm">
                 {cartItems.length}
               </span>
             </h2>
@@ -100,12 +99,12 @@ const Cart = () => {
                   <div className="flex items-center space-x-4">
                     <img
                       src={item.product.image}
-                      alt={item.product.title}
+                      alt={item.product.name}
                       className="w-16 h-16 object-cover rounded"
                     />
                     <div>
                       <h3 className="text-md font-semibold">
-                        {item.product.title}
+                        {item.product.name}
                       </h3>
                       <p className="text-sm text-gray-500">
                         Qty: {item.quantity}
