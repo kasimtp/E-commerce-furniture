@@ -31,6 +31,41 @@ const AppContextProvider = ({ children }) => {
   };
 
 
+    const increaseQuantity = (id) => {
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item._id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+
+       fetch(`http://localhost:5000/api/update-cart/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ type: "increment" }),
+    }).catch((err) => console.error("Error increasing quantity:", err));
+  };
+
+    const decreaseQuantity = (id) => {
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item._id === id && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
+
+        fetch(`http://localhost:5000/api/update-cart/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ type: "decrement" }),
+    }).catch((err) => console.error("Error decreasing quantity:", err));
+  };
+
+
   
 
   const value = {
@@ -39,6 +74,8 @@ const AppContextProvider = ({ children }) => {
     cartItems,
     setCartItems,
     removeItemFromCart,
+     increaseQuantity,
+    decreaseQuantity,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

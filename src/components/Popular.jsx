@@ -40,7 +40,8 @@ const Popular = () => {
           user,
           product: id,
           quantity: 1,
-          dateAdded
+          
+          
         }),
       })
         .then((response) => response.json())
@@ -115,7 +116,7 @@ const Popular = () => {
                   5% OFF
                 </div>
               )}
-              <CiHeart onClick={()=> handleClickwishList } className="absolute top-4 right-4 text-5xl text-black bg-white p-2 rounded-full shadow-md cursor-pointer" />
+              <CiHeart onClick={()=> handleClickwishList(item._id) } className="absolute top-4 right-4 text-5xl text-black bg-white p-2 rounded-full shadow-md cursor-pointer" />
             </div>
 
             {/* Text Section */}

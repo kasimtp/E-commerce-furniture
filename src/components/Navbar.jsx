@@ -10,6 +10,9 @@ import { useEffect } from "react";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [wishListItems, setWishListItems] = useState([]);
+
+  
 
     useEffect(() => {
       const userId = localStorage.getItem("id");
@@ -20,6 +23,19 @@ const Navbar = () => {
             return res.json();
           })
           .then((data) => setCartItems(data))
+          .catch((err) => console.error("Error fetching cart items:", err));
+      }
+    }, []);
+
+      useEffect(() => {
+      const userId = localStorage.getItem("id");
+      if (userId) {
+        fetch(`http://localhost:5000/api/get-wishlist/${userId}`)
+          .then((res) => {
+            if (!res.ok) throw new Error("Cart not found");
+            return res.json();
+          })
+          .then((data) => setWishListItems(data))
           .catch((err) => console.error("Error fetching cart items:", err));
       }
     }, []);
@@ -146,7 +162,7 @@ const Navbar = () => {
             <NavLink to="/wishlist" className="hover:text-blue-800">
               <AiOutlineHeart />
               <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-6 h-6 p-2 flex items-center justify-center">
-                0
+                 {wishListItems.length}
               </span>
             </NavLink>
           </div>

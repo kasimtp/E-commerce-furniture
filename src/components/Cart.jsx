@@ -3,18 +3,38 @@ import { X, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { AppContext } from "../context/AppContext";
-// update path as needed
 
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
-
-  const { cartItems, removeItemFromCart } = useContext(AppContext);
+  const { cartItems, setCartItems, removeItemFromCart } = useContext(AppContext);
 
   const totalPrice = cartItems.reduce((acc, item) => {
     const price = parseFloat(item.product.price) || 0;
     return acc + price * item.quantity;
   }, 0);
+
+  const handleQuantityChange = async (id, type) => {
+    try {
+      const res = await fetch(`http://localhost:5000/api/update-cart/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type }), // type = "increment" or "decrement"
+      });
+
+      if (!res.ok) throw new Error("Failed to update quantity");
+
+      const updatedItem = await res.json();
+
+      setCartItems((prev) =>
+        prev.map((item) =>
+          item._id === id ? { ...item, quantity: updatedItem.quantity } : item
+        )
+      );
+    } catch (err) {
+      console.error("Quantity update error:", err);
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -69,29 +89,50 @@ const Cart = () => {
               </button>
             </div>
           ) : (
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex- overflow-y-auto">
               {cartItems.map((item) => (
                 <div
                   key={item._id}
                   className="flex items-center justify-between p-4 border-b"
                 >
-                  <div className="flex items-center space-x-4">
+                  <div className="flex   items-center space-x-8 ">
                     <img
                       src={item.product.image}
-                      alt={item.product.name}
+                      
                       className="w-16 h-16 object-cover rounded"
                     />
-                    <div>
+                    <div className=" space-x-8 space-y-2">
                       <h3 className="text-md font-semibold">
                         {item.product.name}
                       </h3>
-                      <p className="text-sm text-gray-500">
-                        Qty: {item.quantity}
-                      </p>
-                      <p className="text-sm font-bold text-red-600">
+
+                      {/* Quantity Control */}
+                      <div className="flex bg-amber-50 items-center  border rounded-4xl ">
+                        <button
+                          className="text-xl px-2"
+                          onClick={() =>
+                            item.quantity > 1 &&
+                            handleQuantityChange(item._id, "decrement")
+                          }
+                        >
+                          −
+                        </button>
+                        <span className="px-3">{item.quantity}</span>
+                        <button
+                          className="text-xl px-2"
+                          onClick={() =>
+                            handleQuantityChange(item._id, "increment")
+                          }
+                        >
+                          +
+                        </button>
+                      </div>
+
+                     
+                    </div>
+                     <p className="text-sm font-bold text-red-600 mt-1">
                         ${(item.product.price * item.quantity).toFixed(2)}
                       </p>
-                    </div>
                   </div>
                   <button onClick={() => removeItemFromCart(item._id)}>
                     <Trash2 className="text-gray-500 hover:text-red-600" />

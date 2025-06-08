@@ -20,7 +20,23 @@ const WishList = () => {
   }, [userId]);
 
   // ➕ Add to cart handler (you can change endpoint if needed)
+  const handleAddToCart = async (productId) => {
+    try {
+      const response = await fetch('http://localhost:5000/api/post-cart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user: userId, product: productId, quantity: 1 }),
+      });
 
+      if (response.ok) {
+        console.log('Item moved to cart');
+      } else {
+        console.error('Failed to add to cart');
+      }
+    } catch (error) {
+      console.error('Add to cart failed:', error);
+    }
+  };
 
   // ❌ Delete from wishlist
   const handleDelete = async (id) => {
