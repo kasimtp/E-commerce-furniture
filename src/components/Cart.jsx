@@ -1,41 +1,20 @@
- import React, { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import { X, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
+import { AppContext } from "../context/AppContext";
+// update path as needed
 
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const userId = localStorage.getItem("id");
-    if (userId) {
-      fetch(`http://localhost:5000/api/get-cart/${userId}`)
-        .then((res) => {
-          if (!res.ok) throw new Error("Cart not found");
-          return res.json();
-        })
-        .then((data) => setCartItems(data))
-        .catch((err) => console.error("Error fetching cart items:", err));
-    }
-  }, []);
+  const { cartItems, removeItemFromCart } = useContext(AppContext);
 
   const totalPrice = cartItems.reduce((acc, item) => {
     const price = parseFloat(item.product.price) || 0;
     return acc + price * item.quantity;
   }, 0);
-
-  const handleRemove = (id) => {
-    fetch(`http://localhost:5000/api/delete-cart/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to delete item");
-        setCartItems((prev) => prev.filter((item) => item._id !== id));
-      })
-      .catch((err) => console.error("Error deleting item:", err));
-  };
 
   return (
     <AnimatePresence>
@@ -114,7 +93,7 @@ const Cart = () => {
                       </p>
                     </div>
                   </div>
-                  <button onClick={() => handleRemove(item._id)}>
+                  <button onClick={() => removeItemFromCart(item._id)}>
                     <Trash2 className="text-gray-500 hover:text-red-600" />
                   </button>
                 </div>

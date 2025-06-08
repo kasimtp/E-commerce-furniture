@@ -145,7 +145,7 @@ const Navbar = () => {
           <div className="relative">
             <NavLink to="/wishlist" className="hover:text-blue-800">
               <AiOutlineHeart />
-              <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-6 h-6 p-2 flex items-center justify-center">
                 0
               </span>
             </NavLink>
@@ -154,16 +154,14 @@ const Navbar = () => {
           <div className="relative">
             <NavLink to="/login" className="hover:text-blue-800">
               <MdPermContactCalendar />
-              <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
-                0
-              </span>
+          
             </NavLink>
           </div>
 
           <div className="relative">
             <NavLink to="/shoppingcart" className="hover:text-blue-800">
               <BiCartAlt />
-              <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[15px] p-2 rounded-full w-6 h-6 flex items-center justify-center">
                  {cartItems.length}
               </span>
             </NavLink>

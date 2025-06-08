@@ -28,6 +28,36 @@ const Popular = () => {
   }, []);
   const navigate = useNavigate();
 
+
+    const handleClickwishList = (id) => {
+    const user = localStorage.getItem("id");
+
+    if (user) {
+      fetch("http://localhost:5000/api/wish-list", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user,
+          product: id,
+          quantity: 1,
+          dateAdded
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("wishlist Data:", data);
+          toast.success("Product added to wishlist!");
+        })
+        .catch((error) => {
+          console.error("Error adding to wishlist:", error);
+          toast.error("Failed to add to wishlist");
+        });
+    } else {
+      alert("Please login to add to wishlist.");
+      navigate("/Login");
+    }
+  }
+
   const handleClick = (id) => {
     const user = localStorage.getItem("id");
 
@@ -85,7 +115,7 @@ const Popular = () => {
                   5% OFF
                 </div>
               )}
-              <CiHeart className="absolute top-4 right-4 text-5xl text-black bg-white p-2 rounded-full shadow-md cursor-pointer" />
+              <CiHeart onClick={()=> handleClickwishList } className="absolute top-4 right-4 text-5xl text-black bg-white p-2 rounded-full shadow-md cursor-pointer" />
             </div>
 
             {/* Text Section */}
