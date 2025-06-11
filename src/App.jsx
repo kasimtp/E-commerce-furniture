@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Navbar from './components/Navbar'
 import { Route, Routes } from 'react-router'
 import Home from "./pages/Home"
@@ -10,6 +10,7 @@ import SearchBar from './components/SearchBar'
 import CartPage from './pages/CartPage'
 import Cart from './components/Cart'
 import WishList from './pages/WishList'
+import  ProductDs from './pages/ProductDs'
 import { ToastContainer } from 'react-toastify'
 
 
@@ -30,7 +31,8 @@ const App = () => {
         <Route path='/login' element={<Login/>} />
         <Route path='/search' element={<SearchBar/>} />
         <Route path='/wishlist' element={<WishList/>} />
-        
+        <Route path='/productdetiles/:id' element={<ProductDs/>} />
+                
         
       </Routes>
 

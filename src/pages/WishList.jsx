@@ -70,31 +70,31 @@ const WishList = () => {
               </tr>
             </thead>
             <tbody>
-              {wishListItems.map((item) => (
+              {wishListItems?.map((item) => (
                 <tr key={item._id} className="border-t">
                   <td className="p-4"><input type="checkbox" /></td>
                   <td className="p-4">
-                    <button onClick={() => handleDelete(item._id)} className="text-red-500 hover:text-red-700">
+                    <button onClick={() => handleDelete(item._id)} className="text-red-500 cursor-pointer hover:text-red-700">
                       <Trash2 size={16} />
                     </button>
                   </td>
                   <td className="p-4 flex items-center space-x-4">
-                    <img src={item.product.image} alt={item.product.name} className="w-16 h-16 rounded object-cover" />
-                    <span>{item.product.name}</span>
+                    <img src={item?.product?.image} alt={item?.product?.name} className="w-16 h-16 rounded object-cover" />
+                    <span>{item?.product?.name}</span>
                   </td>
                   <td className="p-4">
                     <span className="text-black font-medium">
-                      ₹{item.product.price.toFixed(2)}
+                      ₹{item?.product?.price.toFixed(2)}
                     </span>
                   </td>
-                  <td className="p-4 text-green-600 flex items-center gap-1">
+                  <td className="p-4 text-green-600 flex items-center cursor-pointer gap-1">
                     <Check className="w-4 h-4" />
                     In stock
                   </td>
                   <td className="p-4">
                     <button
                       onClick={() => handleAddToCart(item.product._id)}
-                      className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-full text-sm"
+                      className="bg-blue-700 cursor-pointer hover:bg-blue-800 text-white px-4 py-2 rounded-full text-sm"
                     >
                       Add to Cart
                     </button>

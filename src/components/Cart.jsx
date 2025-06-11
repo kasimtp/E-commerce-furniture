@@ -7,11 +7,12 @@ import { AppContext } from "../context/AppContext";
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
-  const { cartItems, setCartItems, removeItemFromCart } = useContext(AppContext);
+  const { cartItems, setCartItems, removeItemFromCart } =
+    useContext(AppContext);
 
   const totalPrice = cartItems.reduce((acc, item) => {
-    const price = parseFloat(item.product.price) || 0;
-    return acc + price * item.quantity;
+    const price = parseFloat(item?.product?.price) || 0;
+    return acc + (isNaN(price) ? 0 : price * item.quantity);
   }, 0);
 
   const handleQuantityChange = async (id, type) => {
@@ -55,7 +56,10 @@ const Cart = () => {
             </h2>
             <motion.button
               whileTap={{ scale: 0.8, rotate: 90 }}
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                navigate("/shop");
+              }}
             >
               <X className="hover:text-red-600 cursor-pointer w-6 h-6" />
             </motion.button>
@@ -83,7 +87,7 @@ const Cart = () => {
               <p className="text-gray-700 mb-4">No products in the cart.</p>
               <button
                 onClick={() => navigate("/shop")}
-                className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-full transition"
+                className="bg-blue-700 hover:bg-blue-800 cursor-pointer text-white px-6 py-2 rounded-full transition"
               >
                 Continue Shopping
               </button>
@@ -97,19 +101,18 @@ const Cart = () => {
                 >
                   <div className="flex   items-center space-x-8 ">
                     <img
-                      src={item.product.image}
-                      
+                      src={item?.product?.image}
                       className="w-16 h-16 object-cover rounded"
                     />
                     <div className=" space-x-8 space-y-2">
                       <h3 className="text-md font-semibold">
-                        {item.product.name}
+                        {item?.product?.name}
                       </h3>
 
                       {/* Quantity Control */}
                       <div className="flex bg-amber-50 items-center  border rounded-4xl ">
                         <button
-                          className="text-xl px-2"
+                          className="text-xl px-2 cursor-pointer"
                           onClick={() =>
                             item.quantity > 1 &&
                             handleQuantityChange(item._id, "decrement")
@@ -119,7 +122,7 @@ const Cart = () => {
                         </button>
                         <span className="px-3">{item.quantity}</span>
                         <button
-                          className="text-xl px-2"
+                          className="text-xl px-2 cursor-pointer"
                           onClick={() =>
                             handleQuantityChange(item._id, "increment")
                           }
@@ -127,15 +130,13 @@ const Cart = () => {
                           +
                         </button>
                       </div>
-
-                     
                     </div>
-                     <p className="text-sm font-bold text-red-600 mt-1">
-                        ${(item.product.price * item.quantity).toFixed(2)}
-                      </p>
+                    <p className="text-sm font-bold text-red-600 mt-1">
+                      ${(item?.product?.price * item.quantity).toFixed(2)}
+                    </p>
                   </div>
                   <button onClick={() => removeItemFromCart(item._id)}>
-                    <Trash2 className="text-gray-500 hover:text-red-600" />
+                    <Trash2 className="text-gray-500 cursor-pointer hover:text-red-600" />
                   </button>
                 </div>
               ))}
@@ -148,7 +149,7 @@ const Cart = () => {
               <div className="p-4">
                 <button
                   onClick={() => alert("Proceeding to checkout...")}
-                  className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-full transition"
+                  className="w-full bg-green-600 cursor-pointer hover:bg-green-700 text-white py-2 rounded-full transition"
                 >
                   Checkout
                 </button>

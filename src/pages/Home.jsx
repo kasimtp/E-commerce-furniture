@@ -16,8 +16,6 @@ const Home = () => {
       <Popular />
       <Banner />
       <Footer />
-      
-
     </div>
   );
 };
