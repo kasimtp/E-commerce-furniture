@@ -1,16 +1,21 @@
 import { useParams } from "react-router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { AppContext } from "../context/AppContext";
 
 const ProductDs = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  // const { setCartItems } = useContext(AppContext);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const res = await axios.get(`http://localhost:5000/api/product/${id}`);
         setProduct(res.data);
+        setQuantity(res.data.quantity || 1);
       } catch (error) {
         console.error("failed to load product", error);
       }
@@ -19,34 +24,49 @@ const ProductDs = () => {
     fetchProduct();
   }, [id]);
 
+  const handleQuantityChange = (type) => {
+    setQuantity((prevQuantity) => {
+      if (type === "decrement" && prevQuantity > 1) return prevQuantity - 1;
+      if (type === "increment") return prevQuantity + 1;
+      return prevQuantity;
+    });
+  };
+
   const handleAddToCart = async (productId) => {
     try {
+      const userId = localStorage.getItem("id");
+      if (!userId) {
+        toast.error("User not logged in");
+        return;
+      }
+
       const response = await fetch("http://localhost:5000/api/post-cart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ product: productId, quantity: 1 }),
+        body: JSON.stringify({ user: userId, product: productId, quantity }),
       });
 
       if (response.ok) {
-        console.log("Item moved to cart");
+        toast.success("🛒 Item added to cart!");
       } else {
-        console.error("Failed to add to cart");
+        toast.error("❌ Failed to add to cart");
       }
     } catch (error) {
       console.error("Add to cart failed:", error);
+      toast.error("⚠️ Something went wrong!");
     }
   };
 
   if (!product) return <p>Loading......!</p>;
 
   return (
-    <div className="flex flex-col md:flex-row items-center   place-Item-center  p-10  ">
+    <div className="flex flex-col md:flex-row items-center p-10">
       {/* Product Image */}
-      <div className="  md:w-1/4 item-center m-auto  ">
+      <div className="md:w-1/4 m-auto">
         <img
           src={product?.image}
-          alt={product?.image}
-          className="rounded-lg shadow-lg w-full h-[500px]  "
+          alt={product?.name}
+          className="rounded-lg shadow-lg w-full h-[500px]"
         />
       </div>
 
@@ -71,10 +91,20 @@ const ProductDs = () => {
         </p>
 
         {/* Quantity Selector */}
-        <div className="flex items-center gap-3">
-          <button className="px-3 py-1 border rounded">-</button>
-          <span>1</span>
-          <button className="px-3 py-1 border rounded">+</button>
+        <div className="flex items-center bg-red-300 w-fit rounded-3xl px-4 py-1">
+          <button
+            className="text-xl px-2"
+            onClick={() => handleQuantityChange("decrement")}
+          >
+            −
+          </button>
+          <span className="px-3 text-lg">{quantity}</span>
+          <button
+            className="text-xl px-2"
+            onClick={() => handleQuantityChange("increment")}
+          >
+            +
+          </button>
         </div>
 
         {/* Description */}
@@ -91,13 +121,15 @@ const ProductDs = () => {
         {/* Total Price */}
         <p className="text-xl font-semibold mt-4">
           Total Price:{" "}
-          <span className="text-black">${product.price.toFixed(2)}</span>
+          <span className="text-black">
+            ${(product.price * quantity).toFixed(2)}
+          </span>
         </p>
 
         {/* Add to Cart Button */}
         <button
           onClick={() => handleAddToCart(product._id)}
-          className="bg-blue-700 cursor-pointer hover:bg-blue-800 text-white px-4 py-2 rounded-full text-sm"
+          className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-full text-sm"
         >
           Add to Cart
         </button>

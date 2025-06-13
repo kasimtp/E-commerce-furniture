@@ -114,7 +114,7 @@ const Cart = () => {
                         <button
                           className="text-xl px-2 cursor-pointer"
                           onClick={() =>
-                            item.quantity > 1 &&
+                            item.quantity > 4 &&
                             handleQuantityChange(item._id, "decrement")
                           }
                         >
