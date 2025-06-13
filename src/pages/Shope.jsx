@@ -119,8 +119,8 @@ const [product, setProduct] = useState([])
             className="flex flex-col gap-4 p-4 rounded-lg shadow-lg w-full h-[500px] bg-white"
           >
             {/* Image */}
-            <div  onClick={()=>navigate(`/productdetiles/${item._id}`)} className="relative overflow-hidden cursor-pointer h-[300px] rounded-md">
-              <img
+            <div   className="relative overflow-hidden cursor-pointer h-[300px] rounded-md">
+              <img onClick={()=>navigate(`/productdetiles/${item._id}`)}
                 src={item.image}
                 alt={item.title}
                 className="h-full w-full object-cover rounded-md"

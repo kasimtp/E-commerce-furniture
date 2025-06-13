@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Check, Trash2 } from 'lucide-react';
 import Footer from '../components/Footer';
+import { toast } from 'react-toastify';
 
 const WishList = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const WishList = () => {
 
       if (response.ok) {
         console.log('Item moved to cart');
+        toast.success("Product added to add cart!");
       } else {
         console.error('Failed to add to cart');
       }
@@ -46,9 +48,11 @@ const WishList = () => {
       });
       if (res.ok) {
         setWishListItems((prev) => prev.filter((item) => item._id !== id));
+         toast.success("Product deleted to wishlist!");
       }
     } catch (err) {
       console.error('Failed to delete item:', err);
+     
     }
   };
 

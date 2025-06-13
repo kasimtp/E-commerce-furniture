@@ -6,7 +6,8 @@ const AppContextProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || false);
   const [cartItems, setCartItems] = useState([]);
 
-  useEffect(() => {
+  // ✅ Function to fetch cart data
+  const fetchCart = () => {
     const userId = localStorage.getItem("id");
     if (userId) {
       fetch(`http://localhost:5000/api/get-cart/${userId}`)
@@ -17,8 +18,16 @@ const AppContextProvider = ({ children }) => {
         .then((data) => setCartItems(data))
         .catch((err) => console.error("Error fetching cart items:", err));
     }
-  }, []);
+  };
 
+  // ✅ Fetch cart on token change (e.g., page refresh)
+  useEffect(() => {
+    if (token) {
+      fetchCart();
+    }
+  }, [token]);
+
+  // ✅ Cart item manipulation functions
   const removeItemFromCart = (id) => {
     fetch(`http://localhost:5000/api/delete-cart/${id}`, {
       method: "DELETE",
@@ -30,15 +39,14 @@ const AppContextProvider = ({ children }) => {
       .catch((err) => console.error("Error deleting item:", err));
   };
 
-
-    const increaseQuantity = (id) => {
+  const increaseQuantity = (id) => {
     setCartItems((prev) =>
       prev.map((item) =>
         item._id === id ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
 
-       fetch(`http://localhost:5000/api/update-cart/${id}`, {
+    fetch(`http://localhost:5000/api/update-cart/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +55,7 @@ const AppContextProvider = ({ children }) => {
     }).catch((err) => console.error("Error increasing quantity:", err));
   };
 
-    const decreaseQuantity = (id) => {
+  const decreaseQuantity = (id) => {
     setCartItems((prev) =>
       prev.map((item) =>
         item._id === id && item.quantity > 1
@@ -56,7 +64,7 @@ const AppContextProvider = ({ children }) => {
       )
     );
 
-        fetch(`http://localhost:5000/api/update-cart/${id}`, {
+    fetch(`http://localhost:5000/api/update-cart/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -65,17 +73,25 @@ const AppContextProvider = ({ children }) => {
     }).catch((err) => console.error("Error decreasing quantity:", err));
   };
 
+  // ✅ Logout function (optional but clean)
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    setToken(null);
+    setCartItems([]);
+  };
 
-  
-
+  // ✅ Context value
   const value = {
     token,
     setToken,
     cartItems,
     setCartItems,
     removeItemFromCart,
-     increaseQuantity,
+    increaseQuantity,
     decreaseQuantity,
+    fetchCart, // 👈 expose fetchCart for login
+    logout,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

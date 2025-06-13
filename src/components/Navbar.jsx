@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdPermContactCalendar, MdMenu, MdClose } from "react-icons/md";
+import { VscAccount } from "react-icons/vsc";
 import { BiCartAlt } from "react-icons/bi";
 import { useEffect } from "react";
 
@@ -169,7 +170,7 @@ const Navbar = () => {
 
           <div className="relative">
             <NavLink to="/login" className="hover:text-blue-800">
-              <MdPermContactCalendar />
+              <VscAccount />
           
             </NavLink>
           </div>

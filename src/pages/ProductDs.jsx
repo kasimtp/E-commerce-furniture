@@ -90,8 +90,8 @@ const ProductDs = () => {
           ${product.price.toFixed(2)}
         </p>
 
-        {/* Quantity Selector */}
-        <div className="flex items-center bg-red-300 w-fit rounded-3xl px-4 py-1">
+
+        <div className="flex items-center text-white bg-blue-700 hover:bg-blue-800  w-fit rounded-3xl px-4 py-1">
           <button
             className="text-xl px-2"
             onClick={() => handleQuantityChange("decrement")}
@@ -107,7 +107,7 @@ const ProductDs = () => {
           </button>
         </div>
 
-        {/* Description */}
+        
         <div className="mt-4">
           <h4 className="font-semibold">Description</h4>
           <ul className="text-gray-600 text-sm space-y-1 mt-1">

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import bg from "../assets/bg.jpg";
 import { useNavigate } from "react-router";
+import { AppContext } from "../context/AppContext";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { logout } = useContext(AppContext); // ✅ use logout function
 
   return (
     <div className="mt-0 font-Poppins">
@@ -15,7 +17,7 @@ const Header = () => {
           We’re proud to introduce
         </p>
 
-        <div className="h-full flex flex-col justify-center items-start md:items-start text-left max-w-2xl mx-auto md:mx-0">
+        <div className="h-full flex flex-col justify-center items-start text-left max-w-2xl mx-auto md:mx-0">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#ffdd00] uppercase mt-24 md:mt-0">
             The Furniture
             <br />
@@ -31,12 +33,11 @@ const Header = () => {
             Shop Now
           </button>
 
-          {/* Logout Button */}
           <div className="mt-4">
             <button
               onClick={() => {
-                localStorage.removeItem("token"); 
-                navigate("/login");
+                logout();
+                navigate("/login"); 
               }}
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
             >

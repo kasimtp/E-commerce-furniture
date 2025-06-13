@@ -6,7 +6,7 @@ import { AppContext } from "../context/AppContext";
 
 const Login = () => {
   const [state, setState] = useState("Sign Up");
-  const { token, setToken } = useContext(AppContext);
+  const { token, setToken, fetchCart } = useContext(AppContext);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -28,6 +28,7 @@ const Login = () => {
           localStorage.setItem("token", data.token);
           localStorage.setItem("id", data.user._id); 
           setToken(data.token);
+          fetchCart();
           toast.success("Registered successfully");
         } else {
           toast.error(data.message);

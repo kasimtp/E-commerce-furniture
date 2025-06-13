@@ -1,4 +1,3 @@
-
 import Navbar from './components/Navbar'
 import { Route, Routes } from 'react-router'
 import Home from "./pages/Home"
@@ -10,37 +9,55 @@ import SearchBar from './components/SearchBar'
 import CartPage from './pages/CartPage'
 import Cart from './components/Cart'
 import WishList from './pages/WishList'
-import  ProductDs from './pages/ProductDs'
+import ProductDs from './pages/ProductDs'
 import { ToastContainer } from 'react-toastify'
-
+import ProtectedRoute from './components/ProtectedRoute' // ⬅️ Import it
 
 const App = () => {
-  
   return (
-    <div className=''>
-      <ToastContainer/>
+    <div>
+      <ToastContainer />
       <Navbar />
       <Routes>
-
-        <Route path='/' element={<Home/>} />
+        {/* Public Routes */}
+        <Route path='/login' element={<Login />} />
+        <Route path='/' element={<Home />} />
         <Route path='/shop' element={<Shope />} />
-        <Route path='/shoppingcart' element={<Cart />} />
-        <Route path='/cart' element={<CartPage/>}/>
-        <Route path='/contact' element={<Contact/>} />
-        <Route path='/blog' element={<Blog/>} />
-        <Route path='/login' element={<Login/>} />
-        <Route path='/search' element={<SearchBar/>} />
-        <Route path='/wishlist' element={<WishList/>} />
-        <Route path='/productdetiles/:id' element={<ProductDs/>} />
-                
-        
-      </Routes>
+        <Route path='/blog' element={<Blog />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/search' element={<SearchBar />} />
+        <Route path='/productdetiles/:id' element={<ProductDs />} />
 
+        {/* 🔐 Protected Routes */}
+        <Route
+          path='/cart'
+          element={
+            <ProtectedRoute>
+              <CartPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path='/shoppingcart'
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path='/wishlist'
+          element={
+            <ProtectedRoute>
+              <WishList />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </div>
   )
 }
 
 export default App
-
-
-
