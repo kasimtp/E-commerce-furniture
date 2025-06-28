@@ -68,13 +68,13 @@ const Navbar = () => {
          <p className="lg:text-[20px] text-[16px]">Shop</p>
       </NavLink>
       <NavLink
-        to="/cart"
+        to="/cartpage"
         className={({ isActive }) =>
           isActive ? "text-blue-800 font-semibold" : "hover:text-blue-800"
         }
         onClick={() => setIsMobileMenuOpen(false)}
       >
-         <p className="lg:text-[20px] text-[16px]">Cart</p>
+         <p className="lg:text-[20px] text-[16px]">Cart P</p>
       </NavLink>
       <NavLink
         to="/blog"
@@ -125,8 +125,10 @@ const Navbar = () => {
             className="w-[130px]  sm:w-[150px] md:w-[100px] md:mb-4 lg:w-[250px]"
           />
 
+         {/* -------------------------------------------------------------------------------------------------------  */}
+
           {/* Mobile Icons */}
-          <div className="flex text-3xl  space-x-6 md:hidden">
+          <div className="flex text-3xl   space-x-6 md:hidden">
             <div className="relative ">
               <NavLink to="/wishlist" className="hover:text-blue-800">
                 <AiOutlineHeart />
@@ -145,6 +147,11 @@ const Navbar = () => {
               </NavLink>
             </div>
           </div>
+
+          {/* ------------------------------------------------------------------------------------------------------------ */}
+
+
+
         </div>
 
         <div className="flex space-x-8">
@@ -177,6 +184,7 @@ const Navbar = () => {
 
           <div className="relative">
             <NavLink to="/shoppingcart" className="hover:text-blue-800">
+           
               <BiCartAlt />
               <span className="absolute -top-2 -right-2 bg-blue-800 text-white text-[15px] p-2 rounded-full w-6 h-6 flex items-center justify-center">
                  {cartItems.length}

@@ -21,16 +21,20 @@ const App = () => {
       <Routes>
         {/* Public Routes */}
         <Route path='/login' element={<Login />} />
+
         <Route path='/' element={<Home />} />
+         <Route path='/cartpage' element={<CartPage/>} />
         <Route path='/shop' element={<Shope />} />
         <Route path='/blog' element={<Blog />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/shoppingcart' element={<Cart />} />
+
         <Route path='/search' element={<SearchBar />} />
         <Route path='/productdetiles/:id' element={<ProductDs />} />
 
         {/* 🔐 Protected Routes */}
         <Route
-          path='/cart'
+          path='/cartpage'
           element={
             <ProtectedRoute>
               <CartPage />
