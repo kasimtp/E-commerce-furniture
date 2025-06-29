@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { X, Trash2 } from "lucide-react";
+import { X } from "lucide-react";
 import { useNavigate } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { AppContext } from "../context/AppContext";
@@ -7,8 +7,7 @@ import { AppContext } from "../context/AppContext";
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
-  const { cartItems, setCartItems, removeItemFromCart } =
-    useContext(AppContext);
+  const { cartItems, setCartItems, removeItemFromCart } = useContext(AppContext);
 
   const totalPrice = cartItems.reduce((acc, item) => {
     const price = parseFloat(item?.product?.price) || 0;
@@ -20,13 +19,12 @@ const Cart = () => {
       const res = await fetch(`http://localhost:5000/api/update-cart/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type }), // type = "increment" or "decrement"
+        body: JSON.stringify({ type }),
       });
 
       if (!res.ok) throw new Error("Failed to update quantity");
 
       const updatedItem = await res.json();
-
       setCartItems((prev) =>
         prev.map((item) =>
           item._id === id ? { ...item, quantity: updatedItem.quantity } : item
@@ -45,10 +43,11 @@ const Cart = () => {
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-white shadow-lg z-50 flex flex-col"
+          className="fixed inset-0 bg-gray-100 z-50 overflow-auto"
         >
-          <div className="flex items-center justify-between p-4 border-b">
-            <h2 className="text-lg font-semibold">
+          {/* Header */}
+          <div className="flex justify-between items-center bg-blue-800 p-4 border-b">
+            <h2 className="text-lg text-white font-semibold">
               SHOPPING CART
               <span className="ml-2 px-2 py-1 text-white bg-blue-700 rounded-full text-sm">
                 {cartItems.length}
@@ -61,101 +60,136 @@ const Cart = () => {
                 navigate("/shop");
               }}
             >
-              <X className="hover:text-red-600 cursor-pointer w-6 h-6" />
+              <X className="hover:text-red-600 cursor-pointer w-6 h-6 text-white" />
             </motion.button>
           </div>
 
           {cartItems.length === 0 ? (
-            <div className="flex-1 flex flex-col items-center justify-center text-center px-4">
-              <div className="mb-4">
-                <div className="bg-gray-100 rounded-full p-4">
-                  <svg
-                    className="w-8 h-8 text-gray-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13l-1.5-6M7 13l-1-4h12l-1 4M5 21h2a2 2 0 100-4H5a2 2 0 000 4zm12 0h2a2 2 0 100-4h-2a2 2 0 000 4z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <p className="text-gray-700 mb-4">No products in the cart.</p>
+            <div className="flex flex-col items-center   justify-center h-[80vh]">
+              <p className="text-gray-700 text-lg mb-4">No products in the cart.</p>
               <button
                 onClick={() => navigate("/shop")}
-                className="bg-blue-700 hover:bg-blue-800 cursor-pointer text-white px-6 py-2 rounded-full transition"
+                className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-full transition"
               >
                 Continue Shopping
               </button>
             </div>
           ) : (
-            <div className="flex- overflow-y-auto">
-              {cartItems.map((item) => (
-                <div
-                  key={item._id}
-                  className="flex items-center justify-between p-4 border-b"
-                >
-                  <div className="flex   items-center space-x-8 ">
+            <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6">
+              {/* Cart Items */}
+              <div className="flex-1  space-y-4">
+                {cartItems.map((item) => (
+                  <div
+                    key={item._id}
+                    className="p-4 shadow rounded flex  flex-col sm:flex-row items-start sm:h-48 sm:items-center gap-4"
+                  >
                     <img
                       src={item?.product?.image}
-                      className="w-16 h-16 object-cover rounded"
+                      className="w-32 h-32 object-cover rounded"
+                      alt={item?.product?.name}
                     />
-                    <div className=" space-x-8 space-y-2">
-                      <h3 className="text-md font-semibold">
-                        {item?.product?.name}
-                      </h3>
 
-                      {/* Quantity Control */}
-                      <div className="flex bg-amber-50 items-center  border rounded-4xl ">
-                        <button
-                          className="text-xl px-2 cursor-pointer"
-                          onClick={() =>
-                            item.quantity > 4 &&
-                            handleQuantityChange(item._id, "decrement")
-                          }
-                        >
-                          −
-                        </button>
-                        <span className="px-3">{item.quantity}</span>
-                        <button
-                          className="text-xl px-2 cursor-pointer"
-                          onClick={() =>
-                            handleQuantityChange(item._id, "increment")
-                          }
-                        >
-                          +
-                        </button>
+                    <div className="flex flex-col sm:flex-row justify-between w-full gap-4">
+                      {/* Left info */}
+                      <div className="flex-1">
+                        <h3 className="text-[16px] font-semibold text-gray-800">
+                          {item?.product?.name}
+                        </h3>
+                        <p className="text-sm text-gray-500 mt-1">Available</p>
+                        <div className="flex gap-4 mt-2 flex-wrap">
+                          <button className="text-blue-600 font-medium">Save for later</button>
+                          <button
+                            onClick={() => removeItemFromCart(item._id)}
+                            className="text-blue-600 font-medium"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Quantity + Price */}
+                      <div className="flex flex-col sm:items-end gap-2">
+                        <div className="flex items-center border rounded-full bg-amber-50 w-fit">
+                          <button
+                            onClick={() =>
+                              item.quantity > 1 &&
+                              handleQuantityChange(item._id, "decrement")
+                            }
+                            className="px-3 text-xl"
+                          >
+                            −
+                          </button>
+                          <span className="px-3">{item.quantity}</span>
+                          <button
+                            onClick={() => handleQuantityChange(item._id, "increment")}
+                            className="px-3 text-xl"
+                          >
+                            +
+                          </button>
+                        </div>
+                        <p className="text-red-600 font-semibold">
+                          ₹{(item?.product?.price * item.quantity).toFixed(2)}
+                        </p>
                       </div>
                     </div>
-                    <p className="text-sm font-bold text-red-600 mt-1">
-                      ${(item?.product?.price * item.quantity).toFixed(2)}
-                    </p>
+                    
                   </div>
-                  <button onClick={() => removeItemFromCart(item._id)}>
-                    <Trash2 className="text-gray-500 cursor-pointer hover:text-red-600" />
-                  </button>
-                </div>
-              ))}
-
-              <div className="p-4 flex justify-between items-center font-bold text-lg border-t">
-                <span>Total</span>
-                <span>${totalPrice.toFixed(2)}</span>
-              </div>
-
-              <div className="p-4">
-                <button
+                  
+                ))}
+                 <div className=" bg-amber-400  float-right">
+                  <button
                   onClick={() => alert("Proceeding to checkout...")}
-                  className="w-full bg-green-600 cursor-pointer hover:bg-green-700 text-white py-2 rounded-full transition"
+                  className=" cursor-pointer bg-blue-800 hover:bg-blue-700 text-white px-6 py-2 rounded  font-semibold"
                 >
-                  Checkout
+                  PLACE ORDER
                 </button>
+                 </div>
               </div>
+
+              {/* Price Summary */}
+              <div className="w-full lg:w-[350px] space-y-4">
+                <div className="bg-white p-4 rounded shadow">
+                  <h3 className="text-lg font-semibold text-gray-800 border-b pb-2 mb-2">
+                    PRICE DETAILS
+                  </h3>
+                  <div className="text-sm space-y-2">
+                    <div className="flex justify-between">
+                      <span>Price ({cartItems.length} items)</span>
+                      <span>₹{totalPrice.toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between text-green-600">
+                      <span>Discount</span>
+                      <span>− ₹0</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Delivery Charges</span>
+                      <span className="text-green-600">Free</span>
+                    </div>
+                    <hr />
+                    <div className="flex justify-between font-bold text-base">
+                      <span>Total Amount</span>
+                      <span>₹{totalPrice.toFixed(2)}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-xs text-gray-500 flex items-center gap-2">
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Safe and Secure Payments. 100% Authentic Products.
+                </div>
+              </div>
+              
             </div>
+            
           )}
+
         </motion.div>
       )}
     </AnimatePresence>
