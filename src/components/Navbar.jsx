@@ -131,10 +131,10 @@ const Navbar = () => {
                 logout();
                 navigate("/login");
               }}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+              className="bg-blue-600  text-white px-4 py-2 h-12  rounded-lg hover:bg-blue-700 transition"
             >
-              <p className="text-[18px] font-semibold flex items-center gap-2">
-               <FiLogOut /> Logout
+              <p className="text-[18px] font-semibold  flex items-center gap-2">
+               <FiLogOut className="text-3xl" /> Logout
               </p>
             </button>
           </div>
