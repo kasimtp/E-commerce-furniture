@@ -33,17 +33,6 @@ const Header = () => {
             Shop Now
           </button>
 
-          <div className="mt-4">
-            <button
-              onClick={() => {
-                logout();
-                navigate("/login"); 
-              }}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-            >
-              <p className="text-[22px] font-semibold">Logout</p>
-            </button>
-          </div>
         </div>
       </div>
     </div>

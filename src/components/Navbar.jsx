@@ -8,6 +8,7 @@ import { VscAccount } from "react-icons/vsc";
 import { BiCartAlt } from "react-icons/bi";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { AppContext } from "../context/AppContext";
+import { FiLogOut } from "react-icons/fi";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -133,7 +134,7 @@ const Navbar = () => {
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
             >
               <p className="text-[18px] font-semibold flex items-center gap-2">
-                <RiLogoutCircleRLine /> Logout
+               <FiLogOut /> Logout
               </p>
             </button>
           </div>
