@@ -101,12 +101,12 @@ const Cart = () => {
                           </h3>
                           <p className="text-sm text-gray-500 mt-1">Available</p>
                           <div className="flex gap-4 mt-2 flex-wrap">
-                            <button className="text-sm text-blue-600 font-medium">
+                            <button className="text-md text-blue-600  font-medium">
                               Save for later
                             </button>
                             <button
                               onClick={() => removeItemFromCart(item._id)}
-                              className="text-sm text-blue-600 font-medium"
+                              className="text-md cursor-pointer hover:text-blue-500  text-blue-700 font-medium"
                             >
                               Remove
                             </button>
@@ -115,22 +115,22 @@ const Cart = () => {
 
                         {/* Quantity + Price */}
                         <div className="flex flex-col sm:items-end gap-2">
-                          <div className="flex items-center border rounded-full bg-amber-50 w-fit">
+                          <div className="flex items-center border rounded-full bg-blue-600 w-fit">
                             <button
                               onClick={() =>
                                 item.quantity > 1 &&
                                 handleQuantityChange(item._id, "decrement")
                               }
-                              className="px-3 text-xl"
+                              className="px-3  text-white font-bold text-xl"
                             >
                               −
                             </button>
-                            <span className="px-3 text-base">{item.quantity}</span>
+                            <span className="px-3 text-white font-bold text-base">{item.quantity}</span>
                             <button
                               onClick={() =>
                                 handleQuantityChange(item._id, "increment")
                               }
-                              className="px-3 text-xl"
+                              className="px-3 text-white font-bold text-xl"
                             >
                               +
                             </button>

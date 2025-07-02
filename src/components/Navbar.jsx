@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import logotext from "../assets/FurnitureLogo.png";
+
+
+import logowbg from "../assets/logowbg.png"
 import { NavLink, useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -9,6 +11,8 @@ import { BiCartAlt } from "react-icons/bi";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { AppContext } from "../context/AppContext";
 import { FiLogOut } from "react-icons/fi";
+import logowithtext from "../assets/logowithtext.jpg"
+import withoutbg from "../assets/logowbg.png"
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -68,7 +72,7 @@ const Navbar = () => {
           </button>
 
           <img
-            src={logotext}
+            src={withoutbg}
             alt="Logo"
             className="w-[130px] sm:w-[150px] md:w-[100px] md:mb-4 lg:w-[250px]"
           />
