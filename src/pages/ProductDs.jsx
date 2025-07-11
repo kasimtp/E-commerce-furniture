@@ -127,12 +127,22 @@ const ProductDs = () => {
         </p>
 
         {/* Add to Cart Button */}
-        <button
+       <div className="flex flex-row gap-4  ">
+       <button
           onClick={() => handleAddToCart(product._id)}
-          className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-full text-sm"
+          className="bg-blue-700 cursor-pointer text-[17px] hover:bg-blue-800 w-32 h-14 font-semibold text-white px-4 py-2 rounded-md text-sm"
         >
           Add to Cart
         </button>
+
+           <button
+         
+          className="bg-[#ff9f00] cursor-pointer hover:bg-[#ff9f00] w-32 h-14 font-semibold text-[18px] text-white px-4 py-2 rounded-md"
+        >
+          Buy Now
+        </button>
+       </div>
+
       </div>
     </div>
   );
