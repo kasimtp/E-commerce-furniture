@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
-import {  useEffect, useState } from "react";
-import axios from "axios"
+import { useEffect, useState, useContext } from "react";
+import axios from "axios";
 import { toast } from "react-toastify";
 import { AppContext } from "../context/AppContext";
 
@@ -57,6 +57,15 @@ const ProductDs = () => {
     }
   };
 
+  // ✅ WhatsApp Buy Now Integration with your number
+  const handleBuyNow = () => {
+    const phoneNumber = "917592084226"; // your WhatsApp number
+    const message = `Hello! I'm interested in buying:\n\nProduct: ${product.name}\nPrice: ₹${product.price}\nQuantity: ${quantity}\nTotal: ₹${(product.price * quantity).toFixed(2)}`;
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(url, "_blank");
+  };
+
   if (!product) return <p>Loading......!</p>;
 
   return (
@@ -87,11 +96,11 @@ const ProductDs = () => {
 
         {/* Price */}
         <p className="text-2xl text-red-500 font-bold">
-          ${product.price.toFixed(2)}
+          ₹{product.price.toFixed(2)}
         </p>
 
-
-        <div className="flex items-center text-white bg-blue-700 hover:bg-blue-800  w-fit rounded-3xl px-4 py-1">
+        {/* Quantity Selector */}
+        <div className="flex items-center text-white bg-blue-700 hover:bg-blue-800 w-fit rounded-3xl px-4 py-1">
           <button
             className="text-xl px-2"
             onClick={() => handleQuantityChange("decrement")}
@@ -107,7 +116,7 @@ const ProductDs = () => {
           </button>
         </div>
 
-        
+        {/* Description */}
         <div className="mt-4">
           <h4 className="font-semibold">Description</h4>
           <ul className="text-gray-600 text-sm space-y-1 mt-1">
@@ -122,27 +131,26 @@ const ProductDs = () => {
         <p className="text-xl font-semibold mt-4">
           Total Price:{" "}
           <span className="text-black">
-            ${(product.price * quantity).toFixed(2)}
+            ₹{(product.price * quantity).toFixed(2)}
           </span>
         </p>
 
-        {/* Add to Cart Button */}
-       <div className="flex flex-row gap-4  ">
-       <button
-          onClick={() => handleAddToCart(product._id)}
-          className="bg-blue-700 cursor-pointer text-[17px] hover:bg-blue-800 w-32 h-14 font-semibold text-white px-4 py-2 rounded-md text-sm"
-        >
-          Add to Cart
-        </button>
+        {/* Buttons */}
+        <div className="flex flex-row gap-4">
+          <button
+            onClick={() => handleAddToCart(product._id)}
+            className="bg-blue-700 cursor-pointer text-[17px] hover:bg-blue-800 w-32 h-14 font-semibold text-white px-4 py-2 rounded-md text-sm"
+          >
+            Add to Cart
+          </button>
 
-           <button
-         
-          className="bg-[#ff9f00] cursor-pointer hover:bg-[#ff9f00] w-32 h-14 font-semibold text-[18px] text-white px-4 py-2 rounded-md"
-        >
-          Buy Now
-        </button>
-       </div>
-
+          <button
+            onClick={handleBuyNow}
+            className="bg-[#ff9f00] cursor-pointer hover:bg-[#ff9f00] w-32 h-14 font-semibold text-[18px] text-white px-4 py-2 rounded-md"
+          >
+            Buy Now
+          </button>
+        </div>
       </div>
     </div>
   );

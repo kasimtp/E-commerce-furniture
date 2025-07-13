@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { AppContext } from "../context/AppContext";
 import Footer from "./Footer";
+import { FaWhatsapp } from "react-icons/fa"; // ✅ WhatsApp Icon
 
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -34,6 +35,29 @@ const Cart = () => {
     } catch (err) {
       console.error("Quantity update error:", err);
     }
+  };
+
+  // ✅ WhatsApp Buy Now Integration
+  const handleBuyNow = () => {
+    const phoneNumber = "917592084226";
+    const orderId = Math.floor(100000 + Math.random() * 900000);
+    const userName = localStorage.getItem("username") || "Customer";
+
+    const itemsMessage = cartItems.map((item, index) => {
+      const name = item?.product?.name;
+      const price = item?.product?.price;
+      const quantity = item.quantity;
+      const total = (price * quantity).toFixed(2);
+      return `🛒 *${index + 1}. ${name}* — ₹${price} × ${quantity} = ₹${total}`;
+    }).join("\n");
+
+    const grandTotal = totalPrice.toFixed(2);
+
+    const finalMessage = `🧾 *Order Summary*\n\n👤 Name: ${userName}\n📦 Order ID: #${orderId}\n\n${itemsMessage}\n\n💰 *Total: ₹${grandTotal}*\n\n📲 Please confirm this order.`;
+
+    const encodedMessage = encodeURIComponent(finalMessage);
+    const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(url, "_blank");
   };
 
   return (
@@ -94,26 +118,24 @@ const Cart = () => {
                       />
 
                       <div className="flex flex-col sm:flex-row justify-between w-full gap-4">
-                        {/* Product Info */}
                         <div className="flex-1">
                           <h3 className="text-base sm:text-lg font-semibold text-gray-800">
                             {item?.product?.name}
                           </h3>
                           <p className="text-sm text-gray-500 mt-1">Available</p>
                           <div className="flex gap-4 mt-2 flex-wrap">
-                            <button className="text-md text-blue-600  font-medium">
+                            <button className="text-md text-blue-600 font-medium">
                               Save for later
                             </button>
                             <button
                               onClick={() => removeItemFromCart(item._id)}
-                              className="text-md cursor-pointer hover:text-blue-500  text-blue-700 font-medium"
+                              className="text-md cursor-pointer hover:text-blue-500 text-blue-700 font-medium"
                             >
                               Remove
                             </button>
                           </div>
                         </div>
 
-                        {/* Quantity + Price */}
                         <div className="flex flex-col sm:items-end gap-2">
                           <div className="flex items-center border rounded-full bg-blue-600 w-fit">
                             <button
@@ -121,11 +143,13 @@ const Cart = () => {
                                 item.quantity > 1 &&
                                 handleQuantityChange(item._id, "decrement")
                               }
-                              className="px-3  text-white font-bold text-xl"
+                              className="px-3 text-white font-bold text-xl"
                             >
                               −
                             </button>
-                            <span className="px-3 text-white font-bold text-base">{item.quantity}</span>
+                            <span className="px-3 text-white font-bold text-base">
+                              {item.quantity}
+                            </span>
                             <button
                               onClick={() =>
                                 handleQuantityChange(item._id, "increment")
@@ -146,9 +170,10 @@ const Cart = () => {
                   {/* Place Order Button */}
                   <div className="text-right pt-4">
                     <button
-                      onClick={() => alert("Proceeding to checkout...")}
-                      className="bg-blue-800 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold text-sm sm:text-base"
+                      onClick={handleBuyNow}
+                      className="bg-green-600 hover:bg-green-700 flex items-center gap-2 text-white px-6 py-2 rounded font-semibold text-sm sm:text-base"
                     >
+                      <FaWhatsapp className="text-xl" />
                       PLACE ORDER
                     </button>
                   </div>
@@ -204,7 +229,7 @@ const Cart = () => {
         )}
       </AnimatePresence>
 
-      {/* Show Footer only when cart is closed */}
+      {/* Footer */}
       {!isOpen && <Footer />}
     </>
   );
