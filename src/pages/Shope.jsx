@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 
 const Shope = () => {
   const [product, setProduct] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const navigate = useNavigate();
 
   const fetchInfo = async () => {
@@ -65,19 +66,44 @@ const Shope = () => {
     }
   };
 
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const filteredProducts =
+    selectedCategory === "All"
+      ? product
+      : product.filter((item) => item.category === selectedCategory);
+
   return (
     <div className="w-full font-Poppins pt-12">
-      {/* Header Section */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center px-6 lg:px-16 mb-8 gap-4">
-        <p className="text-lg">Showing all {product.length} results</p>
-        <div className="flex items-center gap-4 w-full md:w-auto">
+      {/* Category Buttons */}
+      <div className="flex flex-wrap justify-center gap-3 bg-amber-400 py-4 px-2">
+        {["All", "Men's", "Watchs", "Shoes", "Accessories", "Headset"].map((cat) => (
+          <button
+            key={cat}
+            onClick={() => handleCategoryClick(cat)}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+              selectedCategory === cat ? "bg-black text-white" : "bg-white text-black"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Filter Header */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-6 lg:px-16 my-6 gap-4">
+        <p className="text-lg font-medium">Showing {filteredProducts.length} result(s)</p>
+
+        <div className="w-full sm:w-auto flex flex-col sm:flex-row gap-2 sm:items-center">
           <label htmlFor="sort" className="text-sm font-medium text-gray-700">
             Sort by
           </label>
           <select
             id="sort"
             name="sort"
-            className="block w-full md:w-60 px-4 py-2 text-base border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
+            className="w-full sm:w-60 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
           >
             <option>Default sorting</option>
             <option>Sort by popularity</option>
@@ -89,29 +115,31 @@ const Shope = () => {
         </div>
       </div>
 
-      {/* Product Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-6 lg:px-16 mb-16">
-        {product.map((item, index) => (
+      {/* Products Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-16 mb-16">
+        {filteredProducts.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col gap-4 p-4 rounded-lg shadow-lg w-full h-[500px] bg-white transform transition-transform duration-300 hover:scale-105"
+            className="flex flex-col gap-4 p-4 rounded-lg shadow-md w-full bg-white transform transition-transform duration-300 hover:scale-105"
           >
-            <div className="relative overflow-hidden cursor-pointer h-[300px] rounded-md">
+            <div className="relative overflow-hidden cursor-pointer h-[280px] sm:h-[300px] rounded-md">
               <img
                 onClick={() => navigate(`/productdetiles/${item._id}`)}
                 src={item.image}
                 alt={item.title}
-                className="h-full w-full object-cover rounded-md"
+                className="w-full h-full object-cover rounded-md"
               />
 
+              {/* Discount tag */}
               {item.discount && (
-                <div className="absolute top-4 left-4 bg-white text-black px-3 py-1 text-sm font-semibold rounded-full shadow-md">
+                <div className="absolute top-3 left-3 bg-white text-black px-2 py-1 text-xs font-semibold rounded-full shadow">
                   {item.discount}% OFF
                 </div>
               )}
 
+              {/* Tag like Popular, Latest */}
               {item.tag && (
-                <div className={`absolute top-4 right-4 px-3 py-1 text-xs font-bold rounded-full shadow-md text-white animate-pulse
+                <div className={`absolute top-3 right-3 px-2 py-1 text-xs font-bold rounded-full text-white shadow-md animate-pulse
                   ${item.tag === 'Popular' ? 'bg-blue-500' : item.tag === 'Latest Model' ? 'bg-green-500' : 'bg-purple-500'}`}>
                   {item.tag}
                 </div>
@@ -119,43 +147,35 @@ const Shope = () => {
 
               <CiHeart
                 onClick={() => handleClickwishList(item._id)}
-                className="absolute bottom-4 right-4 text-4xl text-black hover:text-white bg-white p-2 rounded-full shadow-md cursor-pointer hover:bg-blue-500"
+                className="absolute bottom-3 right-3 text-3xl text-black hover:text-white bg-white p-2 rounded-full cursor-pointer hover:bg-blue-500"
               />
             </div>
 
-         <div className="flex flex-col p-2 items-center justify-between text-center flex-grow">
-  <p className="text-base  font-semibold mb-1 leading-tight">{item.name}</p>
+            {/* Product Info */}
+            <div className="flex flex-col p-2 items-center justify-between text-center flex-grow">
+              <p className="text-base font-semibold">{item.name}</p>
 
-  {item.extraText && (
-    <p className="text-yellow-500 text-sm font-medium mb-1 leading-tight">
-      {item.extraText}
-    </p>
-  )}
+              {item.extraText && (
+                <p className="text-yellow-500 text-sm font-medium">{item.extraText}</p>
+              )}
 
-  <div className="relative h-[32px] mt-0 group w-full flex justify-center items-center">
-    {/* Price Section */}
-    <div className="absolute flex items-center gap-1 text-black opacity-100 group-hover:opacity-0 group-hover:translate-y-2 transition-all duration-300">
-      <BsCurrencyDollar className="text-lg" />
-      <span className="text-base font-semibold">
-        {item.price.toFixed(2)}
-      </span>
-    </div>
+              <div className="relative h-[32px] mt-1 group w-full flex justify-center items-center">
+                {/* Price */}
+                <div className="absolute flex items-center gap-1 text-black opacity-100 group-hover:opacity-0 group-hover:translate-y-2 transition-all duration-300">
+                  <BsCurrencyDollar className="text-lg" />
+                  <span className="text-base font-semibold">{item.price.toFixed(2)}</span>
+                </div>
 
-    {/* Add to Cart Button */}
-    <div
-      className="absolute flex items-center bg-blue-500  w-42 h-12 gap-2 border border-amber-100  px-2 py-1 rounded-md shadow-md cursor-pointer 
-                 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 
-                 hover:bg-blue-500 hover:border-black"
-      onClick={() => handleClick(item._id)}
-    >
-      <BsCart2 className="text-lg text-white " />
-      <button className="text-sm font-semibold text-white w-22  ">
-        Add To Cart
-      </button>
-    </div>
-  </div>
-</div>
-
+                {/* Add to Cart */}
+                <div
+                  className="absolute flex items-center bg-blue-500 gap-2 px-4 py-2 rounded-md shadow-md cursor-pointer opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 hover:bg-blue-600"
+                  onClick={() => handleClick(item._id)}
+                >
+                  <BsCart2 className="text-white" />
+                  <span className="text-sm font-semibold text-white">Add To Cart</span>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>

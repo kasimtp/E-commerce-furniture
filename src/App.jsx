@@ -23,7 +23,7 @@ const App = () => {
         <Route path='/login' element={<Login />} />
 
         <Route path='/' element={<Home />} />
-         <Route path='/cartpage' element={<CartPage/>} />
+         <Route path='/cart' element={<CartPage/>} />
         <Route path='/shop' element={<Shope />} />
         <Route path='/blog' element={<Blog />} />
         <Route path='/contact' element={<Contact />} />
@@ -34,7 +34,7 @@ const App = () => {
 
         {/* 🔐 Protected Routes */}
         <Route
-          path='/cartpage'
+          path='/cart'
           element={
             <ProtectedRoute>
               <CartPage />

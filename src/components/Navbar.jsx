@@ -40,7 +40,7 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      {["/", "/shop", "/cartpage", "/blog", "/contact"].map((path, i) => (
+      {["/", "/shop", "/cart",  "/contact"].map((path, i) => (
         <NavLink
           key={i}
           to={path}
