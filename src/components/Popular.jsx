@@ -1,7 +1,7 @@
 import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import { useEffect, useState } from "react";
-import { getData } from "../../../admin/src/utils/ProductList";
+import { getData } from "../ProductList.js";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useDispatch } from 'react-redux'

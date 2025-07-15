@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getData } from "../../../admin/src/utils/ProductList";
+import { getData } from "../ProductList.js";
 
 const Categories = () => {
   const [product, setProduct] = useState([]);
