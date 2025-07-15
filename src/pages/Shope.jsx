@@ -2,7 +2,7 @@ import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
-import { getData } from "../../../admin/src/utils/ProductList.js";
+import { getData } from "../ProductList.js";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 
