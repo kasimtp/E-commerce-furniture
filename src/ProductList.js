@@ -1,5 +1,6 @@
  
- import { apiClient } from "../../admin/src/utils/api"
+ import { apiClient } from "./utils/api";
+
 
  export const getData = ()=>{
     return apiClient.get("/api/get-product")
