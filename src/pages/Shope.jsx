@@ -219,7 +219,6 @@
 
 
 
-
 import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import Footer from "../components/Footer";
@@ -234,9 +233,14 @@ const Shope = () => {
   const navigate = useNavigate();
 
   const fetchInfo = async () => {
-    const response = await getData();
-    if (response.data) {
-      setProduct(response.data);
+    try {
+      const response = await getData();
+      console.log("✅ Products fetched:", response?.data);
+      if (response.data) {
+        setProduct(response.data);
+      }
+    } catch (error) {
+      console.error("❌ Failed to fetch products:", error);
     }
   };
 
@@ -307,7 +311,6 @@ const Shope = () => {
       {/* Filter Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-6 lg:px-16 my-6 gap-4">
         <p className="text-lg font-medium">Showing {filteredProducts.length} result(s)</p>
-
         <div className="w-full sm:w-auto flex flex-col sm:flex-row gap-2 sm:items-center">
           <label htmlFor="sort" className="text-sm font-medium text-gray-700">
             Sort by
@@ -344,6 +347,10 @@ const Shope = () => {
                 }
                 alt={item.name || "product"}
                 className="w-full h-full object-cover rounded-md"
+                loading="lazy"
+                onError={(e) => {
+                  e.target.src = "/no-image.png"; // Fallback image if image fails
+                }}
               />
 
               {/* Discount tag */}
@@ -380,13 +387,11 @@ const Shope = () => {
               {item.extraText && (
                 <p className="text-yellow-500 text-sm font-medium">{item.extraText}</p>
               )}
-
               <div className="relative h-[32px] mt-1 group w-full flex justify-center items-center">
                 <div className="absolute flex items-center gap-1 text-black opacity-100 group-hover:opacity-0 group-hover:translate-y-2 transition-all duration-300">
                   <BsCurrencyDollar className="text-lg" />
                   <span className="text-base font-semibold">{item.price.toFixed(2)}</span>
                 </div>
-
                 <div
                   className="absolute flex items-center bg-blue-500 gap-2 px-4 py-2 rounded-md shadow-md cursor-pointer opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 hover:bg-blue-600"
                   onClick={() => handleClick(item._id)}
@@ -406,4 +411,3 @@ const Shope = () => {
 };
 
 export default Shope;
-
