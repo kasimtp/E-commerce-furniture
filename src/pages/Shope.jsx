@@ -220,9 +220,6 @@
 
 
 
-
-
-
 import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import Footer from "../components/Footer";
@@ -249,7 +246,6 @@ const Shope = () => {
 
   const handleClickwishList = (id) => {
     const user = localStorage.getItem("id");
-
     if (user) {
       fetch("https://e-commerce-furniture-backend-gpxh.onrender.com/api/wish-list", {
         method: "POST",
@@ -267,7 +263,6 @@ const Shope = () => {
 
   const handleClick = (id) => {
     const user = localStorage.getItem("id");
-
     if (user) {
       fetch("https://e-commerce-furniture-backend-gpxh.onrender.com/api/post-cart", {
         method: "POST",
@@ -347,16 +342,18 @@ const Shope = () => {
                     ? item.image
                     : `https://e-commerce-furniture-backend-gpxh.onrender.com${item.image}`
                 }
-                alt={item.title || "product"}
+                alt={item.name || "product"}
                 className="w-full h-full object-cover rounded-md"
               />
 
+              {/* Discount tag */}
               {item.discount && (
                 <div className="absolute top-3 left-3 bg-white text-black px-2 py-1 text-xs font-semibold rounded-full shadow">
                   {item.discount}% OFF
                 </div>
               )}
 
+              {/* Tag like Popular, Latest */}
               {item.tag && (
                 <div
                   className={`absolute top-3 right-3 px-2 py-1 text-xs font-bold rounded-full text-white shadow-md animate-pulse ${
@@ -385,13 +382,11 @@ const Shope = () => {
               )}
 
               <div className="relative h-[32px] mt-1 group w-full flex justify-center items-center">
-                {/* Price */}
                 <div className="absolute flex items-center gap-1 text-black opacity-100 group-hover:opacity-0 group-hover:translate-y-2 transition-all duration-300">
                   <BsCurrencyDollar className="text-lg" />
                   <span className="text-base font-semibold">{item.price.toFixed(2)}</span>
                 </div>
 
-                {/* Add to Cart */}
                 <div
                   className="absolute flex items-center bg-blue-500 gap-2 px-4 py-2 rounded-md shadow-md cursor-pointer opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 hover:bg-blue-600"
                   onClick={() => handleClick(item._id)}
@@ -411,5 +406,4 @@ const Shope = () => {
 };
 
 export default Shope;
-
 
