@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 
 
-import logowbg from "../assets/logowbg.png"
+
 import { NavLink, useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -11,7 +11,7 @@ import { BiCartAlt } from "react-icons/bi";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { AppContext } from "../context/AppContext";
 import { FiLogOut } from "react-icons/fi";
-import logowithtext from "../assets/logowithtext.jpg"
+
 import withoutbg from "../assets/logowbg.png"
 
 const Navbar = () => {
