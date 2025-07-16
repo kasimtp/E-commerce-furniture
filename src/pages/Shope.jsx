@@ -217,8 +217,7 @@
 
 
 
-
-
+// === 📁 Shope.jsx ===
 import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import Footer from "../components/Footer";
@@ -235,7 +234,6 @@ const Shope = () => {
   const fetchInfo = async () => {
     try {
       const response = await getData();
-      console.log("✅ Products fetched:", response?.data);
       if (response.data) {
         setProduct(response.data);
       }
@@ -293,7 +291,6 @@ const Shope = () => {
 
   return (
     <div className="w-full font-Poppins pt-12">
-      {/* Category Buttons */}
       <div className="flex flex-wrap justify-center gap-3 bg-amber-400 py-4 px-2">
         {["All", "Men's", "Watchs", "Shoes", "Accessories", "Headset"].map((cat) => (
           <button
@@ -308,9 +305,9 @@ const Shope = () => {
         ))}
       </div>
 
-      {/* Filter Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-6 lg:px-16 my-6 gap-4">
         <p className="text-lg font-medium">Showing {filteredProducts.length} result(s)</p>
+
         <div className="w-full sm:w-auto flex flex-col sm:flex-row gap-2 sm:items-center">
           <label htmlFor="sort" className="text-sm font-medium text-gray-700">
             Sort by
@@ -330,37 +327,25 @@ const Shope = () => {
         </div>
       </div>
 
-      {/* Products Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-16 mb-16">
         {filteredProducts.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col gap-4 p-4 rounded-lg shadow-md w-full bg-white transform transition-transform duration-300 hover:scale-105"
-          >
+          <div key={index} className="flex flex-col gap-4 p-4 rounded-lg shadow-md w-full bg-white transform transition-transform duration-300 hover:scale-105">
             <div className="relative overflow-hidden cursor-pointer h-[280px] sm:h-[300px] rounded-md">
               <img
                 onClick={() => navigate(`/productdetiles/${item._id}`)}
-                src={
-                  item.image?.startsWith("http")
-                    ? item.image
-                    : `https://e-commerce-furniture-backend-gpxh.onrender.com${item.image}`
-                }
+                src={item.image}
                 alt={item.name || "product"}
                 className="w-full h-full object-cover rounded-md"
                 loading="lazy"
                 onError={(e) => {
-                  e.target.src = "/no-image.png"; // Fallback image if image fails
+                  e.target.src = "/no-image.png";
                 }}
               />
-
-              {/* Discount tag */}
               {item.discount && (
                 <div className="absolute top-3 left-3 bg-white text-black px-2 py-1 text-xs font-semibold rounded-full shadow">
                   {item.discount}% OFF
                 </div>
               )}
-
-              {/* Tag like Popular, Latest */}
               {item.tag && (
                 <div
                   className={`absolute top-3 right-3 px-2 py-1 text-xs font-bold rounded-full text-white shadow-md animate-pulse ${
@@ -374,14 +359,12 @@ const Shope = () => {
                   {item.tag}
                 </div>
               )}
-
               <CiHeart
                 onClick={() => handleClickwishList(item._id)}
                 className="absolute bottom-3 right-3 text-3xl text-black hover:text-white bg-white p-2 rounded-full cursor-pointer hover:bg-blue-500"
               />
             </div>
 
-            {/* Product Info */}
             <div className="flex flex-col p-2 items-center justify-between text-center flex-grow">
               <p className="text-base font-semibold">{item.name}</p>
               {item.extraText && (
