@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { AppContext } from "../context/AppContext";
+import { apiClient } from "../utils/api"; // ✅ API from base URL (Render)
 
 const Login = () => {
   const [state, setState] = useState("Sign Up");
@@ -13,20 +13,20 @@ const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
-
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
     try {
       if (state === "Sign Up") {
-        const { data } = await axios.post(
-          "http://localhost:5000/api/user/register",
-          { name, email, password }
-        );
+        const { data } = await apiClient.post("/user/register", {
+          name,
+          email,
+          password,
+        });
 
         if (data.success) {
           localStorage.setItem("token", data.token);
-          localStorage.setItem("id", data.user._id); 
+          localStorage.setItem("id", data.user._id);
           setToken(data.token);
           fetchCart();
           toast.success("Registered successfully");
@@ -34,10 +34,10 @@ const Login = () => {
           toast.error(data.message);
         }
       } else {
-        const { data } = await axios.post(
-          "http://localhost:5000/api/user/login",
-          { email, password }
-        );
+        const { data } = await apiClient.post("/user/login", {
+          email,
+          password,
+        });
 
         if (data.success) {
           localStorage.setItem("token", data.token);
@@ -82,7 +82,7 @@ const Login = () => {
                 id="name"
                 name="name"
                 onChange={(e) => setName(e.target.value)}
-                required={state === "Sign Up"}
+                required
               />
             </div>
           )}
