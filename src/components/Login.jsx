@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AppContext } from "../context/AppContext";
-import { apiClient } from "../utils/api"; // ✅ axios instance with base URL
+import { apiClient } from "../utils/api"; // Axios instance
 
 const Login = () => {
   const [state, setState] = useState("Sign Up"); // or "Login"
@@ -13,51 +13,55 @@ const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
-  // ✅ Register handler
   const handleRegister = async () => {
-    const { data } = await apiClient.post("/user/register", {
-      name,
-      email,
-      password,
-    });
+    try {
+      const { data } = await apiClient.post("/user/register", {
+        name,
+        email,
+        password,
+      });
 
-    if (data.success) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("id", data.user._id);
-      setToken(data.token);
-      fetchCart();
-      toast.success("Registered successfully");
-    } else {
-      toast.error(data.message);
+      if (data.success) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("id", data.user._id);
+        setToken(data.token);
+        fetchCart();
+        toast.success("Registered successfully");
+      } else {
+        toast.error(data.message || "Registration failed");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Registration error");
     }
   };
 
-  // ✅ Login handler
   const handleLogin = async () => {
-    const { data } = await apiClient.post("/user/login", {
-      email,
-      password,
-    });
+    try {
+      const { data } = await apiClient.post("/user/login", {
+        email,
+        password,
+      });
 
-    if (data.success) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("id", data.user._id);
-      setToken(data.token);
-      fetchCart();
-      toast.success("Logged in successfully");
-    } else {
-      toast.error(data.message);
+      if (data.success) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("id", data.user._id);
+        setToken(data.token);
+        fetchCart();
+        toast.success("Logged in successfully");
+      } else {
+        toast.error(data.message || "Login failed");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Login error");
     }
   };
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-
-    try {
-      state === "Sign Up" ? await handleRegister() : await handleLogin();
-    } catch (error) {
-      const message = error.response?.data?.message || "Something went wrong";
-      toast.error(message);
+    if (state === "Sign Up") {
+      await handleRegister();
+    } else {
+      await handleLogin();
     }
   };
 
@@ -100,6 +104,7 @@ const Login = () => {
             <input
               type="email"
               id="email"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="you@example.com"
@@ -114,6 +119,7 @@ const Login = () => {
             <input
               type="password"
               id="password"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="••••••••"
