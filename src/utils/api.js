@@ -16,7 +16,7 @@
 
 import axios from "axios";
 
-export const baseUrl = "https://e-commerce-furniture-backend-gpxh.onrender.com";
+export const baseUrl = "https://e-commerce-furniture-backend-gpxh.onrender.com/api";
 
 export const apiClient = axios.create({
   baseURL: baseUrl,
@@ -24,3 +24,4 @@ export const apiClient = axios.create({
     "Content-Type": "application/json"
   }
 });
+
