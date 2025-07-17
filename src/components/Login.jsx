@@ -2,10 +2,10 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AppContext } from "../context/AppContext";
-import { apiClient } from "../utils/api"; // ✅ API from base URL (Render)
+import { apiClient } from "../utils/api"; // ✅ axios instance with base URL
 
 const Login = () => {
-  const [state, setState] = useState("Sign Up");
+  const [state, setState] = useState("Sign Up"); // or "Login"
   const { token, setToken, fetchCart } = useContext(AppContext);
   const navigate = useNavigate();
 
@@ -13,51 +13,57 @@ const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
+  // ✅ Register handler
+  const handleRegister = async () => {
+    const { data } = await apiClient.post("/user/register", {
+      name,
+      email,
+      password,
+    });
+
+    if (data.success) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("id", data.user._id);
+      setToken(data.token);
+      fetchCart();
+      toast.success("Registered successfully");
+    } else {
+      toast.error(data.message);
+    }
+  };
+
+  // ✅ Login handler
+  const handleLogin = async () => {
+    const { data } = await apiClient.post("/user/login", {
+      email,
+      password,
+    });
+
+    if (data.success) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("id", data.user._id);
+      setToken(data.token);
+      fetchCart();
+      toast.success("Logged in successfully");
+    } else {
+      toast.error(data.message);
+    }
+  };
+
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
     try {
-      if (state === "Sign Up") {
-        const { data } = await apiClient.post("/user/register", {
-          name,
-          email,
-          password,
-        });
-
-        if (data.success) {
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("id", data.user._id);
-          setToken(data.token);
-          fetchCart();
-          toast.success("Registered successfully");
-        } else {
-          toast.error(data.message);
-        }
-      } else {
-        const { data } = await apiClient.post("/user/login", {
-          email,
-          password,
-        });
-
-        if (data.success) {
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("id", data.user._id);
-          setToken(data.token);
-          toast.success("Logged in successfully");
-        } else {
-          toast.error(data.message);
-        }
-      }
+      state === "Sign Up" ? await handleRegister() : await handleLogin();
     } catch (error) {
-      toast.error(error.response?.data?.message || "Something went wrong");
+      const message = error.response?.data?.message || "Something went wrong";
+      toast.error(message);
     }
   };
 
   useEffect(() => {
-    if (token) {
-      navigate("/");
-    }
-  }, [token]);
+    if (token) navigate("/");
+  }, [token, navigate]);
 
   return (
     <form onSubmit={onSubmitHandler}>
@@ -77,11 +83,11 @@ const Login = () => {
                 Full Name
               </label>
               <input
-                className="border border-zinc-300 rounded w-full p-2 mt-1"
                 type="text"
                 id="name"
-                name="name"
                 onChange={(e) => setName(e.target.value)}
+                className="border border-zinc-300 rounded w-full p-2 mt-1"
+                placeholder="John Doe"
                 required
               />
             </div>
@@ -128,27 +134,15 @@ const Login = () => {
             {state === "Sign Up" ? "Create Account" : "Login"}
           </button>
 
-          {state === "Sign Up" ? (
-            <p className="text-sm text-center mt-4">
-              Already have an account?{" "}
-              <span
-                onClick={() => setState("Login")}
-                className="text-blue-600 hover:underline cursor-pointer"
-              >
-                Login here
-              </span>
-            </p>
-          ) : (
-            <p className="text-sm text-center mt-4">
-              Create a new account?{" "}
-              <span
-                onClick={() => setState("Sign Up")}
-                className="text-blue-600 hover:underline cursor-pointer"
-              >
-                Click here
-              </span>
-            </p>
-          )}
+          <p className="text-sm text-center mt-4">
+            {state === "Sign Up" ? "Already have an account?" : "Create a new account?"}{" "}
+            <span
+              onClick={() => setState(state === "Sign Up" ? "Login" : "Sign Up")}
+              className="text-blue-600 hover:underline cursor-pointer"
+            >
+              {state === "Sign Up" ? "Login here" : "Click here"}
+            </span>
+          </p>
         </div>
       </div>
     </form>

@@ -11,6 +11,11 @@ import Cart from './components/Cart'
 import WishList from './pages/WishList'
 import ProductDs from './pages/ProductDs'
 import { ToastContainer } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
+
+// Inside JSX
+<ToastContainer />
+
 import ProtectedRoute from './components/ProtectedRoute' // ⬅️ Import it
 
 const App = () => {
