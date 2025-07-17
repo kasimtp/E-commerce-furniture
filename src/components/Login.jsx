@@ -15,7 +15,7 @@ const Login = () => {
 
   const handleRegister = async () => {
     try {
-      const { data } = await apiClient.post("/user/register", {
+      const { data } = await apiClient.post("/user/register", { 
         name,
         email,
         password,

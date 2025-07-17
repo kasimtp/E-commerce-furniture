@@ -1,14 +1,14 @@
  
- import { apiClient } from "../utils/api";
+ import { apiClient } from "./utils/api";
 
 
  export const getData = ()=>{
-    return apiClient.get("/api/get-product")
+    return apiClient.get("/get-product")
 
  }
 
  export const deleteData = (id) => {
-   return apiClient.delete(`/api/delete-product/${id}`, {
+   return apiClient.delete(`/delete-product/${id}`, {
 
    })
  };
