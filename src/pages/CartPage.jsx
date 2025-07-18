@@ -29,7 +29,7 @@ const CartPage = () => {
                     <td className="py-2">
                       <img
                         src={item.product.image}
-                        alt={item.product.name}
+                        alt={item.product.name}v
                         className="w-16 h-16 object-cover rounded mx-auto"
                       />
                     </td>
