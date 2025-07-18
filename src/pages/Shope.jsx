@@ -94,7 +94,6 @@ const Shope = () => {
 
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-6 lg:px-16 my-6 gap-4">
         <p className="text-lg font-medium">Showing {filteredProducts.length} result(s)</p>
-
         <div className="w-full sm:w-auto flex flex-col sm:flex-row gap-2 sm:items-center">
           <label htmlFor="sort" className="text-sm font-medium text-gray-700">
             Sort by
@@ -149,8 +148,6 @@ const Shope = () => {
               {item.extraText && (
                 <p className="text-yellow-500 text-sm font-medium">{item.extraText}</p>
               )}
-
-              {/* Price or Cart Button — always visible on mobile */}
               <div className="flex flex-col items-center w-full gap-2 mt-1">
                 <div className="flex items-center gap-1 text-black">
                   <BsCurrencyDollar className="text-lg" />
