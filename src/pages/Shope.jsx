@@ -33,7 +33,7 @@ const Shope = () => {
 
     try {
       const res = await fetch(
-        "https://e-commerce-furniture-backend-gpxh.onrender.com/wish-list",
+        "https://e-commerce-furniture-backend-gpxh.onrender.com/api/wish-list",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -53,7 +53,7 @@ const Shope = () => {
 
     try {
       const res = await fetch(
-        "https://e-commerce-furniture-backend-gpxh.onrender.com/post-cart",
+        "https://e-commerce-furniture-backend-gpxh.onrender.com/api/post-cart",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
