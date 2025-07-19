@@ -180,7 +180,7 @@ const ProductDs = () => {
     const fetchProduct = async () => {
       try {
         const res = await axios.get(
-          `https://e-commerce-furniture-backend-gpxh.onrender.com/api/product/${id}`
+          `https://e-commerce-furniture-backend-gpxh.onrender.com/product/${id}`
         );
         setProduct(res.data);
         setQuantity(res.data.quantity || 1);
@@ -209,7 +209,7 @@ const ProductDs = () => {
       }
 
       const response = await fetch(
-        "https://e-commerce-furniture-backend-gpxh.onrender.com/api/post-cart",
+        "https://e-commerce-furniture-backend-gpxh.onrender.com/post-cart",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
