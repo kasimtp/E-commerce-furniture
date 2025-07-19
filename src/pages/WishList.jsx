@@ -150,7 +150,7 @@ const WishList = () => {
   // ➕ Add to cart handler
   const handleAddToCart = async (productId) => {
     try {
-      const response = await fetch(`${BASE_URL}/api/post-cart`, {
+      const response = await fetch(`${BASE_URL}/post-cart`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user: userId, product: productId, quantity: 1 }),
@@ -169,7 +169,7 @@ const WishList = () => {
   // ❌ Delete from wishlist
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`${BASE_URL}/api/delete-wishlist/${id}`, {
+      const res = await fetch(`${BASE_URL}/delete-wishlist/${id}`, {
         method: 'DELETE',
       });
       if (res.ok) {
