@@ -195,7 +195,7 @@ const Popular = () => {
     const user = localStorage.getItem("id");
 
     if (user) {
-      fetch(`${BACKEND_URL}/wish-list`, {
+      fetch(`${BACKEND_URL}/api/wish-list`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -224,7 +224,7 @@ const Popular = () => {
     const user = localStorage.getItem("id");
 
     if (user) {
-      fetch(`${BACKEND_URL}/post-cart`, {
+      fetch(`${BACKEND_URL}/api/post-cart`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
