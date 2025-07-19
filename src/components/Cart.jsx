@@ -263,7 +263,7 @@ const Cart = () => {
 
   const handleQuantityChange = async (id, type) => {
     try {
-      const res = await fetch(`https://e-commerce-furniture-backend-gpxh.onrender.com/api/update-cart/${id}`, {
+      const res = await fetch(`https://e-commerce-furniture-backend-gpxh.onrender.com/update-cart/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ type }),

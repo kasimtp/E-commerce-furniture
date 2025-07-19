@@ -1,18 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-
-
-
 import { NavLink, useNavigate } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdPermContactCalendar, MdMenu, MdClose } from "react-icons/md";
 import { VscAccount } from "react-icons/vsc";
 import { BiCartAlt } from "react-icons/bi";
-import { RiLogoutCircleRLine } from "react-icons/ri";
-import { AppContext } from "../context/AppContext";
 import { FiLogOut } from "react-icons/fi";
-
-import withoutbg from "../assets/logowbg.png"
+import { AppContext } from "../context/AppContext";
+import withoutbg from "../assets/logowbg.png";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,13 +20,15 @@ const Navbar = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem("id");
+    const BASE_URL = "https://e-commerce-furniture-backend-gpxh.onrender.com";
+
     if (userId) {
-      fetch(`http://localhost:5000/api/get-cart/${userId}`)
+      fetch(`${BASE_URL}/api/get-cart/${userId}`)
         .then((res) => res.json())
         .then((data) => setCartItems(data))
         .catch((err) => console.error("Cart error:", err));
 
-      fetch(`http://localhost:5000/api/get-wishlist/${userId}`)
+      fetch(`${BASE_URL}/api/get-wishlist/${userId}`)
         .then((res) => res.json())
         .then((data) => setWishListItems(data))
         .catch((err) => console.error("Wishlist error:", err));
@@ -40,7 +37,7 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      {["/", "/shop", "/cart",  "/contact"].map((path, i) => (
+      {["/", "/shop", "/cart", "/contact"].map((path, i) => (
         <NavLink
           key={i}
           to={path}
@@ -135,10 +132,10 @@ const Navbar = () => {
                 logout();
                 navigate("/login");
               }}
-              className="bg-blue-600  text-white px-4 py-2 h-12  rounded-lg hover:bg-blue-700 transition"
+              className="bg-blue-600 text-white px-4 py-2 h-12 rounded-lg hover:bg-blue-700 transition"
             >
-              <p className="text-[18px] font-semibold  flex items-center gap-2">
-               <FiLogOut className="text-3xl" /> Logout
+              <p className="text-[18px] font-semibold flex items-center gap-2">
+                <FiLogOut className="text-3xl" /> Logout
               </p>
             </button>
           </div>
