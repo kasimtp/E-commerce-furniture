@@ -23,12 +23,12 @@ const Navbar = () => {
     const BASE_URL = "https://e-commerce-furniture-backend-gpxh.onrender.com";
 
     if (userId) {
-      fetch(`${BASE_URL}/api/get-cart/${userId}`)
+      fetch(`${BASE_URL}/get-cart/${userId}`)
         .then((res) => res.json())
         .then((data) => setCartItems(data))
         .catch((err) => console.error("Cart error:", err));
 
-      fetch(`${BASE_URL}/api/get-wishlist/${userId}`)
+      fetch(`${BASE_URL}/get-wishlist/${userId}`)
         .then((res) => res.json())
         .then((data) => setWishListItems(data))
         .catch((err) => console.error("Wishlist error:", err));
