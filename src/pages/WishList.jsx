@@ -120,64 +120,67 @@
 
 
 
-
-
-
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
-import { Check, Trash2 } from 'lucide-react';
-import Footer from '../components/Footer';
-import { toast } from 'react-toastify';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { Check, Trash2 } from "lucide-react";
+import Footer from "../components/Footer";
+import { toast } from "react-toastify";
+import { apiClient } from "../api";
 
 const WishList = () => {
   const navigate = useNavigate();
-  
   const [wishListItems, setWishListItems] = useState([]);
-  const userId = localStorage.getItem('id');
+  const userId = localStorage.getItem("id");
 
-  const BASE_URL = 'https://e-commerce-furniture-backend-gpxh.onrender.com';
-
-  // ✅ Fetch wishlist
+  // ✅ Fetch wishlist items
   useEffect(() => {
-    if (userId) {
-      fetch(`${BASE_URL}/api/get-wishlist/${userId}`)
-        .then((res) => res.json())
-        .then((data) => setWishListItems(data))
-        .catch((err) => console.error('Failed to fetch wishlist:', err));
-    }
+    const fetchWishlist = async () => {
+      try {
+        if (userId) {
+          const res = await apiClient.get(`/get-wishlist/${userId}`);
+          setWishListItems(res.data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch wishlist:", err);
+      }
+    };
+
+    fetchWishlist();
   }, [userId]);
 
-  // ➕ Add to cart handler
+  // ➕ Add to cart
   const handleAddToCart = async (productId) => {
     try {
-      const response = await fetch(`${BASE_URL}/api/post-cart`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user: userId, product: productId, quantity: 1 }),
+      const res = await apiClient.post("/post-cart", {
+        user: userId,
+        product: productId,
+        quantity: 1,
       });
 
-      if (response.ok) {
-        toast.success("Product added to cart!"); 
+      if (res.status === 200) {
+        toast.success("Product added to cart!");
       } else {
-        console.error('Failed to add to cart');
+        toast.error("Failed to add to cart");
       }
-    } catch (error) {
-      console.error('Add to cart failed:', error);
+    } catch (err) {
+      console.error("Add to cart failed:", err);
+      toast.error("Something went wrong");
     }
   };
 
   // ❌ Delete from wishlist
-  const handleDelete = async (id) => {
+  const handleDelete = async (wishlistId) => {
     try {
-      const res = await fetch(`${BASE_URL}/api/delete-wishlist/${id}`, {
-        method: 'DELETE',
-      });
-      if (res.ok) {
-        setWishListItems((prev) => prev.filter((item) => item._id !== id));
-        toast.success("Product removed from wishlist!");
+      const res = await apiClient.delete(`/delete-wishlist/${wishlistId}`);
+      if (res.status === 200) {
+        setWishListItems((prev) =>
+          prev.filter((item) => item._id !== wishlistId)
+        );
+        toast.success("Removed from wishlist");
       }
     } catch (err) {
-      console.error('Failed to delete item:', err);
+      console.error("Failed to delete wishlist item:", err);
+      toast.error("Error removing item");
     }
   };
 
@@ -203,27 +206,32 @@ const WishList = () => {
                 <tr key={item._id} className="border-t">
                   <td className="p-4"><input type="checkbox" /></td>
                   <td className="p-4">
-                    <button onClick={() => handleDelete(item._id)} className="text-red-500 cursor-pointer hover:text-red-700">
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      className="text-red-500 hover:text-red-700"
+                    >
                       <Trash2 size={16} />
                     </button>
                   </td>
                   <td className="p-4 flex items-center space-x-4">
-                    <img src={item?.product?.image} alt={item?.product?.name} className="w-16 h-16 rounded object-cover" />
+                    <img
+                      src={item?.product?.image}
+                      alt={item?.product?.name}
+                      className="w-16 h-16 rounded object-cover"
+                    />
                     <span>{item?.product?.name}</span>
                   </td>
-                  <td className="p-4">
-                    <span className="text-black font-medium">
-                      ₹{item?.product?.price.toFixed(2)}
-                    </span>
+                  <td className="p-4 font-medium text-black">
+                    ₹{item?.product?.price?.toFixed(2)}
                   </td>
-                  <td className="p-4 text-green-600 flex items-center cursor-pointer gap-1">
+                  <td className="p-4 text-green-600 flex items-center gap-1">
                     <Check className="w-4 h-4" />
                     In stock
                   </td>
                   <td className="p-4">
                     <button
                       onClick={() => handleAddToCart(item.product._id)}
-                      className="bg-blue-700 cursor-pointer hover:bg-blue-800 text-white px-4 py-2 rounded-full text-sm"
+                      className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-full text-sm"
                     >
                       Add to Cart
                     </button>
@@ -241,4 +249,5 @@ const WishList = () => {
 };
 
 export default WishList;
+
 

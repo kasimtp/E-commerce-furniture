@@ -161,31 +161,24 @@
 
 
 
-
-
-
 import { useParams } from "react-router";
-import { useEffect, useState, useContext } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { AppContext } from "../context/AppContext";
+import { apiClient } from "../utils/api"; // ✅ import here
 
 const ProductDs = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  // const { setCartItems } = useContext(AppContext);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(
-          `https://e-commerce-furniture-backend-gpxh.onrender.com/api/product/${id}`
-        );
+        const res = await apiClient.get(`/product/${id}`);
         setProduct(res.data);
         setQuantity(res.data.quantity || 1);
       } catch (error) {
-        console.error("failed to load product", error);
+        console.error("Failed to load product", error);
       }
     };
 
@@ -193,10 +186,10 @@ const ProductDs = () => {
   }, [id]);
 
   const handleQuantityChange = (type) => {
-    setQuantity((prevQuantity) => {
-      if (type === "decrement" && prevQuantity > 1) return prevQuantity - 1;
-      if (type === "increment") return prevQuantity + 1;
-      return prevQuantity;
+    setQuantity((prev) => {
+      if (type === "decrement" && prev > 1) return prev - 1;
+      if (type === "increment") return prev + 1;
+      return prev;
     });
   };
 
@@ -208,29 +201,21 @@ const ProductDs = () => {
         return;
       }
 
-      const response = await fetch(
-        "https://e-commerce-furniture-backend-gpxh.onrender.com/api/post-cart",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ user: userId, product: productId, quantity }),
-        }
-      );
+      await apiClient.post("/post-cart", {
+        user: userId,
+        product: productId,
+        quantity,
+      });
 
-      if (response.ok) {
-        toast.success("🛒 Item added to cart!");
-      } else {
-        toast.error("❌ Failed to add to cart");
-      }
+      toast.success("🛒 Item added to cart!");
     } catch (error) {
       console.error("Add to cart failed:", error);
-      toast.error("⚠️ Something went wrong!");
+      toast.error("❌ Failed to add to cart");
     }
   };
 
-  // ✅ WhatsApp Buy Now Integration with your number
   const handleBuyNow = () => {
-    const phoneNumber = "917592084226"; // your WhatsApp number
+    const phoneNumber = "917592084226";
     const message = `Hello! I'm interested in buying:\n\nProduct: ${product.name}\nPrice: ₹${product.price}\nQuantity: ${quantity}\nTotal: ₹${(product.price * quantity).toFixed(2)}`;
     const encodedMessage = encodeURIComponent(message);
     const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
@@ -241,7 +226,6 @@ const ProductDs = () => {
 
   return (
     <div className="flex flex-col md:flex-row items-center p-10">
-      {/* Product Image */}
       <div className="md:w-1/4 m-auto">
         <img
           src={product?.image}
@@ -250,13 +234,11 @@ const ProductDs = () => {
         />
       </div>
 
-      {/* Product Info */}
       <div className="w-full md:w-1/2 space-y-4">
         <p className="text-sm text-gray-400 uppercase">New Collection</p>
         <h2 className="text-3xl font-semibold">{product.name}</h2>
         <p className="text-gray-600">Color: Cream</p>
 
-        {/* Rating */}
         <div className="flex items-center gap-1 text-orange-400">
           {"★".repeat(4)}
           <span className="text-gray-400">★</span>
@@ -265,12 +247,10 @@ const ProductDs = () => {
           </a>
         </div>
 
-        {/* Price */}
         <p className="text-2xl text-red-500 font-bold">
           ₹{product.price.toFixed(2)}
         </p>
 
-        {/* Quantity Selector */}
         <div className="flex items-center text-white bg-blue-700 hover:bg-blue-800 w-fit rounded-3xl px-4 py-1">
           <button
             className="text-xl px-2"
@@ -287,7 +267,6 @@ const ProductDs = () => {
           </button>
         </div>
 
-        {/* Description */}
         <div className="mt-4">
           <h4 className="font-semibold">Description</h4>
           <ul className="text-gray-600 text-sm space-y-1 mt-1">
@@ -298,7 +277,6 @@ const ProductDs = () => {
           </ul>
         </div>
 
-        {/* Total Price */}
         <p className="text-xl font-semibold mt-4">
           Total Price:{" "}
           <span className="text-black">
@@ -306,7 +284,6 @@ const ProductDs = () => {
           </span>
         </p>
 
-        {/* Buttons */}
         <div className="flex flex-row gap-4">
           <button
             onClick={() => handleAddToCart(product._id)}
@@ -328,4 +305,3 @@ const ProductDs = () => {
 };
 
 export default ProductDs;
-

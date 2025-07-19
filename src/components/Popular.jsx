@@ -157,24 +157,24 @@
 
 
 
-
 import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import { useEffect, useState } from "react";
-import { getData } from "../ProductList.js";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-
-// ✅ Backend base URL from environment
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+import { getData } from "../ProductList"; // Ensure this uses apiClient internally
+import { apiClient } from "../utils/api";
 
 const Popular = () => {
   const dispatch = useDispatch();
   const [product, setProduct] = useState([]);
   const navigate = useNavigate();
 
-  // ✅ Get products
+  useEffect(() => {
+    fetchInfo();
+  }, []);
+
   const fetchInfo = async () => {
     try {
       const response = await getData();
@@ -186,65 +186,47 @@ const Popular = () => {
     }
   };
 
-  useEffect(() => {
-    fetchInfo();
-  }, []);
-
-  // ✅ Add to wishlist
-  const handleClickwishList = (id) => {
+  const handleClickwishList = async (id) => {
     const user = localStorage.getItem("id");
-
-    if (user) {
-      fetch(`${BACKEND_URL}/api/wish-list`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          user,
-          product: id,
-          quantity: 1,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log("wishlist Data:", data);
-          toast.success("Product added to wishlist!");
-        })
-        .catch((err) => {
-          console.error("Error adding to wishlist:", err);
-          toast.error("Failed to add to wishlist");
-        });
-    } else {
+    if (!user) {
       alert("Please login to add to wishlist.");
       navigate("/Login");
+      return;
+    }
+
+    try {
+      const res = await apiClient.post("/wish-list", {
+        user,
+        product: id,
+        quantity: 1,
+      });
+      console.log("Wishlist Data:", res.data);
+      toast.success("Product added to wishlist!");
+    } catch (err) {
+      console.error("Wishlist error:", err);
+      toast.error("Failed to add to wishlist.");
     }
   };
 
-  // ✅ Add to cart
-  const handleClick = (id) => {
+  const handleClick = async (id) => {
     const user = localStorage.getItem("id");
-
-    if (user) {
-      fetch(`${BACKEND_URL}/api/post-cart`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          user,
-          product: id,
-          quantity: 1,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log("Cart Data:", data);
-          toast.success("Product added to cart!");
-        })
-        .catch((err) => {
-          console.error("Error adding to cart:", err);
-          toast.error("Failed to add to cart");
-        });
-    } else {
+    if (!user) {
       alert("Please login to add to cart.");
       navigate("/Login");
+      return;
+    }
+
+    try {
+      const res = await apiClient.post("/post-cart", {
+        user,
+        product: id,
+        quantity: 1,
+      });
+      console.log("Cart Data:", res.data);
+      toast.success("Product added to cart!");
+    } catch (err) {
+      console.error("Cart error:", err);
+      toast.error("Failed to add to cart.");
     }
   };
 
@@ -295,7 +277,6 @@ const Popular = () => {
                   </span>
                 </div>
 
-                {/* Add to Cart */}
                 <div
                   className="flex flex-row items-center gap-2 hover:bg-neutral-200 border border-amber-100 hover:border-black bg-white p-2 rounded-md shadow-md cursor-pointer"
                   onClick={() => handleClick(item._id)}
@@ -315,3 +296,4 @@ const Popular = () => {
 };
 
 export default Popular;
+
