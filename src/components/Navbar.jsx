@@ -178,6 +178,14 @@ const Navbar = () => {
 
         {/* Icons */}
         <div className="flex items-center gap-5 text-gray-700">
+
+             <button
+            className="md:hidden"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <MdClose size={26} /> : <HiMenuAlt3 size={26} />}
+          </button>
           <Link to="/search">
             <BiSearch size={22} className="hover:text-blue-600 transition" />
           </Link>
@@ -219,7 +227,13 @@ const Navbar = () => {
           )} */}
 
           {/* Mobile menu toggle */}
-       
+          <button
+            className="md:hidden"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <MdClose size={26} /> : <HiMenuAlt3 size={26} />}
+          </button>
         </div>
       </div>
 
@@ -227,14 +241,6 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden mt-3 bg-white px-4 py-4 border-t border-gray-200">
           <ul className="flex flex-col gap-4 text-base font-medium text-gray-700">
-
-               <button
-            className="md:hidden"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <MdClose size={26} /> : <HiMenuAlt3 size={26} />}
-          </button>
             {navLinks}
           </ul>
           {token ? (
