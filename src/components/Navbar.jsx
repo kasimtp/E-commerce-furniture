@@ -113,7 +113,7 @@ import { BsCart4 } from "react-icons/bs";
 import { PiHeartFill } from "react-icons/pi";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { AppContext } from "../context/AppContext";
-import logo from "../assets/logowbg.png";
+import logo from "../assets/logoiconwbg.png";
 import { apiClient } from "../utils/api.js";
 
 const Navbar = () => {
