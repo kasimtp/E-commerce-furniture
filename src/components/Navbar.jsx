@@ -172,29 +172,6 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation */}
-   {isMobileMenuOpen && (
-        <div className="md:hidden mt-3 bg-white px-4 py-4 border-t border-gray-200">
-          <ul className="flex flex-col gap-4 text-base font-medium text-gray-700">
-            {navLinks}
-          </ul>
-          {token ? (
-            <button
-              onClick={logout}
-              className="mt-4 px-4 py-2 w-full bg-gray-100 text-gray-800 rounded-md hover:bg-gray-200 transition"
-            >
-              Logout
-            </button>
-          ) : (
-            <Link
-              to="/register"
-              className="mt-4 block px-4 py-2 w-full text-center bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
-            >
-              Register / Login
-            </Link>
-          )}
-        </div>
-      )}
-
         <ul className="hidden md:flex gap-8 text-sm font-semibold text-gray-700">
           {navLinks}
         </ul>
@@ -242,18 +219,41 @@ const Navbar = () => {
           )} */}
 
           {/* Mobile menu toggle */}
-          <button
+       
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden mt-3 bg-white px-4 py-4 border-t border-gray-200">
+          <ul className="flex flex-col gap-4 text-base font-medium text-gray-700">
+
+               <button
             className="md:hidden"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <MdClose size={26} /> : <HiMenuAlt3 size={26} />}
           </button>
+            {navLinks}
+          </ul>
+          {token ? (
+            <button
+              onClick={logout}
+              className="mt-4 px-4 py-2 w-full bg-gray-100 text-gray-800 rounded-md hover:bg-gray-200 transition"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/register"
+              className="mt-4 block px-4 py-2 w-full text-center bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+            >
+              Register / Login
+            </Link>
+          )}
         </div>
-      </div>
-
-      {/* Mobile Menu */}
-   
+      )}
     </nav>
   );
 };
