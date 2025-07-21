@@ -17,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 <ToastContainer />
 
 import ProtectedRoute from './components/ProtectedRoute' // ⬅️ Import it
+import BottomNavbar from './components/BottomNavbar'
 
 const App = () => {
   return (
@@ -35,6 +36,9 @@ const App = () => {
         <Route path='/shoppingcart' element={<Cart />} />
         <Route path='/search' element={<SearchBar />} />
         <Route path='/productdetiles/:id' element={<ProductDs />} />
+        
+        <Route path='/login' element={<Login />} />
+
 
         {/* 🔐 Protected Routes */}
         <Route
@@ -64,6 +68,7 @@ const App = () => {
           }
         />
       </Routes>
+      <BottomNavbar/>
     </div>
   )
 }
