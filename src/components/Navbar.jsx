@@ -17,9 +17,7 @@
 //   body: JSON.stringify(data),
 // });
 
-
 // const Navbar = () => {
- 
 
 //   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 //   const [cartItems, setCartItems] = useState([]);
@@ -104,7 +102,6 @@
 
 // export default Navbar;
 
-
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
@@ -147,16 +144,24 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <Link to="/" className="hover:text-blue-600 transition">Home</Link>
+        <Link to="/" className="hover:text-blue-600 transition">
+          Home
+        </Link>
       </li>
       <li>
-        <Link to="/shop" className="hover:text-blue-600 transition">Products</Link>
+        <Link to="/shop" className="hover:text-blue-600 transition">
+          Products
+        </Link>
       </li>
       <li>
-        <Link to="/cart" className="hover:text-blue-600 transition">Cart</Link>
+        <Link to="/cart" className="hover:text-blue-600 transition">
+          Cart
+        </Link>
       </li>
       <li>
-        <Link to="/contact" className="hover:text-blue-600 transition">Contact</Link>
+        <Link to="/contact" className="hover:text-blue-600 transition">
+          Contact
+        </Link>
       </li>
     </>
   );
@@ -166,7 +171,21 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-          
+
+ {/* Mobile menu toggle */}
+          <button
+            className="md:hidden"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <MdClose size={26} />
+            ) : (
+              <HiMenuAlt3 size={26} />
+            )}
+          </button>
+
+    
           <Link to="/">
             <img src={logo} alt="Logo" className="h-10 w-auto" />
           </Link>
@@ -180,16 +199,29 @@ const Navbar = () => {
         {/* Icons */}
         <div className="flex items-center gap-5 text-gray-700">
           <Link to="/search">
-            <BiSearch size={22} className="hover:text-blue-600 sm:block hidden transition" />
+            <BiSearch
+              size={22}
+              className="hover:text-blue-600 sm:block hidden transition"
+            />
           </Link>
           <Link to="/wishlist" className="relative">
-            <PiHeartFill size={22} className="hover:text-pink-600 sm:block hidden transition" />
+            <PiHeartFill
+              size={22}
+              className="hover:text-pink-600 sm:block hidden transition"
+            />
             {wishListItems.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-red-500 sm:block hidden text-white rounded-full text-xs w-5 h-5 :flex  items-center justify-center">
                 {wishListItems.length}
               </span>
             )}
           </Link>
+          <Link to="/login">
+            <MdAccountCircle
+              size={24}
+              className="hover:text-blue-600 transition"
+            />
+          </Link>
+
           <Link to="/shoppingcart" className="relative">
             <BsCart4 size={22} className="hover:text-green-600 transition" />
             {cartItems.length > 0 && (
@@ -197,9 +229,6 @@ const Navbar = () => {
                 {cartItems.length}
               </span>
             )}
-          </Link>
-          <Link to="/login">
-            <MdAccountCircle size={24} className="hover:text-blue-600 transition" />
           </Link>
 
           {/* Auth button - Desktop */}
@@ -219,14 +248,7 @@ const Navbar = () => {
             </Link>
           )} */}
 
-          {/* Mobile menu toggle */}
-          <button
-            className="md:hidden"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <MdClose size={26} /> : <HiMenuAlt3 size={26} />}
-          </button>
+         
         </div>
       </div>
 
@@ -258,11 +280,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-
-
-
 
 // import React, { useState, useEffect, useContext } from "react";
 // import { Link } from "react-router-dom";
@@ -304,7 +321,7 @@ export default Navbar;
 //   return (
 //     <nav className="bg-white shadow-md border-b sticky top-0 z-50 px-4 py-2">
 //       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        
+
 //         {/* Left Section - Mobile Menu Button */}
 //         <div className="md:hidden flex items-center gap-3">
 //           <button onClick={toggleMobileMenu} className="text-gray-700">
@@ -382,6 +399,3 @@ export default Navbar;
 // };
 
 // export default Navbar;
-
-
-
