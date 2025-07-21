@@ -197,12 +197,12 @@ const Navbar = () => {
               </span>
             )}
           </Link>
-          <Link to="/account">
+          <Link to="/login">
             <MdAccountCircle size={24} className="hover:text-blue-600 transition" />
           </Link>
 
           {/* Auth button - Desktop */}
-          {token ? (
+          {/* {token ? (
             <button
               onClick={logout}
               className="hidden md:block px-4 py-1.5 text-sm bg-gray-100 text-gray-800 rounded-md hover:bg-gray-200 transition"
@@ -216,7 +216,7 @@ const Navbar = () => {
             >
               Register / Login
             </Link>
-          )}
+          )} */}
 
           {/* Mobile menu toggle */}
           <button
