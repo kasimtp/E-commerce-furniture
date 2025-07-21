@@ -180,10 +180,10 @@ const Navbar = () => {
         {/* Icons */}
         <div className="flex items-center gap-5 text-gray-700">
           <Link to="/search">
-            <BiSearch size={22} className="hover:text-blue-600 transition" />
+            <BiSearch size={22} className="hover:text-blue-600 sm:block hidden transition" />
           </Link>
           <Link to="/wishlist" className="relative">
-            <PiHeartFill size={22} className="hover:text-pink-600 sm:block hid transition" />
+            <PiHeartFill size={22} className="hover:text-pink-600 sm:block hidden transition" />
             {wishListItems.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
                 {wishListItems.length}
