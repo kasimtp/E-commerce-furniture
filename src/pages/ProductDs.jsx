@@ -162,7 +162,7 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { apiClient } from "../utils/api";
+import { apiClient } from "../utils/api.js";
 
 const ProductDs = () => {
   const { id } = useParams();

@@ -115,7 +115,7 @@ import { PiHeartFill } from "react-icons/pi";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { AppContext } from "../context/AppContext";
 import logo from "../assets/logowbg.png";
-import { apiClient } from "../utils/api";
+import { apiClient } from "../utils/api.js";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
