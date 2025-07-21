@@ -106,8 +106,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 import { MdAccountCircle, MdClose } from "react-icons/md";
-import { BsCart4 } from "react-icons/bs";
-import { PiHeartFill } from "react-icons/pi";
+// import { BsCart4 } from "react-icons/bs";
+import { FiHeart, FiShoppingCart, FiUser } from "react-icons/fi";
+import { FiMenu } from "react-icons/fi";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { AppContext } from "../context/AppContext";
 import logo from "../assets/logoiconwbg.png";
@@ -181,7 +182,7 @@ const Navbar = () => {
             {isMobileMenuOpen ? (
               <MdClose size={26} />
             ) : (
-              <HiMenuAlt3 size={26} />
+              <FiMenu size={26} />  
             )}
           </button>
 
@@ -200,12 +201,12 @@ const Navbar = () => {
         <div className="flex items-center gap-5 text-gray-700">
           <Link to="/search">
             <BiSearch
-              size={22}
+              size={24}
               className="hover:text-blue-600 sm:block hidden transition"
             />
           </Link>
           <Link to="/wishlist" className="relative">
-            <PiHeartFill
+            <FiHeart
               size={22}
               className="hover:text-pink-600 sm:block hidden transition"
             />
@@ -216,14 +217,14 @@ const Navbar = () => {
             )}
           </Link>
           <Link to="/login">
-            <MdAccountCircle
+            <FiUser
               size={24}
               className="hover:text-blue-600 transition"
             />
           </Link>
 
           <Link to="/shoppingcart" className="relative">
-            <BsCart4 size={22} className="hover:text-green-600 transition" />
+            <FiShoppingCart size={24} className="hover:text-green-600 transition" /> 
             {cartItems.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
                 {cartItems.length}
