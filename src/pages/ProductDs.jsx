@@ -217,7 +217,7 @@ const ProductDs = () => {
     const message = `Hello! I'm interested in buying:\n\nProduct: ${product.name}\nPrice: ₹${product.price}\nQuantity: ${quantity}\nTotal: ₹${(product.price * quantity).toFixed(2)}`;
     const encodedMessage = encodeURIComponent(message);
     const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(url, "_blank");
+    window.open(url, " Order ");
   };
 
   if (!product) return <p className="text-center mt-10">Loading......!</p>;
