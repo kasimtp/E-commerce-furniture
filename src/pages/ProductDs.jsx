@@ -159,12 +159,10 @@
 // export default ProductDs;
 
 
-
-
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { apiClient } from "../utils/api"; // ✅ import here
+import { apiClient } from "../utils/api";
 
 const ProductDs = () => {
   const { id } = useParams();
@@ -197,7 +195,7 @@ const ProductDs = () => {
     try {
       const userId = localStorage.getItem("id");
       if (!userId) {
-        toast.error("User not logged in");
+        toast.error("⚠️ User not logged in");
         return;
       }
 
@@ -222,7 +220,7 @@ const ProductDs = () => {
     window.open(url, "_blank");
   };
 
-  if (!product) return <p>Loading......!</p>;
+  if (!product) return <p className="text-center mt-10">Loading......!</p>;
 
   return (
     <div className="flex flex-col md:flex-row items-center p-10">
@@ -230,7 +228,7 @@ const ProductDs = () => {
         <img
           src={product?.image}
           alt={product?.name}
-          className="rounded-lg shadow-lg w-full h-[500px]"
+          className="rounded-lg shadow-lg w-full h-[500px] object-cover"
         />
       </div>
 
@@ -305,3 +303,4 @@ const ProductDs = () => {
 };
 
 export default ProductDs;
+

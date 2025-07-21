@@ -125,7 +125,7 @@ import { useNavigate } from "react-router";
 import { Check, Trash2 } from "lucide-react";
 import Footer from "../components/Footer";
 import { toast } from "react-toastify";
-import { apiClient } from "../api";
+import { apiClient } from "../utils/api";
 
 const WishList = () => {
   const navigate = useNavigate();
