@@ -57,7 +57,7 @@ const BottomNavbar = () => {
           <FiShoppingCart size={24} />
             {cartItems.length > 0 && (
               <span className="absolute top-2 right-2 bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
-                {cartItems.length}
+                   {cartItems.length}
               </span>
             )}
           <span className="mt-1">CART</span>
