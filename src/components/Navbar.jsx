@@ -110,7 +110,7 @@ import { FiHeart, FiShoppingCart, FiUser } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 
 import { AppContext } from "../context/AppContext";
-import logo from "../assets/logoiconwbg.png";
+import logo from "../assets/logo.jpg";
 import { apiClient } from "../utils/api.js";
 
 const Navbar = () => {
@@ -211,12 +211,12 @@ const Navbar = () => {
               className="hover:text-pink-600 sm:block hidden transition"
             />
             {wishListItems.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 sm:block hidden text-white rounded-full text-xs w-5 h-5 :flex  items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-green-600  sm:block hidden text-white rounded-full text-xs w-5 h-5 :flex  items-center justify-center">
                 {wishListItems.length}
               </span>
             )}
           </Link>
-          
+
           <Link to="/login">
             <FiUser
               size={24}

@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <Categories />
+      {/* <Categories /> */}
       {/* <Welcome /> */}
       <Popular />
       <Banner />
