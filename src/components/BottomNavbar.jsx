@@ -26,7 +26,7 @@ const BottomNavbar = () => {
         }
       }, []);
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-md z-50 md:hidden">
+    <div className="fixed px-4 bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-md z-50 md:hidden">
       <div className="flex justify-around items-center  text-gray-700 text-xs py-2">
         <Link to="/" className="flex flex-col items-center justify-center">
           <FiHome size={24} />
@@ -36,7 +36,7 @@ const BottomNavbar = () => {
         <Link to="/wishlist" className="flex flex-col items-center cursor-pointer hover:bg-neutral-400 justify-center">
           <FiHeart size={24} />
             {wishListItems.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-gray-500 sm:block hidden text-white rounded-full text-xs w-5 h-5 :flex  items-center justify-center">
+              <span className="absolute  bg-gray-500 sm:block hidden text-white rounded-full text-xs w-5 h-5 :flex  items-center justify-center">
                 {wishListItems.length}
               </span>
             )}
@@ -48,7 +48,7 @@ const BottomNavbar = () => {
           <span className="mt-1">PRODUCTS</span>
         </Link>
 
-        <Link to="/account" className="flex flex-col cursor-pointer hover:bg-neutral-400 items-center justify-center">
+        <Link to="/login" className="flex flex-col cursor-pointer hover:bg-neutral-400 items-center justify-center">
           <FiUser size={24} />
           <span className="mt-1">ACCOUNT</span>
         </Link>
