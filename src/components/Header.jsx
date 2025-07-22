@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import bg from "../assets/bg.jpg";
+import bg from "../assets/watchbanner.jpg";
 import { useNavigate } from "react-router";
 import { AppContext } from "../context/AppContext";
 
