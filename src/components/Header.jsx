@@ -45,15 +45,16 @@
 
 
 
-
-import React, { useContext } from "react";
+import shoesbanner  from "../assets/shoesbanner.jpg"
+import hedsetbanner from "../assets/hedsetbanner.jpg"
+import airpodbanner from  "../assets/airpodbenner.jpg"
 import bg from "../assets/watchbanner.jpg";
 import { useNavigate } from "react-router";
-import { AppContext } from "../context/AppContext";
+import { AppContext } from "../context/AppContext.jsx";
 
 const Header = () => {
   const navigate = useNavigate();
-  const { logout } = useContext(AppContext);
+ 
 
   return (
     <div className="relative font-Poppins w-full">
@@ -61,9 +62,30 @@ const Header = () => {
       <img
         src={bg}
         alt="Flash Sale"
+        onClick={navigate("/shop")}
         className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] lg:w-full "
       />
 
+       <img
+        src={shoesbanner}
+        alt="Flash Sale"
+        onClick={navigate("/shop")}
+        className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] lg:w-full "
+      />
+
+ <img
+        src={hedsetbanner}
+        alt="Flash Sale"
+        onClick={navigate("/shop")}
+        className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] lg:w-full "
+      />
+
+       <img
+        src={airpodbanner}
+        alt="Flash Sale"
+        onClick={navigate("/shop")}
+        className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] lg:w-full "
+      />
       {/* Text Content Overlaid */}
       <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-8 md:px-12 max-w-2xl">
         {/* <p className="text-sm font-medium text-[#474747] uppercase tracking-wide mb-2">
