@@ -194,7 +194,7 @@ const Header = () => {
           animate="center"
           exit="exit"
           transition={{ duration: 0.8 }}
-          className="absolute w-full h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px]  object-cover cursor-pointer"
+          className="absolute w-full h-[200px] sm:h-[350px] md:h-[480px] lg:h-[400px]  object-cover cursor-pointer"
           onClick={() => navigate("/shop")}
         />
       </AnimatePresence>
