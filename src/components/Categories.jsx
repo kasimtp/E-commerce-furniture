@@ -99,7 +99,7 @@ const Categories = () => {
         {items.map((item, index) => (
           <div
             key={index}
-            className="min-w-[80px] sm:min-w-[100px] h-[80px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center"
+            className="min-w-[120px] sm:min-w-[180px] h-[100px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center"
           >
             <img
               src={item.img}
