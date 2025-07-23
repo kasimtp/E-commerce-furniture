@@ -130,6 +130,8 @@ const Categories = () => {
     { img: airpod, alt: "AirPod", label: "AirPods" },
     { img: shoes, alt: "Shoes", label: "Shoes" },
     { img: watch, alt: "Smart Watch", label: "Smartwatch" },
+    { img: powerbank, alt: "powerbank ", label: "powerbank" },
+     { img: smartwatch, alt: "smartwatch ", label: "smartwatch" },
   ];
 
   return (
