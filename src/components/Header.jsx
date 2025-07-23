@@ -378,7 +378,7 @@ const Header = () => {
 
   return (
     <div
-      className="relative w-full h-[240px] sm:h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden"
+      className="relative w-full -mt-4 h-[240px] sm:h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -398,7 +398,7 @@ const Header = () => {
       </AnimatePresence>
 
       {/* Optional Dots */}
-     <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+     {/* <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
   {banners.map((_, i) => (
     <div
       key={i}
@@ -411,7 +411,7 @@ const Header = () => {
       } cursor-pointer`}
     />
   ))}
-</div>
+</div> */}
 
     </div>
   );
