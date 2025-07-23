@@ -31,13 +31,13 @@ const Categories = () => {
         <p className="text-sm font-semibold capitalize sm:text-base text-[#474747] leading-7">
           passion for fashion
         </p>
-        <p className="text-2xl sm:text-4xl text-[#2b2b2b] font-semibold leading-tight">
+        <p className="text-2xl sm:text-4xl text-[#2b2b2b font-semibold leading-tight">
           Shop By Categories
         </p>
       </div>
 
       <div className="bg-amber-200 flex flex-row space-x-5 border rounded-md">
-        <img  className="bg-amber-600 border rounded-full w-18 h-18 border-black" src={watch} alt="" />
+        <img  className="bg-amber-600 border rounded-full w-18 h-18 " src={watch} alt="" />
         <img  className="bg-amber-600 border rounded-full w-18 h-18 border-black" src={hedset} alt="" />
         <img  className="bg-amber-600 border rounded-full w-18 h-18 border-black" src={airpod} alt="" />
         <img  className="bg-amber-600 border rounded-full w-18 h-18 border-black" src={shoes} alt="" />
