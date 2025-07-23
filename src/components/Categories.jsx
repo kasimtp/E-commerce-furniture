@@ -114,6 +114,8 @@
 // };
 
 // export default Categories;import React from "react";
+
+import React from "react";
 import shoes from "../assets/shoes.png";
 import airpod from "../assets/airpod.png";
 import hedset from "../assets/hedset.png";
@@ -129,8 +131,8 @@ const Categories = () => {
   ];
 
   return (
-    <div className="w-full py-6 bg-white font-Poppins flex flex-col items-center space-y-6">
-      <div className="text-center space-y-1 px-4">
+    <div className="w-full max-w-7xl mx-auto py-6 bg-white font-Poppins flex flex-col items-center space-y-6 px-4">
+      <div className="text-center space-y-1">
         <p className="text-xs text-gray-500 uppercase tracking-widest">
           passion for fashion
         </p>
@@ -139,20 +141,25 @@ const Categories = () => {
         </h2>
       </div>
 
-      <div className="flex overflow-x-auto space-x-4 px-4 scrollbar-hide w-full max-w-full">
+      <div className="flex overflow-x-auto space-x-6 scrollbar-hide w-full">
         {categoryIcons.map((category, index) => (
           <div
             key={index}
             className="flex flex-col items-center text-center shrink-0"
           >
-            <div className="w-24 h-24 bg-[#fef4f4] border-[3px] border-red-500 rounded-full flex items-center justify-center shadow-md overflow-hidden">
+            <div
+              className="bg-[#fef4f4] border-4 border-red-500 rounded-full flex items-center justify-center shadow-md overflow-hidden
+              w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
+              hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer"
+            >
               <img
                 src={category.img}
                 alt={category.alt}
-                className="w-16 h-16 object-contain"
+                className="object-contain
+                w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16"
               />
             </div>
-            <span className="text-sm mt-2 text-gray-800 font-medium">
+            <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">
               {category.label}
             </span>
           </div>
@@ -163,7 +170,6 @@ const Categories = () => {
 };
 
 export default Categories;
-
 
 
 
