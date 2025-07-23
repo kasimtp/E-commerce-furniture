@@ -148,16 +148,16 @@ const Categories = () => {
       </div>
 
       {/* Category bar */}
-      <div className="flex overflow-x-auto space-x-5 px-2 py-2 scrollbar-hide w-full max-w-5xl">
+      <div className="flex overflow-x-auto space-x-4 px-2 py-2 scrollbar-hide w-full max-w-5xl">
         {categoryIcons.map((category, index) => (
           <div
             key={index}
-            className="w-24 lg:w-32 aspect-square bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-3 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center shrink-0"
+            className="w-20 sm:w-24 aspect-square bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center shrink-0"
           >
             <img
               src={category.img}
               alt={category.alt}
-              className="w-24 h-24 object-contain"
+              className="w-12 h-12 object-contain"
             />
           </div>
         ))}
@@ -167,6 +167,7 @@ const Categories = () => {
 };
 
 export default Categories;
+
 
 
 
