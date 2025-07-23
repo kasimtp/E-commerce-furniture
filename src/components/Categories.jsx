@@ -36,7 +36,8 @@ const Categories = () => {
         </p>
       </div>
 
-      <div className="bg-amber-200 flex flex-row space-x-5 border rounded-md">
+      <div className="bg-amber-200 flex flex-row space-x-5 border rounded-2xl">
+      
         <img  className="bg-amber-600 border rounded-full w-18 h-18 " src={watch} alt="" />
         <img  className="bg-amber-600 border rounded-full w-18 h-18 border-black" src={hedset} alt="" />
         <img  className="bg-amber-600 border rounded-full w-18 h-18 border-black" src={airpod} alt="" />
