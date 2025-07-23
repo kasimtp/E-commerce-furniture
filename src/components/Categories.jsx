@@ -149,7 +149,7 @@ const Categories = () => {
       {/* Category bar */}
       <div className="flex overflow-x-auto space-x-1 px-3 py-3 scrollbar-hide w-full max-w-5xl">
         {/* Watch */}
-        <div className="min-w-[120px] sm:min-w-[180px] h-auto w-auto sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+        <div className="min-w-[120px] sm:min-w-[180px] h-24 w-24 sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
           {/* <img
             src={watch}
             alt="Watch"
