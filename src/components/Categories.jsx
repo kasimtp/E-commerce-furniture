@@ -33,7 +33,7 @@ const Categories = () => {
       </div>
 
       {/* Image Section */}
-      <div className="flex flex-col lg:flex-row gap-6 px-4 sm:px-8 md:px-16 lg:px-32 pb-10 w-[98%]">
+      <div className="grid grid-cols-4 lg:flex-row gap-6 px-4 sm:px-8 md:px-16 lg:px-32 pb-10 w-[98%]">
         {/* Left Image */}
         {product[0] && (
           <div className="lg:w-2/4 bg-amber-200 h-full flex items-center">
