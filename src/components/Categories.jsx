@@ -115,8 +115,6 @@
 
 // export default Categories;
 
-
-
 import React from "react";
 import shoes from "../assets/shoes.png";
 import airpod from "../assets/airpod.png";
@@ -125,37 +123,42 @@ import watch from "../assets/watch.png";
 
 const Categories = () => {
   const categoryIcons = [
-    { img: watch, alt: "Watch" },
-    { img: hedset, alt: "Headset" },
-    { img: airpod, alt: "AirPod" },
-    { img: shoes, alt: "Shoes" },
-    { img: watch, alt: "Smart Watch" },
+    { img: watch, alt: "Watch", label: "Watches" },
+    { img: hedset, alt: "Headset", label: "Headsets" },
+    { img: airpod, alt: "AirPod", label: "AirPods" },
+    { img: shoes, alt: "Shoes", label: "Shoes" },
+    { img: watch, alt: "Smart Watch", label: "Smartwatch" },
   ];
 
   return (
-    <div className="w-full py-10 bg-white font-Poppins flex flex-col items-center space-y-8">
+    <div className="w-full py-6 bg-white font-Poppins flex flex-col items-center space-y-6">
       {/* Header */}
-      <div className="text-center space-y-2 px-4">
-        <p className="text-sm text-gray-500 uppercase tracking-widest">
+      <div className="text-center space-y-1 px-4">
+        <p className="text-xs text-gray-500 uppercase tracking-widest">
           passion for fashion
         </p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
           Shop By Categories
         </h2>
       </div>
 
-      {/* Category bar */}
-      <div className="flex overflow-x-auto space-x-4 px-2 py-2 scrollbar-hide w-full max-w-5xl">
+      {/* Scrollable category list */}
+      <div className="flex overflow-x-auto space-x-4 px-4 scrollbar-hide w-full max-w-full">
         {categoryIcons.map((category, index) => (
           <div
             key={index}
-            className="w-20 sm:w-24 aspect-square bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center shrink-0"
+            className="flex flex-col items-center text-center shrink-0"
           >
-            <img
-              src={category.img}
-              alt={category.alt}
-              className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
-            />
+            {/* Circle Icon */}
+            <div className="w-16 h-16 bg-white border-2 border-red-500 rounded-full flex items-center justify-center shadow-sm">
+              <img
+                src={category.img}
+                alt={category.alt}
+                className="w-10 h-10 object-contain"
+              />
+            </div>
+            {/* Label */}
+            <span className="text-xs mt-1 text-gray-700">{category.label}</span>
           </div>
         ))}
       </div>
