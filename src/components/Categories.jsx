@@ -144,7 +144,7 @@ const Categories = () => {
               hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
             <img src={watch} alt="Watch" className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16" />
           </div>
-          <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">Watches</span>
+          <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">Watchejhvs</span>
         </div>
 
         {/* 2. Headset */}
