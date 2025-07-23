@@ -280,7 +280,7 @@ const Header = () => {
           animate="center"
           exit="exit"
           transition={{ duration: 0.5 }}
-          className="absolute w-full h-full  px-4 object-cover cursor-pointer"
+          className="absolute w-full h-full  px-1 object-cover cursor-pointer"
           onClick={() => navigate("/shop")}
         />
       </AnimatePresence>
@@ -290,7 +290,7 @@ const Header = () => {
         onClick={handlePrev}
         className="absolute top-1/2 left-2 transform -translate-y-1/2     hover:bg-opacity-100 transition z-10"
       >
-        <ChevronLeft size={24} className="text-amber-500" />
+        <ChevronLeft size={26} className="text-amber-500" />
       </button>
       <button
         onClick={handleNext}
@@ -305,7 +305,7 @@ const Header = () => {
           <div
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-3 h-3 rounded-full cursor-pointer transition ${
+            className={`w-2 h-2 rounded-full cursor-pointer transition ${
               index === currentIndex ? "bg-white" : "bg-gray-400"
             }`}
           ></div>
