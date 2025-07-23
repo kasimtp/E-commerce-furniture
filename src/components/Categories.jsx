@@ -104,7 +104,7 @@ const Categories = () => {
             <img
               src={item.img}
               alt={item.alt}
-              className="w-12 h-12 sm:w-10 sm:h-10 object-contain"
+              className="w-20 h-20 sm:w-10 sm:h-10 object-contain"
             />
           </div>
         ))}
