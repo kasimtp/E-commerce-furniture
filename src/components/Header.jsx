@@ -97,6 +97,52 @@
 
 
 
+
+
+// import React, { useEffect, useState } from "react";
+// import shoesbanner from "../assets/shoesbanner.jpg";
+// import hedsetbanner from "../assets/hedsetbanner.jpg";
+// import airpodbanner from "../assets/airpodbenner.jpg";
+// import bg from "../assets/watchbanner.jpg";
+// import { useNavigate } from "react-router";
+
+// const Header = () => {
+//   const navigate = useNavigate();
+
+//   // Array of banners
+//   const banners = [bg, shoesbanner, hedsetbanner, airpodbanner];
+//   const [currentIndex, setCurrentIndex] = useState(0);
+
+//   // Change image every 3 seconds
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCurrentIndex((prevIndex) =>
+//         prevIndex === banners.length - 1 ? 0 : prevIndex + 1
+//       );
+//     }, 3000);
+
+//     return () => clearInterval(interval);
+//   }, [banners.length]);
+
+//   return (
+//     <div className="relative w-full font-Poppins overflow-hidden">
+//       {/* Image Carousel */}
+//       <img
+//         src={banners[currentIndex]}
+//         alt="Flash Sale Banner"
+//         onClick={() => navigate("/shop")}
+//         className="w-full h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] object-cover rounded transition-all duration-700 ease-in-out"
+//       />
+//     </div>
+//   );
+// };
+
+// export default Header;
+
+
+
+
+
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import shoesbanner from "../assets/shoesbanner.jpg";
@@ -148,7 +194,7 @@ const Header = () => {
           animate="center"
           exit="exit"
           transition={{ duration: 0.8 }}
-          className="absolute w-full h-full object-cover cursor-pointer"
+          className="absolute w-full h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px]  object-cover cursor-pointer"
           onClick={() => navigate("/shop")}
         />
       </AnimatePresence>
