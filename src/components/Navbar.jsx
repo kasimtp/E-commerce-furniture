@@ -115,7 +115,7 @@ import { FiHeart, FiShoppingCart, FiUser } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 
 import { AppContext } from "../context/AppContext";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logowithbg.jpg";
 import { apiClient } from "../utils/api.js";
 
 const Navbar = () => {
@@ -172,7 +172,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-white shadow-md px-4 py-3 sticky top-0 z-50 border-b">
+    <nav className="bg-[#003631] shadow-md px-4 py-3 sticky top-0 z-50 border-b">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
