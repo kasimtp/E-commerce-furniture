@@ -61,14 +61,14 @@ const Header = () => {
       <img
         src={bg}
         alt="Flash Sale"
-        className="w-[900px] h-[150px] sm:h-[350px] md:h-[480px] lg:h-[500px] "
+        className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[500px] "
       />
 
       {/* Text Content Overlaid */}
       <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-8 md:px-12 max-w-2xl">
-        <p className="text-sm font-medium text-[#474747] uppercase tracking-wide mb-2">
+        {/* <p className="text-sm font-medium text-[#474747] uppercase tracking-wide mb-2">
           We’re proud to introduce
-        </p>
+        </p> */}
 
         {/* <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#ffdd00] uppercase">
           The Furniture
