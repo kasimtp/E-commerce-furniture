@@ -180,7 +180,7 @@ const Categories = () => {
           <div className="bg-[#fef4f4] border-4 border-red-500 rounded-full flex items-center justify-center shadow-md overflow-hidden
               w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
               hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
-            <img src={watch} alt="Smartwatch" className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16" />
+            <img src={smartwatch} alt="Smartwatch" className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16" />
           </div>
           <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">Smartwatch</span>
         </div>
