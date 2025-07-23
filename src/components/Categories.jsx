@@ -114,7 +114,6 @@
 // };
 
 // export default Categories;
-
 import React from "react";
 import shoes from "../assets/shoes.png";
 import airpod from "../assets/airpod.png";
@@ -150,11 +149,11 @@ const Categories = () => {
             className="flex flex-col items-center text-center shrink-0"
           >
             {/* Circle Icon */}
-            <div className="w-16 h-16 bg-white border-2 border-red-500 rounded-full flex items-center justify-center shadow-sm">
+            <div className="w-16 h-16 bg-white border-2 border-red-500 rounded-full flex items-center justify-center shadow-sm overflow-hidden">
               <img
                 src={category.img}
                 alt={category.alt}
-                className="w-10 h-10 object-contain"
+                className="w-24 h-24 object-contain"
               />
             </div>
             {/* Label */}
