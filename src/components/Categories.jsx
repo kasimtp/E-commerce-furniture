@@ -158,30 +158,30 @@ const Categories = () => {
         </div>
 
         {/* Headset */}
-        <div className="min-w-[120px] sm:min-w-[180px] h-[90px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          <img
-            src={hedset}
-            alt="Headset"
-            className="w-20 h-20 object-contain"
-          />
+       <div className=" sm:h-24 sm:w-24  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          {/* <img
+            src={watch}
+            alt="Watch"
+            className="w-20 h-20 "
+          /> */}
         </div>
 
         {/* AirPod */}
-        <div className="min-w-[120px] sm:min-w-[180px] h-[100px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          <img
-            src={airpod}
-            alt="AirPod"
-            className="w-20 h-20 object-contain"
-          />
+      <div className=" sm:h-24 sm:w-24  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          {/* <img
+            src={watch}
+            alt="Watch"
+            className="w-20 h-20 "
+          /> */}
         </div>
 
         {/* Shoes */}
-        <div className="min-w-[120px] sm:min-w-[180px] h-[100px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          <img
-            src={shoes}
-            alt="Shoes"
-            className="w-20 h-20 object-contain"
-          />
+      <div className=" sm:h-24 sm:w-24  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          {/* <img
+            src={watch}
+            alt="Watch"
+            className="w-20 h-20 "
+          /> */}
         </div>
 
         {/* Smart Watch */}
