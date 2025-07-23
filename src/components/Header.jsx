@@ -61,7 +61,7 @@ const Header = () => {
       <img
         src={bg}
         alt="Flash Sale"
-        className="w-[900px] h-[200px] sm:h-[350px] md:h-[480px] lg:h-[500px] "
+        className="w-[900px] h-[150px] sm:h-[350px] md:h-[480px] lg:h-[500px] "
       />
 
       {/* Text Content Overlaid */}
