@@ -70,19 +70,19 @@ const Header = () => {
           We’re proud to introduce
         </p>
 
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#ffdd00] uppercase">
+        {/* <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#ffdd00] uppercase">
           The Furniture
           <br />
           <span className="text-white">That Defines You</span>
-        </h1>
+        </h1> */}
 
-        <p className="text-sm sm:text-base text-[#2b2b2b] mt-4 max-w-md">
+        {/* <p className="text-sm sm:text-base text-[#2b2b2b] mt-4 max-w-md">
           Your comfort and aesthetic design suitable for you is before anything else
-        </p>
+        </p> */}
 
-        <button className="mt-6 bg-[#0047ff] text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-[#0035c5] transition duration-300">
+        {/* <button className="mt-6 bg-[#0047ff] text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-[#0035c5] transition duration-300">
           Shop Now
-        </button>
+        </button> */}
       </div>
     </div>
   );
