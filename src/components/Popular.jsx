@@ -233,11 +233,11 @@ const Popular = () => {
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="flex flex-col items-center gap-4 mt-28">
+      <div className="flex flex-col items-center gap-4 ">
         <p className="text-[15px] uppercase">Trending now</p>
-        <p className="font-Poppins font-semibold capitalize text-5xl">
+        {/* <p className="font-Poppins font-semibold capitalize text-5xl">
           Popular This Week
-        </p>
+        </p> */}
       </div>
 
       {/* Product Grid */}
