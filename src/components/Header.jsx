@@ -209,32 +209,144 @@
 
 
 
-import React, { useState, useEffect, useRef } from "react";
+// import React, { useState, useEffect, useRef } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import shoesbanner from "../assets/shoesbanner.jpg";
+// import hedsetbanner from "../assets/hedsetbanner.jpg";
+// import airpodbanner from "../assets/airpodbenner.jpg";
+// import bg from "../assets/watchbanner.jpg";
+// import { useNavigate } from "react-router";
+// import { ChevronLeft, ChevronRight } from "lucide-react"; // or use icons from react-icons
+
+// const Header = () => {
+//   const navigate = useNavigate();
+//   const banners = [bg, shoesbanner, hedsetbanner, airpodbanner];
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const [direction, setDirection] = useState(1);
+//   const [isPaused, setIsPaused] = useState(false);
+//   const timeoutRef = useRef(null);
+
+//   // Auto Slide
+//   useEffect(() => {
+//     if (isPaused) return;
+
+//     timeoutRef.current = setInterval(() => {
+//       handleNext();
+//     }, 3000);
+
+//     return () => clearInterval(timeoutRef.current);
+//   }, [currentIndex, isPaused]);
+
+//   const handleNext = () => {
+//     setDirection(1);
+//     setCurrentIndex((prev) => (prev + 1) % banners.length);
+//   };
+
+//   const handlePrev = () => {
+//     setDirection(-1);
+//     setCurrentIndex((prev) =>
+//       prev === 0 ? banners.length - 1 : prev - 1
+//     );
+//   };
+
+//   const variants = {
+//     enter: (direction) => ({
+//       x: direction > 0 ? 300 : -300,
+//       opacity: 0,
+//     }),
+//     center: {
+//       x: 0,
+//       opacity: 1,
+//     },
+//     exit: (direction) => ({
+//       x: direction > 0 ? -300 : 300,
+//       opacity: 0,
+//     }),
+//   };
+
+//   return (
+//     <div
+//       className="relative w-full h-[180px] sm:h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden"
+//       onMouseEnter={() => setIsPaused(true)}
+//       onMouseLeave={() => setIsPaused(false)}
+//     >
+//       <AnimatePresence custom={direction}>
+//         <motion.img
+//           key={currentIndex}
+//           src={banners[currentIndex]}
+//           custom={direction}
+//           variants={variants}
+//           initial="enter"
+//           animate="center"
+//           exit="exit"
+//           transition={{ duration: 0.8 }}
+//           className="absolute w-full h-full object-cover cursor-pointer"
+//           onClick={() => navigate("/shop")}
+//         />
+//       </AnimatePresence>
+
+//       {/* Arrows */}
+//       <button
+//         onClick={handlePrev}
+//         className="absolute top-1/2 left-2 transform -translate-y-1/2     hover:bg-opacity-100 transition z-10"
+//       >
+//         <ChevronLeft size={26} className="text-amber-500" />
+//       </button>
+//       <button
+//         onClick={handleNext}
+//         className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-70 p-2 rounded-full shadow hover:bg-opacity-100 transition z-10"
+//       >
+//         <ChevronRight size={24} />
+//       </button>
+
+//       {/* Dots */}
+//       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+//         {banners.map((_, index) => (
+//           <div
+//             key={index}
+//             onClick={() => setCurrentIndex(index)}
+//             className={`w-2 h-2 rounded-full cursor-pointer transition ${
+//               index === currentIndex ? "bg-white" : "bg-gray-400"
+//             }`}
+//           ></div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Header;
+
+
+
+
+
+
+
+
+
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+// Banner Images
 import shoesbanner from "../assets/shoesbanner.jpg";
 import hedsetbanner from "../assets/hedsetbanner.jpg";
 import airpodbanner from "../assets/airpodbenner.jpg";
-import bg from "../assets/watchbanner.jpg";
-import { useNavigate } from "react-router";
-import { ChevronLeft, ChevronRight } from "lucide-react"; // or use icons from react-icons
+import watchbanner from "../assets/watchbanner.jpg";
+
+const banners = [watchbanner, shoesbanner, hedsetbanner, airpodbanner];
 
 const Header = () => {
-  const navigate = useNavigate();
-  const banners = [bg, shoesbanner, hedsetbanner, airpodbanner];
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
+  const [direction, setDirection] = useState(1); // 1 for next, -1 for prev
   const [isPaused, setIsPaused] = useState(false);
-  const timeoutRef = useRef(null);
 
-  // Auto Slide
   useEffect(() => {
     if (isPaused) return;
-
-    timeoutRef.current = setInterval(() => {
+    const interval = setInterval(() => {
       handleNext();
-    }, 3000);
-
-    return () => clearInterval(timeoutRef.current);
+    }, 3000); // change every 3 sec
+    return () => clearInterval(interval);
   }, [currentIndex, isPaused]);
 
   const handleNext = () => {
@@ -266,7 +378,7 @@ const Header = () => {
 
   return (
     <div
-      className="relative w-full h-[180px] sm:h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden"
+      className="relative w-full h-[240px] sm:h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -280,35 +392,24 @@ const Header = () => {
           animate="center"
           exit="exit"
           transition={{ duration: 0.5 }}
-          className="absolute w-full h-full  px-1 object-cover cursor-pointer"
-          onClick={() => navigate("/shop")}
+          className="absolute w-full h-full object-contain object-center cursor-pointer"
+          onClick={() => window.location.href = "/shop"}
         />
       </AnimatePresence>
 
-      {/* Arrows */}
-      <button
-        onClick={handlePrev}
-        className="absolute top-1/2 left-2 transform -translate-y-1/2     hover:bg-opacity-100 transition z-10"
-      >
-        <ChevronLeft size={26} className="text-amber-500" />
-      </button>
-      <button
-        onClick={handleNext}
-        className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-70 p-2 rounded-full shadow hover:bg-opacity-100 transition z-10"
-      >
-        <ChevronRight size={24} />
-      </button>
-
-      {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
-        {banners.map((_, index) => (
+      {/* Optional Dots */}
+      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-2">
+        {banners.map((_, i) => (
           <div
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 rounded-full cursor-pointer transition ${
-              index === currentIndex ? "bg-white" : "bg-gray-400"
-            }`}
-          ></div>
+            key={i}
+            onClick={() => {
+              setDirection(i > currentIndex ? 1 : -1);
+              setCurrentIndex(i);
+            }}
+            className={`w-3 h-3 rounded-full ${
+              i === currentIndex ? "bg-black" : "bg-gray-300"
+            } cursor-pointer`}
+          />
         ))}
       </div>
     </div>
@@ -316,5 +417,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
