@@ -378,7 +378,7 @@ const Header = () => {
 
   return (
     <div
-      className="relative w-full -mt-12 h-[240px] sm:h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden"
+      className="relative w-full -mt-10 h-[240px] sm:h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
