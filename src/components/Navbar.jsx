@@ -187,7 +187,7 @@ const Navbar = () => {
 
     
           <Link to="/">
-            <img src={logo} alt="Logo" className="h-14 w-auto" />
+            <img src={logo}  alt="Logo" className="text-2xl" />
           </Link>
         </div>
 
