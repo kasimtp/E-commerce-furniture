@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { getData } from "../ProductList.js";
-import shoes from "../assets/shoes.jpg"
-import airpod from "../assets/airpod.jpg"
+import shoes from "../assets/shoes.png"
+import airpod from "../assets/airpod.png"
 import hedset from "../assets/hedset.png"
-import watch from "../assets/watch.jpg"
+import watch from "../assets/watch.png"
 
 const Categories = () => {
   // const [product, setProduct] = useState([]);
