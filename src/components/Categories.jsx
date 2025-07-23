@@ -21,7 +21,7 @@ const Categories = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col sm:space-y-14 mt-12 font-Poppins space-y-4 bg-white">
+    <div className="w-full h-full flex flex-col sm:space-y-14 font-Poppins space-y-4 bg-white">
       {/* Header */}
       <div className="flex flex-col space-y-12 px-4 sm:px-8 md:px-16 lg:px-20 text-center sm:mr-16">
         <p className="text-sm font-semibold capitalize sm:text-base text-[#474747] leading-7">
@@ -33,7 +33,7 @@ const Categories = () => {
       </div>
 
       {/* Image Section */}
-      <div className="grid grid-cols-4 lg:flex-row gap-6 px-4 sm:px-8 md:px-16 lg:px-32 pb-10 w-[98%]">
+      <div className="grid grid-rows-4 lg:flex-row gap-6 px-4 sm:px-8 md:px-16 lg:px-32 pb-10 w-[98%]">
         {/* Left Image */}
         {product[0] && (
           <div className="lg:w-2/4 bg-amber-200 h-full flex items-center">
