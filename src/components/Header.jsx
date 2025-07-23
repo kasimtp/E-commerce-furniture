@@ -290,7 +290,7 @@ const Header = () => {
         onClick={handlePrev}
         className="absolute top-1/2 left-2 transform -translate-y-1/2     hover:bg-opacity-100 transition z-10"
       >
-        <ChevronLeft size={24} />
+        <ChevronLeft size={24} className="text-amber-500" />
       </button>
       <button
         onClick={handleNext}
