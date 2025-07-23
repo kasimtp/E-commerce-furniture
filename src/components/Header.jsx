@@ -257,7 +257,7 @@ const Header = () => {
     center: {
       x: 0,
       opacity: 1,
-    }),
+    },
     exit: (direction) => ({
       x: direction > 0 ? -300 : 300,
       opacity: 0,
