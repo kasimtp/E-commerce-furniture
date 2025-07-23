@@ -118,8 +118,6 @@
 
 
 
-
-
 import React from "react";
 import shoes from "../assets/shoes.png";
 import airpod from "../assets/airpod.png";
@@ -157,7 +155,7 @@ const Categories = () => {
             <img
               src={category.img}
               alt={category.alt}
-              className="w-12 h-12 object-contain"
+              className="w-20 h-20 sm:w-16 sm:h-16 object-contain"
             />
           </div>
         ))}
@@ -167,7 +165,6 @@ const Categories = () => {
 };
 
 export default Categories;
-
 
 
 
