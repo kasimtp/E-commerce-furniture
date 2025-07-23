@@ -149,7 +149,7 @@ const Categories = () => {
       {/* Category bar */}
       <div className="flex overflow-x-auto space-x-1 px-3 py-3 scrollbar-hide w-full max-w-5xl">
         {/* Watch */}
-        <div className=" sm:h-24 sm:w-24  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+        <div className=" h-24 w-24 lg:h-32 lg:w-32  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
           {/* <img
             src={watch}
             alt="Watch"
@@ -158,7 +158,7 @@ const Categories = () => {
         </div>
 
         {/* Headset */}
-       <div className=" sm:h-24 sm:w-24  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+       <div className=" h-24 w-24 lg:h-32 lg:w-32  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
           {/* <img
             src={watch}
             alt="Watch"
@@ -167,7 +167,7 @@ const Categories = () => {
         </div>
 
         {/* AirPod */}
-      <div className=" sm:h-24 sm:w-24  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+      <div className=" h-24 w-24 lg:h-32 lg:w-32  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
           {/* <img
             src={watch}
             alt="Watch"
@@ -176,7 +176,7 @@ const Categories = () => {
         </div>
 
         {/* Shoes */}
-      <div className=" sm:h-24 sm:w-24  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+      <div className=" h-24 w-24 lg:h-32 lg:w-32  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
           {/* <img
             src={watch}
             alt="Watch"
