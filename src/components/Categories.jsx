@@ -131,6 +131,13 @@ const categoryData = [
   { name: "Smartwatch", img: smartwatch },
   { name: "Powerbank", img: powerbank },
   { name: "Smartwatch", img: smartwatch },
+    { name: "Watch", img: watch },
+  { name: "Headset", img: hedset },
+  { name: "AirPods", img: airpod },
+  { name: "Shoes", img: shoes },
+  { name: "Smartwatch", img: smartwatch },
+  { name: "Powerbank", img: powerbank },
+  { name: "Smartwatch", img: smartwatch },
 ];
 
 const Categories = () => {
