@@ -39,7 +39,7 @@ const Categories = () => {
       <div className="bg-amber-200 flex flex-row space-x-3 border rounded-2xl">
 
 
-        <div className=" bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300">
+        <div className=" bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300  items-center justify-center">
           <img className="w-20 h-20 sm:w-12 sm:h-12 object-contain" src={watch}  alt="" />
         </div>
         <div></div>
