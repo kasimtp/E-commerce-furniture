@@ -143,30 +143,112 @@
 
 
 
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+// import shoesbanner from "../assets/shoesbanner.jpg";
+// import hedsetbanner from "../assets/hedsetbanner.jpg";
+// import airpodbanner from "../assets/airpodbenner.jpg";
+// import bg from "../assets/watchbanner.jpg";
+// import { useNavigate } from "react-router";
+
+// const Header = () => {
+//   const navigate = useNavigate();
+//   const banners = [bg, shoesbanner, hedsetbanner, airpodbanner];
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const [direction, setDirection] = useState(1); // 1: right to left, -1: left to right
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setDirection(1); // or -1 to reverse direction
+//       setCurrentIndex((prev) => (prev + 1) % banners.length);
+//     }, 3000);
+
+//     return () => clearInterval(interval);
+//   }, [banners.length]);
+
+//   // Animation variants
+//   const variants = {
+//     enter: (direction) => ({
+//       x: direction > 0 ? 300 : -300,
+//       opacity: 0,
+//     }),
+//     center: {
+//       x: 0,
+//       opacity: 1,
+//     },
+//     exit: (direction) => ({
+//       x: direction > 0 ? -300 : 300,
+//       opacity: 0,
+//     }),
+//   };
+
+//   return (
+//     <div
+//      className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden">
+//       <AnimatePresence custom={direction}>
+//         <motion.img
+//           key={currentIndex}
+//           src={banners[currentIndex]}
+//           custom={direction}
+//           variants={variants}
+//           initial="enter"
+//           animate="center"
+//           exit="exit"
+//           transition={{ duration: 0.8 }}
+//           className="absolute w-[300px] h-[200px] sm:h-[350px] md:h-[400px] lg:w-full  object-cover cursor-pointer"
+//           onClick={() => navigate("/shop")}
+//         />
+//       </AnimatePresence>
+//     </div>
+//   );
+// };
+
+// export default Header;
+
+
+
+
+
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import shoesbanner from "../assets/shoesbanner.jpg";
 import hedsetbanner from "../assets/hedsetbanner.jpg";
 import airpodbanner from "../assets/airpodbenner.jpg";
 import bg from "../assets/watchbanner.jpg";
 import { useNavigate } from "react-router";
+import { ChevronLeft, ChevronRight } from "lucide-react"; // or use icons from react-icons
 
 const Header = () => {
   const navigate = useNavigate();
   const banners = [bg, shoesbanner, hedsetbanner, airpodbanner];
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(1); // 1: right to left, -1: left to right
+  const [direction, setDirection] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
+  const timeoutRef = useRef(null);
 
+  // Auto Slide
   useEffect(() => {
-    const interval = setInterval(() => {
-      setDirection(1); // or -1 to reverse direction
-      setCurrentIndex((prev) => (prev + 1) % banners.length);
+    if (isPaused) return;
+
+    timeoutRef.current = setInterval(() => {
+      handleNext();
     }, 3000);
 
-    return () => clearInterval(interval);
-  }, [banners.length]);
+    return () => clearInterval(timeoutRef.current);
+  }, [currentIndex, isPaused]);
 
-  // Animation variants
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % banners.length);
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) =>
+      prev === 0 ? banners.length - 1 : prev - 1
+    );
+  };
+
   const variants = {
     enter: (direction) => ({
       x: direction > 0 ? 300 : -300,
@@ -175,7 +257,7 @@ const Header = () => {
     center: {
       x: 0,
       opacity: 1,
-    },
+    }),
     exit: (direction) => ({
       x: direction > 0 ? -300 : 300,
       opacity: 0,
@@ -184,7 +266,10 @@ const Header = () => {
 
   return (
     <div
-     className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden">
+      className="relative w-full h-[180px] sm:h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       <AnimatePresence custom={direction}>
         <motion.img
           key={currentIndex}
@@ -195,15 +280,41 @@ const Header = () => {
           animate="center"
           exit="exit"
           transition={{ duration: 0.8 }}
-          className="absolute w-[300px] h-[200px] sm:h-[350px] md:h-[400px] lg:w-full  object-cover cursor-pointer"
+          className="absolute w-full h-full object-cover cursor-pointer"
           onClick={() => navigate("/shop")}
         />
       </AnimatePresence>
+
+      {/* Arrows */}
+      <button
+        onClick={handlePrev}
+        className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white bg-opacity-70 p-2 rounded-full shadow hover:bg-opacity-100 transition z-10"
+      >
+        <ChevronLeft size={24} />
+      </button>
+      <button
+        onClick={handleNext}
+        className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-70 p-2 rounded-full shadow hover:bg-opacity-100 transition z-10"
+      >
+        <ChevronRight size={24} />
+      </button>
+
+      {/* Dots */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+        {banners.map((_, index) => (
+          <div
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full cursor-pointer transition ${
+              index === currentIndex ? "bg-white" : "bg-gray-400"
+            }`}
+          ></div>
+        ))}
+      </div>
     </div>
   );
 };
 
 export default Header;
-
 
 
