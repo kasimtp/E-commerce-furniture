@@ -183,7 +183,9 @@ const Header = () => {
   };
 
   return (
-    <div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden">
+    <div
+    //  className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden"
+     >
       <AnimatePresence custom={direction}>
         <motion.img
           key={currentIndex}
