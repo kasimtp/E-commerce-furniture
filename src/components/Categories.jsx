@@ -127,7 +127,6 @@
 
 
 
-
 import shoes from "../assets/shoes.png";
 import airpod from "../assets/airpod.png";
 import hedset from "../assets/hedset.png";
@@ -147,50 +146,30 @@ const Categories = () => {
       </div>
 
       {/* Category bar */}
-      <div className="flex overflow-x-auto space-x-1 px-3 py-3 scrollbar-hide w-full ">
+      <div className="flex overflow-x-auto space-x-5 px-4 py-4 scrollbar-hide w-full max-w-5xl">
         {/* Watch */}
-        <div className=" h-24 w-24 lg:h-32 lg:w-32  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          {/* <img
-            src={watch}
-            alt="Watch"
-            className="w-20 h-20 "
-          /> */}
+        <div className="w-28 h-28 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          <img src={watch} alt="Watch" className="w-16 h-16 object-contain" />
         </div>
 
         {/* Headset */}
-       <div className=" h-24 w-24 lg:h-32 lg:w-32  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          {/* <img
-            src={watch}
-            alt="Watch"
-            className="w-20 h-20 "
-          /> */}
+        <div className="w-28 h-28 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          <img src={hedset} alt="Headset" className="w-16 h-16 object-contain" />
         </div>
 
         {/* AirPod */}
-      <div className=" h-24 w-24 lg:h-32 lg:w-32  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          {/* <img
-            src={watch}
-            alt="Watch"
-            className="w-20 h-20 "
-          /> */}
+        <div className="w-28 h-28 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          <img src={airpod} alt="AirPod" className="w-16 h-16 object-contain" />
         </div>
 
         {/* Shoes */}
-      <div className=" h-24 w-24 lg:h-32 lg:w-32  bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          {/* <img
-            src={watch}
-            alt="Watch"
-            className="w-20 h-20 "
-          /> */}
+        <div className="w-28 h-28 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          <img src={shoes} alt="Shoes" className="w-16 h-16 object-contain" />
         </div>
 
         {/* Smart Watch */}
-        <div className="min-w-[120px] sm:min-w-[180px] h-[100px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          <img
-            src={watch}
-            alt="Smart Watch"
-            className="w-20 h-20 object-contain"
-          />
+        <div className="w-28 h-28 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          <img src={watch} alt="Smart Watch" className="w-16 h-16 object-contain" />
         </div>
       </div>
     </div>
@@ -198,6 +177,7 @@ const Categories = () => {
 };
 
 export default Categories;
+
 
 
 
