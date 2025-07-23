@@ -115,7 +115,7 @@ import { FiHeart, FiShoppingCart, FiUser } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 
 import { AppContext } from "../context/AppContext";
-import logo from "../assets/logowithtext.jpg";
+import logo from "../assets/logo.jpg";
 import { apiClient } from "../utils/api.js";
 
 const Navbar = () => {
