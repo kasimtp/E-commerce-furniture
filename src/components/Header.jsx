@@ -279,8 +279,8 @@ const Header = () => {
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{ duration: 0.8 }}
-          className="absolute w-full h-full object-cover cursor-pointer"
+          transition={{ duration: 0.5 }}
+          className="absolute w-full h-full  px-4 object-cover cursor-pointer"
           onClick={() => navigate("/shop")}
         />
       </AnimatePresence>
@@ -288,7 +288,7 @@ const Header = () => {
       {/* Arrows */}
       <button
         onClick={handlePrev}
-        className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white bg-opacity-70 p-2 rounded-full shadow hover:bg-opacity-100 transition z-10"
+        className="absolute top-1/2 left-2 transform -translate-y-1/2     hover:bg-opacity-100 transition z-10"
       >
         <ChevronLeft size={24} />
       </button>
