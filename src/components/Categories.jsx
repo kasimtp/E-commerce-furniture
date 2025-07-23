@@ -153,7 +153,7 @@ const Categories = () => {
               <img
                 src={category.img}
                 alt={category.alt}
-                className="w-24 h-24 object-contain"
+                className="w-40 h-40 object-contain"
               />
             </div>
             {/* Label */}
