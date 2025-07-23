@@ -38,10 +38,10 @@ const Categories = () => {
 
       <div className="bg-amber-200 flex flex-row space-x-5 border rounded-md">
         <img  className="bg-amber-600 border rounded-full w-18 h-18 border-black" src={watch} alt="" />
-        <img src={hedset} alt="" />
-        <img src={airpod} alt="" />
-        <img src={shoes} alt="" />
-        <img src={watch} alt="" />
+        <img  className="bg-amber-600 border rounded-full w-18 h-18 border-black" src={hedset} alt="" />
+        <img  className="bg-amber-600 border rounded-full w-18 h-18 border-black" src={airpod} alt="" />
+        <img  className="bg-amber-600 border rounded-full w-18 h-18 border-black" src={shoes} alt="" />
+        <img   className="bg-amber-600 border rounded-full w-18 h-18 border-black"src={watch} alt="" />
       </div>
 
       
