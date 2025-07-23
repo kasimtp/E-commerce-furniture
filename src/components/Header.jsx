@@ -97,9 +97,8 @@
 
 
 
-
-
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import shoesbanner from "../assets/shoesbanner.jpg";
 import hedsetbanner from "../assets/hedsetbanner.jpg";
 import airpodbanner from "../assets/airpodbenner.jpg";
@@ -108,35 +107,56 @@ import { useNavigate } from "react-router";
 
 const Header = () => {
   const navigate = useNavigate();
-
-  // Array of banners
   const banners = [bg, shoesbanner, hedsetbanner, airpodbanner];
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(1); // 1: right to left, -1: left to right
 
-  // Change image every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === banners.length - 1 ? 0 : prevIndex + 1
-      );
+      setDirection(1); // or -1 to reverse direction
+      setCurrentIndex((prev) => (prev + 1) % banners.length);
     }, 3000);
 
     return () => clearInterval(interval);
   }, [banners.length]);
 
+  // Animation variants
+  const variants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction) => ({
+      x: direction > 0 ? -300 : 300,
+      opacity: 0,
+    }),
+  };
+
   return (
-    <div className="relative w-full font-Poppins overflow-hidden">
-      {/* Image Carousel */}
-      <img
-        src={banners[currentIndex]}
-        alt="Flash Sale Banner"
-        onClick={() => navigate("/shop")}
-        className="w-full h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] object-cover rounded transition-all duration-700 ease-in-out"
-      />
+    <div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden">
+      <AnimatePresence custom={direction}>
+        <motion.img
+          key={currentIndex}
+          src={banners[currentIndex]}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.8 }}
+          className="absolute w-full h-full object-cover cursor-pointer"
+          onClick={() => navigate("/shop")}
+        />
+      </AnimatePresence>
     </div>
   );
 };
 
 export default Header;
+
 
 
