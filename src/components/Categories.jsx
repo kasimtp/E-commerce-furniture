@@ -124,15 +124,21 @@
 
 
 
-
-
-
+import React from "react";
 import shoes from "../assets/shoes.png";
 import airpod from "../assets/airpod.png";
 import hedset from "../assets/hedset.png";
 import watch from "../assets/watch.png";
 
 const Categories = () => {
+  const categoryIcons = [
+    { img: watch, alt: "Watch" },
+    { img: hedset, alt: "Headset" },
+    { img: airpod, alt: "AirPod" },
+    { img: shoes, alt: "Shoes" },
+    { img: watch, alt: "Smart Watch" },
+  ];
+
   return (
     <div className="w-full py-10 bg-white font-Poppins flex flex-col items-center space-y-8">
       {/* Header */}
@@ -147,40 +153,24 @@ const Categories = () => {
 
       {/* Category bar */}
       <div className="flex overflow-x-auto space-x-5 px-4 py-4 scrollbar-hide w-full max-w-5xl">
-        {/* Watch */}
-        <div className="w-28 h-28 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          <img src={watch} alt="Watch" className="w-16 h-16 object-contain" />
-        </div>
-
-        {/* Headset */}
-        <div className="w-28 h-28 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          <img src={hedset} alt="Headset" className="w-16 h-16 object-contain" />
-        </div>
-
-        {/* AirPod */}
-        <div className="w-28 h-28 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          <img src={airpod} alt="AirPod" className="w-16 h-16 object-contain" />
-        </div>
-
-        {/* Shoes */}
-        <div className="w-28 h-28 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          <img src={shoes} alt="Shoes" className="w-16 h-16 object-contain" />
-        </div>
-
-        {/* Smart Watch */}
-        <div className="w-28 h-28 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-          <img src={watch} alt="Smart Watch" className="w-16 h-16 object-contain" />
-        </div>
+        {categoryIcons.map((category, index) => (
+          <div
+            key={index}
+            className="w-24 sm:w-28 md:w-32 aspect-square bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center"
+          >
+            <img
+              src={category.img}
+              alt={category.alt}
+              className="w-20 h-20 object-contain"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
 export default Categories;
-
-
-
-
 
 
 
