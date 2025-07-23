@@ -33,7 +33,7 @@ const Categories = () => {
       </div>
 
       {/* Image Section */}
-      <div className="grid grid-rows-4 lg:flex-row gap-6 px-4 sm:px-8 md:px-16 lg:px-32 pb-10 w-[98%]">
+      <div className="flex flex-row lg:flex-row gap-6 px-4 sm:px-8 md:px-16 lg:px-32 pb-10 w-[98%]">
         {/* Left Image */}
         {product[0] && (
           <div className="lg:w-2/4 bg-amber-200 h-full flex items-center">
@@ -41,7 +41,7 @@ const Categories = () => {
               <img
                 src={product[0].image}
                 alt={`Category - ${product[0].name}`}
-                className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] object-cover rounded-lg"
+                className="w-[200px] h-[200px] sm:h-[400px] md:h-[500px] lg:h-[600px] object-cover rounded-lg"
               />
               <div className="absolute bottom-4 left-4 bg-white text-black font-semibold px-4 py-2 rounded-full shadow">
                 {getCategoryLabel(product[0], 0)}
