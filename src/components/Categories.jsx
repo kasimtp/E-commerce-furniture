@@ -120,10 +120,6 @@
 
 
 
-
-
-
-
 import React from "react";
 import shoes from "../assets/shoes.png";
 import airpod from "../assets/airpod.png";
@@ -156,12 +152,12 @@ const Categories = () => {
         {categoryIcons.map((category, index) => (
           <div
             key={index}
-            className="w-24 sm:w-28 md:w-32 aspect-square bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center"
+            className="w-24 aspect-square bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-3 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center shrink-0"
           >
             <img
               src={category.img}
               alt={category.alt}
-              className="w-20 h-20 object-contain"
+              className="w-16 h-16 object-contain"
             />
           </div>
         ))}
@@ -171,6 +167,7 @@ const Categories = () => {
 };
 
 export default Categories;
+
 
 
 
