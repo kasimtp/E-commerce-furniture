@@ -1,4 +1,4 @@
-import chair2 from "../assets/chair 2.jpg";
+import chair2 from "../assets/bg.jpg";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { FaShippingFast } from "react-icons/fa";
 import { BiSupport } from "react-icons/bi";
