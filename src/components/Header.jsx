@@ -45,70 +45,98 @@
 
 
 
-import shoesbanner  from "../assets/shoesbanner.jpg"
-import hedsetbanner from "../assets/hedsetbanner.jpg"
-import airpodbanner from  "../assets/airpodbenner.jpg"
+// import shoesbanner  from "../assets/shoesbanner.jpg"
+// import hedsetbanner from "../assets/hedsetbanner.jpg"
+// import airpodbanner from  "../assets/airpodbenner.jpg"
+// import bg from "../assets/watchbanner.jpg";
+// import { useNavigate } from "react-router";
+// import { AppContext } from "../context/AppContext.jsx";
+
+// const Header = () => {
+//   const navigate = useNavigate();
+ 
+
+//   return (
+//     <div className="relative font-Poppins w-full">
+//       {/* Responsive Background Image */}
+//       <img
+//         src={bg}
+//         alt="Flash Sale"
+//         onClick={navigate("/shop")}
+//         className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] lg:w-full "
+//       />
+
+//        <img
+//         src={shoesbanner}
+//         alt="Flash Sale"
+//         onClick={navigate("/shop")}
+//         className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] lg:w-full "
+//       />
+
+//  <img
+//         src={hedsetbanner}
+//         alt="Flash Sale"
+//         onClick={navigate("/shop")}
+//         className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] lg:w-full "
+//       />
+
+//        <img
+//         src={airpodbanner}
+//         alt="Flash Sale"
+//         onClick={navigate("/shop")}
+//         className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] lg:w-full "
+//       />
+//       {/* Text Content Overlaid */}
+    
+//     </div>
+//   );
+// };
+
+// export default Header;
+
+
+
+
+
+
+import React, { useEffect, useState } from "react";
+import shoesbanner from "../assets/shoesbanner.jpg";
+import hedsetbanner from "../assets/hedsetbanner.jpg";
+import airpodbanner from "../assets/airpodbenner.jpg";
 import bg from "../assets/watchbanner.jpg";
 import { useNavigate } from "react-router";
-import { AppContext } from "../context/AppContext.jsx";
 
 const Header = () => {
   const navigate = useNavigate();
- 
+
+  // Array of banners
+  const banners = [bg, shoesbanner, hedsetbanner, airpodbanner];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Change image every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === banners.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [banners.length]);
 
   return (
-    <div className="relative font-Poppins w-full">
-      {/* Responsive Background Image */}
+    <div className="relative w-full font-Poppins overflow-hidden">
+      {/* Image Carousel */}
       <img
-        src={bg}
-        alt="Flash Sale"
-        onClick={navigate("/shop")}
-        className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] lg:w-full "
+        src={banners[currentIndex]}
+        alt="Flash Sale Banner"
+        onClick={() => navigate("/shop")}
+        className="w-full h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] object-cover rounded transition-all duration-700 ease-in-out"
       />
-
-       <img
-        src={shoesbanner}
-        alt="Flash Sale"
-        onClick={navigate("/shop")}
-        className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] lg:w-full "
-      />
-
- <img
-        src={hedsetbanner}
-        alt="Flash Sale"
-        onClick={navigate("/shop")}
-        className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] lg:w-full "
-      />
-
-       <img
-        src={airpodbanner}
-        alt="Flash Sale"
-        onClick={navigate("/shop")}
-        className="w-[900px] h-[120px] sm:h-[350px] md:h-[480px] lg:h-[400px] lg:w-full "
-      />
-      {/* Text Content Overlaid */}
-      <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-8 md:px-12 max-w-2xl">
-        {/* <p className="text-sm font-medium text-[#474747] uppercase tracking-wide mb-2">
-          We’re proud to introduce
-        </p> */}
-
-        {/* <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#ffdd00] uppercase">
-          The Furniture
-          <br />
-          <span className="text-white">That Defines You</span>
-        </h1> */}
-
-        {/* <p className="text-sm sm:text-base text-[#2b2b2b] mt-4 max-w-md">
-          Your comfort and aesthetic design suitable for you is before anything else
-        </p> */}
-
-        {/* <button className="mt-6 bg-[#0047ff] text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-[#0035c5] transition duration-300">
-          Shop Now
-        </button> */}
-      </div>
     </div>
   );
 };
 
 export default Header;
+
 
