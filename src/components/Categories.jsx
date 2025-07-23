@@ -72,48 +72,133 @@
 
 
 
+// import shoes from "../assets/shoes.png";
+// import airpod from "../assets/airpod.png";
+// import hedset from "../assets/hedset.png";
+// import watch from "../assets/watch.png";
+
+// const Categories = () => {
+//   const items = [
+//     { img: watch, alt: "Watch" },
+//     { img: hedset, alt: "Headset" },
+//     { img: airpod, alt: "AirPod" },
+//     { img: shoes, alt: "Shoes" },
+//     { img: watch, alt: "Smart Watch" },
+//   ];
+
+//   return (
+//     <div className="w-full py-10 bg-white font-Poppins flex flex-col items-center space-y-8">
+//       {/* Header */}
+//       <div className="text-center space-y-2 px-4">
+//         <p className="text-sm text-gray-500 uppercase tracking-widest">passion for fashion</p>
+//         <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">Shop By Categories</h2>
+//       </div>
+
+//       {/* Category bar */}
+//       <div className="flex overflow-x-auto space-x-4 px-4 py-4 scrollbar-hide w-full max-w-5xl">
+//         {items.map((item, index) => (
+//           <div
+//             key={index}
+//             className="min-w-[120px] sm:min-w-[180px] h-[100px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center"
+//           >
+//             <img
+//               src={item.img}
+//               alt={item.alt}
+//               className="w-20 h-20 sm:w-10 sm:h-10 object-contain"
+//             />
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Categories;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import shoes from "../assets/shoes.png";
 import airpod from "../assets/airpod.png";
 import hedset from "../assets/hedset.png";
 import watch from "../assets/watch.png";
 
 const Categories = () => {
-  const items = [
-    { img: watch, alt: "Watch" },
-    { img: hedset, alt: "Headset" },
-    { img: airpod, alt: "AirPod" },
-    { img: shoes, alt: "Shoes" },
-    { img: watch, alt: "Smart Watch" },
-  ];
-
   return (
     <div className="w-full py-10 bg-white font-Poppins flex flex-col items-center space-y-8">
       {/* Header */}
       <div className="text-center space-y-2 px-4">
-        <p className="text-sm text-gray-500 uppercase tracking-widest">passion for fashion</p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">Shop By Categories</h2>
+        <p className="text-sm text-gray-500 uppercase tracking-widest">
+          passion for fashion
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">
+          Shop By Categories
+        </h2>
       </div>
 
       {/* Category bar */}
-      <div className="flex overflow-x-auto space-x-4 px-4 py-4 scrollbar-hide w-full max-w-5xl">
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className="min-w-[120px] sm:min-w-[180px] h-[100px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center"
-          >
-            <img
-              src={item.img}
-              alt={item.alt}
-              className="w-20 h-20 sm:w-10 sm:h-10 object-contain"
-            />
-          </div>
-        ))}
+      <div className="flex overflow-x-auto space-x-1 px-3 py-3 scrollbar-hide w-full max-w-5xl">
+        {/* Watch */}
+        <div className="min-w-[120px] sm:min-w-[180px] h-[90px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          <img
+            src={watch}
+            alt="Watch"
+            className="w-20 h-20 "
+          />
+        </div>
+
+        {/* Headset */}
+        <div className="min-w-[120px] sm:min-w-[180px] h-[90px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          <img
+            src={hedset}
+            alt="Headset"
+            className="w-20 h-20 object-contain"
+          />
+        </div>
+
+        {/* AirPod */}
+        <div className="min-w-[120px] sm:min-w-[180px] h-[100px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          <img
+            src={airpod}
+            alt="AirPod"
+            className="w-20 h-20 object-contain"
+          />
+        </div>
+
+        {/* Shoes */}
+        <div className="min-w-[120px] sm:min-w-[180px] h-[100px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          <img
+            src={shoes}
+            alt="Shoes"
+            className="w-20 h-20 object-contain"
+          />
+        </div>
+
+        {/* Smart Watch */}
+        <div className="min-w-[120px] sm:min-w-[180px] h-[100px] sm:h-[100px] bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-2 border-4 border-white shadow-md hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+          <img
+            src={watch}
+            alt="Smart Watch"
+            className="w-20 h-20 object-contain"
+          />
+        </div>
       </div>
     </div>
   );
 };
 
 export default Categories;
+
 
 
 
