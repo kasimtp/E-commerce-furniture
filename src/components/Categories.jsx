@@ -115,18 +115,28 @@
 
 // export default Categories;import React from "react";
 
-
 import React from "react";
 import shoes from "../assets/hedset.png";
-import airpod from "../assets/airpod.png"
-import hedset from  "../assets/hedset.png";
+import airpod from "../assets/airpod.png";
+import hedset from "../assets/hedset.png";
 import watch from "../assets/watch.png";
 import powerbank from "../assets/powerbank.png";
 import smartwatch from "../assets/smartwatch.png";
 
+const categoryData = [
+  { name: "Watch", img: watch },
+  { name: "Headset", img: hedset },
+  { name: "AirPods", img: airpod },
+  { name: "Shoes", img: shoes },
+  { name: "Smartwatch", img: smartwatch },
+  { name: "Powerbank", img: powerbank },
+  { name: "Smartwatch", img: smartwatch },
+];
+
 const Categories = () => {
   return (
     <div className="w-full max-w-7xl mx-auto py-6 bg-white font-Poppins flex flex-col items-center space-y-6 px-4">
+      {/* Header */}
       <div className="text-center space-y-1">
         <p className="text-xs text-gray-500 uppercase tracking-widest">
           passion for fashion
@@ -136,76 +146,24 @@ const Categories = () => {
         </h2>
       </div>
 
-      <div className="flex overflow-x-auto space-x-6 scrollbar-hide w-full">
-        {/* 1. Watch */}
-        <div className="flex flex-col items-center text-center shrink-0">
-          <div className="bg-[#fef4f4] border-4 border-red-500 rounded-full flex items-center justify-center shadow-md overflow-hidden
-              w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
-              hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
-            <img src={watch} alt="Watch" className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16" />
+      {/* Categories */}
+      <div className="flex overflow-x-auto overflow-y-hidden space-x-6 w-full no-scrollbar">
+        {categoryData.map((item, index) => (
+          <div key={index} className="flex flex-col items-center text-center shrink-0">
+            <div className="bg-[#fef4f4] border-4 border-red-500 rounded-full flex items-center justify-center shadow-md overflow-hidden
+                w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
+                hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
+              <img
+                src={item.img}
+                alt={item.name}
+                className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16"
+              />
+            </div>
+            <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">
+              {item.name}
+            </span>
           </div>
-          <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">Watchejhvs</span>
-        </div>
-
-        {/* 2. Headset */}
-        <div className="flex flex-col items-center text-center shrink-0">
-          <div className="bg-[#fef4f4] border-4 border-red-500 rounded-full flex items-center justify-center shadow-md overflow-hidden
-              w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
-              hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
-            <img src={hedset} alt="Headset" className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16" />
-          </div>
-          <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">Headsets</span>
-        </div>
-
-        {/* 3. AirPods */}
-        <div className="flex flex-col items-center text-center shrink-0">
-          <div className="bg-[#fef4f4] border-4 border-red-500 rounded-full flex items-center justify-center shadow-md overflow-hidden
-              w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
-              hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
-            <img src={airpod} alt="AirPod" className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16" />
-          </div>
-          <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">AirPods</span>
-        </div>
-
-        {/* 4. Shoes */}
-        <div className="flex flex-col items-center text-center shrink-0">
-          <div className="bg-[#fef4f4] border-4 border-red-500 rounded-full flex items-center justify-center shadow-md overflow-hidden
-              w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
-              hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
-            <img src={shoes} alt="Shoes" className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16" />
-          </div>
-          <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">Shoes</span>
-        </div>
-
-        {/* 5. Smartwatch */}
-        <div className="flex flex-col items-center text-center shrink-0">
-          <div className="bg-[#fef4f4] border-4 border-red-500 rounded-full flex items-center justify-center shadow-md overflow-hidden
-              w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
-              hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
-            <img src={smartwatch} alt="Smartwatch" className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16" />
-          </div>
-          <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">Smartwatch</span>
-        </div>
-
-        {/* 6. Powerbank */}
-        <div className="flex flex-col items-center text-center shrink-0">
-          <div className="bg-[#fef4f4] border-4 border-red-500 rounded-full flex items-center justify-center shadow-md overflow-hidden
-              w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
-              hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
-            <img src={powerbank} alt="Powerbank" className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16" />
-          </div>
-          <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">Powerbank</span>
-        </div>
-
-        {/* 7. Smartwatch 2 */}
-        <div className="flex flex-col items-center text-center shrink-0">
-          <div className="bg-[#fef4f4] border-4 border-red-500 rounded-full flex items-center justify-center shadow-md overflow-hidden
-              w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
-              hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
-            <img src={smartwatch} alt="Smartwatch" className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16" />
-          </div>
-          <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">Smartwatch</span>
-        </div>
+        ))}
       </div>
     </div>
   );
