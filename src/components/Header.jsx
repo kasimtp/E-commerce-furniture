@@ -184,8 +184,7 @@ const Header = () => {
 
   return (
     <div
-     className="relative w-[650px] h-[200px] sm:h-[350px] md:h-[450px] lg:h-full overflow-hidden"
-     >
+     className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden">
       <AnimatePresence custom={direction}>
         <motion.img
           key={currentIndex}
@@ -196,7 +195,7 @@ const Header = () => {
           animate="center"
           exit="exit"
           transition={{ duration: 0.8 }}
-          className="absolute w-[650px] h-[200px] sm:h-[350px] md:h-[480px] lg:w-full  object-cover cursor-pointer"
+          className="absolute w-100% h-[200px] sm:h-[350px] md:h-[480px] lg:w-full  object-cover cursor-pointer"
           onClick={() => navigate("/shop")}
         />
       </AnimatePresence>
