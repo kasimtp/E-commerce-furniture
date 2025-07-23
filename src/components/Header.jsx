@@ -184,7 +184,7 @@ const Header = () => {
 
   return (
     <div
-    //  className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden"
+     className="relative w-[650px] h-[200px] sm:h-[350px] md:h-[450px] lg:h-full overflow-hidden"
      >
       <AnimatePresence custom={direction}>
         <motion.img
