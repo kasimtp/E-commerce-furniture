@@ -120,6 +120,8 @@ import shoes from "../assets/shoes.png";
 import airpod from "../assets/airpod.png";
 import hedset from "../assets/hedset.png";
 import watch from "../assets/watch.png";
+import powerbank from "../assets/powerbank.png"
+import smartwatch from "../assets/smartwatch.png"
 
 const Categories = () => {
   const categoryIcons = [
