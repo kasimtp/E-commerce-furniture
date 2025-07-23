@@ -1,5 +1,5 @@
 import React from 'react';
-import bannerbg from "../assets/sofa 3.jpg";
+import bannerbg from  "../assets/bg.jpg";
 import { FaFacebookF, FaTwitter, FaBehance, FaInstagram } from "react-icons/fa";
 import { GoGlobe } from "react-icons/go";
 import title_bannerv55 from "../assets/title_bannerv55.png";
