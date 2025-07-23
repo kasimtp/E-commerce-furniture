@@ -118,7 +118,7 @@
 
 import React from "react";
 import shoes from "../assets/shoes.png";
-import airpod from "../assets/logo.jpg"
+import airpod from "../assets/airpod.png"
 import hedset from  "../assets/hedset.png";
 import watch from "../assets/watch.png";
 import powerbank from "../assets/powerbank.png";
