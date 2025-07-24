@@ -116,18 +116,18 @@
 // export default Categories;import React from "react";
 
 import React from "react";
-import shoes from "../assets/hedset.png";
+import shoes from "../assets/shoes.png";
 import airpod from "../assets/airpod.png";
-import hedset from "../assets/hedset.png";
-import watch from "../assets/watch.png";
+// import hedset from "../assets/hedset.png";
+// import watch from "../assets/watch.png";
 import powerbank from "../assets/powerbank.png";
 import smartwatch from "../assets/smartwatch.png";
 
 const categoryData = [
-  { name: "Watch", img: watch },
-  { name: "Headset", img: hedset },
+  // { nam e: "Watch", img: watch },
+  // { name: "Headset", img: hedset },
   { name: "AirPods", img: airpod },
-  { name: "Shoes", img: shoes },
+  // { name: "Shoes", img: shoes },
   { name: "Smartwatch", img: smartwatch },
   { name: "Powerbank", img: powerbank },
   { name: "Smartwatch", img: smartwatch },

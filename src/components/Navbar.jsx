@@ -115,7 +115,8 @@ import { FiHeart, FiShoppingCart, FiUser } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 
 import { AppContext } from "../context/AppContext";
-import logo from "../assets/logowithbg.jpg";
+import logo from "../assets/logo2.jpg";
+import logowithtext2 from "../assets/logowithtext2.png"
 import { apiClient } from "../utils/api.js";
 
 const Navbar = () => {
@@ -149,22 +150,22 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <Link to="/" className="hover:text-blue-600 transition">
+        <Link to="/" className="hover:text-blue-600  text-[17px] font-medium  transition">
           Home
         </Link>
       </li>
       <li>
-        <Link to="/shop" className="hover:text-blue-600 transition">
+        <Link to="/shop" className="hover:text-blue-600 text-[17px] font-medium transition">
           Products
         </Link>
       </li>
       <li>
-        <Link to="/cart" className="hover:text-blue-600 transition">
+        <Link to="/cart" className="hover:text-blue-600  text-[17px] font-medium transition">
           Cart
         </Link>
       </li>
       <li>
-        <Link to="/contact" className="hover:text-blue-600 transition">
+        <Link to="/contact" className="hover:text-blue-600 text-[18px]  font-medium transition">
           Contact
         </Link>
       </li>
@@ -172,32 +173,34 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-[#003631] shadow-md px-4 py-3 sticky top-0 z-50 border-b">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <nav className="bg-white shadow-md px-4 py-3 sticky top-0 z-50 border-b h-14 sm:h-22 ">
+      <div className="max-w-7xl mx-auto  flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
 
  {/* Mobile menu toggle */}
           <button
-            className="md:hidden"
+            className="md:hidden pt-1"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
               <MdClose size={26} />
             ) : (
-              <FiMenu size={26} />  
+              <FiMenu size={27} />  
             )}
           </button>
 
     
           <Link to="/">
-            <img src={logo}  alt="Logo" className="h-18 w-auto" />
+            {/* <img src={logo}  alt="Logo" className="h-12 w-auto sm:block hidden" /> */}
+            <img src={logowithtext2}  alt="Logo" className="h-[26px] sm:h-[52px]  pl-2 mt-2 sm:pl-0 w-auto" />
+
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex gap-8 text-sm font-semibold text-gray-700">
+        <ul className="hidden md:flex gap-14  text-gray-700">
           {navLinks}
         </ul>
 
@@ -205,14 +208,14 @@ const Navbar = () => {
         <div className="flex items-center gap-5 text-gray-700">
           <Link to="/search">
             <BiSearch
-              size={24}
+              size={40}
               className="hover:text-blue-600 sm:block hidden transition"
             />
           </Link>
 
           <Link to="/wishlist" className="relative">
             <FiHeart
-              size={24}
+              size={40}
               className="hover:text-pink-600 sm:block hidden transition"
             />
             {wishListItems.length > 0 && (
@@ -224,13 +227,13 @@ const Navbar = () => {
 
           <Link to="/login">
             <FiUser
-              size={24}
-              className="hover:text-blue-600 transition"
+                
+              className="hover:text-blue-600 transition text-xl sm:text-3xl"
             />
           </Link>
 
           <Link to="/shoppingcart" className="relative">
-            <FiShoppingCart size={24} className="hover:text-green-600 transition" /> 
+            <FiShoppingCart  className="hover:text-green-600 transition" /> 
             {cartItems.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
                 {cartItems.length}

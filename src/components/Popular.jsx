@@ -239,7 +239,7 @@ const Popular = () => {
           Popular This Week
         </p> */}
       </div>
-
+ 
       {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-24 px-6 w-[90%] mx-auto">
         {product.map((item, index) => (
