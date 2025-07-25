@@ -249,10 +249,10 @@ const Popular = () => {
         {product.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col bg-red-000 gap-[3px]  md:gap-8 lg:gap-8 capitalize pt-2.5 px-2.5 pb-4 rounded-lg shadow-lg h-[200px] lg:w-full md:h-[300px] lg:h-[470px] md:w-[200px]"
+            className="flex flex-col bg-red-000 gap-[3px]  md:gap-0 lg:gap-8 capitalize pt-2.5 px-2.5 pb-1.5 rounded-lg shadow-md h-[200px] lg:w-full md:h-[300px] lg:h-[470px] md:w-[200px]"
           >
             {/* Image */}
-            <div className="relative   overflow-hidden cursor-pointer h-[300px]">
+            <div className="relative   p-2 overflow-hidden cursor-pointer h-[300px]">
               <img
                 onClick={() => navigate(`/productdetiles/${item._id}`)}
                 src={item.image}
@@ -266,28 +266,28 @@ const Popular = () => {
               )}
               <CiHeart
                 onClick={() => handleClickwishList(item._id)}
-                className="absolute top-0 right-0 lg:top-4 lg:right-4 text-4xl lg:text-5xl text-black bg-white p-1.5 lg:p-2 md:p-2 rounded-full shadow-2xl cursor-pointer"
+                className="absolute top-2.5 right-2.5 md:top-3 md:right-3 lg:top-4 lg:right-4 text-4xl lg:text-5xl text-black bg-white p-2  lg:p-2 md:p-2 rounded-full shadow-2xl cursor-pointer"
               />
             </div>
 
             {/* Info */}
-            <div className="flex flex-col  items-center justify-between flex-grow text-center">
-              <p className=" font-Poppins text-[12px] lg:text-lg md:text-[12px]  text-gray-800 font-semibold">{item.name}</p>
-              <div className="flex flex-col items-center gap-1 mt-[0px] lg:gap-2 md:gap-1 lg:mt-4 md:mt-1">
+            <div className="flex flex-col -mt-2  items-center justify-between flex-grow text-center">
+              <p className=" font-Poppins text-[9px] lg:text-lg md:text-[10px]  text-gray-800 font-semibold">{item.name}</p>
+              <div className="flex flex-col items-center gap-0 mt-[0px] lg:gap-2 md:gap-0 lg:mt-4 md:mt-0">
                 <div className="flex items-center gap-[.5px]  hover:text-blue-600">
-                  <RiMoneyRupeeCircleLine  className=" mt-[.8px] md:mt-[0px] lg:mt-[0px] text-[14px] lg:text-lg md:text-[12px]" />
-                  <span className=" text-[14px] lg:text-lg md:text-[12px] text-gray-800 font-semibold">
+                  <RiMoneyRupeeCircleLine  className=" mt-[.8px] md:mt-[0px] lg:mt-[0px] text-[9px] lg:text-lg md:text-[12px]" />
+                  <span className=" text-[9px] lg:text-lg md:text-10px] text-gray-800 font-semibold">
                     {item.price.toFixed(2)}
                   </span>
                 </div>
 
                 <div
-                  className="flex flex-row items-center gap-[2px] lg:gap-2 md:gap-[2px]  hover:bg-neutral-200 border-2 text-gray-800 hover:border-black p-[4px] lg:p-2 md:p-2 rounded-md shadow-md cursor-pointer"
+                  className="flex flex-row   items-center gap-[2px]  lg:gap-2 md:gap-[3px]  hover:bg-neutral-200 hover:border-black p-[4px] lg:p-2 md:p-2 rounded-md shadow-lg cursor-pointer"
                   onClick={() => handleClick(item._id)}
                 >
-                  <FiShoppingCart className=" text-[12px] lg:text-xl md:text-[10px] stroke-2  lg:stroke-2 md:stroke-3 " />
-                  <button className=" text-gray-800 text-[10px] font-Poppins capitalize font-semibold lg:text-[18px] md:text-[10px]  lg:font-semibold md:font-bold ">
-                    Add To Cart
+                  <FiShoppingCart className=" text-[9px] lg:text-xl md:text-[10px] stroke-2  lg:stroke-2 md:stroke-3 " />
+                  <button className=" text-gray-800 text-center   font-Poppins capitalize font-semibold text-[9px] lg:text-[18px] md:text-[10px]  lg:font-semibold md:font-bold ">
+                   <p className="text-center "> Add To Cart</p>
                   </button>
                 </div>
               </div>
