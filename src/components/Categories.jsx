@@ -115,19 +115,18 @@
 
 // export default Categories;import React from "react";
 
-import React from "react";
 import shoes from "../assets/shoes.png";
 import airpod from "../assets/airpod.png";
-// import hedset from "../assets/hedset.png";
-// import watch from "../assets/watch.png";
+import hedset from "../assets/hedset.png";
+import watch from "../assets/watch.png";
 import powerbank from "../assets/powerbank.png";
 import smartwatch from "../assets/smartwatch.png";
 
 const categoryData = [
-  // { nam e: "Watch", img: watch },
-  // { name: "Headset", img: hedset },
+  { name: "Watch", img: watch },
+  { name: "Headset", img: hedset },
   { name: "AirPods", img: airpod },
-  // { name: "Shoes", img: shoes },
+  { name: "Shoes", img: shoes },
   { name: "Smartwatch", img: smartwatch },
   { name: "Powerbank", img: powerbank },
   { name: "Smartwatch", img: smartwatch },
@@ -151,7 +150,7 @@ const Categories = () => {
       <div className="flex overflow-x-auto overflow-y-hidden space-x-6 w-full no-scrollbar">
         {categoryData.map((item, index) => (
           <div key={index} className="flex flex-col items-center text-center shrink-0">
-            <div className="bg-[#fef4f4] border-4 border-red-500 rounded-full flex items-center justify-center shadow-md overflow-hidden
+            <div className="bg-[#fef4f4] border-4 text-gray-800 rounded-full flex items-center justify-center shadow-md overflow-hidden
                 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
                 hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
               <img

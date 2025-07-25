@@ -3,15 +3,17 @@ import { FaFacebookF, FaTwitter, FaPinterestP, FaYoutube } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-600 font-Poppins">
+    <footer className="bg-gray-100 mt-0 md:mt-0 lg:mt-12 text-gray-600 font-Poppins">
       {/* Top Section */}
       <div className="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         
         {/* Woostify Section */}
         <div className="flex flex-col gap-6">
-          <h2 className="text-3xl font-bold text-gray-800 capitalize">albero</h2>
+          <h2 className="text-3xl font-bold text-gray-800 capitalize">flipkert</h2>
           <p className="text-base">
-            You can easily edit this paragraph to talk about your brand as well as your products to your potential customers.
+            At Flipkert, we bring you quality products and trusted service to make your shopping experience simple and reliable.
+
+
           </p>
           <div className="flex space-x-6 mt-4">
             <a href="#" className="text-gray-600 hover:text-gray-800 transition">
@@ -71,7 +73,7 @@ const Footer = () => {
 
       {/* Bottom Copyright */}
       <div className="border-t border-gray-300 mt-10 py-6 text-center text-gray-500 text-sm">
-        © {new Date().getFullYear()} albero. Privacy Policy. All rights reserved. Designed & developed by Woostify.
+        © {new Date().getFullYear()} flipkert. Privacy Policy. All rights reserved. Designed & developed by Woostify.
       </div>
     </footer>
   );

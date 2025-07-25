@@ -236,7 +236,7 @@ const Popular = () => {
     <div className="w-full mt-[12px]">
       {/* Header */}
       <div className="flex flex-col items-center gap-4 ">
-        <p className="text-[15px] md:text-[15px]  lg:text-[55px] mt-[0px] md:mt-[40px] lg:mt-[50px] font-Poppins font-medium underline underline-offset-2 md:underline-offset-2 lg:underline-offset-5 decoration-orange-600 decoration-1
+        <p className="text-[15px] md:text-[15px] text-gray-800 lg:text-[55px] mt-[0px] md:mt-[40px] lg:mt-[50px] font-Poppins font-medium underline underline-offset-2 md:underline-offset-2 lg:underline-offset-5 decoration-orange-600 decoration-1
          uppercase">
           Trending now</p>
         {/* <p className="font-Poppins font-semibold capitalize text-5xl">
@@ -249,7 +249,7 @@ const Popular = () => {
         {product.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col bg-white gap-[3px]  md:gap-8 lg:gap-8 capitalize p-4 rounded-lg shadow-lg h-[200px] lg:w-full md:h-[300px] lg:h-[470px] md:w-[200px]"
+            className="flex flex-col bg-red-000 gap-[3px]  md:gap-8 lg:gap-8 capitalize pt-2.5 px-2.5 pb-4 rounded-lg shadow-lg h-[200px] lg:w-full md:h-[300px] lg:h-[470px] md:w-[200px]"
           >
             {/* Image */}
             <div className="relative   overflow-hidden cursor-pointer h-[300px]">
@@ -266,27 +266,27 @@ const Popular = () => {
               )}
               <CiHeart
                 onClick={() => handleClickwishList(item._id)}
-                className="absolute top-4 right-4 text-5xl text-black bg-white p-2 rounded-full shadow-md cursor-pointer"
+                className="absolute top-0 right-0 lg:top-4 lg:right-4 text-4xl lg:text-5xl text-black bg-white p-1.5 lg:p-2 md:p-2 rounded-full shadow-2xl cursor-pointer"
               />
             </div>
 
             {/* Info */}
             <div className="flex flex-col  items-center justify-between flex-grow text-center">
-              <p className=" font-Poppins text-[12px] lg:text-lg md:text-[12px] font-semibold">{item.name}</p>
+              <p className=" font-Poppins text-[12px] lg:text-lg md:text-[12px]  text-gray-800 font-semibold">{item.name}</p>
               <div className="flex flex-col items-center gap-1 mt-[0px] lg:gap-2 md:gap-1 lg:mt-4 md:mt-1">
                 <div className="flex items-center gap-[.5px]  hover:text-blue-600">
                   <RiMoneyRupeeCircleLine  className=" mt-[.8px] md:mt-[0px] lg:mt-[0px] text-[14px] lg:text-lg md:text-[12px]" />
-                  <span className=" text-[14px] lg:text-lg md:text-[12px] font-semibold">
+                  <span className=" text-[14px] lg:text-lg md:text-[12px] text-gray-800 font-semibold">
                     {item.price.toFixed(2)}
                   </span>
                 </div>
 
                 <div
-                  className="flex flex-row items-center gap-[2px] lg:gap-2 md:gap-[2px]  hover:bg-neutral-200 border border-red-500 hover:border-black p-[4px] lg:p-2 md:p-2 rounded-md shadow-md cursor-pointer"
+                  className="flex flex-row items-center gap-[2px] lg:gap-2 md:gap-[2px]  hover:bg-neutral-200 border-2 text-gray-800 hover:border-black p-[4px] lg:p-2 md:p-2 rounded-md shadow-md cursor-pointer"
                   onClick={() => handleClick(item._id)}
                 >
                   <FiShoppingCart className=" text-[12px] lg:text-xl md:text-[10px] stroke-2  lg:stroke-2 md:stroke-3 " />
-                  <button className=" text-[10px] font-Poppins capitalize font-semibold lg:text-[18px] md:text-[10px]  lg:font-semibold md:font-bold text-black">
+                  <button className=" text-gray-800 text-[10px] font-Poppins capitalize font-semibold lg:text-[18px] md:text-[10px]  lg:font-semibold md:font-bold ">
                     Add To Cart
                   </button>
                 </div>
