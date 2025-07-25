@@ -157,6 +157,154 @@
 
 
 
+// import { BsCart2 } from "react-icons/bs";
+// import { RiMoneyRupeeCircleLine } from "react-icons/ri";
+// import { FiShoppingCart } from "react-icons/fi";
+// import { CiHeart } from "react-icons/ci";
+// import { useEffect, useState } from "react";
+// import { useNavigate } from "react-router";
+// import { toast } from "react-toastify";
+// import { useDispatch } from "react-redux";
+// import { getData } from "../ProductList"; // Ensure this uses apiClient internally
+// import { apiClient } from "../utils/api";
+
+// const Popular = () => {
+//   const dispatch = useDispatch();
+//   const [product, setProduct] = useState([]);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     fetchInfo();
+//   }, []);
+
+//   const fetchInfo = async () => {
+//     try {
+//       const response = await getData();
+//       if (response.data) {
+//         setProduct(response.data);
+//       }
+//     } catch (error) {
+//       console.error("Failed to fetch products:", error);
+//     }
+//   };
+
+//   const handleClickwishList = async (id) => {
+//     const user = localStorage.getItem("id");
+//     if (!user) {
+//       alert("Please login to add to wishlist.");
+//       navigate("/Login");
+//       return;
+//     }
+
+//     try {
+//       const res = await apiClient.post("/wish-list", {
+//         user,
+//         product: id,
+//         quantity: 1,
+//       });
+//       console.log("Wishlist Data:", res.data);
+//       toast.success("Product added to wishlist!");
+//     } catch (err) {
+//       console.error("Wishlist error:", err);
+//       toast.error("Failed to add to wishlist.");
+//     }
+//   };
+
+//   const handleClick = async (id) => {
+//     const user = localStorage.getItem("id");
+//     if (!user) {
+//       alert("Please login to add to cart.");
+//       navigate("/Login");
+//       return;
+//     }
+
+//     try {
+//       const res = await apiClient.post("/post-cart", {
+//         user,
+//         product: id,
+//         quantity: 1,
+//       });
+//       console.log("Cart Data:", res.data);
+//       toast.success("Product added to cart!");
+//     } catch (err) {
+//       console.error("Cart error:", err);
+//       toast.error("Failed to add to cart.");
+//     }
+//   };
+
+//   return (
+//     <div className="w-full mt-[12px]">
+//       {/* Header */}
+//       <div className="flex flex-col items-center gap-4 ">
+//         <p className="text-[15px] md:text-[15px] text-gray-800 lg:text-[55px] mt-[0px] md:mt-[40px] lg:mt-[50px] font-Poppins font-medium underline underline-offset-2 md:underline-offset-2 lg:underline-offset-5 decoration-orange-600 decoration-1
+//          uppercase">
+//           Trending now</p>
+//         {/* <p className="font-Poppins font-semibold capitalize text-5xl">
+//           Popular This Week
+//         </p> */}
+//       </div>
+ 
+//       {/* Product Grid */}
+//       <div className="grid grid-cols-2  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-[12px] md:gap-[16px] lg:gap-[62px] mt-[0px]  md:mt-[28px] lg:mt-[10px]  md:px-1 lg:px-6 w-[90%] mx-auto">
+//         {product.map((item, index) => (
+//           <div
+//             key={index}
+//             className="flex flex-col bg-red-000 gap-[3px]  md:gap-0 lg:gap-8 capitalize pt-2.5 px-2.5 pb-1.5 rounded-lg shadow-md h-[200px] lg:w-full md:h-[300px] lg:h-[470px] md:w-[200px]"
+//           >
+//             {/* Image */}
+//             <div className="relative   p-2 overflow-hidden cursor-pointer h-[300px]">
+//               <img
+//                 onClick={() => navigate(`/productdetiles/${item._id}`)}
+//                 src={item.image}
+//                 alt={`popular-${index}`}
+//                 className="h-full w-full object-cover rounded-md"
+//               />
+//               {item.discount && (
+//                 <div className="absolute top-4 left-4 bg-white text-black px-3 py-1 text-sm font-semibold rounded-full shadow-md">
+//                   5% OFF
+//                 </div>
+//               )}
+//               <CiHeart
+//                 onClick={() => handleClickwishList(item._id)}
+//                 className="absolute top-2.5 right-2.5 md:top-3 md:right-3 lg:top-4 lg:right-4 text-4xl lg:text-5xl text-black bg-white p-2  lg:p-2 md:p-2 rounded-full shadow-2xl cursor-pointer"
+//               />
+//             </div>
+
+//             {/* Info */}
+//             <div className="flex flex-col -mt-2  items-center justify-between flex-grow text-center">
+//               <p className=" font-Poppins text-[9px] lg:text-lg md:text-[10px]  text-gray-800 font-semibold">{item.name}</p>
+//               <div className="flex flex-col items-center gap-0 mt-[0px] lg:gap-2 md:gap-0 lg:mt-4 md:mt-0">
+//                 <div className="flex items-center gap-[.5px]  hover:text-blue-600">
+//                   <RiMoneyRupeeCircleLine  className=" mt-[.8px] md:mt-[0px] lg:mt-[0px] text-[9px] lg:text-lg md:text-[12px]" />
+//                   <span className=" text-[9px] lg:text-lg md:text-10px] text-gray-800 font-semibold">
+//                     {item.price.toFixed(2)}
+//                   </span>
+//                 </div>
+
+//                 <div
+//                   className="flex flex-row   items-center gap-[2px]  lg:gap-2 md:gap-[3px]  hover:bg-neutral-200 hover:border-black p-[4px] lg:p-2 md:p-2 rounded-md shadow-lg cursor-pointer"
+//                   onClick={() => handleClick(item._id)}
+//                 >
+//                   <FiShoppingCart className=" text-[9px] lg:text-xl md:text-[10px] stroke-2  lg:stroke-2 md:stroke-3 " />
+//                   <button className=" text-gray-800 text-center   font-Poppins capitalize font-semibold text-[9px] lg:text-[18px] md:text-[10px]  lg:font-semibold md:font-bold ">
+//                    <p className="text-center "> Add To Cart</p>
+//                   </button>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Popular;
+
+
+
+
+
 import { BsCart2 } from "react-icons/bs";
 import { RiMoneyRupeeCircleLine } from "react-icons/ri";
 import { FiShoppingCart } from "react-icons/fi";
@@ -165,12 +313,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { getData } from "../ProductList"; // Ensure this uses apiClient internally
+import { getData } from "../ProductList";
 import { apiClient } from "../utils/api";
 
-const Popular = () => {
+const Popular = ({ selectedCategory }) => {
   const dispatch = useDispatch();
   const [product, setProduct] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -182,11 +331,25 @@ const Popular = () => {
       const response = await getData();
       if (response.data) {
         setProduct(response.data);
+        setFilteredProducts(response.data); // default: show all
       }
     } catch (error) {
       console.error("Failed to fetch products:", error);
     }
   };
+
+  // Filter products when category changes
+  useEffect(() => {
+    if (!selectedCategory) {
+      setFilteredProducts(product);
+    } else {
+      const filtered = product.filter(
+        (item) =>
+          item.category?.toLowerCase() === selectedCategory.toLowerCase()
+      );
+      setFilteredProducts(filtered);
+    }
+  }, [selectedCategory, product]);
 
   const handleClickwishList = async (id) => {
     const user = localStorage.getItem("id");
@@ -202,7 +365,6 @@ const Popular = () => {
         product: id,
         quantity: 1,
       });
-      console.log("Wishlist Data:", res.data);
       toast.success("Product added to wishlist!");
     } catch (err) {
       console.error("Wishlist error:", err);
@@ -224,7 +386,6 @@ const Popular = () => {
         product: id,
         quantity: 1,
       });
-      console.log("Cart Data:", res.data);
       toast.success("Product added to cart!");
     } catch (err) {
       console.error("Cart error:", err);
@@ -235,24 +396,21 @@ const Popular = () => {
   return (
     <div className="w-full mt-[12px]">
       {/* Header */}
-      <div className="flex flex-col items-center gap-4 ">
-        <p className="text-[15px] md:text-[15px] text-gray-800 lg:text-[55px] mt-[0px] md:mt-[40px] lg:mt-[50px] font-Poppins font-medium underline underline-offset-2 md:underline-offset-2 lg:underline-offset-5 decoration-orange-600 decoration-1
-         uppercase">
-          Trending now</p>
-        {/* <p className="font-Poppins font-semibold capitalize text-5xl">
-          Popular This Week
-        </p> */}
+      <div className="flex flex-col items-center gap-4">
+        <p className="text-[15px] md:text-[15px] text-gray-800 lg:text-[55px] mt-[0px] md:mt-[40px] lg:mt-[50px] font-Poppins font-medium underline underline-offset-2 md:underline-offset-2 lg:underline-offset-5 decoration-orange-600 decoration-1 uppercase">
+          Trending now
+        </p>
       </div>
- 
+
       {/* Product Grid */}
-      <div className="grid grid-cols-2  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-[12px] md:gap-[16px] lg:gap-[62px] mt-[0px]  md:mt-[28px] lg:mt-[10px]  md:px-1 lg:px-6 w-[90%] mx-auto">
-        {product.map((item, index) => (
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[12px] md:gap-[16px] lg:gap-[62px] mt-[0px] md:mt-[28px] lg:mt-[10px] md:px-1 lg:px-6 w-[90%] mx-auto">
+        {filteredProducts.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col bg-red-000 gap-[3px]  md:gap-0 lg:gap-8 capitalize pt-2.5 px-2.5 pb-1.5 rounded-lg shadow-md h-[200px] lg:w-full md:h-[300px] lg:h-[470px] md:w-[200px]"
+            className="flex flex-col gap-[3px] md:gap-0 lg:gap-8 capitalize pt-2.5 px-2.5 pb-1.5 rounded-lg shadow-md h-[200px] lg:w-full md:h-[300px] lg:h-[470px] md:w-[200px]"
           >
             {/* Image */}
-            <div className="relative   p-2 overflow-hidden cursor-pointer h-[300px]">
+            <div className="relative p-2 overflow-hidden cursor-pointer h-[300px]">
               <img
                 onClick={() => navigate(`/productdetiles/${item._id}`)}
                 src={item.image}
@@ -266,28 +424,30 @@ const Popular = () => {
               )}
               <CiHeart
                 onClick={() => handleClickwishList(item._id)}
-                className="absolute top-2.5 right-2.5 md:top-3 md:right-3 lg:top-4 lg:right-4 text-4xl lg:text-5xl text-black bg-white p-2  lg:p-2 md:p-2 rounded-full shadow-2xl cursor-pointer"
+                className="absolute top-2.5 right-2.5 md:top-3 md:right-3 lg:top-4 lg:right-4 text-4xl lg:text-5xl text-black bg-white p-2 rounded-full shadow-2xl cursor-pointer"
               />
             </div>
 
             {/* Info */}
-            <div className="flex flex-col -mt-2  items-center justify-between flex-grow text-center">
-              <p className=" font-Poppins text-[9px] lg:text-lg md:text-[10px]  text-gray-800 font-semibold">{item.name}</p>
+            <div className="flex flex-col -mt-2 items-center justify-between flex-grow text-center">
+              <p className="font-Poppins text-[9px] lg:text-lg md:text-[10px] text-gray-800 font-semibold">
+                {item.name}
+              </p>
               <div className="flex flex-col items-center gap-0 mt-[0px] lg:gap-2 md:gap-0 lg:mt-4 md:mt-0">
-                <div className="flex items-center gap-[.5px]  hover:text-blue-600">
-                  <RiMoneyRupeeCircleLine  className=" mt-[.8px] md:mt-[0px] lg:mt-[0px] text-[9px] lg:text-lg md:text-[12px]" />
-                  <span className=" text-[9px] lg:text-lg md:text-10px] text-gray-800 font-semibold">
+                <div className="flex items-center gap-[.5px] hover:text-blue-600">
+                  <RiMoneyRupeeCircleLine className="mt-[.8px] md:mt-[0px] lg:mt-[0px] text-[9px] lg:text-lg md:text-[12px]" />
+                  <span className="text-[9px] lg:text-lg md:text-[10px] text-gray-800 font-semibold">
                     {item.price.toFixed(2)}
                   </span>
                 </div>
 
                 <div
-                  className="flex flex-row   items-center gap-[2px]  lg:gap-2 md:gap-[3px]  hover:bg-neutral-200 hover:border-black p-[4px] lg:p-2 md:p-2 rounded-md shadow-lg cursor-pointer"
+                  className="flex flex-row items-center gap-[2px] lg:gap-2 md:gap-[3px] hover:bg-neutral-200 hover:border-black p-[4px] lg:p-2 md:p-2 rounded-md shadow-lg cursor-pointer"
                   onClick={() => handleClick(item._id)}
                 >
-                  <FiShoppingCart className=" text-[9px] lg:text-xl md:text-[10px] stroke-2  lg:stroke-2 md:stroke-3 " />
-                  <button className=" text-gray-800 text-center   font-Poppins capitalize font-semibold text-[9px] lg:text-[18px] md:text-[10px]  lg:font-semibold md:font-bold ">
-                   <p className="text-center "> Add To Cart</p>
+                  <FiShoppingCart className="text-[9px] lg:text-xl md:text-[10px] stroke-2 lg:stroke-2 md:stroke-3" />
+                  <button className="text-gray-800 text-center font-Poppins capitalize font-semibold text-[9px] lg:text-[18px] md:text-[10px] lg:font-semibold md:font-bold">
+                    <p className="text-center">Add To Cart</p>
                   </button>
                 </div>
               </div>
@@ -300,4 +460,5 @@ const Popular = () => {
 };
 
 export default Popular;
+
 

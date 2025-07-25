@@ -115,6 +115,73 @@
 
 // export default Categories;import React from "react";
 
+// import shoes from "../assets/shoes.png";
+// import airpod from "../assets/airpod.png";
+// import hedset from "../assets/hedset.png";
+// import watch from "../assets/watch.png";
+// import powerbank from "../assets/powerbank.png";
+// import smartwatch from "../assets/smartwatch.png";
+
+// const categoryData = [
+//   { name: "Watch", img: watch },
+//   { name: "Headset", img: hedset },
+//   { name: "AirPods", img: airpod },
+//   { name: "Shoes", img: shoes },
+//   { name: "Smartwatch", img: smartwatch },
+//   { name: "Powerbank", img: powerbank },
+//   { name: "Smartwatch", img: smartwatch },
+    
+// ];
+
+// const Categories = () => {
+//   return (
+//     <div className="w-full max-w-7xl mx-auto  bg-white font-Poppins flex flex-col items-center space-y-6 px-4">
+//       {/* Header */}
+//       <div className="text-center space-y-1">
+//         <p className="text-xs   mt-0 md:mt-0 lg:mt-20 text-gray-500 uppercase tracking-widest">
+//           passion for fashion
+//         </p>
+//         <h2 className="text-2xl sm:text-3xl  mt-0 md:mt-0 lg:mt-[14px] font-bold text-gray-800">
+//           Shop By Categories
+//         </h2>
+//       </div>
+
+//       {/* Categories */}
+//       <div className="flex overflow-x-auto overflow-y-hidden space-x-6 w-full no-scrollbar">
+//         {categoryData.map((item, index) => (
+//           <div key={index} className="flex flex-col items-center text-center shrink-0">
+//             <div className="bg-[#fef4f4] border-4 text-gray-800 rounded-full flex items-center justify-center shadow-md overflow-hidden
+//                 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
+//                 hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
+//               <img
+//                 src={item.img}
+//                 alt={item.name}
+//                 className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16"
+//               />
+//             </div>
+//             <span className="text-xs sm:text-sm mt-2 text-gray-800 font-medium">
+//               {item.name}
+//             </span>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Categories;
+
+
+
+
+
+
+
+
+
+
+
+import React from "react";
 import shoes from "../assets/shoes.png";
 import airpod from "../assets/airpod.png";
 import hedset from "../assets/hedset.png";
@@ -123,36 +190,40 @@ import powerbank from "../assets/powerbank.png";
 import smartwatch from "../assets/smartwatch.png";
 
 const categoryData = [
-  { name: "Watch", img: watch },
+  { name: "Watchs", img: watch },
   { name: "Headset", img: hedset },
   { name: "AirPods", img: airpod },
   { name: "Shoes", img: shoes },
   { name: "Smartwatch", img: smartwatch },
   { name: "Powerbank", img: powerbank },
-  { name: "Smartwatch", img: smartwatch },
-    
 ];
 
-const Categories = () => {
+const Categories = ({ onCategoryClick }) => {
   return (
-    <div className="w-full max-w-7xl mx-auto  bg-white font-Poppins flex flex-col items-center space-y-6 px-4">
+    <div className="w-full max-w-7xl mx-auto bg-white font-Poppins flex flex-col items-center space-y-6 px-4">
       {/* Header */}
       <div className="text-center space-y-1">
-        <p className="text-xs   mt-0 md:mt-0 lg:mt-20 text-gray-500 uppercase tracking-widest">
+        <p className="text-xs mt-0 md:mt-0 lg:mt-20 text-gray-500 uppercase tracking-widest">
           passion for fashion
         </p>
-        <h2 className="text-2xl sm:text-3xl  mt-0 md:mt-0 lg:mt-[14px] font-bold text-gray-800">
+        <h2 className="text-2xl sm:text-3xl mt-0 md:mt-0 lg:mt-[14px] font-bold text-gray-800">
           Shop By Categories
         </h2>
       </div>
 
-      {/* Categories */}
+      {/* Categories List */}
       <div className="flex overflow-x-auto overflow-y-hidden space-x-6 w-full no-scrollbar">
         {categoryData.map((item, index) => (
-          <div key={index} className="flex flex-col items-center text-center shrink-0">
-            <div className="bg-[#fef4f4] border-4 text-gray-800 rounded-full flex items-center justify-center shadow-md overflow-hidden
+          <div
+            key={index}
+            onClick={() => onCategoryClick(item.name)} // 👉 Click to filter
+            className="flex flex-col items-center text-center shrink-0 cursor-pointer"
+          >
+            <div
+              className="bg-[#fef4f4] border-4 text-gray-800 rounded-full flex items-center justify-center shadow-md overflow-hidden
                 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
-                hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
+                hover:scale-105 transition-transform duration-300 ease-in-out"
+            >
               <img
                 src={item.img}
                 alt={item.name}
@@ -170,6 +241,7 @@ const Categories = () => {
 };
 
 export default Categories;
+
 
 
 
