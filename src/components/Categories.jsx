@@ -139,10 +139,10 @@ const Categories = () => {
     <div className="w-full max-w-7xl mx-auto  bg-white font-Poppins flex flex-col items-center space-y-6 px-4">
       {/* Header */}
       <div className="text-center space-y-1">
-        <p className="text-xs text-gray-500 uppercase tracking-widest">
+        <p className="text-xs   mt-0 md:mt-0 lg:mt-20 text-gray-500 uppercase tracking-widest">
           passion for fashion
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+        <h2 className="text-2xl sm:text-3xl  mt-0 md:mt-0 lg:mt-[14px] font-bold text-gray-800">
           Shop By Categories
         </h2>
       </div>

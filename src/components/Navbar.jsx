@@ -150,22 +150,22 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <Link to="/" className="hover:text-blue-600  text-[17px] font-medium  transition">
+        <Link to="/" className="hover:text-blue-600  text-[17px] md:text-[17px] lg:text-[18px] font-medium  transition">
           Home
         </Link>
       </li>
       <li>
-        <Link to="/shop" className="hover:text-blue-600 text-[17px] font-medium transition">
+        <Link to="/shop" className="hover:text-blue-600 text-[17px] md:text-[17px] lg:text-[18px] font-medium transition">
           Products
         </Link>
       </li>
       <li>
-        <Link to="/cart" className="hover:text-blue-600  text-[17px] font-medium transition">
+        <Link to="/cart" className="hover:text-blue-600  text-[17px]  md:text-[17px] lg:text-[18px] font-medium transition">
           Cart
         </Link>
       </li>
       <li>
-        <Link to="/contact" className="hover:text-blue-600 text-[18px]  font-medium transition">
+        <Link to="/contact" className="hover:text-blue-600 text-[17px] md:text-[17px] lg:text-[18px]  font-medium transition">
           Contact
         </Link>
       </li>
@@ -173,12 +173,12 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-white shadow-md px-4 py-3 sticky top-0 z-50 border-b h-14 sm:h-22 ">
+    <nav className="bg-white  shadow-md px-4 py-3 sticky mt-0 md:mt-0 lg:mt-2 z-50 border-b h-14 sm:h-22 ">
       <div className="max-w-7xl mx-auto  flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
 
- {/* Mobile menu toggle */}
+ {/* Mobile menu toggle */} 
           <button
             className="md:hidden pt-1"
             onClick={toggleMobileMenu}
@@ -194,13 +194,13 @@ const Navbar = () => {
     
           <Link to="/">
             {/* <img src={logo}  alt="Logo" className="h-12 w-auto sm:block hidden" /> */}
-            <img src={logowithtext2}  alt="Logo" className="h-[26px] sm:h-[52px]  pl-2 mt-2 sm:pl-0 w-auto" />
+            <img src={logowithtext2}  alt="Logo" className="h-[26px] sm:h-[52px] lg:h-[40px]  pl-2 mt-2 sm:pl-0 w-auto" />
 
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex gap-14  text-gray-700">
+        <ul className="hidden md:flex gap-6 md:gap-8  text-gray-700">
           {navLinks}
         </ul>
 
@@ -208,15 +208,15 @@ const Navbar = () => {
         <div className="flex items-center gap-5 text-gray-700">
           <Link to="/search">
             <BiSearch
-              size={40}
-              className="hover:text-blue-600 sm:block hidden transition"
+              
+              className="hover:text-blue-600 sm:block text-[34px] hidden transition"
             />
           </Link>
 
           <Link to="/wishlist" className="relative">
             <FiHeart
-              size={40}
-              className="hover:text-pink-600 sm:block hidden transition"
+
+              className="hover:text-pink-600 sm:block text-[30px] md:text-[30px] lg:text-[34px] hidden transition"
             />
             {wishListItems.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-green-600  sm:block hidden text-white rounded-full text-xs w-5 h-5 :flex  items-center justify-center">
@@ -228,14 +228,14 @@ const Navbar = () => {
           <Link to="/login">
             <FiUser
                 
-              className="hover:text-blue-600 transition text-xl sm:text-3xl"
+              className="hover:text-blue-600 transition text-[30px] md:text-[30px] lg:text-[34px]  "
             />
           </Link>
 
           <Link to="/shoppingcart" className="relative">
-            <FiShoppingCart  className="hover:text-green-600 transition" /> 
+            <FiShoppingCart  className="hover:text-green-600 text-[28px] md:text-[30px] lg:text-[34px] transition" /> 
             {cartItems.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2  bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
                 {cartItems.length}
               </span>
             )}

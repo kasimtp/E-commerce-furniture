@@ -157,7 +157,9 @@
 
 
 
-import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
+import { BsCart2 } from "react-icons/bs";
+import { RiMoneyRupeeCircleLine } from "react-icons/ri";
+import { FiShoppingCart } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
@@ -231,24 +233,26 @@ const Popular = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full mt-[12px]">
       {/* Header */}
       <div className="flex flex-col items-center gap-4 ">
-        <p className="text-[15px] uppercase">Trending now</p>
+        <p className="text-[15px] md:text-[15px]  lg:text-[55px] mt-[0px] md:mt-[40px] lg:mt-[50px] font-Poppins font-medium underline underline-offset-2 md:underline-offset-2 lg:underline-offset-5 decoration-orange-600 decoration-1
+         uppercase">
+          Trending now</p>
         {/* <p className="font-Poppins font-semibold capitalize text-5xl">
           Popular This Week
         </p> */}
       </div>
  
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-24 px-6 w-[90%] mx-auto">
+      <div className="grid grid-cols-2  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-[12px] md:gap-[16px] lg:gap-[62px] mt-[0px]  md:mt-[28px] lg:mt-[10px]  md:px-1 lg:px-6 w-[90%] mx-auto">
         {product.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col gap-4 p-4 rounded-lg shadow-lg w-full h-[550px]"
+            className="flex flex-col bg-white gap-[3px]  md:gap-8 lg:gap-8 capitalize p-4 rounded-lg shadow-lg h-[200px] lg:w-full md:h-[300px] lg:h-[470px] md:w-[200px]"
           >
             {/* Image */}
-            <div className="relative overflow-hidden cursor-pointer h-[300px]">
+            <div className="relative   overflow-hidden cursor-pointer h-[300px]">
               <img
                 onClick={() => navigate(`/productdetiles/${item._id}`)}
                 src={item.image}
@@ -267,22 +271,22 @@ const Popular = () => {
             </div>
 
             {/* Info */}
-            <div className="flex flex-col items-center justify-between flex-grow text-center">
-              <p className="text-lg font-semibold">{item.name}</p>
-              <div className="flex flex-col items-center gap-2 mt-4">
-                <div className="flex items-center gap-1 hover:text-blue-600">
-                  <BsCurrencyDollar className="text-xl" />
-                  <span className="text-lg font-semibold">
+            <div className="flex flex-col  items-center justify-between flex-grow text-center">
+              <p className=" font-Poppins text-[12px] lg:text-lg md:text-[12px] font-semibold">{item.name}</p>
+              <div className="flex flex-col items-center gap-1 mt-[0px] lg:gap-2 md:gap-1 lg:mt-4 md:mt-1">
+                <div className="flex items-center gap-[.5px]  hover:text-blue-600">
+                  <RiMoneyRupeeCircleLine  className=" mt-[.8px] md:mt-[0px] lg:mt-[0px] text-[14px] lg:text-lg md:text-[12px]" />
+                  <span className=" text-[14px] lg:text-lg md:text-[12px] font-semibold">
                     {item.price.toFixed(2)}
                   </span>
                 </div>
 
                 <div
-                  className="flex flex-row items-center gap-2 hover:bg-neutral-200 border border-amber-100 hover:border-black bg-white p-2 rounded-md shadow-md cursor-pointer"
+                  className="flex flex-row items-center gap-[2px] lg:gap-2 md:gap-[2px]  hover:bg-neutral-200 border border-red-500 hover:border-black p-[4px] lg:p-2 md:p-2 rounded-md shadow-md cursor-pointer"
                   onClick={() => handleClick(item._id)}
                 >
-                  <BsCart2 className="text-xl text-black" />
-                  <button className="text-sm font-semibold text-black">
+                  <FiShoppingCart className=" text-[12px] lg:text-xl md:text-[10px] stroke-2  lg:stroke-2 md:stroke-3 " />
+                  <button className=" text-[10px] font-Poppins capitalize font-semibold lg:text-[18px] md:text-[10px]  lg:font-semibold md:font-bold text-black">
                     Add To Cart
                   </button>
                 </div>

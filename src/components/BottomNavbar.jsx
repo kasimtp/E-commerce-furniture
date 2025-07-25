@@ -36,11 +36,11 @@ const BottomNavbar = () => {
         <Link to="/wishlist" className="flex flex-col items-center cursor-pointer hover:bg-neutral-400 justify-center">
           <FiHeart size={24} />
             {wishListItems.length > 0 && (
-              <span className="absolute  bg-gray-500 sm:block hidden text-white rounded-full text-xs w-5 h-5 :flex  items-center justify-center">
+              <span className="absolute -top-1 -right-2 bg-green-600 sm:block hidden text-white rounded-full text-xs w-8 h-5 :flex  items-center justify-center">
                  {wishListItems.length} 
               </span>
             )}
-          <span className="mt-1">WISHLIST</span>
+          <span className="mt-1 bg-">WISHLIST</span>
         </Link>
 
         <Link to="/shop" className="flex flex-col cursor-pointer hover:bg-neutral-400 items-center justify-center">
@@ -56,7 +56,7 @@ const BottomNavbar = () => {
         <Link to="/shoppingcart" className="flex flex-col items-center cursor-pointer hover:bg-neutral-400 justify-center">
           <FiShoppingCart size={24} />
             {cartItems.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-1 right-2 bg-green-600 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
                    {cartItems.length}
               </span>
             )}
