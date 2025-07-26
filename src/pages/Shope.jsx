@@ -749,7 +749,7 @@ const Shope = () => {
   useEffect(() => {
     const fetchInfo = async () => {
       try {
-        const response = await apiClient.get("/get-product");
+        const response = await apiClient.get("/get-products");
         if (response.data) setProduct(response.data);
       } catch (error) {
         toast.error("Product loading failed");
@@ -758,6 +758,9 @@ const Shope = () => {
     };
     fetchInfo();
   }, []);
+
+  // console.log(setProduct);
+  
 
 
 

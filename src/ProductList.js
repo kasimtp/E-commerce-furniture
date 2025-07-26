@@ -3,7 +3,7 @@
 
 
  export const getData = ()=>{
-    return apiClient.get("/get-products")
+    return apiClient.get("/get-product")
 
  }
 
