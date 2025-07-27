@@ -268,10 +268,7 @@ const ProductDs = () => {
         <div className="mt-4">
           <h4 className="font-semibold">Description</h4>
           <ul className="text-gray-600 text-sm space-y-1 mt-1">
-            <li>Size: 29.4" H × 35.8" W × 32.3" D</li>
-            <li>Seat Height: 14.5"</li>
-            <li>Materials: Plywood, Oak Veneer, Italian Leather</li>
-            <li>Weight: 40 lbs</li>
+            {product.description}
           </ul>
         </div>
 
