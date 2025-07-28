@@ -384,18 +384,18 @@ const ProductDs = () => {
   if (!product) return <p className="text-center mt-10">Loading......!</p>;
 
   return (
-    <div className="flex flex-col md:flex-row gap-2 items-center px-6 justify-center  sm:p-6 md:p-10 max-w-7xl mx-auto">
+    <div className="flex flex-col pb-18 md:pb-00 lg:pb-00 md:flex-row gap-2 items-center  justify-center  sm:p-6 md:p-10 max-w-7xl mx-auto">
       {/* Product Image */}
       <div className="w-full bg-amber-000 bg-red-000 md:w-1/2  lg:w-1/3 flex justify-center">
         <img
           src={product?.image}
           alt={product?.name}
-          className="rounded-lg   p-2 w-[190px] h-[230px]  sm:h-[400px] md:h-[500px] object-cover"
+          className="rounded-lg   p-2  w-full  h-auto  sm:h-[400px] md:h-[500px] object-cover"
         />
       </div>
 
       {/* Product Info */}
-      <div className="w-full md:w-1/2 space-y-1">
+      <div className="w-full px-6 md:w-1/2  space-y-1">
 
        <div className="mt-">
          <p className="text-xs sm:text-sm text-gray-400 uppercase">
@@ -453,7 +453,7 @@ const ProductDs = () => {
         </p>
 
         {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 pt-2">
+        <div className="flex flex-row  sm:flex-row gap-4 pt-2">
           <button
             onClick={() => handleAddToCart(product._id)}
             className="bg-blue-700 cursor-pointer hover:bg-blue-800 w-full sm:w-40 h-12 font-semibold text-white rounded-md"
@@ -468,6 +468,8 @@ const ProductDs = () => {
             Buy Now
           </button>
         </div>
+
+        
       </div>
     </div>
   );
