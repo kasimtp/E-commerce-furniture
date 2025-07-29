@@ -115,8 +115,8 @@ import { FiHeart, FiShoppingCart, FiUser } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 
 import { AppContext } from "../context/AppContext";
-import logo from "../assets/logo2.jpg";
-import logowithtext2 from "../assets/logowithtext2.png"
+// import logo from "../assets/logo2.jpg";
+import logoblue from "../assets/logoblue.png"
 import { apiClient } from "../utils/api.js";
 
 const Navbar = () => {
@@ -148,24 +148,24 @@ const Navbar = () => {
   }, []);
 
   const navLinks = (
-    <>
+    < >
       <li>
-        <Link to="/" className="hover:text-blue-600  text-[17px] md:text-[17px] lg:text-[18px] font-medium  transition">
+        <Link to="/" className="hover:text-blue-500  text-[16px] md:text-[17px] lg:text-[18px] font-medium font-serif text-blue-900   transition">
           Home
         </Link>
       </li>
       <li>
-        <Link to="/shop" className="hover:text-blue-600 text-[17px] md:text-[17px] lg:text-[18px] font-medium transition">
+        <Link to="/shop" className="hover:text-blue-500 text-[17px] md:text-[17px] lg:text-[18px] font-medium font-serif text-blue-900 transition">
           Products
         </Link>
       </li>
       <li>
-        <Link to="/cart" className="hover:text-blue-600  text-[17px]  md:text-[17px] lg:text-[18px] font-medium transition">
+        <Link to="/cart" className="hover:text-blue-700  text-[17px]  md:text-[17px] lg:text-[19px] font-medium font-serif text-blue-900 transition">
           Cart
         </Link>
       </li>
       <li>
-        <Link to="/contact" className="hover:text-blue-600 text-[17px] md:text-[17px] lg:text-[18px]  font-medium transition">
+        <Link to="/contact" className="hover:text-blue-500 text-[17px] md:text-[17px] lg:text-[18px]  text-blue-900 font-medium font-serif transition">
           Contact
         </Link>
       </li>
@@ -173,9 +173,9 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-white  shadow-md px-4 py-3 sticky mt-0 md:mt-0 lg:mt-2 z-50 border-b h-14 sm:h-22 ">
+    <nav className="bg-red-000  shadow-md px-4 py-0 place-content-center sticky   md:mt-0 lg:mt-0 text-center z-50 border-b h-14 lg:h-28 sm:h-22 ">
       <div className="max-w-7xl mx-auto  flex items-center justify-between">
-        {/* Logo */}
+       
         <div className="flex items-center">
 
  {/* Mobile menu toggle */} 
@@ -185,41 +185,41 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <MdClose size={26} />
+              <MdClose size={30} className="text-[#0052cc] stroke-2" />
             ) : (
-              <FiMenu size={27} />  
+              <FiMenu size={30}  className="text-[#0052cc] stroke-2"/>  
             )}
           </button>
 
-    
+              {/* Logo */}
           <Link to="/">
             {/* <img src={logo}  alt="Logo" className="h-12 w-auto sm:block hidden" /> */}
-            <img src={logowithtext2}  alt="Logo" className="h-[26px] sm:h-[52px] lg:h-[40px]  pl-2 mt-2 sm:pl-0 w-auto" />
+            <img src={logoblue}  alt="Logo" className="h-[30px] mt-0 md:mt-0 lg:mt-0  sm:h-[52px] lg:h-[55px]  pl-2  sm:pl-0 w-auto" />
 
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex gap-6 md:gap-8  text-gray-700">
+        <ul className="hidden md:flex gap-6 md:gap-8 text-blue-900 ">
           {navLinks}
         </ul>
 
         {/* Icons */}
-        <div className="flex items-center gap-5 text-gray-700">
+        <div className="flex items-center bg-red-000 gap-2 md:gap-8 lg:gap-8 text-gray-700">
           <Link to="/search">
             <BiSearch
               
-              className="hover:text-blue-600 sm:block text-[34px] hidden transition"
+              className="hover:text-blue-500 text-blue-900 sm:block text-[38px] hidden transition"
             />
           </Link>
 
           <Link to="/wishlist" className="relative">
             <FiHeart
 
-              className="hover:text-pink-600 sm:block text-[30px] md:text-[30px] lg:text-[34px] hidden transition"
+              className="hover:text-blue-500 text-blue-900 sm:block text-[30px] md:text-[30px] lg:text-[38px] hidden transition"
             />
             {wishListItems.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-green-600  sm:block hidden text-white rounded-full text-xs w-5 h-5 :flex  items-center justify-center">
+              <span className="absolute -top-2 -right-2  bg-green-600  sm:block hidden text-white rounded-full text-xs w-5 h-5 :flex  items-center justify-center">
                 {wishListItems.length}
               </span>
             )}
@@ -228,14 +228,14 @@ const Navbar = () => {
           <Link to="/login">
             <FiUser
                 
-              className="hover:text-blue-600 transition text-[30px] md:text-[30px] lg:text-[34px]  "
+              className="hover:text-blue-900 text-[#0052cc]  md:text-blue-900 lg:text-blue-900 transition text-[30px] md:text-[30px] lg:text-[38px]  "
             />
           </Link>
 
           <Link to="/shoppingcart" className="relative">
-            <FiShoppingCart  className="hover:text-green-600 text-[28px] md:text-[30px] lg:text-[34px] transition" /> 
+            <FiShoppingCart  className="hover:text-blue-500 text-[#0052cc]  md:text-blue-900 lg:text-blue-900 text-[26px] stroke-2.5  md:text-[30px] lg:text-[38px] transition" /> 
             {cartItems.length > 0 && (
-              <span className="absolute -top-2 -right-2  bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2  text-white bg-[#0052cc]  rounded-full border border-whitw text-xs w-5 h-5 flex items-center justify-center">
                 {cartItems.length}
               </span>
             )}
