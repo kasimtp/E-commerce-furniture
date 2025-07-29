@@ -180,21 +180,21 @@ const Navbar = () => {
 
  {/* Mobile menu toggle */} 
           <button
-            className="md:hidden pt-1"
+            className="md:hidden "
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <MdClose size={30} className="text-[#0052cc] stroke-2" />
+              <MdClose  className="text-[#0052cc] text-[30px] stroke-2" />
             ) : (
-              <FiMenu size={30}  className="text-[#0052cc] stroke-2"/>  
+              <FiMenu  className="text-[#0052cc] text-[30px] stroke-2"/>  
             )}
           </button>
 
               {/* Logo */}
           <Link to="/">
             {/* <img src={logo}  alt="Logo" className="h-12 w-auto sm:block hidden" /> */}
-            <img src={logoblue}  alt="Logo" className="h-[30px] mt-0 md:mt-0 lg:mt-0  sm:h-[52px] lg:h-[55px]  pl-2  sm:pl-0 w-auto" />
+            <img src={logoblue}  alt="Logo" className="h-[26px]  md:h-[28px] mt-0 md:mt-0 lg:mt-0  sm:h-[52px] lg:h-[55px]  md:pl-5 pl-1 lg:pl-2  sm:pl-0 w-auto" />
 
           </Link>
         </div>
