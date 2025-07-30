@@ -102,11 +102,6 @@
 
 // export default Navbar;
 
-
-
-
-
-
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
@@ -116,7 +111,7 @@ import { FiMenu } from "react-icons/fi";
 
 import { AppContext } from "../context/AppContext";
 // import logo from "../assets/logo2.jpg";
-import logoblue from "../assets/logoblue.png"
+import logoblue from "../assets/logoblue.png";
 import { apiClient } from "../utils/api.js";
 
 const Navbar = () => {
@@ -148,24 +143,36 @@ const Navbar = () => {
   }, []);
 
   const navLinks = (
-    < >
+    <>
       <li>
-        <Link to="/" className="hover:text-blue-500  text-[16px] md:text-[17px] lg:text-[18px] font-medium font-serif text-blue-900   transition">
+        <Link
+          to="/"
+          className="hover:text-blue-500  text-[16px] md:text-[17px] lg:text-[18px] font-medium font-serif text-blue-900   transition"
+        >
           Home
         </Link>
       </li>
       <li>
-        <Link to="/shop" className="hover:text-blue-500 text-[17px] md:text-[17px] lg:text-[18px] font-medium font-serif text-blue-900 transition">
+        <Link
+          to="/shop"
+          className="hover:text-blue-500 text-[17px] md:text-[17px] lg:text-[18px] font-medium font-serif text-blue-900 transition"
+        >
           Products
         </Link>
       </li>
       <li>
-        <Link to="/cart" className="hover:text-blue-700  text-[17px]  md:text-[17px] lg:text-[19px] font-medium font-serif text-blue-900 transition">
+        <Link
+          to="/cart"
+          className="hover:text-blue-700  text-[17px]  md:text-[17px] lg:text-[19px] font-medium font-serif text-blue-900 transition"
+        >
           Cart
         </Link>
       </li>
       <li>
-        <Link to="/contact" className="hover:text-blue-500 text-[17px] md:text-[17px] lg:text-[18px]  text-blue-900 font-medium font-serif transition">
+        <Link
+          to="/contact"
+          className="hover:text-blue-500 text-[17px] md:text-[17px] lg:text-[18px]  text-blue-900 font-medium font-serif transition"
+        >
           Contact
         </Link>
       </li>
@@ -173,30 +180,33 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-red-000  shadow-md px-4 py-0 place-content-center sticky   md:mt-0 lg:mt-0 text-center z-50 border-b h-14 lg:h-28 sm:h-22 ">
+    <nav className="bg-red-000  shadow-md px-4
+     py-0 place-content-center sticky md:mt-0 lg:mt-0 text-center z-50 border-b-2 border-blue-600 h-14 lg:h-28 sm:h-22 ">
       <div className="max-w-7xl mx-auto  flex items-center justify-between">
-       
         <div className="flex items-center">
-
- {/* Mobile menu toggle */} 
+          {/* Mobile menu toggle */}
           <button
             className="md:hidden "
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <MdClose  className="text-[#0052cc] text-[30px] stroke-2" />
+              <MdClose className="text-[#0052cc] text-[30px] stroke-2" />
             ) : (
-              <FiMenu  className="text-[#0052cc] text-[30px] stroke-2"/>  
+              <FiMenu className="text-[#0052cc] text-[33px] stroke-2" />
             )}
           </button>
 
-              {/* Logo */}
-          <Link to="/">
-            {/* <img src={logo}  alt="Logo" className="h-12 w-auto sm:block hidden" /> */}
-            <img src={logoblue}  alt="Logo" className="h-[26px]  md:h-[28px] mt-0 md:mt-0 lg:mt-0  sm:h-[52px] lg:h-[55px]  md:pl-5 pl-1 lg:pl-2  sm:pl-0 w-auto" />
-
-          </Link>
+          {/* Logo */}
+          {!isMobileMenuOpen && (
+            <Link to="/">
+              <img
+                src={logoblue}
+                alt="Logo"
+                className="h-[25px] pl-3  md:h-[28px] mt-0 md:mt-0 lg:mt-0  sm:h-[52px] lg:h-[55px]  md:pl-5  lg:pl-2  sm:pl-0 w-auto"
+              />
+            </Link>
+          )}
         </div>
 
         {/* Desktop Navigation */}
@@ -205,19 +215,14 @@ const Navbar = () => {
         </ul>
 
         {/* Icons */}
-        <div className="flex items-center bg-red-000 gap-2 md:gap-8 lg:gap-8 text-gray-700">
+        
+        <div className="flex items-center bg-red-00 gap-3 pr-2 md:pr-0 lg:pr-0 md:gap-8 lg:gap-8 text-gray-700">
           <Link to="/search">
-            <BiSearch
-              
-              className="hover:text-blue-500 text-blue-900 sm:block text-[38px] hidden transition"
-            />
+            <BiSearch className="hover:text-blue-500 text-blue-900 sm:block text-[38px] hidden transition" />
           </Link>
 
           <Link to="/wishlist" className="relative">
-            <FiHeart
-
-              className="hover:text-blue-500 text-blue-900 sm:block text-[30px] md:text-[30px] lg:text-[38px] hidden transition"
-            />
+            <FiHeart className="hover:text-blue-500 text-blue-900 sm:block text-[30px] md:text-[30px] lg:text-[38px] hidden transition" />
             {wishListItems.length > 0 && (
               <span className="absolute -top-2 -right-2  bg-green-600  sm:block hidden text-white rounded-full text-xs w-5 h-5 :flex  items-center justify-center">
                 {wishListItems.length}
@@ -225,46 +230,31 @@ const Navbar = () => {
             )}
           </Link>
 
-          <Link to="/login">
-            <FiUser
-                
-              className="hover:text-blue-900 text-[#0052cc]  md:text-blue-900 lg:text-blue-900 transition text-[30px] md:text-[30px] lg:text-[38px]  "
-            />
-          </Link>
 
-          <Link to="/shoppingcart" className="relative">
-            <FiShoppingCart  className="hover:text-blue-500 text-[#0052cc]  md:text-blue-900 lg:text-blue-900 text-[26px] stroke-2.5  md:text-[30px] lg:text-[38px] transition" /> 
+
+
+       {!isMobileMenuOpen && (
+          <Link to="/login">
+            <FiUser className="hover:text-blue-900 text-[#0052cc]  md:text-blue-900 lg:text-blue-900 transition text-[30px] md:text-[30px] lg:text-[38px]  " />
+          </Link>
+       )}
+
+
+         {!isMobileMenuOpen && ( <Link to="/shoppingcart" className="relative">
+            <FiShoppingCart className="hover:text-blue-500 text-[#0052cc] md:text-blue-900 lg:text-blue-900 text-[26px] stroke-2.5  md:text-[30px] lg:text-[38px] transition" />
             {cartItems.length > 0 && (
-              <span className="absolute -top-2 -right-2  text-white bg-[#0052cc]  rounded-full border border-whitw text-xs w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2  text-white bg-[#0052cc]  rounded-full border border-white text-xs w-5 h-5 flex items-center justify-center">
                 {cartItems.length}
               </span>
             )}
           </Link>
-
-          {/* Auth button - Desktop */}
-          {/* {token ? (
-            <button
-              onClick={logout}
-              className="hidden md:block px-4 py-1.5 text-sm bg-gray-100 text-gray-800 rounded-md hover:bg-gray-200 transition"
-            >
-              Logout
-            </button>
-          ) : (
-            <Link
-              to="/register"
-              className="hidden md:block px-4 py-1.5 text-sm bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
-            >
-              Register / Login
-            </Link>
-          )} */}
-
-         
+          )}
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden mt-3 bg-white px-4 py-4 border-t border-gray-200">
+        <div className="md:hidden  w-screen px-4 text-left pt-0  h-screen  bg-white  py-4 mt-2  border-t border-gray-200">
           <ul className="flex flex-col gap-4 text-base font-medium text-gray-700">
             {navLinks}
           </ul>
@@ -290,11 +280,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-
-
-
 
 // import React, { useState, useEffect, useContext } from "react";
 // import { Link } from "react-router-dom";
@@ -431,10 +416,3 @@ export default Navbar;
 // };
 
 // export default Navbar;
-
-
-
-
-
-
-

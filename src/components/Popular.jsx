@@ -479,6 +479,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { getData } from "../ProductList";
 import { apiClient } from "../utils/api";
+import { MdCurrencyRupee } from "react-icons/md";
 
 const Popular = ({ selectedCategory }) => {
   const dispatch = useDispatch();
@@ -566,19 +567,19 @@ const Popular = ({ selectedCategory }) => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mt-6 w-[92%] mx-auto">
+      <div className="grid grid-cols-2  sm:grid-cols-2 md:grid-cols-3   lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mt-6 w-[92%] mx-auto">
         {filteredProducts.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col gap-2 md:gap-3 lg:gap-5 p-3 rounded-lg shadow hover:shadow-xl transition-shadow duration-300"
+            className="flex flex-col  bg-gray-000 gap-2 md:gap-3 lg:gap-5 p-3 border-0 border-blue-000  md:rounded-4xl lg:rounded-4xl   shadow-gray-000 hover:shadow-xl transition-shadow hover:shadow-gray-200   duration-300"
           >
             {/* Image */}
-            <div className="relative bg-amber-000 rounded-md overflow-hidden h-36 sm:h-44 md:h-52 lg:h-64 cursor-pointer">
+            <div className="relative bg-gray-100 rounded-md overflow-hidden h-36 sm:h-44 md:h-52 lg:h-64 cursor-pointer">
               <img
                 onClick={() => navigate(`/productdetiles/${item._id}`)}
                 src={item.image}
                 alt={`popular-${index}`}
-                 className="w-full h-full object-contain transition-transform hover:scale-105 duration-300"
+                 className="w-full h-full p-2 object-contain transition-transform hover:scale-105 duration-300"
               />
               {item.discount && (
                 <div className="absolute top-2 left-2 bg-white text-black px-2 py-0.5 text-xs font-semibold rounded-full shadow">
@@ -587,28 +588,28 @@ const Popular = ({ selectedCategory }) => {
               )}
               <CiHeart
                 onClick={() => handleClickwishList(item._id)}
-                className="absolute top-2 right-2 text-xl md:text-2xl bg-white p-1 rounded-full shadow cursor-pointer"
+                className="absolute top-2 right-2 text-xl md:text-2xl lg:text-[54px]  bg-ehite text-blue-600 p-1 rounded-full shadow cursor-pointer"
               />
             </div>
 
             {/* Info */}
-            <div className="flex flex-col items-center text-center gap-1">
-              <p className="text-xs md:text-sm lg:text-base font-semibold capitalize">
+            <div className="flex flex-col items-left bg-red-000 gap-0">
+              <p className="text-xs md:text-sm lg:text-[20px] font-semibold capitalize">
                 {item.name}
               </p>
 
-              <div className="flex items-center gap-1 text-sm text-gray-800">
-                <RiMoneyRupeeCircleLine className="text-base" />
-                <span className="font-semibold">{item.price.toFixed(2)}</span>
+              <div className="flex items-center -space-x-0.5 text-sm text-gray-800">
+                <MdCurrencyRupee  className="text-[12px] lg:text-[12px] stroke-0" />
+                <span className="font-bold text-[14px] lg:text-[20px]  ">{item.price.toFixed(2)}</span>
               </div>
-
+{/* 
               <div
-                className="flex items-center gap-1 bg-neutral-100 hover:bg-neutral-200 px-2 py-1 rounded shadow cursor-pointer"
+                className="flex items-center lg:gap-3 gap-2 text-center lg:w-[203px] lg:h-[53px] justify-center place-content-center m-auto bg-neutral-100 hover:bg-neutral-200 px-2 py-1 rounded shadow cursor-pointer"
                 onClick={() => handleClick(item._id)}
               >
-                <FiShoppingCart className="text-sm md:text-base" />
-                <span className="text-xs md:text-sm font-medium">Add To Cart</span>
-              </div>
+                <FiShoppingCart className="text-sm md:text-base lg:text-[28px]" />
+                <span className="text-xs md:text-sm lg:text-[19px]  font-Poppins  font-medium">Add To Cart</span>
+              </div> */}
             </div>
           </div>
         ))}

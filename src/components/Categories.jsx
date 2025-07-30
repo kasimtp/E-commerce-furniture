@@ -360,6 +360,7 @@ import watch from "../assets/watch.png";
 import powerbank from "../assets/powerbank.png";
 import smartwatch from "../assets/smartwatch.png";
 
+
 const categoryData = [
   { name: "Watchs", img: watch },
   { name: "Headset", img: hedset },
