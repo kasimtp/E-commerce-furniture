@@ -181,11 +181,16 @@ const Navbar = () => {
 
   return (
     <nav className="bg-red-000  shadow-md px-4
-     py-0 place-content-center sticky md:mt-0 lg:mt-0 text-center z-50 border-b-2 border-blue-600 h-14 lg:h-28 sm:h-22 ">
-      <div className="max-w-7xl mx-auto  flex items-center justify-between">
-        <div className="flex items-center">
+     py-0 place-content-center sticky md:mt-0 lg:mt-0 text-center z-50  h-14 lg:h-28 sm:h-22 ">
+      <div className="max-w-7xl mx-auto   flex items-center justify-between">
+        <div className="flex items-center bg-gray-300">
+
+        <div className="w-[224px] h-[34px] rounded-4xl">
+cdcrvrvrv
+        </div>
+
           {/* Mobile menu toggle */}
-          <button
+          {/* <button
             className="md:hidden "
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
@@ -193,20 +198,20 @@ const Navbar = () => {
             {isMobileMenuOpen ? (
               <MdClose className="text-[#0052cc] text-[30px] stroke-2" />
             ) : (
-              <FiMenu className="text-[#0052cc] text-[33px] stroke-2" />
+              <FiMenu className="text-blue-900 text-[33px] stroke-2" />
             )}
-          </button>
+          </button> */}
 
           {/* Logo */}
-          {!isMobileMenuOpen && (
+          {/* {!isMobileMenuOpen && (
             <Link to="/">
               <img
                 src={logoblue}
                 alt="Logo"
-                className="h-[25px] pl-3  md:h-[28px] mt-0 md:mt-0 lg:mt-0  sm:h-[52px] lg:h-[55px]  md:pl-5  lg:pl-2  sm:pl-0 w-auto"
+                className="h-[25px] pl-3   md:h-[28px] mt-0 md:mt-0 lg:mt-0  sm:h-[52px] lg:h-[55px]  md:pl-5  lg:pl-2  sm:pl-0 w-auto"
               />
             </Link>
-          )}
+          )} */}
         </div>
 
         {/* Desktop Navigation */}
@@ -235,13 +240,13 @@ const Navbar = () => {
 
        {!isMobileMenuOpen && (
           <Link to="/login">
-            <FiUser className="hover:text-blue-900 text-[#0052cc]  md:text-blue-900 lg:text-blue-900 transition text-[30px] md:text-[30px] lg:text-[38px]  " />
+            <FiUser className="hover:text-blue-900 text-blue-900 md:text-blue-900 lg:text-blue-900 transition text-[30px] md:text-[30px] lg:text-[38px]  " />
           </Link>
        )}
 
 
          {!isMobileMenuOpen && ( <Link to="/shoppingcart" className="relative">
-            <FiShoppingCart className="hover:text-blue-500 text-[#0052cc] md:text-blue-900 lg:text-blue-900 text-[26px] stroke-2.5  md:text-[30px] lg:text-[38px] transition" />
+            <FiShoppingCart className="hover:text-blue-500 text-blue-900 md:text-blue-900 lg:text-blue-900 text-[26px] stroke-2.5  md:text-[30px] lg:text-[38px] transition" />
             {cartItems.length > 0 && (
               <span className="absolute -top-2 -right-2  text-white bg-[#0052cc]  rounded-full border border-white text-xs w-5 h-5 flex items-center justify-center">
                 {cartItems.length}
