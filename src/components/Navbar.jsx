@@ -113,6 +113,7 @@ import { AppContext } from "../context/AppContext";
 // import logo from "../assets/logo2.jpg";
 import logoblue from "../assets/logoblue.png";
 import { apiClient } from "../utils/api.js";
+import { IoIosSearch } from "react-icons/io";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -180,14 +181,20 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-red-000  shadow-md px-4
-     py-0 place-content-center sticky md:mt-0 lg:mt-0 text-center z-50  h-14 lg:h-28 sm:h-22 ">
+    <nav
+      className="bg-red-000  shadow-md px-4
+     py-0 place-content-center sticky md:mt-0 lg:mt-0 text-center z-50  h-14 lg:h-28 sm:h-22 "
+    >
       <div className="max-w-7xl mx-auto   flex items-center justify-between">
-        <div className="flex items-center bg-gray-300">
-
-        <div className="w-[224px] h-[34px] rounded-4xl">
-cdcrvrvrv
-        </div>
+        <div className="flex items-center bg-gray-000">
+          <div className="w-[224px] h-[34px] text-center items-center flex border px-2 border-gray-300 rounded-md">
+            <IoIosSearch className="text-gray-500 text-[3px] mr-2" />
+            <input
+              type="text"
+              className="text-gray-900 bg-transparent outline-none flex-1"
+              placeholder="Search"
+            />
+          </div>
 
           {/* Mobile menu toggle */}
           {/* <button
@@ -220,7 +227,7 @@ cdcrvrvrv
         </ul>
 
         {/* Icons */}
-        
+
         <div className="flex items-center bg-red-00 gap-3 pr-2 md:pr-0 lg:pr-0 md:gap-8 lg:gap-8 text-gray-700">
           <Link to="/search">
             <BiSearch className="hover:text-blue-500 text-blue-900 sm:block text-[38px] hidden transition" />
@@ -235,24 +242,21 @@ cdcrvrvrv
             )}
           </Link>
 
+          {!isMobileMenuOpen && (
+            <Link to="/login">
+              <FiUser className="hover:text-blue-900 text-blue-900 hidden md:block  md:text-blue-900 lg:text-blue-900 transition text-[30px] md:text-[30px] lg:text-[38px]  " />
+            </Link>
+          )}
 
-
-
-       {!isMobileMenuOpen && (
-          <Link to="/login">
-            <FiUser className="hover:text-blue-900 text-blue-900 md:text-blue-900 lg:text-blue-900 transition text-[30px] md:text-[30px] lg:text-[38px]  " />
-          </Link>
-       )}
-
-
-         {!isMobileMenuOpen && ( <Link to="/shoppingcart" className="relative">
-            <FiShoppingCart className="hover:text-blue-500 text-blue-900 md:text-blue-900 lg:text-blue-900 text-[26px] stroke-2.5  md:text-[30px] lg:text-[38px] transition" />
-            {cartItems.length > 0 && (
-              <span className="absolute -top-2 -right-2  text-white bg-[#0052cc]  rounded-full border border-white text-xs w-5 h-5 flex items-center justify-center">
-                {cartItems.length}
-              </span>
-            )}
-          </Link>
+          {!isMobileMenuOpen && (
+            <Link to="/shoppingcart" className="relative">
+              <FiShoppingCart className="hover:text-blue-500 text-blue-900 md:text-blue-900 lg:text-blue-900 text-[26px] stroke-2.5  md:text-[30px] lg:text-[38px] transition" />
+              {cartItems.length > 0 && (
+                <span className="absolute -top-2 -right-2  text-white bg-[#0052cc]  rounded-full border border-white text-xs w-5 h-5 flex items-center justify-center">
+                  {cartItems.length}
+                </span>
+              )}
+            </Link>
           )}
         </div>
       </div>
