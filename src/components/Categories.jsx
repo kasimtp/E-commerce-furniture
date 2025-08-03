@@ -379,7 +379,7 @@ const Categories = ({ onCategoryClick }) => {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto bg-[#e8ebea] font-Poppins flex flex-col items-center space-y-6 px-4">
+    <div className="w-full max-w-7xl mx-auto bg-white font-Poppins flex flex-col items-center space-y-6 px-4">
       {/* Header */}
       <div className="text-center space-y-1">
         <p className="text-xs lg:mt-20 text-[#6C757D] uppercase tracking-widest">
@@ -405,8 +405,8 @@ const Categories = ({ onCategoryClick }) => {
                 className={`rounded-full flex items-center justify-center shadow-md overflow-hidden
                   w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-34 lg:h-34
                   hover:scale-105 transition-transform duration-300 ease-in-out
-                   border-[2px] md:border-[3px] lg:border-[5px]   md:p-[10px]  lg:p-[15px] bg-[#F8F9FA]
-                  ${isActive ? 'border-[#2a5ba3]' : 'border-[#0D6EFD]'}`}
+                   border-[2px] md:border-[3px] lg:border-[5px]   md:p-[10px]  lg:p-[15px] bg-[#e8ebea]
+                  ${isActive ? 'border-green-800' : 'border-[#4CB19A]'}`}
               >
                 <img
                   src={item.img}
@@ -416,7 +416,7 @@ const Categories = ({ onCategoryClick }) => {
               </div>
               <span
                 className={`text-xs sm:text-sm  md:text-[14px] lg:text-[16px] mt-2 text-center transition-colors duration-300 
-                  ${isActive ? 'text-blue-900 font-semibold' : 'text-[#3a536c] font-medium'}
+                  ${isActive ? 'text-green-800 font-medium font-sans' : 'text-[#4CB19A] font-sans font-medium'}
                 `}
               >
                 {item.name} 

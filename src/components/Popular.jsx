@@ -537,45 +537,45 @@ const Popular = ({ selectedCategory }) => {
     }
   };
 
-  const handleClick = async (id) => {
-    const user = localStorage.getItem("id");
-    if (!user) {
-      alert("Please login to add to cart.");
-      navigate("/Login");
-      return;
-    }
+  // const handleClick = async (id) => {
+  //   const user = localStorage.getItem("id");
+  //   if (!user) {
+  //     alert("Please login to add to cart.");
+  //     navigate("/Login");
+  //     return;
+  //   }
 
-    try {
-      await apiClient.post("/post-cart", {
-        user,
-        product: id,
-        quantity: 1,
-      });
-      toast.success("Product added to cart!");
-    } catch (err) {
-      console.error("Cart error:", err);
-      toast.error("Failed to add to cart.");
-    }
-  };
+  //   try {
+  //     await apiClient.post("/post-cart", {
+  //       user,
+  //       product: id,
+  //       quantity: 1,
+  //     });
+  //     toast.success("Product added to cart!");
+  //   } catch (err) {
+  //     console.error("Cart error:", err);
+  //     toast.error("Failed to add to cart.");
+  //   }
+  // };
 
   return (
-    <div className="w-full mt-6 md:mt-10 lg:mt-16">
+    <div className="w-full mt-6 md:mt-10 bg-gray-50 lg:mt-16">
       {/* Header */}
-      <div className="text-center">
-        <p className="text-sm md:text-2xl lg:text-4xl font-medium  text-[#212529] font-Poppins underline underline-offset-3 decoration-blue-400 uppercase">
+      <div className="text-center pt-4">
+        <p className="text-sm md:text-2xl lg:text-4xl font-bold text-[#212529] font-sans underline underline-offset-3 decoration-[#4CB19A] uppercase">
           Trending now
         </p>
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-2 bg-red-000  sm:grid-cols-2 md:grid-cols-3   lg:grid-cols-4 gap-0  md:gap-6 lg:gap-8 mt-6 w-[92%] mx-auto">
+      <div className="grid grid-cols-2 bg-red-000  sm:grid-cols-2 md:grid-cols-3   lg:grid-cols-4 gap-2  md:gap-6 lg:gap-8 mt-6 w-[92%] mx-auto">
         {filteredProducts.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col  bg-gray-000 gap-2 md:gap-3 lg:gap-5 p-3 border-0 border-blue-000  md:rounded-4xl lg:rounded-4xl   shadow-gray-000 hover:shadow-xl transition-shadow hover:shadow-gray-200   duration-300"
+            className="flex flex-col   bg-gray-000 gap-3  md:gap-3 lg:gap-5 p-3 rounded-b-md  border-blue-000  md:rounded-4xl lg:rounded-4xl shadow-lg shadow-gray-300  hover:shadow-xl transition-shadow hover:shadow-gray-200   duration-300"
           >
             {/* Image */}
-            <div className="relative bg-gray-50 rounded-sm overflow-hidden h-36 sm:h-44 md:h-52 lg:h-64 cursor-pointer">
+            <div className="relative bg-gray-000 rounded-sm overflow-hidden h-36 sm:h-44 md:h-52 lg:h-64 cursor-pointer">
               <img
                 onClick={() => navigate(`/productdetiles/${item._id}`)}
                 src={item.image}
@@ -589,7 +589,7 @@ const Popular = ({ selectedCategory }) => {
               )}
               <CiHeart
                 onClick={() => handleClickwishList(item._id)}
-                className="absolute top-2 right-2 text-xl md:text-2xl lg:text-[54px]  bg-ehite text-blue-600 p-1 rounded-full shadow cursor-pointer"
+                className="absolute top-0 right-0 text-xl md:text-2xl lg:text-[54px]  bg-[#4CB19A] text-white p-1 rounded-4xl shadow cursor-pointer"
               />
             </div>
 
@@ -599,9 +599,9 @@ const Popular = ({ selectedCategory }) => {
                 {item.name}
               </p>
 
-              <div className="flex items-center -space-x-0.5 text-sm text-black">
-                <FaRupeeSign   className="text-[10px]  lg:text-[12px]  " />
-                <span className="font-bold text-[14px] lg:text-[20px]  ">{item.price.toFixed(2)}</span>
+              <div className="flex items-center -space-x-0.5 text-sm ">
+                <FaRupeeSign   className="text-[10px] text-[#4CB19A] lg:text-[12px]  " />
+                <span className="font-bold text-[14px] text-[#4CB19A] lg:text-[20px]  ">{item.price.toFixed(2)}</span>
               </div>
 {/* 
               <div

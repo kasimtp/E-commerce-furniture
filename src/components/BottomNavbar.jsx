@@ -1,72 +1,96 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FiHome, FiHeart, FiShoppingCart, FiUser, FiTag } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { apiClient } from "../utils/api.js";
+import { motion, AnimatePresence } from "framer-motion";
 
 const BottomNavbar = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
 
+  const [cartItems, setCartItems] = useState([]);
+  const [wishListItems, setWishListItems] = useState([]);
 
-   const [cartItems, setCartItems] = useState([]);
-    const [wishListItems, setWishListItems] = useState([]);
+  useEffect(() => {
+    const userId = localStorage.getItem("id");
 
+    if (userId) {
+      apiClient
+        .get(`/get-cart/${userId}`)
+        .then((res) => setCartItems(res.data))
+        .catch((err) => console.error("Cart error:", err));
 
-      useEffect(() => {
-        const userId = localStorage.getItem("id");
-    
-        if (userId) {
-          apiClient
-            .get(`/get-cart/${userId}`)
-            .then((res) => setCartItems(res.data))
-            .catch((err) => console.error("Cart error:", err));
-    
-          apiClient
-            .get(`/get-wishlist/${userId}`)
-            .then((res) => setWishListItems(res.data))
-            .catch((err) => console.error("Wishlist error:", err));
-        }
-      }, []);
+      apiClient
+        .get(`/get-wishlist/${userId}`)
+        .then((res) => setWishListItems(res.data))
+        .catch((err) => console.error("Wishlist error:", err));
+    }
+  }, []);
+
+  const navItems = [
+    { path: "/", label: "HOME", icon: FiHome },
+    { path: "/wishlist", label: "WISHLIST", icon: FiHeart },
+    { path: "/shop", label: "PRODUCTS", icon: FiTag },
+    { path: "/login", label: "ACCOUNT", icon: FiUser },
+    { path: "/shoppingcart", label: "CART", icon: FiShoppingCart },
+  ];
+
   return (
     <div className="fixed px-2 bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-md z-50 md:hidden">
-      <div className="flex justify-around items-center  text-gray-700 text-xs py-2">
-        <Link to="/" className="flex flex-col items-center justify-center">
-          <FiHome size={24} />
-          <span className="mt-1">HOME</span>
-        </Link>
+      <div className="flex justify-around items-center text-xs py-2 relative">
+        {navItems.map((item) => {
+          const isActive = currentPath === item.path;
+          const Icon = item.icon;
 
-        <Link to="/wishlist" className="flex flex-col items-center cursor-pointer hover:bg-neutral-400 justify-center">
-          <FiHeart size={24} />
-            {wishListItems.length > 0 && (
-              <span className="absolute -top-1 -right-2 bg-green-600 sm:block hidden text-white rounded-full text-xs w-8 h-5 :flex  items-center justify-center">
-                 {wishListItems.length} 
+          return (
+            <Link
+              key={item.path}
+              to={item.path}
+              className="relative flex flex-col items-center justify-center"
+            >
+              {/* Animated background circle */}
+              <AnimatePresence>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeBg"
+                    className="absolute top-0 w-14 h-[50px] bg-[#4CB19A] rounded-md z-[-1]"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  />
+                )}
+              </AnimatePresence>
+
+              <motion.div
+                animate={{ y: isActive ? -2 : 0 }}
+                transition={{ duration: 0.2 }}
+                className={isActive ? "text-white" : "text-[#4CB19A]"}
+              >
+                <Icon size={24} />
+              </motion.div>
+
+              {/* Badges */}
+              {item.path === "/wishlist" && wishListItems.length > 0 && (
+                <span className="absolute -top-1 -right-2 bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                  {wishListItems.length}
+                </span>
+              )}
+              {item.path === "/shoppingcart" && cartItems.length > 0 && (
+                <span className="absolute -top-1 right-2 bg-[#4CB19A] border-white text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
+                  {cartItems.length}
+                </span>
+              )}
+
+              <span className={`mt-1 ${isActive ? "text-white" : "text-[#4CB19A]"}`}>
+                {item.label}
               </span>
-            )}
-          <span className="mt-1 bg-">WISHLIST</span>
-        </Link>
-
-        <Link to="/shop" className="flex flex-col cursor-pointer hover:bg-neutral-400 items-center justify-center">
-          <FiTag size={24} />
-          <span className="mt-1">PRODUCTS</span>
-        </Link>
-
-        <Link to="/login" className="flex flex-col cursor-pointer hover:bg-neutral-400 items-center justify-center">
-          <FiUser size={24} />
-          <span className="mt-1">ACCOUNT</span>
-        </Link>
-
-        <Link to="/shoppingcart" className="flex flex-col items-center cursor-pointer hover:bg-neutral-400 justify-center">
-          <FiShoppingCart size={24} />
-            {cartItems.length > 0 && (
-              <span className="absolute -top-1 right-2 bg-green-600 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
-                   {cartItems.length}
-              </span>
-            )}
-          <span className="mt-1">CART</span>
-        </Link>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
 };
 
 export default BottomNavbar;
-
-
