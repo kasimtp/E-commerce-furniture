@@ -182,16 +182,16 @@ const Navbar = () => {
 
   return (
     <nav
-      className="bg-red-000  shadow-md px-4
-     py-0 place-content-center sticky md:mt-0 lg:mt-0 text-center z-50  h-14 lg:h-28 sm:h-22 "
+      className="bg-red-000   px-4
+     py-0 place-content-center sticky md:mt-0 bg-[#e8ebea] lg:mt-0 text-center z-50  h-14 lg:h-28 sm:h-22 "
     >
-      <div className="max-w-7xl mx-auto   flex items-center justify-between">
+      <div className="max-w-7xl mx-auto    flex items-center justify-between">
         <div className="flex items-center bg-gray-000">
-          <div className="w-[224px] h-[34px] text-center items-center flex border px-2 border-gray-300 rounded-md">
-            <IoIosSearch className="text-gray-500 text-[3px] mr-2" />
+          <div className="  md:hidden text-center items-center flex border px-1 border-gray-300 rounded-sm">
+            <IoIosSearch className="text-gray-400  h-9 text-[28px] mr-2" />
             <input
               type="text"
-              className="text-gray-900 bg-transparent outline-none flex-1"
+              className="text-gray-400 bg-transparent outline-none flex-1"
               placeholder="Search"
             />
           </div>
@@ -228,7 +228,7 @@ const Navbar = () => {
 
         {/* Icons */}
 
-        <div className="flex items-center bg-red-00 gap-3 pr-2 md:pr-0 lg:pr-0 md:gap-8 lg:gap-8 text-gray-700">
+        <div className="flex items-center bg-red-000 gap-1 pr-2 md:pr-0 lg:pr-0 md:gap-8 lg:gap-8 text-gray-700">
           <Link to="/search">
             <BiSearch className="hover:text-blue-500 text-blue-900 sm:block text-[38px] hidden transition" />
           </Link>
@@ -244,13 +244,13 @@ const Navbar = () => {
 
           {!isMobileMenuOpen && (
             <Link to="/login">
-              <FiUser className="hover:text-blue-900 text-blue-900 hidden md:block  md:text-blue-900 lg:text-blue-900 transition text-[30px] md:text-[30px] lg:text-[38px]  " />
+              <FiUser className="hover:text-blue-900 text-gray-700    md:text-blue-900 lg:text-blue-900 transition text-[28px] md:text-[30px] lg:text-[38px]  " />
             </Link>
           )}
 
           {!isMobileMenuOpen && (
             <Link to="/shoppingcart" className="relative">
-              <FiShoppingCart className="hover:text-blue-500 text-blue-900 md:text-blue-900 lg:text-blue-900 text-[26px] stroke-2.5  md:text-[30px] lg:text-[38px] transition" />
+              <FiShoppingCart className="hover:text-blue-500 text-gray-700 md:text-blue-900 lg:text-blue-900 text-[26px] stroke-2.5  md:text-[30px] lg:text-[38px] transition" />
               {cartItems.length > 0 && (
                 <span className="absolute -top-2 -right-2  text-white bg-[#0052cc]  rounded-full border border-white text-xs w-5 h-5 flex items-center justify-center">
                   {cartItems.length}
