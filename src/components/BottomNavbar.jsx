@@ -46,14 +46,14 @@ const BottomNavbar = () => {
             <Link
               key={item.path}
               to={item.path}
-              className="relative flex flex-col items-center justify-center"
+              className="relative flex flex-col  items-center justify-center"
             >
               {/* Animated background circle */}
               <AnimatePresence>
                 {isActive && (
                   <motion.div
                     layoutId="activeBg"
-                    className="absolute top-0 w-14 h-[50px] bg-[#4CB19A] rounded-md z-[-1]"
+                    className="absolute top-0 w-14 h-[50px]  rounded-md z-[-1]"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
@@ -65,24 +65,24 @@ const BottomNavbar = () => {
               <motion.div
                 animate={{ y: isActive ? -2 : 0 }}
                 transition={{ duration: 0.2 }}
-                className={isActive ? "text-white" : "text-[#4CB19A]"}
+                className={isActive ? "text-[#4CB19A]" : "text-black"}
               >
                 <Icon size={24} />
               </motion.div>
 
               {/* Badges */}
               {item.path === "/wishlist" && wishListItems.length > 0 && (
-                <span className="absolute -top-1 -right-2 bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-2 bg-white text-[#4CB19A] rounded-full text-xs w-5 h-5 flex items-center justify-center">
                   {wishListItems.length}
                 </span>
               )}
               {item.path === "/shoppingcart" && cartItems.length > 0 && (
-                <span className="absolute -top-1 right-2 bg-[#4CB19A] border-white text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-[#4CB19A] border-white text-white font-Poppins rounded-full text-xs w-4 h-4 flex items-center justify-center">
                   {cartItems.length}
                 </span>
               )}
 
-              <span className={`mt-1 ${isActive ? "text-white" : "text-[#4CB19A]"}`}>
+              <span className={`mt-1 ${isActive ? "text-black  font-Poppins font-semibold" : "font-Poppins text-black"}`}>
                 {item.label}
               </span>
             </Link>

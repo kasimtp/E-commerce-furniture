@@ -489,6 +489,7 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { apiClient } from "../utils/api.js";
+import { FiShoppingCart,  } from "react-icons/fi";
 
 const ProductDs = () => {
   const { id } = useParams();
@@ -564,23 +565,23 @@ const ProductDs = () => {
 
         {/* Product Info */}
         <div className="space-y-4">
-          <p className="text-xs sm:text-sm text-gray-400 uppercase">
+          <p className="text-xs sm:text-sm font-Poppins text-gray-400 uppercase">
             New Collection
           </p>
 
-          <h4 className="font-semibold text-base sm:text-lg">Description</h4>
-          <p className="text-gray-600 text-sm sm:text-base leading-relaxed capitalize">
+          <h4 className="font-semibold text-base font-Poppins sm:text-lg">Description</h4>
+          <p className="text-gray-600 text-sm sm:text-base font-Poppins leading-relaxed capitalize">
             {product.description}
           </p>
 
-          <h2 className="text-2xl sm:text-3xl font-semibold capitalize">
+          <h2 className="text-2xl sm:text-3xl font-semibold font-Poppins capitalize">
             {product.name}
           </h2>
 
-          <p className="text-sm sm:text-base text-gray-600">Color: Cream</p>
+          <p className="text-sm sm:text-base font-Poppins text-gray-600">Color: Cream</p>
 
           <div className="flex items-center gap-1 text-orange-400">
-            {"★".repeat(4)}
+            {"★".repeat(3)}
             <span className="text-gray-400">★</span>
             <a
               href="#"
@@ -590,19 +591,19 @@ const ProductDs = () => {
             </a>
           </div>
 
-          <p className="text-xl sm:text-2xl text-red-500 font-bold">
+          <p className="text-xl sm:text-2xl font-Poppins  font-semibold">
             ₹{product.price.toFixed(2)}
           </p>
 
           {/* Quantity Selector */}
-          <div className="flex items-center text-white bg-blue-700 hover:bg-blue-800 w-fit rounded-3xl px-4 py-1">
+          <div className="flex items-center text-white bg-[#4CB19A] hover:bg-blue-800 w-fit rounded-3xl px-4 py-1">
             <button
               className="text-xl px-2"
               onClick={() => handleQuantityChange("decrement")}
             >
               −
             </button>
-            <span className="px-3 text-lg">{quantity}</span>
+            <span className="px-3 text-lg font-Poppins">{quantity}</span>
             <button
               className="text-xl px-2"
               onClick={() => handleQuantityChange("increment")}
@@ -611,24 +612,27 @@ const ProductDs = () => {
             </button>
           </div>
 
-          <p className="text-lg sm:text-xl font-semibold mt-2">
+          <p className="text-lg sm:text-xl   font-Poppins font-bold mt-2">
             Total Price: ₹{(product.price * quantity).toFixed(2)}
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-2 w-full">
-            <button
-              onClick={() => handleAddToCart(product._id)}
-              className="bg-blue-700 hover:bg-blue-800 w-full sm:w-40 h-12 font-semibold text-white rounded-md"
-            >
-              Add to Cart
-            </button>
-            <button
+          <div className="flex  flex-rol bg-amber-000 sm:flex-row gap-1 pt-2 w-full">
+
+             <button
               onClick={handleBuyNow}
-              className="bg-[#ff9f00] hover:bg-[#f58f00] w-full sm:w-40 h-12 font-semibold text-white rounded-md"
+              className="bg-[#4CB19A] hover:bg-green-600 w-full sm:w-40 h-12 font-semibold text-white rounded-sm"
             >
               Buy Now
             </button>
+            <button
+              onClick={() => handleAddToCart(product._id)}
+              className="bg-black  hover:bg-blue-800 w-[35%] sm:w-40 h-12 font-semibold text-white rounded-sm"
+            >
+              
+              <FiShoppingCart className="m-auto  text-[20px]"/>
+            </button>
+           
           </div>
         </div>
       </div>

@@ -16,7 +16,6 @@
 //   body: JSON.stringify(data),
 // });
 
-
 // const Shope = () => {
 //   const [product, setProduct] = useState([]);
 //   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -184,10 +183,6 @@
 // };
 
 // export default Shope;
-
-
-
-
 
 // import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 // import { CiHeart } from "react-icons/ci";
@@ -364,18 +359,12 @@
 //   ))}
 // </div>
 
-
 //       <Footer />
 //     </div>
 //   );
 // };
 
 // export default Shope;
-
-
-
-
-
 
 // import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 // import { CiHeart } from "react-icons/ci";
@@ -549,14 +538,6 @@
 
 // export default Shope;
 
-
-
-
-
-
-
-
-
 // import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 // import { CiHeart } from "react-icons/ci";
 // import Footer from "../components/Footer";
@@ -729,10 +710,6 @@
 
 // export default Shope;
 
-
-
-
-
 // import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 // import { CiHeart } from "react-icons/ci";
 // import Footer from "../components/Footer";
@@ -760,12 +737,6 @@
 //   }, []);
 
 //   // console.log(setProduct);
-  
-
-
-
-
-
 
 //   const handleClickwishList = async (id) => {
 //     const user = localStorage.getItem("id");
@@ -911,22 +882,6 @@
 // };
 
 // export default Shope;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 // import { CiHeart } from "react-icons/ci";
@@ -1103,15 +1058,6 @@
 
 // export default Shope;
 
-
-
-
-
-
-
-
-
-
 import { BsCart2, BsCurrencyDollar } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import Footer from "../components/Footer";
@@ -1172,22 +1118,24 @@ const Shope = () => {
       : product.filter((item) => item.category === selectedCategory);
 
   return (
-    <div className="w-full font-Poppins pt-12 bg-gray-50">
+    <div className="w-full font-Poppins pt-1 bg-gray-50">
       {/* Categories */}
-      <div className="flex flex-wrap justify-center gap-2 sm:gap-3 bg-yellow-400 py-4 px-3 sticky top-12 z-20 shadow-sm">
-        {["All", "Men's", "Watchs", "Shoes", "Accessories", "Headset"].map((cat) => (
-          <button
-            key={cat}
-            onClick={() => handleCategoryClick(cat)}
-            className={`px-3 py-1.5 text-xs sm:text-sm rounded-md font-medium transition ${
-              selectedCategory === cat
-                ? "bg-black text-white scale-105 shadow"
-                : "bg-white text-black hover:bg-black hover:text-white"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-3 bg-[#e8ebea] py-4 px-3 sticky top-12 z-20 shadow-sm">
+        {["All", "Men's", "Watchs", "Shoes", "Accessories", "Headset"].map(
+          (cat) => (
+            <button
+              key={cat}
+              onClick={() => handleCategoryClick(cat)}
+              className={`px-3 py-1.5 text-xs sm:text-sm rounded-md font-medium transition ${
+                selectedCategory === cat
+                  ? "bg-[#4CB19A] text-white scale-105 shadow"
+                  : "bg-white text-black hover:bg-black hover:text-white"
+              }`}
+            >
+              {cat}
+            </button>
+          )
+        )}
       </div>
 
       {/* Sorting */}
@@ -1249,30 +1197,32 @@ const Shope = () => {
               )}
               <CiHeart
                 onClick={() => handleClickwishList(item._id)}
-                className="absolute bottom-2 right-2 text-lg sm:text-xl text-black bg-white p-1 rounded-full hover:text-white hover:bg-blue-500 cursor-pointer transition"
+                className="absolute top-0.5 right-1 text-lg sm:text-xl text-white bg-[#4CB19A] p-1 rounded-full hover:text-white hover:bg-blue-500 cursor-pointer transition"
               />
             </div>
 
             {/* Details */}
             <div className="flex flex-col items-center text-center gap-1">
-              <p className="text-xs sm:text-sm md:text-base font-semibold">{item.name}</p>
+              <p className="text-xs sm:text-sm md:text-base font-semibold">
+                {item.name}
+              </p>
               {item.extraText && (
                 <p className="text-yellow-600 text-[10px] sm:text-xs font-medium">
                   {item.extraText}
                 </p>
               )}
               <div className="flex flex-col w-full items-center gap-2 mt-1">
-                <div className="flex items-center text-black gap-1">
-                  <BsCurrencyDollar className="text-base" />
+                <div className="flex items-center text-[#4CB19A] gap-0">
+                  ₹
                   <span className="text-sm font-semibold">
                     {item.price.toFixed(2)}
                   </span>
                 </div>
                 <button
                   onClick={() => handleClick(item._id)}
-                  className="w-full flex justify-center items-center gap-2 bg-blue-500 text-white hover:bg-blue-600 text-xs sm:text-sm font-semibold px-4 py-2 rounded-md transition-all shadow"
+                  className="w-full flex justify-center  items-center gap-2 bg-[#4CB19A] text-white hover:bg-blue-600 text-xs sm:text-sm font-semibold px-4 py-2 rounded-md transition-all shadow"
                 >
-                  <BsCart2 /> Add To Cart
+                  Add To Cart
                 </button>
               </div>
             </div>
