@@ -182,12 +182,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className="bg-red-000   px-4
+      className="bg-red-000  pr-1 md:pr-0 lg:pr-0 pl-4 md:pl-0 lg:pl-0 md:px-4 lg:px-4
      py-0 place-content-center sticky md:mt-0 font-Poppins bg-[#e8ebea] lg:mt-0 text-center z-50  h-14 lg:h-28 sm:h-22 "
     >
       <div className="max-w-7xl mx-auto    flex items-center justify-between">
         <div className="flex items-center bg-gray-000">
-          <div className="  md:hidden text-center m-auto items-center flex border px-1 border-gray-400 rounded-sm">
+          <div className="  md:hidden text-center m-auto items-center flex border px-0 border-gray-400 rounded-sm">
             <IoIosSearch className="text-gray-900  h-9   text-[23px] mr-2" />
             <input
               type="text"
