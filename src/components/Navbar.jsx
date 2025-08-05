@@ -829,10 +829,10 @@ const Navbar = () => {
         {/* Right icons */}
         <div className="flex items-center lg:gap-12 bg-red-000 space-x-2 ml-1 sm:ml-6">
           {/* Wishlist */}
-          <Link to="/wishlist" className="relative">
+          <Link to="/wishlist" className="relative hidden md:block">
             <FiHeart className=" hidden  md:block text-[22px] sm:text-[24px] lg:text-[74px] text-gray-800 hover:text-pink-500" />
             {wishListItems.length > 0 && (
-              <span className="absolute -top-1 -right-2 bg-pink-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="absolute    -top-1 -right-2 bg-pink-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                 {wishListItems.length}
               </span>
             )}
@@ -842,14 +842,14 @@ const Navbar = () => {
 
           {/* Account */}
           <Link to="/login">
-            <FiUser className="text-[26px] sm:text-[24px] lg:text-[84px] text-gray-800 hover:text-blue-500" />
+            <FiUser className="text-[26px] sm:text-[24px] lg:text-[84px] text-gray-800 hover:text-[#4CB19A]" />
           </Link>
 
            {/* Cart */}
           <Link to="/shoppingcart" className="relative">
-            <FiShoppingCart className="text-[26px] sm:text-[24px] lg:text-[84px] text-gray-800 hover:text-green-500" />
+            <FiShoppingCart className="text-[26px] sm:text-[24px] lg:text-[84px] text-gray-800 hover:text-green-700" />
             {cartItems.length > 0 && (
-              <span className="absolute -top-1 lg:-top-6 -right-2 lg:-right-6 bg-green-500 text-white text-[10px] lg:text-[34px] font-bold w-4 h-4 lg:w-12 lg:h-12 rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 lg:-top-6 -right-2 lg:-right-6 bg-[#4CB19A] text-white text-[10px] lg:text-[34px] font-bold w-4 h-4 lg:w-12 lg:h-12 rounded-full flex items-center justify-center">
                 {cartItems.length}
               </span>
             )}

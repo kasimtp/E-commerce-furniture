@@ -416,7 +416,7 @@ const Categories = ({ onCategoryClick }) => {
               </div>
               <span
                 className={`text-xs sm:text-sm  md:text-[14px] lg:text-[16px] mt-2 text-center transition-colors duration-300 
-                  ${isActive ? 'text-green-800 font-medium font-sans' : 'text-[#4CB19A] font-sans font-medium'}
+                  ${isActive ? 'text-green-800 font-medium font-sans' : 'text-black  font-Poppins font-medium'}
                 `}
               >
                 {item.name} 

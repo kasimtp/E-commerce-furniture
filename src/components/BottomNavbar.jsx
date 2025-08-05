@@ -31,13 +31,13 @@ const BottomNavbar = () => {
     { path: "/", label: "HOME", icon: FiHome },
     { path: "/wishlist", label: "WISHLIST", icon: FiHeart },
     { path: "/shop", label: "PRODUCTS", icon: FiTag },
-    { path: "/login", label: "ACCOUNT", icon: FiUser },
+    // { path: "/login", label: "ACCOUNT", icon: FiUser },
     { path: "/shoppingcart", label: "CART", icon: FiShoppingCart },
   ];
 
   return (
-    <div className="fixed px-2 bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-md z-50 md:hidden">
-      <div className="flex justify-around items-center text-xs py-2 relative">
+    <div className="  fixed px-2 bottom-0 left-0 right-0 bg-white border-t border-gray-200  -space-x-22 shadow-md z-50 md:hidden">
+      <div className="flex justify-center space-x-10 items-center text-xs py-2 relative">
         {navItems.map((item) => {
           const isActive = currentPath === item.path;
           const Icon = item.icon;
