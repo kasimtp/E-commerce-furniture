@@ -72,7 +72,7 @@ const BottomNavbar = () => {
 
               {/* Badges */}
               {item.path === "/wishlist" && wishListItems.length > 0 && (
-                <span className="absolute -top-1 -right-2 bg-white text-[#4CB19A] rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-2 bg-white text-text rounded-full text-xs w-5 h-5 flex items-center justify-center">
                   {wishListItems.length}
                 </span>
               )}

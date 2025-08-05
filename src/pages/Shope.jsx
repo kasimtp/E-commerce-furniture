@@ -1118,17 +1118,17 @@ const Shope = () => {
       : product.filter((item) => item.category === selectedCategory);
 
   return (
-    <div className="w-full font-Poppins pt-1 bg-gray-50">
+    <div className="w-full font-Poppins pt-1 bg-[#edf0ef]">
       {/* Categories */}
-      <div className="flex flex-wrap justify-center gap-2 sm:gap-3 bg-[#e8ebea] py-4 px-3 sticky top-12 z-20 shadow-sm">
+      <div className="flex flex-wrap justify-center  gap-2 lg:gap-20  sm:gap-3 bg-[#e8ebea] py-4 px-3 sticky top-12 z-20 shadow-sm">
         {["All", "Men's", "Watchs", "Shoes", "Accessories", "Headset"].map(
           (cat) => (
             <button
               key={cat}
               onClick={() => handleCategoryClick(cat)}
-              className={`px-3 py-1.5 text-xs sm:text-sm rounded-md font-medium transition ${
+              className={`px-3 py-1.5 border  rounded-4xl border-[#e8ebea] p-4 text-xs sm:text-sm lg:text-[43px] lg:p-8   font-medium transition ${
                 selectedCategory === cat
-                  ? "bg-[#4CB19A] text-white scale-105 shadow"
+                  ? "bg-[#4CB19A]  text-white scale-105 shadow"
                   : "bg-white text-black hover:bg-black hover:text-white"
               }`}
             >
@@ -1139,18 +1139,18 @@ const Shope = () => {
       </div>
 
       {/* Sorting */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center px-4 md:px-16 my-6 gap-4">
-        <p className="text-sm sm:text-base font-medium">
+      <div className="flex flex-col md:flex-row justify-between lg:pt-18  items-start md:items-center px-4 md:px-16 my-6 gap-4">
+        <p className="text-sm sm:text-base lg:text-[34px] font-medium">
           Showing {filteredProducts.length} result(s)
         </p>
-        <div className="w-full md:w-auto flex flex-col sm:flex-row gap-2">
-          <label htmlFor="sort" className="text-sm font-medium text-gray-700">
+        <div className="w-full bg-red-000 lg:w-[500px] md:w-auto flex flex-col sm:flex-row gap-2">
+          <label htmlFor="sort" className="text-sm lg:text-[30px] font-medium text-gray-700">
             Sort by
           </label>
           <select
             id="sort"
             name="sort"
-            className="w-full sm:w-64 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm"
+            className="w-full sm:w-64 px-3 py-2 border lg:text-[34px] lg:w-[400px] border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm"
           >
             <option>Default sorting</option>
             <option>Sort by popularity</option>
@@ -1162,14 +1162,14 @@ const Shope = () => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 px-4 md:px-16 mb-20">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-26  px-4 md:px-16 mb-20">
         {filteredProducts.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col gap-3 bg-white p-3 sm:p-4 rounded-xl shadow hover:shadow-xl transition-all duration-300"
+            className="flex flex-col gap-3 lg:gap-20 bg-white p-3 lg:p-12 sm:p-4 rounded-4xl shadow-gray-500 shadow hover:shadow-xl transition-all duration-300"
           >
             {/* Image */}
-            <div className="relative h-[180px] sm:h-[220px] md:h-[240px] lg:h-[280px] rounded-lg overflow-hidden">
+            <div className="relative h-[180px]  sm:h-[220px] md:h-[240px] lg:h-[400px] lg:pt-4 rounded-lg overflow-hidden">
               <img
                 src={item.image}
                 alt={item.name}
@@ -1197,13 +1197,13 @@ const Shope = () => {
               )}
               <CiHeart
                 onClick={() => handleClickwishList(item._id)}
-                className="absolute top-0.5 right-1 text-lg sm:text-xl text-white bg-[#4CB19A] p-1 rounded-full hover:text-white hover:bg-blue-500 cursor-pointer transition"
+                className="absolute top-0.5  right-1 text-lg sm:text-xl lg:h-16 lg:w-16 text-white bg-[#4CB19A] p-1  lg:p-2 rounded-full hover:text-white hover:bg-blue-500 cursor-pointer transition"
               />
             </div>
 
             {/* Details */}
             <div className="flex flex-col items-center text-center gap-1">
-              <p className="text-xs sm:text-sm md:text-base font-semibold">
+              <p className="text-xs sm:text-sm md:text-base  lg:text-[34px] font-medium">
                 {item.name}
               </p>
               {item.extraText && (
@@ -1212,15 +1212,15 @@ const Shope = () => {
                 </p>
               )}
               <div className="flex flex-col w-full items-center gap-2 mt-1">
-                <div className="flex items-center text-[#4CB19A] gap-0">
+                <div className="flex items-center text-[#4CB19A] lg:text-[34px] gap-0">
                   ₹
-                  <span className="text-sm font-semibold">
+                  <span className="text-sm lg:text-[34px] font-semibold">
                     {item.price.toFixed(2)}
                   </span>
                 </div>
                 <button
                   onClick={() => handleClick(item._id)}
-                  className="w-full flex justify-center  items-center gap-2 bg-[#4CB19A] text-white hover:bg-blue-600 text-xs sm:text-sm font-semibold px-4 py-2 rounded-md transition-all shadow"
+                  className="w-full flex justify-center  items-center gap-2 bg-[#4CB19A] text-white lg:text-[45px] hover:bg-green-600 text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg transition-all shadow"
                 >
                   Add To Cart
                 </button>
