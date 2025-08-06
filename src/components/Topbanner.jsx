@@ -7,7 +7,7 @@ const Topbanner = () => {
       <img
         src={topbanner}
         alt="Top Banner"
-        className="w-full h-auto object-cover"
+        className="w-full h-auto lg:w-full lg:h-[1300px] object-cover"
       />
     </div>
   );

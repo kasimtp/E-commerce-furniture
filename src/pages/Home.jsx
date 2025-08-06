@@ -46,7 +46,7 @@ const Home = () => {
       {/* <Header /> */}
       <Categories onCategoryClick={setSelectedCategory} /> {/* Pass prop */}
       <Popular selectedCategory={selectedCategory} /> {/* Send to Popular */}
-      <Banner />
+      {/* <Banner /> */}
       <Footer />
     </div>
   );

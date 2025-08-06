@@ -858,7 +858,7 @@ const Navbar = () => {
       </div>
 
       {/* Bottom Navigation Links (visible on md and up) */}
-      <div className="hidden md:flex justify-center  lg:space-x-1 bg-[#e8ebea] lg:gap-22 py-2 lg:h-22   border-t">
+      <div className="hidden md:flex justify-center  lg:space-x-1 bg-[#e8ebea] lg:gap-22 py-2 lg:h-22    border-gray-300">
         {navLinks}
       </div>
     </nav>

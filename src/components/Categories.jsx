@@ -382,16 +382,16 @@ const Categories = ({ onCategoryClick }) => {
     <div className="w-full max-w-7xl mx-auto  bg-white font-Poppins flex flex-col items-center space-y-6 px-4">
       {/* Header */}
       <div className="text-center space-y-1">
-        <p className="text-xs lg:mt-20 text-[#6C757D] uppercase tracking-widest">
+        <p className="text-xs lg:text-[60px] lg:mt-22 text-[#6C757D] uppercase tracking-widest">
           passion for fashion
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-[#212529]">
+        <h2 className="text-2xl sm:text-3xl lg:text-[120px] lg:mt-22 font-bold lg:font-semibold  text-[#212529]">
           Shop By Categories
         </h2>
       </div>
 
       {/* Categories List */}
-      <div className="flex overflow-x-auto  overflow-y-hidden space-x-6 md:space-x-6 lg:space-x-10 w-full no-scrollbar pb-2">
+      <div className="flex overflow-x-auto lg:mt-24  place-content-center overflow-y-hidden space-x-6 md:space-x-6 lg:space-x-60 lg:bg-amber-000  lg:w-screen w-full no-scrollbar pb-2">
         {categoryData.map((item, index) => {
           const isActive = activeCategory === item.name;
 
@@ -403,7 +403,7 @@ const Categories = ({ onCategoryClick }) => {
             >
               <div
                 className={`rounded-full flex items-center justify-center shadow-md overflow-hidden
-                  w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-34 lg:h-34
+                  w-16 h-16  sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-70 lg:h-70
                   hover:scale-105 transition-transform duration-300 ease-in-out
                    border-[2px] md:border-[3px] lg:border-[5px]   md:p-[10px]  lg:p-[15px] bg-[#e8ebea]
                   ${isActive ? 'border-green-800' : 'border-[#4CB19A]'}`}
@@ -411,11 +411,11 @@ const Categories = ({ onCategoryClick }) => {
                 <img
                   src={item.img}
                   alt={item.name}
-                  className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-30 lg:h-30"
+                  className="object-contain w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-50 lg:h-50"
                 />
               </div>
               <span
-                className={`text-xs sm:text-sm  md:text-[14px] lg:text-[16px] mt-2 text-center transition-colors duration-300 
+                className={`text-xs sm:text-sm  md:text-[14px] lg:text-[36px] mt-2 lg:mt-8 font-Poppins  text-center transition-colors duration-300 
                   ${isActive ? 'text-green-800 font-medium font-sans' : 'text-black  font-Poppins font-medium'}
                 `}
               >

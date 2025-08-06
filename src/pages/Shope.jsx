@@ -1118,18 +1118,18 @@ const Shope = () => {
       : product.filter((item) => item.category === selectedCategory);
 
   return (
-    <div className="w-full font-Poppins pt-1 bg-[#edf0ef]">
+    <div className="w-full font-Poppins pt-4 bg-[#edf0ef]">
       {/* Categories */}
-      <div className="flex flex-wrap justify-center  gap-2 lg:gap-20  sm:gap-3 bg-[#e8ebea] py-4 px-3 sticky top-12 z-20 shadow-sm">
+      <div className="flex flex-wrap justify-center  gap-2 lg:gap-20  sm:gap-3  py-6 lg:py-12  px-3 sticky top-12  z-20 ">
         {["All", "Men's", "Watchs", "Shoes", "Accessories", "Headset"].map(
           (cat) => (
             <button
               key={cat}
               onClick={() => handleCategoryClick(cat)}
-              className={`px-3 py-1.5 border  rounded-4xl border-[#e8ebea] p-4 text-xs sm:text-sm lg:text-[43px] lg:p-8   font-medium transition ${
+              className={`px-3 py-1.5 border  rounded-2xl font-medium border-[#e8ebea] p-4 text-xs sm:text-sm lg:text-[33px] lg:w-68 lg:h-24   lg:py-2 lg:px-6 transition ${
                 selectedCategory === cat
                   ? "bg-[#4CB19A]  text-white scale-105 shadow"
-                  : "bg-white text-black hover:bg-black hover:text-white"
+                  : "bg-white  text-black hover:bg-black hover:text-white"
               }`}
             >
               {cat}
@@ -1139,18 +1139,18 @@ const Shope = () => {
       </div>
 
       {/* Sorting */}
-      <div className="flex flex-col md:flex-row justify-between lg:pt-18  items-start md:items-center px-4 md:px-16 my-6 gap-4">
-        <p className="text-sm sm:text-base lg:text-[34px] font-medium">
+      <div className="flex flex-col md:flex-row justify-between lg:pt-18   items-start md:items-center px-4 md:px-16 my-6 gap-4">
+        <p className="text-sm sm:text-base lg:text-[40px] font-medium">
           Showing {filteredProducts.length} result(s)
         </p>
-        <div className="w-full bg-red-000 lg:w-[500px] md:w-auto flex flex-col sm:flex-row gap-2">
-          <label htmlFor="sort" className="text-sm lg:text-[30px] font-medium text-gray-700">
+        <div className="w-full  bg-red-000 lg:w-[800px]   md:w-auto flex flex-col sm:flex-row gap-2">
+          <label htmlFor="sort" className="text-sm lg:text-[38px] font-medium text-gray-700">
             Sort by
           </label>
           <select
             id="sort"
             name="sort"
-            className="w-full sm:w-64 px-3 py-2 border lg:text-[34px] lg:w-[400px] border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm"
+            className="w-full sm:w-64 px-3 py-2 border lg:text-[44px] lg:w-[400px] border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm"
           >
             <option>Default sorting</option>
             <option>Sort by popularity</option>
@@ -1162,7 +1162,7 @@ const Shope = () => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-26  px-4 md:px-16 mb-20">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-26 lg:mt-18  px-4 md:px-16 mb-20">
         {filteredProducts.map((item, index) => (
           <div
             key={index}
