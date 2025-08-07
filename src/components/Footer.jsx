@@ -17,18 +17,18 @@ const Footer = () => {
           </p>
           <div className="flex space-x-6 lg:space-x-8 mt-4">
             <a href="#" className="text-gray-600 hover:text-gray-800 transition">
-              <FaFacebookF size={70}  />
+              <FaFacebookF size={20} className='lg:text-[34px]'  />
             </a>
             <a href="#" className="text-gray-600 hover:text-gray-800 transition">
-              <FaTwitter size={70} />
+              <FaTwitter size={20} className='lg:text-[34px]' />
             </a>
             <a href="#" className="text-gray-600 hover:text-gray-800 transition">
-              <FaPinterestP size={70} />
+              <FaPinterestP size={20} className='lg:text-[34px]' />
             </a>
             <a href="#" className="text-gray-600 hover:text-gray-800 transition">
-              <FaYoutube size={70} />
+              <FaYoutube size={20} className='lg:text-[34px]' />
             </a>
-          </div>
+          </div> 
         </div>
 
         {/* Shop Section */}
@@ -57,7 +57,7 @@ const Footer = () => {
           <p className="text-base lg:text-[30px] lg:font-semibold">
             Get 20% off for your first order by joining our newsletter.
           </p>
-          <form className="flex lg:h-30    w-full mt-2">
+          <form className="flex lg:h-30 k   w-full mt-2">
             <input
               type="email"
               placeholder="your@email.com"

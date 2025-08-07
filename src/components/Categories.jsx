@@ -379,7 +379,7 @@ const Categories = ({ onCategoryClick }) => {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto  bg-white font-Poppins flex flex-col items-center space-y-6 px-4">
+    <div className="w-full max-w-7xl mx-auto  bg-white  font-Poppins flex flex-col items-center space-y-6 px-4">
       {/* Header */}
       <div className="text-center space-y-1">
         <p className="text-xs lg:text-[60px] lg:mt-22 text-[#6C757D] uppercase tracking-widest">

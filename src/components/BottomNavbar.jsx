@@ -77,12 +77,12 @@ const BottomNavbar = () => {
                 </span>
               )}
               {item.path === "/shoppingcart" && cartItems.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#4CB19A] border-white text-white font-Poppins rounded-full text-xs w-4 h-4 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-[#4CB19A] border-black text-white font-Poppins rounded-full text-xs w-4 h-4 flex items-center justify-center">
                   {cartItems.length}
                 </span>
               )}
 
-              <span className={`mt-1 ${isActive ? "text-black  font-Poppins font-semibold" : "font-Poppins text-black"}`}>
+              <span className={`mt-1 ${isActive ? "text-[#4CB19A]  font-Poppins font-semibold" : "font-Poppins text-black"}`}>
                 {item.label}
               </span>
             </Link>

@@ -767,6 +767,7 @@ import { Link } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 import { FiHeart, FiShoppingCart, FiUser } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
+import logogreen from "../assets/logogreen.png"
 
 import { AppContext } from "../context/AppContext";
 import { apiClient } from "../utils/api";
@@ -812,17 +813,20 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="w-full sticky top-0  bg-[#edf0ef]  z-50 shadow-sm ">
-      <div className="lg:max-w-screen max-w-screen-xl lg:space-x-44 -space-x-0  lg:bg-[#e8ebea] bg-amber-000   flex bg-red-000   items-center lg:h-60 h-18  m-auto lg:px-36 px-4 py-2 sm:py-3">
+    <nav className="w-full sticky top-0  bg-[#e8ebea]  z-50 shadow-sm ">
+      <div className="lg:max-w-screen max-w-screen-xl lg:space-x-44 space-x-4  lg:bg-[#e8ebea] bg-amber-000   flex bg-red-000   items-center lg:h-60 h-18  m-auto lg:px-36 px-4 py-2 sm:py-3">
+      <div className="md:hidden ">
 
+        <img src={logogreen} alt="" className="  h-8 w-auto" />
+      </div>
         <div className=" hidden md:block bg-red-000   lg:text-7xl font-bold font-Poppins">Flipkert</div>
         {/* Search bar */}
-        <div className=" flex items-center border  border-gray-500 bg-red-000  rounded-lg lg:px-3 px-2 lg:w-full  lg:h-30 h-8 w-70">
-          <IoIosSearch className="text-gray-500 lg:ml-4  text-sm lg:text-7xl lg:mr-2 mr-1" />
+        <div className=" flex items-center border  border-gray-400 bg-red-000  rounded-lg lg:px-3 px-2 lg:w-full  lg:h-30 h-[36px] w-70 ">
+          <IoIosSearch className="text-gray-500 lg:ml-4  text-[20px] lg:text-7xl lg:mr-2 mr-1" />
           <input
             type="text"
             placeholder="Search.."
-            className="flex-grow outline-none  font-Poppins lg:text-5xl  text-[10px] text-gray-700 bg-transparent h-full"
+            className="flex-grow outline-none  font-Poppins lg:text-5xl  text-[14px] text-gray-700 bg-transparent h-full"
           />
         </div>
 
