@@ -1118,15 +1118,15 @@ const Shope = () => {
       : product.filter((item) => item.category === selectedCategory);
 
   return (
-    <div className="w-full font-Poppins pt-4 bg-[#edf0ef]">
+    <div className="w-full font-Poppins pt-4 bg-[#edf0ef] ">
       {/* Categories */}
-      <div className="flex flex-wrap justify-center  gap-2 lg:gap-20  sm:gap-3  py-6 lg:py-12  px-3 sticky top-12  z-20 ">
+      <div className="flex flex-wrap justify-center bg-gray-000  gap-2 lg:gap-20  sm:gap-3  py-6 lg:py-12  px-3  top-12  z-20 ">
         {["All", "Men's", "Watchs", "Shoes", "Accessories", "Headset"].map(
           (cat) => (
             <button
               key={cat}
               onClick={() => handleCategoryClick(cat)}
-              className={`px-3 py-1.5 border  rounded-2xl font-medium border-[#e8ebea] p-4 text-xs sm:text-sm lg:text-[33px] lg:w-68 lg:h-24   lg:py-2 lg:px-6 transition ${
+              className={`px-3 py-1.5 border  rounded-sm  font-medium border-[#e8ebea] p-4 text-xs sm:text-sm lg:text-[33px] lg:w-68 lg:h-24   lg:py-2 lg:px-6 transition ${
                 selectedCategory === cat
                   ? "bg-[#4CB19A]  text-white scale-105 shadow"
                   : "bg-white  text-black hover:bg-black hover:text-white"
@@ -1162,20 +1162,19 @@ const Shope = () => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-26 lg:mt-18  px-4 md:px-16 mb-20">
+      <div className="grid grid-cols-2 bg-red-000 lg:mt-28 sm:grid-cols-2 md:grid-cols-3   lg:grid-cols-4 gap-2  md:gap-6 lg:gap-20  mt-6 w-[92%] mx-auto">
         {filteredProducts.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col gap-3 lg:gap-20 bg-white p-3 lg:p-12 sm:p-4 rounded-4xl shadow-gray-500 shadow hover:shadow-xl transition-all duration-300"
+            className=" flex-col   bg-gray-000 gap-3 lg:py-8 md:gap-3 lg:gap-5 p-3 rounded-b-md  border-blue-000  md:rounded-4xl lg:rounded-4xl shadow-lg shadow-gray-300  hover:shadow-xl transition-shadow hover:shadow-gray-200   duration-300"
           >
             {/* Image */}
-            <div className="relative h-[180px]  sm:h-[220px] md:h-[240px] lg:h-[400px] lg:pt-4 rounded-lg overflow-hidden">
+            <div className="relative bg-gray-000 rounded-sm overflow-hidden h-36 sm:h-44 md:h-52 lg:h-96 cursor-pointer">
               <img
                 src={item.image}
                 alt={item.name}
                 onClick={() => navigate(`/productdetiles/${item._id}`)}
-                className="w-full h-full object-contain transition-transform hover:scale-105 duration-300"
-                onError={(e) => (e.target.src = "/no-image.png")}
+                className="w-full h-full p-2 object-contain transition-transform hover:scale-105 duration-300"                onError={(e) => (e.target.src = "/no-image.png")}
               />
               {item.discount && (
                 <div className="absolute top-2 left-2 bg-white text-black text-[10px] font-semibold px-2 py-1 rounded-full shadow">
@@ -1197,13 +1196,13 @@ const Shope = () => {
               )}
               <CiHeart
                 onClick={() => handleClickwishList(item._id)}
-                className="absolute top-0.5  right-1 text-lg sm:text-xl lg:h-16 lg:w-16 text-white bg-[#4CB19A] p-1  lg:p-2 rounded-full hover:text-white hover:bg-blue-500 cursor-pointer transition"
+               className="absolute top-0 right-0 lg:top-8 lg:right-8 text-xl ] md:text-2xl lg:text-[84px]  bg-[#4CB19A] text-white p-1 lg:p-3 rounded-full shadow cursor-pointer"
               />
             </div>
 
             {/* Details */}
-            <div className="flex flex-col items-center text-center gap-1">
-              <p className="text-xs sm:text-sm md:text-base  lg:text-[34px] font-medium">
+            <div  className="flex flex-col lg:mt-8 items-left lg:items-center bg-red-000 gap-0">
+              <p className="text-xs md:text-sm text-gray-500 lg:text-[42px]  font-semibold font-Poppins  capitalize">
                 {item.name}
               </p>
               {item.extraText && (
@@ -1211,19 +1210,9 @@ const Shope = () => {
                   {item.extraText}
                 </p>
               )}
-              <div className="flex flex-col w-full items-center gap-2 mt-1">
-                <div className="flex items-center text-[#4CB19A] lg:text-[34px] gap-0">
-                  ₹
-                  <span className="text-sm lg:text-[34px] font-semibold">
-                    {item.price.toFixed(2)}
-                  </span>
-                </div>
-                <button
-                  onClick={() => handleClick(item._id)}
-                  className="w-full flex justify-center  items-center gap-2 bg-[#4CB19A] text-white lg:text-[45px] hover:bg-green-600 text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg transition-all shadow"
-                >
-                  Add To Cart
-                </button>
+            <div className="flex items-center lg:mt-0 text-sm ">
+                {/* <FaRupeeSign   className="text-[10px] text-[#4CB19A] lg:text-[32px] font-bold  " /> */}
+                <span className="font-bold text-[14px] text-[#4CB19A] lg:text-[30px]  "> ₹{ item.price.toFixed(2)}</span>
               </div>
             </div>
           </div>
