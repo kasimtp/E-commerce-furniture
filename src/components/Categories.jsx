@@ -379,7 +379,7 @@ const Categories = ({ onCategoryClick }) => {
   };
 
   return (
-    <div className="w-full  max-w-7xl mx-auto  bg-white  font-Poppins flex flex-col items-center space-y-6 px-4">
+    <div className="w-full  max-w-7xl mx-auto h-auto  bg-white  font-Poppins flex flex-col items-center space-y-6 px-4">
       {/* Header */}
       <div className="text-center space-y-1">
         <p className="text-xs lg:text-[60px] lg:mt-22 text-[#6C757D] uppercase tracking-widest">
@@ -391,7 +391,7 @@ const Categories = ({ onCategoryClick }) => {
       </div>
 
       {/* Categories List */}
-      <div className="flex overflow-x-auto lg:mt-24  place-content-center overflow-y-hidden space-x-6 md:space-x-6 lg:space-x-60 lg:bg-amber-000  lg:w-screen w-full no-scrollbar pb-2">
+      <div className="flex overflow-x-auto lg:mt-24 bg-red-000 pt-2 place-content-center overflow-y-hidden space-x-6 md:space-x-6 lg:space-x-60 lg:bg-amber-000  lg:w-screen w-full no-scrollbar pb-2">
         {categoryData.map((item, index) => {
           const isActive = activeCategory === item.name;
 

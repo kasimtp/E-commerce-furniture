@@ -813,7 +813,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="w-full sticky top-0  bg-[#e8ebea]  z-50 shadow-sm ">
+    <nav className=" sticky top-0  w-auto bg-[#e8ebea]  z-50 shadow-sm ">
       <div className="lg:max-w-screen max-w-screen-xl lg:space-x-44 space-x-2  lg:bg-[#e8ebea] bg-amber-000   flex bg-red-000   items-center lg:h-60 h-18  m-auto lg:px-36 px-4 py-2 sm:py-3">
         <div className="block md:hidden flex-shrink-0">
           <img src={logogreen} alt="Logo" className="h-8 w-auto" />
