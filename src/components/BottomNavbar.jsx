@@ -71,11 +71,11 @@ const BottomNavbar = () => {
               </motion.div>
 
               {/* Badges */}
-              {item.path === "/wishlist" && wishListItems.length > 0 && (
+              {/* {item.path === "/wishlist" && wishListItems.length > 0 && (
                 <span className="absolute -top-1 -right-2 bg-white text-text rounded-full text-xs w-5 h-5 flex items-center justify-center">
                   {wishListItems.length}
                 </span>
-              )}
+              )} */}
               {item.path === "/shoppingcart" && cartItems.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-[#4CB19A] border-black text-white font-Poppins rounded-full text-xs w-4 h-4 flex items-center justify-center">
                   {cartItems.length}
