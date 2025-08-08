@@ -823,7 +823,7 @@ const Navbar = () => {
           Flipkert
         </div>
         {/* Search bar */}
-        <div className=" flex items-center border  border-gray-400 bg-red-000  rounded-lg lg:px-3 px-2 lg:w-full  lg:h-30 h-[36px] w-60 ">
+        <div className=" flex items-center border  border-gray-400 bg-red-000  rounded-sm lg:px-3 px-2 lg:w-full  lg:h-30 h-[36px] w-60 ">
           <IoIosSearch className="text-gray-500 lg:ml-4  text-[20px] lg:text-7xl lg:mr-2 mr-1" />
           <input
             type="text"
