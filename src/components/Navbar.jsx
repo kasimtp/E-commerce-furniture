@@ -767,7 +767,7 @@ import { Link } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 import { FiHeart, FiShoppingCart, FiUser } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
-import logogreen from "../assets/logogreen.png"
+import logogreen from "../assets/logogreen.png";
 
 import { AppContext } from "../context/AppContext";
 import { apiClient } from "../utils/api";
@@ -814,14 +814,16 @@ const Navbar = () => {
 
   return (
     <nav className="w-full sticky top-0  bg-[#e8ebea]  z-50 shadow-sm ">
-      <div className="lg:max-w-screen max-w-screen-xl lg:space-x-44 space-x-4  lg:bg-[#e8ebea] bg-amber-000   flex bg-red-000   items-center lg:h-60 h-18  m-auto lg:px-36 px-4 py-2 sm:py-3">
-      <div className="md:hidden ">
+      <div className="lg:max-w-screen max-w-screen-xl lg:space-x-44 space-x-2  lg:bg-[#e8ebea] bg-amber-000   flex bg-red-000   items-center lg:h-60 h-18  m-auto lg:px-36 px-4 py-2 sm:py-3">
+        <div className="block md:hidden flex-shrink-0">
+          <img src={logogreen} alt="Logo" className="h-8 w-auto" />
+        </div>
 
-        <img src={logogreen} alt="" className="  h-8 w-auto" />
-      </div>
-        <div className=" hidden md:block bg-red-000   lg:text-7xl font-bold font-Poppins">Flipkert</div>
+        <div className=" hidden md:block bg-red-000   lg:text-7xl font-bold font-Poppins">
+          Flipkert
+        </div>
         {/* Search bar */}
-        <div className=" flex items-center border  border-gray-400 bg-red-000  rounded-lg lg:px-3 px-2 lg:w-full  lg:h-30 h-[36px] w-70 ">
+        <div className=" flex items-center border  border-gray-400 bg-red-000  rounded-lg lg:px-3 px-2 lg:w-full  lg:h-30 h-[36px] w-60 ">
           <IoIosSearch className="text-gray-500 lg:ml-4  text-[20px] lg:text-7xl lg:mr-2 mr-1" />
           <input
             type="text"
@@ -831,7 +833,7 @@ const Navbar = () => {
         </div>
 
         {/* Right icons */}
-        <div className="flex items-center lg:gap-12 bg-red-000 space-x-2 ml-1 sm:ml-6">
+        <div className="flex items-center lg:gap-12 bg-red-000 space-x-1  ml-0 sm:ml-6">
           {/* Wishlist */}
           <Link to="/wishlist" className="relative hidden md:block">
             <FiHeart className=" hidden  md:block text-[22px] sm:text-[24px] lg:text-[74px] text-gray-800 hover:text-pink-500" />
@@ -842,16 +844,14 @@ const Navbar = () => {
             )}
           </Link>
 
-         
-
           {/* Account */}
           <Link to="/login">
-            <FiUser className="text-[26px] sm:text-[24px] lg:text-[84px] text-gray-800 hover:text-[#4CB19A]" />
+            <FiUser className="text-[35px] sm:text-[24px] lg:text-[84px] text-gray-800 hover:text-[#4CB19A]" />
           </Link>
 
-           {/* Cart */}
+          {/* Cart */}
           <Link to="/shoppingcart" className="relative">
-            <FiShoppingCart className="text-[26px] sm:text-[24px] lg:text-[84px] text-gray-800 hover:text-green-700" />
+            <FiShoppingCart className="text-[30px] sm:text-[24px] lg:text-[84px] text-gray-800 hover:text-green-700" />
             {cartItems.length > 0 && (
               <span className="absolute -top-1 lg:-top-6 -right-2 lg:-right-6 bg-[#4CB19A] text-white text-[10px] lg:text-[34px] font-bold w-4 h-4 lg:w-12 lg:h-12 rounded-full flex items-center justify-center">
                 {cartItems.length}

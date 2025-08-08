@@ -596,7 +596,7 @@ const ProductDs = () => {
           </p>
 
           {/* Quantity Selector */}
-          <div className="flex items-center text-white bg-[#4CB19A] hover:bg-blue-800 w-fit rounded-3xl px-4 py-1">
+          <div className="flex items-center text-white bg-[#4CB19A] hover:bg-green-300 w-fit rounded-3xl px-4 py-1">
             <button
               className="text-xl px-2"
               onClick={() => handleQuantityChange("decrement")}
@@ -627,10 +627,10 @@ const ProductDs = () => {
             </button>
             <button
               onClick={() => handleAddToCart(product._id)}
-              className="bg-black  hover:bg-blue-800 w-[35%] sm:w-40 h-12 font-semibold text-white rounded-sm"
+              className="bg-[#F9D1D1]  hover:bg-green-800 w-[35%] sm:w-40 h-12 font-semibold text-white rounded-sm"
             >
               
-              <FiShoppingCart className="m-auto  text-[20px]"/>
+              <FiShoppingCart className="m-auto text-black text-[20px]"/>
             </button>
            
           </div>
