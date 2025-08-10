@@ -67,29 +67,29 @@ const ProductDs = () => {
   if (!product) return <p className="text-center mt-10">Loading......!</p>;
 
   return (
-    <div className="max-w-7xl mx-auto p-4 sm:p-6 pb-16 md:p-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div className="max-w-7xl mx-auto  lg:bg-gray-000 lg:max-w-screen  lg:h-[1000px] p-4 sm:p-6 pb-16 md:p-10">
+      <div className="grid grid-cols-1 bg-amber-000   bg-amber-000 p-4 md:grid-cols-2 gap-8  lg:gap-20  ">
         {/* Image */}
-        <div className="flex justify-center">
+        <div className="flex bg-amber-000 lg:mt-28 h-max-screen lg:w-[100%] justify-center">
           <img
             src={product?.image}
             alt={product?.name}
-            className="w-full max-w-sm sm:max-w-md md:max-w-lg rounded-lg object-cover"
+            className="w-full max-w-sm cover sm:max-w-md lg:max- lg:max-w-4/5 md:max-w-lg rounded-lg object-cover"
           />
         </div>
 
         {/* Product Info */}
-        <div className="space-y-4">
-          <p className="text-xs sm:text-sm font-Poppins text-gray-400 uppercase">
+        <div className="space-y-4 lg:mt-38 lg:top-0  bg-amber-000 lg:space-y-8">
+          <p className="text-xs lg:text-[65px] sm:text-sm font-Poppins text-gray-400 uppercase">
             New Collection
           </p>
 
-          <h4 className="font-semibold text-base font-Poppins sm:text-lg">Description</h4>
-          <p className="text-gray-600 text-sm sm:text-base font-Poppins leading-relaxed capitalize">
+          <h4 className="font-semibold text-base font-Poppins lg:text-[60px] text-gray-600 sm:text-lg">Description</h4>
+          <p className="text-gray-600 lg:text-[35px] text-sm sm:text-base font-medium leading-relaxed capitalize">
             {product.description}
           </p>
 
-          <h2 className="text-2xl sm:text-3xl font-semibold font-Poppins capitalize">
+          <h2 className="text-2xl sm:text-3xl lg:mt-22 text-gray-600 lg:text-[45px] font-semibold font-Poppins capitalize">
             {product.name}
           </h2>
 
