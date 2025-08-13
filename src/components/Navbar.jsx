@@ -51,16 +51,16 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <Link to="/" className="hover:text-blue-600 font-medium">
+      <Link to="/" className="hover:text-[#4CB19A] font-medium">
         <p className="text-[44px] font-Poppins font-semibold">Home</p>
       </Link>
-      <Link to="/shop" className="hover:text-blue-600 font-medium">
+      <Link to="/shop" className="hover:text-[#4CB19A] font-medium">
         <p className="text-[44px] font-Poppins font-semibold">Products</p>
       </Link>
-      <Link to="/cart" className="hover:text-blue-600 font-medium">
+      <Link to="/cart" className="hover:text-[#4CB19A] font-medium">
         <p className="text-[44px] font-Poppins font-semibold">Cart</p>
       </Link>
-      <Link to="/contact" className="hover:text-blue-600 font-medium">
+      <Link to="/contact" className="hover:text-[#4CB19A] font-medium">
         <p className="text-[44px] font-Poppins font-semibold">Contact</p>
       </Link>
         

@@ -1,12 +1,10 @@
-
-
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Check, Trash2 } from "lucide-react";
 import Footer from "../components/Footer";
 import { toast } from "react-toastify";
 import { apiClient } from "../utils/api.js";
+import { FiShoppingCart } from "react-icons/fi";
 
 const WishList = () => {
   const navigate = useNavigate();
@@ -75,43 +73,43 @@ const WishList = () => {
                 <th className="p-3 sm:p-4"></th>
                 <th className="p-3 sm:p-4 text-gray-800">Product Name</th>
                 <th className="p-3 sm:p-4 text-gray-800">Unit Price</th>
-          
+
                 <th className="p-3 sm:p-4"></th>
               </tr>
             </thead>
             <tbody>
               {wishListItems?.map((item) => (
-                <tr key={item._id} className="border-t">
-                  <td className="p-2 sm:p-4">
+                <tr key={item._id} className="border-t ">
+                  <td className="p-2  h-12 sm:p-4">
                     <button
                       onClick={() => handleDelete(item._id)}
-                      className="text-red-500 hover:text-red-700"
+                      className="text-black hover:text-red-700"
                     >
-                      <Trash2 size={56} />
+                      <Trash2  size={20} className="lg:text[84px] lg:ml-22 lg:h-14 lg:w-14" />
                     </button>
                   </td>
-                  <td className="p-2 sm:p-4">
+                  <td className="p-1 sm:p-4">
                     <div className="flex items-center space-x-2">
                       <img
                         src={item?.product?.image}
                         alt={item?.product?.name}
-                        className="w-10 h-10  text-gray-800 rounded object-cover"
+                        className="w-10 h-10 lg:w-42 lg:h-42  p-4  text-gray-800 rounded object-cover"
                       />
-                      <span className="capitalize  lg:text-[38px] text-xs sm:text-sm md:text-base font-medium text-gray-800">
+                      <span className="capitalize   lg:text-[38px] text-xs sm:text-sm md:text-base font-semibold text-gray-800">
                         {item?.product?.name}
                       </span>
                     </div>
                   </td>
-                  <td className="p-2 sm:p-4 text-black  lg:text-[38px] font-semibold">
+                  <td className="p-2 sm:p-4 text-black  lg:text-[38px] font-bold">
                     ₹{item?.product?.price?.toFixed(2)}
                   </td>
-                  
+
                   <td className="p-1  sm:p-4">
                     <button
                       onClick={() => handleAddToCart(item.product._id)}
-                      className="bg-blue-700 hover:bg-blue-800 text-white lg:text-[28px]  lg:h-[62px] h-[42px] px-2 py-1.5 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm"
+                      className="bg-[#4CB19A] hover:bg-blue-800 text-white lg:text-[88px] lg:w-[282px]  lg:h-[132px] h-[38px]  text-[22px] w-12 px-2 py-1.5 sm:px-4 sm:py-2 rounded-2xl  sm:text-sm"
                     >
-                      Add to Cart
+                      <FiShoppingCart className=" m-auto " />
                     </button>
                   </td>
                 </tr>
@@ -127,6 +125,3 @@ const WishList = () => {
 };
 
 export default WishList;
-
-
-

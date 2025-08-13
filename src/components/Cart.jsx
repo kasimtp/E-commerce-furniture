@@ -97,7 +97,7 @@ const Cart = () => {
                 </button>
               </div>
             ) : (
-              <div className="max-w-7xl mx-auto bg-gray-50 px-4 py-6 grid gap-6 lg:grid-cols-[1fr_350px]">
+              <div className="max-w-7xl mx-auto  bg-gray-50 px-4 py-6 grid gap-6 lg:grid-cols-[1fr_350px]">
                 {/* 🛒 Cart List */}
                 <div className="space-y-4 ">
                   {cartItems.map((item) => (
