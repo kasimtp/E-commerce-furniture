@@ -79,7 +79,7 @@ const Navbar = () => {
         </div>
 
         {/* 🔍 Search bar */}
-        <div className="relative flex items-center border-1  border-gray-50 lg:rounded-2xl rounded-lg lg:px-3 px-2 lg:w-full lg:h-30 h-[36px] w-60 bg-white">
+        <div className="relative flex items-center border-1  border-gray-50 lg:rounded-full rounded-full lg:px-3 px-2 lg:w-full lg:h-30 h-[36px] w-60 bg-white">
           <IoIosSearch className="text-gray-500 lg:ml-4 text-[20px] lg:text-7xl lg:mr-2 mr-1" />
           <input
             type="text"

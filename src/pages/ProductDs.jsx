@@ -1,5 +1,5 @@
 
-import { Navigate, useParams } from "react-router";
+import { Navigate, useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { apiClient } from "../utils/api.js";
@@ -9,6 +9,7 @@ const ProductDs = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -37,7 +38,7 @@ const ProductDs = () => {
       const userId = localStorage.getItem("id");
       if (!userId) {
         toast.error("⚠️ User not logged in");
-        return Navigate("/Login");
+        return navigate ("/Login");
 
       }
 
@@ -112,7 +113,7 @@ const ProductDs = () => {
           </p>
 
           {/* Quantity Selector */}
-          <div className="flex items-center lg:mt-12  lg:h-25 lg:w-85 text-white bg-[#4CB19A] hover:bg-green-600 w-fit rounded-3xl px-4 py-1">
+          <div className="flex items-center lg:mt-12  lg:h-25 lg:w-85 text-white bg-[#4CB19A] hover:bg-gray-600 w-fit rounded-3xl px-4 py-1">
             <button
               className="text-xl m-auto lg:text-[60px] px-2"
               onClick={() => handleQuantityChange("decrement")}
@@ -128,22 +129,22 @@ const ProductDs = () => {
             </button>
           </div>
 
-          <p className="text-lg sm:text-xl   lg:text-[50px]   font-Poppins font-bold mt-2">
+          <p className="text-lg sm:text-xl   lg:text-[50px]   font-Poppin font-bold mt-2">
             Total Price: ₹{(product.price * quantity).toFixed(2)}
           </p>
 
           {/* Buttons */}
-          <div className="flex bg-amber-000 lg:w-[50%]   flex-rol bg-amber-000 sm:flex-row gap-1 lg:gap-6 pt-2 lg:mt-12 w-full">
+          <div className="flex bg-amber-000 lg:w-[50%]   flex-rol bg-amber-000 sm:flex-row gap-4 lg:gap-6 pt-2 lg:mt-12 w-full">
 
              <button
               onClick={handleBuyNow}
-              className="bg-[#4CB19A] border  hover:bg-green-600 lg:w-[50%] lg:h-[150px] sm:w-40 h-12 font-semibold text-white rounded-2xl"
+              className="bg-[#4CB19A] border w-32 hover:bg-green-600 lg:w-[50%] lg:h-[150px] sm:w-40 h-12  font-semibold text-white lg:rounded-2xl rounded-[4px]"
             >
-             <p className="lg:text-[44px] font-Poppins"> Buy Now</p>
+             <p className="lg:text-[44px] text-[15px] font-semibold font-Poppins p-2 "> Buy Now</p>
             </button>
             <button
               onClick={() => handleAddToCart(product._id)}
-              className="bg-gray-600  hover:bg-green-800 w-[35%]  lg:w-[50%] lg:h-[150px] sm:w-40 h-12 font-semibold text-white rounded-2xl"
+              className="bg-gray-600  hover:bg-[#4CB19A]  w-30  lg:w-[50%] lg:h-[150px] sm:w-40 h-12 font-semibold text-white lg:rounded-2xl rounded-[4px]"
             >
               
               <FiShoppingCart className="m-auto text-white lg:text-[90px] text-[20px]"/>
