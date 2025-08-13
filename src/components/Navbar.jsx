@@ -11,11 +11,11 @@ import { AppContext } from "../context/AppContext";
 import { apiClient } from "../utils/api";
 
 const Navbar = () => {
-  const [cartItems, setCartItems] = useState([]);
+  // const [cartItems, setCartItems] = useState([]);
   const [wishListItems, setWishListItems] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  //  const { cartItems, setCartItems, removeItemFromCart } = useContext(AppContext);
+   const { cartItems, setCartItems, removeItemFromCart } = useContext(AppContext);
 
   const { logout } = useContext(AppContext);
   const token = localStorage.getItem("token");
@@ -24,10 +24,7 @@ const Navbar = () => {
     const userId = localStorage.getItem("id");
 
     if (userId) {
-      apiClient
-        .get(`/get-cart/${userId}`)
-        .then((res) => setCartItems(res.data))
-        .catch((err) => console.error("Cart error:", err));
+    
 
       apiClient
         .get(`/get-wishlist/${userId}`)
@@ -66,7 +63,8 @@ const Navbar = () => {
       <Link to="/contact" className="hover:text-blue-600 font-medium">
         <p className="text-[44px] font-Poppins font-semibold">Contact</p>
       </Link>
-    </>
+        
+    </> 
   );
 
   return (
@@ -133,7 +131,7 @@ const Navbar = () => {
             <FiShoppingCart className="text-[30px] sm:text-[24px] lg:text-[84px] text-gray-800 hover:text-green-700" />
             {cartItems.length > 0 && (
               <span className="absolute -top-1 lg:-top-6 -right-2 lg:-right-6 bg-[#4CB19A] text-white text-[10px] lg:text-[34px] font-bold w-4 h-4 lg:w-12 lg:h-12 rounded-full flex items-center justify-center">
-                {setCartItems.length}
+                {cartItems.length}
               </span>
             )}
           </Link>
