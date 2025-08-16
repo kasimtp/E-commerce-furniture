@@ -63,7 +63,7 @@ const Shope = () => {
     <div className="w-full font-Poppins pt-4 bg-[#edf0ef] ">
       {/* Categories */}
       <div className="flex flex-wrap justify-center bg-gray-000  gap-2 lg:gap-20 rounded-lg sm:gap-3  py-6 lg:py-12  px-3  top-12  z-20 ">
-        {["All", "Men's", "Watchs", "Shoes", "Accessories", "Headset"].map(
+        {["All", "Men's", "Watchs", "Shoes",  "Headset", "More items"].map(
           (cat) => (
             <button
               key={cat}

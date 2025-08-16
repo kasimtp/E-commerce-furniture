@@ -6,15 +6,19 @@ import hedset from "../assets/hedset.png";
 import watch from "../assets/watch.png";
 import powerbank from "../assets/powerbank.png";
 import smartwatch from "../assets/smartwatch.png";
+import moreicon from "../assets/moreicon.png"
+
 
 
 const categoryData = [
-  { name: "Watchs", img: watch },
   { name: "Headset", img: hedset },
-  { name: "AirPods", img: airpod },
+  { name: "airpods", img: airpod },
+  { name: "Watchs", img: watch },
   { name: "Shoes", img: shoes },
   { name: "Smartwatch", img: smartwatch },
   { name: "Powerbank", img: powerbank },
+  { name: "More items", img: moreicon },
+
 ];
 
 const Categories = ({ onCategoryClick }) => {
