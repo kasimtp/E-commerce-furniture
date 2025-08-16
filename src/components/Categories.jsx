@@ -5,19 +5,22 @@ import airpod from "../assets/airpod.png";
 import hedset from "../assets/hedset.png";
 import watch from "../assets/watch.png";
 import powerbank from "../assets/powerbank.png";
-import smartwatch from "../assets/smartwatch.png";
+// import smartwatch from "../assets/smartwatch.png";
 import moreicon from "../assets/moreicon.png"
+import men from "../assets/men.png"
 
 
 
 const categoryData = [
+   { name: "Men's", img: men },
   { name: "Headset", img: hedset },
-  { name: "airpods", img: airpod },
+  { name: "airpod", img: airpod },
   { name: "Watchs", img: watch },
   { name: "Shoes", img: shoes },
-  { name: "Smartwatch", img: smartwatch },
+  // { name: "Smartwatch", img: smartwatch },
   { name: "Powerbank", img: powerbank },
   { name: "More items", img: moreicon },
+  
 
 ];
 
