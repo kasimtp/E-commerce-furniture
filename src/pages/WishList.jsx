@@ -93,7 +93,7 @@ const WishList = () => {
                       <img
                         src={item?.product?.image}
                         alt={item?.product?.name}
-                        className="w-10 h-10 lg:w-42 lg:h-42  p-4  text-gray-800 rounded object-cover"
+                        className="w-18 h-18 lg:w-42 lg:h-42  p-4  text-gray-800 rounded object-cover"
                       />
                       <span className="capitalize   lg:text-[38px] text-xs sm:text-sm md:text-base font-semibold text-gray-800">
                         {item?.product?.name}
@@ -107,7 +107,7 @@ const WishList = () => {
                   <td className="p-1  sm:p-4">
                     <button
                       onClick={() => handleAddToCart(item.product._id)}
-                      className="bg-[#4CB19A] hover:bg-blue-800 text-white lg:text-[88px] lg:w-[282px]  lg:h-[132px] h-[38px]  text-[22px] w-12 px-2 py-1.5 sm:px-4 sm:py-2 rounded-2xl  sm:text-sm"
+                      className="bg-[#4CB19A] hover:bg-blue-800 text-white lg:text-[88px] lg:w-[282px]  lg:h-[132px] h-[38px]  text-[22px] w-12 px-2 py-1.5 sm:px-4 sm:py-2 rounded-xs  sm:text-sm"
                     >
                       <FiShoppingCart className=" m-auto " />
                     </button>
