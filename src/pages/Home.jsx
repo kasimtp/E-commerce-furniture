@@ -30,7 +30,7 @@
 
 
 import { useState } from "react";
-import Banner from "../components/Banner";
+// import Banner from "../components/Banner";
 import Categories from "../components/Categories";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -42,8 +42,8 @@ const Home = () => {
 
   return (
     <div>
-      <Topbanner/>
-      {/* <Header /> */}
+      {/* <Topbanner/> */}
+      <Header />
       <Categories onCategoryClick={setSelectedCategory} /> {/* Pass prop */}
       <Popular selectedCategory={selectedCategory} /> {/* Send to Popular */}
       {/* <Banner /> */}

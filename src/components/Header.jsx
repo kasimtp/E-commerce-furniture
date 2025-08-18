@@ -329,12 +329,18 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Banner Images
-import shoesbanner from "../assets/shoesbanner.jpg";
-import hedsetbanner from "../assets/hedsetbanner.jpg";
-import airpodbanner from "../assets/airpodbenner.jpg";
-import watchbanner from "../assets/watchbanner.jpg";
+// import shoesbanner from "../assets/shoesbanner.jpg";
+// import hedsetbanner from "../assets/hedsetbanner.jpg";
+// import hedsetbanner from "../assets/hedset banner.png"
+// import shoebanner from "../assets/shoes banner.png"
+// import airpodsbanner from "../assets/hedsetbannernew.png"
+import shoesbanner from "../assets/shoesnew.png"
+import airpodbanner from "../assets/airpodnew.png"
+import showebanner from "../assets/shoesnew.png"
+import hedsetbanner from "../assets/hedsetbannernew.png"
 
-const banners = [watchbanner, shoesbanner, hedsetbanner, airpodbanner];
+
+const banners = [airpodbanner,shoesbanner,hedsetbanner, showebanner];
 
 const Header = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
