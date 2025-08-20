@@ -90,7 +90,7 @@ const Cart = () => {
             </div>
 
             {cartItems.length === 0 ? (
-              <div className="flex flex-col  justify-center items-center h-[75vh] text-center">
+              <div className="flex flex-col   justify-center items-center h-[75vh] text-center">
                 <p className="text-gray-600 text-base sm:text-lg font-Poppins mb-4">Your cart is empty.</p>
                 <button
                   onClick={() => navigate("/shop")}
@@ -106,7 +106,7 @@ const Cart = () => {
                   {cartItems.map((item) => (
                     <div
                       key={item._id}
-                      className="bg-[#e8ebea] lg:px-12 lg:h-62 p-2 rounded-lg shadow flex flex-rol lg:flex-rol sm:flex-row gap-4"
+                      className="bg-[#e8ebea] lg:px-12 lg:h-62 p-2 w-screen rounded-lg shadow flex flex-rol lg:flex-rol sm:flex-row gap-4"
                     >
                       <img
                         src={item?.product?.image}
