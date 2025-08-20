@@ -109,7 +109,7 @@ const Cart = () => {
                   {cartItems.map((item) => (
                     <div
                       key={item._id}
-                      className="bg-[#e8ebea] lg:px-12 lg:h-62 p-2 w-80 rounded-lg shadow flex flex-rol lg:flex-rol sm:flex-row gap-4"
+                      className="bg-[#e8ebea] lg:px-12 lg:h-62 p-2 w-98 lg:w-7xl rounded-lg shadow flex flex-rol lg:flex-rol sm:flex-row gap-4"
                     >
                       <img
                         src={item?.product?.image}
