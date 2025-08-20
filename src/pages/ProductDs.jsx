@@ -144,10 +144,10 @@ const ProductDs = () => {
             </button>
             <button
               onClick={() => handleAddToCart(product._id)}
-              className="bg-gray-600  hover:bg-[#4CB19A]  w-36  lg:w-[50%] lg:h-[150px] sm:w-40 h-14 font-semibold text-white lg:rounded-2xl rounded-[4px]"
+              className="bg-gray-600  hover:bg-[#4CB19A]  w-36  lg:w-[50%] lg:h-[150px] sm:w-40 h-16 font-semibold text-white lg:rounded-2xl rounded-[4px]"
             >
               
-              <FiShoppingCart className="m-auto text-white lg:text-[90px] text-[20px]"/>
+              <FiShoppingCart className="m-auto text-white lg:text-[90px] text-[28px]"/>
             </button>
            
           </div>
