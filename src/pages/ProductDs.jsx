@@ -68,7 +68,7 @@ const ProductDs = () => {
   if (!product) return <p className="text-center mt-10">Loading......!</p>;
 
   return (
-    <div className="max-w-7xl mx-auto  lg:bg-gray-000 lg:max-w-screen  lg:h-[1000px] p-4 sm:p-6 pb-16 md:p-10">
+    <div className="max-w-7xl mx-auto  lg:bg-gray-000 lg:max-w-screen  lg:h-[1000px] p-0 sm:p-6 pb-16 md:p-10">
       <div className="grid grid-cols-1 bg-amber-000   bg-amber-000 p-4 md:grid-cols-2 gap-8  lg:gap-20  ">
         {/* Image */}
        <div className="flex justify-center items-center bg-amber-000 lg:mt-28 p-10">
@@ -134,17 +134,17 @@ const ProductDs = () => {
           </p>
 
           {/* Buttons */}
-          <div className="flex bg-amber-000 lg:w-[50%]   flex-rol bg-amber-000 sm:flex-row gap-4 lg:gap-6 pt-2 lg:mt-12 w-full">
+          <div className="flex bg-amber-000 lg:w-[50%]   flex-rol bg-amber-000 sm:flex-row gap-8 lg:gap-6 pt-2 lg:mt-12 w-full">
 
              <button
               onClick={handleBuyNow}
-              className="bg-[#4CB19A] border w-32 hover:bg-green-600 lg:w-[50%] lg:h-[150px] sm:w-40 h-12  font-semibold text-white lg:rounded-2xl rounded-[4px]"
+              className="bg-[#4CB19A] border w-36 hover:bg-green-600 lg:w-[50%] lg:h-[150px] sm:w-40 h-12  font-semibold text-white lg:rounded-2xl rounded-[4px]"
             >
              <p className="lg:text-[44px] text-[15px] font-semibold font-Poppins p-2 "> Buy Now</p>
             </button>
             <button
               onClick={() => handleAddToCart(product._id)}
-              className="bg-gray-600  hover:bg-[#4CB19A]  w-30  lg:w-[50%] lg:h-[150px] sm:w-40 h-12 font-semibold text-white lg:rounded-2xl rounded-[4px]"
+              className="bg-gray-600  hover:bg-[#4CB19A]  w-36  lg:w-[50%] lg:h-[150px] sm:w-40 h-12 font-semibold text-white lg:rounded-2xl rounded-[4px]"
             >
               
               <FiShoppingCart className="m-auto text-white lg:text-[90px] text-[20px]"/>
