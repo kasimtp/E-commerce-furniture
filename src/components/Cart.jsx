@@ -1,6 +1,3 @@
-
-
-
 import { useState, useContext } from "react";
 import { X } from "lucide-react";
 import { useNavigate } from "react-router";
@@ -13,7 +10,8 @@ import { apiClient } from "../utils/api.js";
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
-  const { cartItems, setCartItems, removeItemFromCart } = useContext(AppContext);
+  const { cartItems, setCartItems, removeItemFromCart } =
+    useContext(AppContext);
 
   const totalPrice = cartItems.reduce((acc, item) => {
     const price = parseFloat(item?.product?.price) || 0;
@@ -40,13 +38,17 @@ const Cart = () => {
     const orderId = Math.floor(100000 + Math.random() * 900000);
     const userName = localStorage.getItem("username") || "Customer";
 
-    const itemsMessage = cartItems.map((item, index) => {
-      const name = item?.product?.name;
-      const price = item?.product?.price;
-      const quantity = item.quantity;
-      const total = (price * quantity).toFixed(2);
-      return `🛒 *${index + 1}. ${name}* — ₹${price} × ${quantity} = ₹${total}`;
-    }).join("\n");
+    const itemsMessage = cartItems
+      .map((item, index) => {
+        const name = item?.product?.name;
+        const price = item?.product?.price;
+        const quantity = item.quantity;
+        const total = (price * quantity).toFixed(2);
+        return `🛒 *${
+          index + 1
+        }. ${name}* — ₹${price} × ${quantity} = ₹${total}`;
+      })
+      .join("\n");
 
     const grandTotal = totalPrice.toFixed(2);
 
@@ -71,10 +73,9 @@ const Cart = () => {
             <div className="flex justify-between items-center bg-[#e8ebea] p-4 ">
               <div className="flex row">
                 <h2 className="text-lg lg:text-5xl sm:text-2xl lg:pt-22 lg:pb-4 font-Poppins font-semibold text-black">
-                SHOPPING CART
-               
-              </h2>
-               <span className="ml-2 bg-[#4CB19A] lg:h-12 lg:text-4xl lg:-ml-1 lg:mt-15 text-center m-auto lg:w-14 text-white px-2 py-1 text-xs sm:text-sm rounded-full">
+                  SHOPPING CART
+                </h2>
+                <span className="ml-2 bg-[#4CB19A] lg:h-12 lg:text-4xl lg:-ml-1 lg:mt-15 text-center m-auto lg:w-14 text-white px-2 py-1 text-xs sm:text-sm rounded-full">
                   {cartItems.length}
                 </span>
               </div>
@@ -91,7 +92,9 @@ const Cart = () => {
 
             {cartItems.length === 0 ? (
               <div className="flex flex-col   justify-center items-center h-[75vh] text-center">
-                <p className="text-gray-600 text-base sm:text-lg font-Poppins mb-4">Your cart is empty.</p>
+                <p className="text-gray-600 text-base sm:text-lg font-Poppins mb-4">
+                  Your cart is empty.
+                </p>
                 <button
                   onClick={() => navigate("/shop")}
                   className="bg-[#4CB19A] font-Poppins hover:bg-blue-800 text-white px-6 py-2 rounded-full text-sm sm:text-base"
@@ -106,7 +109,7 @@ const Cart = () => {
                   {cartItems.map((item) => (
                     <div
                       key={item._id}
-                      className="bg-[#e8ebea] lg:px-12 lg:h-62 p-2 w-screen rounded-lg shadow flex flex-rol lg:flex-rol sm:flex-row gap-4"
+                      className="bg-[#e8ebea] lg:px-12 lg:h-62 p-2 w-80 rounded-lg shadow flex flex-rol lg:flex-rol sm:flex-row gap-4"
                     >
                       <img
                         src={item?.product?.image}
@@ -119,8 +122,6 @@ const Cart = () => {
                             {item?.product?.name}
                           </h3>
 
-
-                          
                           {/* <p className="text-sm text-gray-500">Available</p> */}
                           <p className="text-[#4CB19A] text-[12px] m-auto  lg:text-[38px]  font-Poppins font-semibold">
                             ₹{(item?.product?.price * item.quantity).toFixed(2)}
@@ -129,41 +130,41 @@ const Cart = () => {
                             {/* <button className="text-blue-600 text-sm font-medium">
                               Save for later
                             </button> */}
-                          
                           </div>
                         </div>
-                     <div className="flex flex-col sm:flex-col lg:flex-row items-center sm:items-end justify-between gap-2 lg:gap-4 mt-2 sm:mt-0">
+                        <div className="flex flex-col sm:flex-col lg:flex-row items-center sm:items-end justify-between gap-2 lg:gap-4 mt-2 sm:mt-0">
+                          {/* Quantity Counter */}
+                          <div className="flex items-center lg:pb-22 bg-[#4CB19A] rounded-full overflow-hidden">
+                            <button
+                              onClick={() =>
+                                item.quantity > 1 &&
+                                handleQuantityChange(item._id, "decrement")
+                              }
+                              className="px-3 text-white font-bold text-lg lg:text-xl"
+                            >
+                              −
+                            </button>
+                            <span className="px-3 text-white font-semibold text-sm lg:text-base">
+                              {item.quantity}
+                            </span>
+                            <button
+                              onClick={() =>
+                                handleQuantityChange(item._id, "increment")
+                              }
+                              className="px-3 text-white font-bold text-lg lg:text-xl"
+                            >
+                              +
+                            </button>
+                          </div>
 
-  {/* Quantity Counter */}
-  <div className="flex items-center lg:pb-22 bg-[#4CB19A] rounded-full overflow-hidden">
-    <button
-      onClick={() =>
-        item.quantity > 1 && handleQuantityChange(item._id, "decrement")
-      }
-      className="px-3 text-white font-bold text-lg lg:text-xl"
-    >
-      −
-    </button>
-    <span className="px-3 text-white font-semibold text-sm lg:text-base">
-      {item.quantity}
-    </span>
-    <button
-      onClick={() => handleQuantityChange(item._id, "increment")}
-      className="px-3 text-white font-bold text-lg lg:text-xl"
-    >
-      +
-    </button>
-  </div>
-
-  {/* Remove Button */}
-  <button
-    onClick={() => removeItemFromCart(item._id)}
-    className="text-black hover:text-red-600"
-  >
-    <X />
-  </button>
-</div>
-
+                          {/* Remove Button */}
+                          <button
+                            onClick={() => removeItemFromCart(item._id)}
+                            className="text-black hover:text-red-600"
+                          >
+                            <X />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -206,7 +207,12 @@ const Cart = () => {
                     </div>
                   </div>
                   <p className="text-xs text-gray-500 flex items-center gap-2">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -229,23 +235,6 @@ const Cart = () => {
 };
 
 export default Cart;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { useContext } from "react";
 // import { AppContext } from "../context/AppContext";
@@ -350,4 +339,3 @@ export default Cart;
 // };
 
 // export default Cart;
-
