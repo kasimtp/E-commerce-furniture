@@ -134,7 +134,7 @@ const Cart = () => {
                         </div>
                         <div className="flex flex-col sm:flex-col lg:flex-row  items-center sm:items-end justify-between gap-2 lg:gap-4 mt-2 sm:mt-0">
                           {/* Quantity Counter */}
-                          <div className="flex items-center lg:pb-22 bg-[#4CB19A] lg:w-64 lg:h-24  lg:items-center  lg:m-auto   overflow-hidden">
+                          <div className="flex items-center lg:pb-22 bg-[#4CB19A]  rounded-2xl lg:w-64 lg:h-24  lg:items-center  lg:m-auto   overflow-hidden">
                             <button
                               onClick={() =>
                                 item.quantity > 1 &&
