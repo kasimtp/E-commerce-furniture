@@ -105,20 +105,20 @@ const Cart = () => {
             ) : (
               <div className="max-w-7xl lg:max-w-full mx-auto  bg-gray-50 px-4 lg:px-22 py-6 grid gap-6 lg:gap-2 lg:grid-cols-[1fr_350px]">
                 {/* 🛒 Cart List */}
-                <div className="space-y-4 w-[80%]">
+                <div className="space-y-4  lg:pt-8 w-[80%]">
                   {cartItems.map((item) => (
                     <div
                       key={item._id}
-                      className="bg-[#e8ebea] lg:px-12 lg:h-62 p-2 w-98 lg:w-7xl rounded-lg shadow flex flex-rol lg:flex-rol sm:flex-row gap-4"
+                      className="bg-[#e8ebea] lg:px-12 lg:h-62 p-2 w-86 lg:w-[3500px] rounded-lg shadow flex flex-rol lg:flex-rol sm:flex-row gap-4"
                     >
                       <img
                         src={item?.product?.image}
                         alt={item?.product?.name}
                         className="w-12 md:w-28  h-12 lg:h-48 lg:w-48 lg:py-0 md:h-28  sm:w-32 sm:h-32 object-cover rounded m-auto"
                       />
-                      <div className="flex flex-row md:flex-col  font-Poppins  bg-red-000 sm:flex-row justify-between w-full">
+                      <div className="flex flex-row md:flex-col lg:m-auto   font-Poppins  bg-red-000 sm:flex-row justify-between w-full">
                         <div className="flex-1 lg:flex lg:gap-82  bg-amber-000 space-y-1">
-                          <h3 className="text-[14px] m-auto sm:text-lg lg:text-[48px] font-normal  text-gray-800">
+                          <h3 className="text-[14px] lg:m-auto sm:text-lg lg:text-[48px] font-normal  text-gray-800">
                             {item?.product?.name}
                           </h3>
 
@@ -132,9 +132,9 @@ const Cart = () => {
                             </button> */}
                           </div>
                         </div>
-                        <div className="flex flex-col sm:flex-col lg:flex-row items-center sm:items-end justify-between gap-2 lg:gap-4 mt-2 sm:mt-0">
+                        <div className="flex flex-col sm:flex-col lg:flex-row  items-center sm:items-end justify-between gap-2 lg:gap-4 mt-2 sm:mt-0">
                           {/* Quantity Counter */}
-                          <div className="flex items-center lg:pb-22 bg-[#4CB19A] rounded-full overflow-hidden">
+                          <div className="flex items-center lg:pb-22 bg-[#4CB19A] lg:w-64 lg:h-24  lg:items-center  lg:m-auto   overflow-hidden">
                             <button
                               onClick={() =>
                                 item.quantity > 1 &&
