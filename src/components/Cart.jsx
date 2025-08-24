@@ -75,7 +75,7 @@ const Cart = () => {
                 <h2 className="text-lg lg:text-5xl sm:text-2xl lg:pt-22 lg:pb-4 font-Poppins font-semibold text-black">
                   SHOPPING CART
                 </h2>
-                <span className="ml-2 bg-[#4CB19A] lg:h-12 lg:text-4xl lg:-ml-1 lg:mt-15 text-center m-auto lg:w-14 text-white px-2 py-1 text-xs sm:text-sm rounded-full">
+                <span className="ml-2 bg-[#4CB19A] lg:h-12 lg:text-[28px] lg:-ml-1 lg:p-0 lg:mt-15 text-center m-auto lg:w-14 text-white px-2 py-1 text-xs sm:text-sm rounded-full">
                   {cartItems.length}
                 </span>
               </div>
@@ -225,6 +225,15 @@ const Cart = () => {
                     Safe and Secure Payments. 100% Authentic Products.
                   </p>
                 </div>
+                <div className=" place-content-center  text-center m-auto pb-12 lg:pt-12 lg:text-center  flex   ">
+                    <button
+                      onClick={handleBuyNow}
+                      className="bg-[#4CB19A]   hover:bg-gray-600 lg:h-26 h-14  lg:text-center  lg:w-92 text-white flex items-center  gap-2 lg:px-0 lg:py-0 px-6 py-2 rounded-md lg:place-content-center lg:gap-2 font-semibold text-sm sm:text-base"
+                    >
+                    
+                     <p className="lg:text-[33px] text-[18px]  font-Poppins cursor-pointer  capitalize "> proceed to checout</p>
+                    </button>
+                  </div>
               </div>
             )}
           </motion.div>
