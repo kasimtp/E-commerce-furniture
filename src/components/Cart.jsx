@@ -103,22 +103,22 @@ const Cart = () => {
                 </button>
               </div>
             ) : (
-              <div className="max-w-7xl lg:max-w-full mx-auto  bg-gray-50 px-4 lg:px-22 py-6 grid gap-6 lg:gap-2 lg:grid-cols-[1fr_350px]">
+              <div className="max-w-7xl lg:max-w-full  mx-auto   bg-gray-000  px-4 lg:px-12  py-6 grid gap-6 lg:gap-12 lg:grid-cols-[1fr_1000px]">
                 {/* 🛒 Cart List */}
-                <div className="space-y-4  lg:pt-8 w-[80%]">
+                <div className="space-y-4  lg:pt-8  w-[80%]">
                   {cartItems.map((item) => (
                     <div
                       key={item._id}
-                      className="bg-[#e8ebea] lg:px-12 lg:h-62 p-2 w-90 lg:w-[3500px] rounded-lg shadow flex flex-rol lg:flex-rol sm:flex-row gap-4"
+                      className="bg-[#e8ebea]   lg:bg-amber-000 lg:px-20 lg:h-62 p-2 w-90 lg:w-[3100px] rounded-lg shadow flex flex-rol lg:flex-rol sm:flex-row gap-4"
                     >
                       <img
                         src={item?.product?.image}
                         alt={item?.product?.name}
-                        className="w-12 md:w-28  h-12 lg:h-48 lg:w-48 lg:py-0 md:h-28  sm:w-32 sm:h-32 object-cover rounded m-auto"
+                        className="w-12 md:w-28  h-12 lg:h-48 lg:w-48 lg:py-0 md:h-28 bg- sm:w-32 sm:h-32 object-cover rounded m-auto"
                       />
-                      <div className="flex flex-row md:flex-col lg:m-auto   font-Poppins  bg-red-000 sm:flex-row justify-between w-full">
+                      <div className="flex flex-row md:flex-col lg:m-auto bg-amber-000  font-Poppins  bg-red-000 sm:flex-row justify-between w-full">
                         <div className="flex-1 lg:flex lg:gap-82  bg-amber-000 space-y-1">
-                          <h3 className="text-[14px] lg:m-auto sm:text-lg lg:text-[48px] font-normal  text-gray-800">
+                          <h3 className="text-[14px] lg:m-auto sm:text-lg lg:text-[48px] font-Poppins font-semibold  text-[#4CB19A]">
                             {item?.product?.name}
                           </h3>
 
@@ -132,81 +132,83 @@ const Cart = () => {
                             </button> */}
                           </div>
                         </div>
-                        <div className="flex flex-col sm:flex-col lg:flex-row  items-center sm:items-end justify-between gap-2 lg:gap-4 mt-2 sm:mt-0">
+                      </div>
+                        <div className="flex flex-rol sm:flex-col lg:flex-row bg-amber-000 bg-amber-000 items-center sm:items-end justify-between gap-2 lg:gap-44 lg:m-auto mt-2 sm:mt-0">
                           {/* Quantity Counter */}
-                          <div className="flex items-center lg:pb-22 bg-[#4CB19A]  rounded-2xl lg:w-64 lg:h-24  lg:items-center  lg:m-auto   overflow-hidden">
+                          <div className="flex items-center  hover:bg-gray-600  bg-[#4CB19A]      lg:place-content-center rounded-full lg:w-64 lg:h-20 lg:pb-2  lg:items-center     overflow-hidden">
                             <button
                               onClick={() =>
                                 item.quantity > 1 &&
                                 handleQuantityChange(item._id, "decrement")
                               }
-                              className="px-3 text-white font-bold text-lg lg:text-xl"
+                              className="px-3  text-white cursor-pointer font-bold text-lg lg:text-[55px] "
                             >
                               −
                             </button>
-                            <span className="px-3 text-white font-semibold text-sm lg:text-base">
+                            <span className="px-3 text-white font-semibold text-sm lg:text-[35px] lg:text-base">
                               {item.quantity}
                             </span>
                             <button
                               onClick={() =>
                                 handleQuantityChange(item._id, "increment")
                               }
-                              className="px-3 text-white font-bold text-lg lg:text-xl"
+                              className="px-3 text-white  font-semibold cursor-pointer text-lg  lg:text-xl lg:text-[55px]"
                             >
                               +
                             </button>
                           </div>
 
                           {/* Remove Button */}
-                          <button
+                          <div className="lg:place-content-center  bg-amber-000   ">
+                            <button
                             onClick={() => removeItemFromCart(item._id)}
-                            className="text-black hover:text-red-600"
+                            className="text-black hover:text-[#4CB19A] "
                           >
-                            <X />
+                            <X  className=" size-6 lg:size-14 "/>
                           </button>
+                          </div>
                         </div>
-                      </div>
                     </div>
                   ))}
 
-                  <div className="text-right pt-4">
+                  <div className="text-right lg:pt-12 lg:text-center  flex   ">
                     <button
                       onClick={handleBuyNow}
-                      className="bg-[#4CB19A] hover:bg-green-700 text-white flex items-center gap-2 px-6 py-2 rounded-full font-semibold text-sm sm:text-base"
+                      className="bg-[#4CB19A]  hover:bg-gray-600 lg:h-26   lg:text-center  lg:w-92 text-white flex items-center  gap-2 lg:px-0 lg:py-0 px-6 py-2 rounded-full lg:place-content-center lg:gap-2 font-semibold text-sm sm:text-base"
                     >
-                      <FaWhatsapp className="text-xl" />
-                      PLACE ORDER
+                      <FaWhatsapp className="lg:size-12 size-6    " />
+                     <p className="lg:text-[33px] font-Poppins cursor-pointer   "> PLACE ORDER</p>
                     </button>
                   </div>
                 </div>
 
                 {/* 💸 Price Summary */}
-                <div className="space-y-4   font-Poppins">
-                  <div className="bg-white p-4 rounded shadow">
-                    <h3 className="text-lg font-semibold border-b pb-2 mb-2 text-gray-800">
+                <div className="space-y-4 lg:pt-8   font-Poppins">
+                  <div className="bg-amber-000  lg:w-[1000px] border border-gray-300 p-4 rounded shadow">
+                    <h3 className="text-lg lg:text-[43px]  font-semibold border-b pb-2 mb-2 text-gray-800">
                       PRICE DETAILS
                     </h3>
-                    <div className="space-y-2 text-sm sm:text-base">
-                      <div className="flex justify-between">
-                        <span>Price ({cartItems.length} items)</span>
-                        <span>₹{totalPrice.toFixed(2)}</span>
+                    <div className="space-y-2  lg:space-y-6 text-sm sm:text-base">
+                      <div className="flex lg:text-[23px] font-semibold justify-between">
+                        <span className="lg:text-[32px] font-semibold">Price ({cartItems.length} items)</span>
+                        <span className="lg:text-[32px] font-semibold">₹{totalPrice.toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between text-[#4CB19A]">
-                        <span>Discount</span>
-                        <span>− ₹0</span>
+                        <span className="lg:text-[32px] font-semibold">Discount</span>
+                        <span className="lg:text-[32px] font-semibold">− ₹0</span>
                       </div>
-                      <div className="flex justify-between">
+                      <div className="flex justify-between lg:text-[32px] font-semibold">
                         <span>Delivery Charges</span>
                         <span className="text-[#4CB19A]">Free</span>
                       </div>
                       <hr />
                       <div className="flex justify-between font-bold text-base">
-                        <span>Total Amount</span>
-                        <span>₹{totalPrice.toFixed(2)}</span>
+                        <span className="lg:text-[33px] font-semibold">Total Amount</span>
+                        <span className="lg:text-[33px] cursor-pointer">₹{totalPrice.toFixed(2)}</span>
                       </div>
                     </div>
                   </div>
-                  <p className="text-xs text-gray-500 flex items-center gap-2">
+                  <p className="text-xs lg:text-[28px]  text-gray-500 flex items-center gap-2">
                     <svg
                       className="w-4 h-4"
                       fill="none"
@@ -235,107 +237,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-// import React, { useContext } from "react";
-// import { AppContext } from "../context/AppContext";
-// import { X } from "lucide-react";
-// import { useNavigate } from "react-router";
-// import Footer from "./Footer";
-
-// const Cart = () => {
-//   const { cartItems, removeFromCart, getTotalCartAmount } =
-//     useContext(AppContext);
-//   const navigate = useNavigate();
-
-//   return (
-//     <>
-//       <div className="min-h-screen bg-white p-4 sm:p-6">
-//         <h2 className="text-lg sm:text-xl md:text-2xl text-gray-800 font-semibold mb-4 sm:mb-6 border-b pb-2">
-//           Shopping Cart
-//         </h2>
-
-//         {cartItems.length === 0 ? (
-//           <div className="text-center text-gray-600 mt-12">
-//             Your cart is empty.
-//           </div>
-//         ) : (
-//           <div className="flex flex-col lg:flex-row gap-6">
-//             {/* Cart Items */}
-//             <div className="flex-1 space-y-4">
-//               {cartItems.map((item, index) => (
-//                 <div
-//                   key={index}
-//                   className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between bg-gray-100 p-4 rounded-lg shadow-sm"
-//                 >
-//                   {/* Product Image */}
-//                   <img
-//                     src={item?.product?.image}
-//                     alt={item?.product?.title}
-//                     className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded"
-//                   />
-
-//                   {/* Product Details */}
-//                   <div className="flex-1 space-y-2 text-sm sm:text-base">
-//                     <h3 className="font-semibold text-gray-800">
-//                       {item?.product?.title}
-//                     </h3>
-//                     <p className="text-gray-600">Category: {item?.product?.category}</p>
-//                     <p className="text-gray-800 font-medium">
-//                       ₹ {item?.product?.price}
-//                     </p>
-//                   </div>
-
-//                   {/* Delete Button */}
-//                   <button
-//                     onClick={() => removeFromCart(item.product._id)}
-//                     className="text-red-500 hover:text-red-700"
-//                   >
-//                     <X />
-//                   </button>
-//                 </div>
-//               ))}
-//             </div>
-
-//             {/* Price Summary */}
-//             <div className="w-full lg:w-[350px] space-y-4 border-t lg:border-t-0 lg:border-l pt-4 lg:pt-0 lg:pl-4 border-gray-200">
-//               <h3 className="text-lg font-semibold text-gray-700">
-//                 Order Summary
-//               </h3>
-
-//               <div className="flex justify-between text-sm text-gray-600">
-//                 <span>Subtotal</span>
-//                 <span>₹ {getTotalCartAmount()}</span>
-//               </div>
-//               <div className="flex justify-between text-sm text-gray-600">
-//                 <span>Shipping</span>
-//                 <span>Free</span>
-//               </div>
-//               <div className="border-t pt-2 flex justify-between font-semibold text-gray-800">
-//                 <span>Total</span>
-//                 <span>₹ {getTotalCartAmount()}</span>
-//               </div>
-
-//               {/* Checkout Button */}
-//               <button
-//                 onClick={() => navigate("/checkout")}
-//                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm sm:text-base py-2 rounded transition"
-//               >
-//                 Proceed to Checkout
-//               </button>
-
-//               {/* Extra Info */}
-//               <div className="text-xs sm:text-sm text-gray-500 mt-2 flex flex-col sm:flex-row items-start sm:items-center gap-2">
-//                 <p>Safe and Secure Payments.</p>
-//                 <p className="hidden sm:inline">100% Authentic products.</p>
-//               </div>
-//             </div>
-//           </div>
-//         )}
-//       </div>
-
-//       <Footer />
-//     </>
-//   );
-// };
-
-// export default Cart;

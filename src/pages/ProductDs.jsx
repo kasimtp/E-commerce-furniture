@@ -75,7 +75,7 @@ const ProductDs = () => {
   <img
     src={product?.image}
     alt={product?.name}
-    className="w-full max-w-[500px] lg:max-w-[700px] xl:max-w-[900px] h-auto rounded-lg object-contain"
+    className="w-full max-w-[500px] cursor-pointer lg:max-w-[700px] xl:max-w-[900px] h-auto rounded-lg object-contain"
   />
 </div>
 
@@ -115,14 +115,14 @@ const ProductDs = () => {
           {/* Quantity Selector */}
           <div className="flex items-center lg:mt-12  lg:h-25 lg:w-85 text-white bg-[#4CB19A] hover:bg-gray-600 w-fit rounded-3xl px-4 py-1">
             <button
-              className="text-xl m-auto lg:text-[60px] px-2"
+              className="text-xl m-auto lg:text-[60px] cursor-pointer  px-2"
               onClick={() => handleQuantityChange("decrement")}
             >
               −
             </button>
             <span className="px-3  text-lg m-auto lg:text-[50px]  font-Poppins">{quantity}</span>
             <button
-              className="text-xl  lg:text-[60px] m-auto px-2"
+              className="text-xl cursor-pointer lg:text-[60px] m-auto px-2"
               onClick={() => handleQuantityChange("increment")}
             >
               +
@@ -134,17 +134,17 @@ const ProductDs = () => {
           </p>
 
           {/* Buttons */}
-          <div className="flex bg-amber-000 lg:w-[50%]   flex-rol bg-amber-000 sm:flex-row gap-8 lg:gap-6 pt-2 lg:mt-12 w-full">
+          <div className="flex bg-amber-000 lg:w-[50%]    flex-rol bg-amber-000 sm:flex-row gap-8 lg:gap-6 pt-2 lg:mt-12 w-full">
 
              <button
               onClick={handleBuyNow}
-              className="bg-[#4CB19A] border w-36 hover:bg-green-600 lg:w-[50%] lg:h-[150px] sm:w-40 h-16  font-semibold text-white lg:rounded-2xl rounded-[4px]"
+              className="bg-[#4CB19A] border cursor-pointer w-36 hover:bg-gray-600 lg:w-[50%] lg:h-[150px] sm:w-40 h-16  font-semibold text-white lg:rounded-2xl rounded-[4px]"
             >
              <p className="lg:text-[44px] text-[18px] font-semibold font-Poppins p-2 "> Buy Now</p>
             </button>
             <button
               onClick={() => handleAddToCart(product._id)}
-              className="bg-gray-600  hover:bg-[#4CB19A]  w-36  lg:w-[50%] lg:h-[150px] sm:w-40 h-16 font-semibold text-white lg:rounded-2xl rounded-[4px]"
+              className="bg-gray-600 cursor-pointer  hover:bg-[#4CB19A]  w-36  lg:w-[50%] lg:h-[150px] sm:w-40 h-16 font-semibold text-white lg:rounded-2xl rounded-[4px]"
             >
               
               <FiShoppingCart className="m-auto text-white lg:text-[90px] text-[28px]"/>
