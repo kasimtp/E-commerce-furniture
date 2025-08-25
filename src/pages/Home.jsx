@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Popular from "../components/Popular";
 import Topbanner from "../components/Topbanner";
+import Address from "./Address";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null); // add this line
@@ -16,10 +17,12 @@ const Home = () => {
   return (
     <div>
       {/* <Topbanner /> */}
+   
       <Header />
       <Categories onCategoryClick={setSelectedCategory} /> {/* Pass prop */}
       <Popular selectedCategory={selectedCategory} /> {/* Send to Popular */}
       {/* <Banner /> */}
+         <Address />
       <Footer />
     </div>
   );
