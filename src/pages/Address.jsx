@@ -7,7 +7,8 @@ const Address = () => {
       <div className="bg-amber-000 px-4 flex flex-col">
         <div className="pt-4 bg-amber-000">
             <p className="capitalize text-[14px] font-Poppins font-semibold">
-                shipping adress
+                Enter a new delivery address
+
             </p>
         </div>
 

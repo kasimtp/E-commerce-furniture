@@ -19,10 +19,11 @@ const Home = () => {
       {/* <Topbanner /> */}
    
       <Header />
+         {/* <Address /> */}
       <Categories onCategoryClick={setSelectedCategory} /> {/* Pass prop */}
       <Popular selectedCategory={selectedCategory} /> {/* Send to Popular */}
       {/* <Banner /> */}
-         <Address />
+      
       <Footer />
     </div>
   );
