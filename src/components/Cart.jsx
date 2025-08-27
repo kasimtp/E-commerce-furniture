@@ -133,41 +133,41 @@ const Cart = () => {
                           </div>
                         </div>
                       </div>
-                        <div className="flex flex-rol sm:flex-col lg:flex-row bg-amber-000 bg-amber-000 items-center sm:items-end justify-between gap-2 lg:gap-44 lg:m-auto mt-2 sm:mt-0">
-                          {/* Quantity Counter */}
-                          <div className="flex items-center  hover:bg-gray-600  bg-[#4CB19A]      lg:place-content-center rounded-full lg:w-64 lg:h-20 lg:pb-2  lg:items-center     overflow-hidden">
-                            <button
-                              onClick={() =>
-                                item.quantity > 1 &&
-                                handleQuantityChange(item._id, "decrement")
-                              }
-                              className="px-3  text-white cursor-pointer font-bold text-lg lg:text-[55px] "
-                            >
-                              −
-                            </button>
-                            <span className="px-3 text-white font-semibold text-sm lg:text-[35px] lg:text-base">
-                              {item.quantity}
-                            </span>
-                            <button
-                              onClick={() =>
-                                handleQuantityChange(item._id, "increment")
-                              }
-                              className="px-3 text-white  font-semibold cursor-pointer text-lg  lg:text-xl lg:text-[55px]"
-                            >
-                              +
-                            </button>
-                          </div>
+                      <div className="flex flex-rol sm:flex-col lg:flex-row bg-amber-000 bg-amber-000 items-center sm:items-end justify-between gap-2 lg:gap-44 lg:m-auto mt-2 sm:mt-0">
+                        {/* Quantity Counter */}
+                        <div className="flex items-center  hover:bg-gray-600  bg-[#4CB19A]      lg:place-content-center rounded-full lg:w-64 lg:h-20 lg:pb-2  lg:items-center     overflow-hidden">
+                          <button
+                            onClick={() =>
+                              item.quantity > 1 &&
+                              handleQuantityChange(item._id, "decrement")
+                            }
+                            className="px-3  text-white cursor-pointer font-bold text-lg lg:text-[55px] "
+                          >
+                            −
+                          </button>
+                          <span className="px-3 text-white font-semibold text-sm lg:text-[35px] lg:text-base">
+                            {item.quantity}
+                          </span>
+                          <button
+                            onClick={() =>
+                              handleQuantityChange(item._id, "increment")
+                            }
+                            className="px-3 text-white  font-semibold cursor-pointer text-lg  lg:text-xl lg:text-[55px]"
+                          >
+                            +
+                          </button>
+                        </div>
 
-                          {/* Remove Button */}
-                          <div className="lg:place-content-center  bg-amber-000   ">
-                            <button
+                        {/* Remove Button */}
+                        <div className="lg:place-content-center  bg-amber-000   ">
+                          <button
                             onClick={() => removeItemFromCart(item._id)}
                             className="text-black hover:text-[#4CB19A] "
                           >
-                            <X  className=" size-6 lg:size-14 "/>
+                            <X className=" size-6 lg:size-14 " />
                           </button>
-                          </div>
                         </div>
+                      </div>
                     </div>
                   ))}
 
@@ -177,7 +177,10 @@ const Cart = () => {
                       className="bg-[#4CB19A]  hover:bg-gray-600 lg:h-26   lg:text-center  lg:w-92 text-white flex items-center  gap-2 lg:px-0 lg:py-0 px-6 py-2 rounded-full lg:place-content-center lg:gap-2 font-semibold text-sm sm:text-base"
                     >
                       <FaWhatsapp className="lg:size-12 size-6    " />
-                     <p className="lg:text-[33px] font-Poppins cursor-pointer   "> PLACE ORDER</p>
+                      <p className="lg:text-[33px] font-Poppins cursor-pointer   ">
+                        {" "}
+                        PLACE ORDER
+                      </p>
                     </button>
                   </div>
                 </div>
@@ -190,12 +193,20 @@ const Cart = () => {
                     </h3>
                     <div className="space-y-2  lg:space-y-6 text-sm sm:text-base">
                       <div className="flex lg:text-[23px] font-semibold justify-between">
-                        <span className="lg:text-[32px] font-semibold">Price ({cartItems.length} items)</span>
-                        <span className="lg:text-[32px] font-semibold">₹{totalPrice.toFixed(2)}</span>
+                        <span className="lg:text-[32px] font-semibold">
+                          Price ({cartItems.length} items)
+                        </span>
+                        <span className="lg:text-[32px] font-semibold">
+                          ₹{totalPrice.toFixed(2)}
+                        </span>
                       </div>
                       <div className="flex justify-between text-[#4CB19A]">
-                        <span className="lg:text-[32px] font-semibold">Discount</span>
-                        <span className="lg:text-[32px] font-semibold">− ₹0</span>
+                        <span className="lg:text-[32px] font-semibold">
+                          Discount
+                        </span>
+                        <span className="lg:text-[32px] font-semibold">
+                          − ₹0
+                        </span>
                       </div>
                       <div className="flex justify-between lg:text-[32px] font-semibold">
                         <span>Delivery Charges</span>
@@ -203,8 +214,12 @@ const Cart = () => {
                       </div>
                       <hr />
                       <div className="flex justify-between font-bold text-base">
-                        <span className="lg:text-[33px] font-semibold">Total Amount</span>
-                        <span className="lg:text-[33px] cursor-pointer">₹{totalPrice.toFixed(2)}</span>
+                        <span className="lg:text-[33px] font-semibold">
+                          Total Amount
+                        </span>
+                        <span className="lg:text-[33px] cursor-pointer">
+                          ₹{totalPrice.toFixed(2)}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -226,15 +241,21 @@ const Cart = () => {
                   </p>
                 </div>
                 <div className=" place-content-center  text-center m-auto pb-12 lg:pt-12 lg:text-center  flex   ">
-                    <button
-                      onClick={()=> navigate("/checkout", { state: { cartItems } })}
-                     
-                      className="bg-[#4CB19A]   hover:bg-gray-600 lg:h-26 h-14  lg:text-center  lg:w-92 text-white flex items-center  gap-2 lg:px-0 lg:py-0 px-6 py-2 rounded-md lg:place-content-center lg:gap-2 font-semibold text-sm sm:text-base"
-                    >
-                    
-                     <p className="lg:text-[33px] text-[18px]  font-Poppins cursor-pointer  capitalize "> proceed to checout</p>
-                    </button>
-                  </div>
+                  <button
+                    // Cart.jsx navigate button
+                    onClick={() =>
+                      navigate("/checkout", {
+                        state: { cartItems, total: totalPrice  },
+                      })
+                    }
+                    className="bg-[#4CB19A]   hover:bg-gray-600 lg:h-26 h-14  lg:text-center  lg:w-92 text-white flex items-center  gap-2 lg:px-0 lg:py-0 px-6 py-2 rounded-md lg:place-content-center lg:gap-2 font-semibold text-sm sm:text-base"
+                  >
+                    <p className="lg:text-[33px] text-[18px]  font-Poppins cursor-pointer  capitalize ">
+                      {" "}
+                      proceed to checout
+                    </p>
+                  </button>
+                </div>
               </div>
             )}
           </motion.div>
