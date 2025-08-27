@@ -227,7 +227,8 @@ const Cart = () => {
                 </div>
                 <div className=" place-content-center  text-center m-auto pb-12 lg:pt-12 lg:text-center  flex   ">
                     <button
-                      onClick={handleBuyNow}
+                      onClick={()=> navigate("/checkout", { state: { cartItems } })}
+                     
                       className="bg-[#4CB19A]   hover:bg-gray-600 lg:h-26 h-14  lg:text-center  lg:w-92 text-white flex items-center  gap-2 lg:px-0 lg:py-0 px-6 py-2 rounded-md lg:place-content-center lg:gap-2 font-semibold text-sm sm:text-base"
                     >
                     

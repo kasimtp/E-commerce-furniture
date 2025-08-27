@@ -114,7 +114,7 @@ const App = () => {
   const showNavbarRoutes = ["/", "/shop", "/contact", "/blog"];
 
   // ✅ Routes where BottomNavbar should be hidden (like checkout, login)
-  const hideBottomNavbarRoutes = ["/checkout", "/login"];
+  // const hideBottomNavbarRoutes = ["/checkout", "/login"];
 
   return (
     <div>
@@ -163,11 +163,13 @@ const App = () => {
           }
         />
       </Routes>
+      <BottomNavbar />
+
 
       {/* ✅ Show BottomNavbar everywhere except login & checkout */}
-      {!hideBottomNavbarRoutes.includes(location.pathname) && (
-        <BottomNavbar />
-      )}
+      {/* {!hideBottomNavbarRoutes.includes(location.pathname) && (
+        
+      )} */}
     </div>
   );
 };
