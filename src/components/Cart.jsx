@@ -12,6 +12,8 @@ const Cart = () => {
   const navigate = useNavigate();
   const { cartItems, setCartItems, removeItemFromCart } =
     useContext(AppContext);
+    console.log(cartItems);
+    
 
   const totalPrice = cartItems.reduce((acc, item) => {
     const price = parseFloat(item?.product?.price) || 0;
