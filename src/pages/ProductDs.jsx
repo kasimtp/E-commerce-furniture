@@ -140,15 +140,18 @@ const ProductDs = () => {
           {/* Buttons */}
           <div className="flex bg-amber-000 lg:w-[50%]    flex-rol bg-amber-000 sm:flex-row gap-8 lg:gap-6 pt-2 lg:mt-12 w-full">
             <button
-              onClick={() =>
-                navigate("/checkout", {
-                  state: {
-                    product,
-                    quantity,
-                    total: product.price * quantity,
-                  },
-                })
-              }
+onClick={() =>
+  navigate("/checkout", {
+    state: {
+      product,
+      quantity,
+      total: product.price * quantity,
+    },
+  })
+}
+
+
+
               className="bg-[#4CB19A] border cursor-pointer w-36 hover:bg-gray-600 
              lg:w-[50%] lg:h-[150px] sm:w-40 h-14 font-semibold text-white 
              lg:rounded-2xl rounded-[4px]"

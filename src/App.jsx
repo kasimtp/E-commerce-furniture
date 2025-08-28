@@ -135,7 +135,7 @@ const App = () => {
         <Route path="/search" element={<SearchBar />} />
         <Route path="/productdetiles/:id" element={<ProductDs />} />
         <Route path="/shippingaddress" element={<Address />} />
-        <Route path="/checkout" element={<CheckOut />} />
+       <Route path="/checkout" element={<CheckOut />} />
 
         {/* 🔐 Protected Routes */}
         <Route
