@@ -273,7 +273,7 @@ const Navbar = () => {
         </div>
 
         {/* Right icons */}
-        <div className="flex items-center space-x-4 md:space-x-6">
+        <div className="flex items-center space-x-2 md:space-x-6">
           {/* ❤️ Wishlist */}
           <Link to="/wishlist" className="relative hidden sm:block">
             <FiHeart className="text-xl md:text-2xl lg:text-3xl text-gray-800 hover:text-pink-500" />
@@ -287,17 +287,17 @@ const Navbar = () => {
           {/* 👤 Account / Logout */}
           {token ? (
             <button onClick={handleLogout}>
-              <FaRegUser  className="text-xl md:text-2xl lg:text-3xl text-gray-800 hover:text-[#4CB19A]" />
+              <FiUser  className="size-7 md:text-2xl lg:text-3xl text-gray-800 hover:text-[#4CB19A]" />
             </button>
           ) : (
             <Link to="/login">
-              <FiUser className="text-xl md:text-2xl lg:text-3xl text-gray-800 hover:text-[#4CB19A]" />
+              <FiUser className="text-22 md:text-2xl lg:text-3xl text-gray-800 hover:text-[#4CB19A]" />
             </Link>
           )}
 
           {/* 🛒 Cart */}
           <Link to="/shoppingcart" className="relative">
-            <FiShoppingCart className="text-xl md:text-2xl lg:text-3xl text-gray-800 hover:text-green-700" />
+            <FiShoppingCart className="size-6 md:text-2xl lg:text-3xl text-gray-800 hover:text-green-700" />
             {cartItems.length > 0 && (
               <span className="absolute -top-1 -right-2 bg-[#4CB19A] text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
                 {cartItems.length}
