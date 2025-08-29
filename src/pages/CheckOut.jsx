@@ -68,8 +68,8 @@ const CheckOut = () => {
         </p>
       </div>
 
-    <div className="flex flex-col sm:flex-row gap-4 bg-amber-000 sm:h-20">
-  <div className="mt-4 shadow-md w-full sm:w-60 rounded-lg px-3 pb-2 flex flex-col">
+    <div className="flex flex-rol sm:flex-row gap-4 bg-amber-000 sm:h-20">
+  <div className="mt-4 bg-red-50 w-98 shadow-md  h-12 sm:w-60 rounded-lg px-3 pb-2 flex flex-col">
     <p className="text-[13px] sm:text-[15px] text-gray-800 font-medium">
       Address:
     </p>
@@ -91,7 +91,7 @@ const CheckOut = () => {
       {checkoutItems.map((item) => (
         <div
           key={item._id}
-          className="mt-6 bg-white border-b border-gray-200 p-4 flex gap-6 w-full max-w-lg mx-auto rounded-lg"
+          className="mt-6 bg-red-000 w-98 border-b border-gray-200 p-4 flex gap-6  max-w-lg mx-auto rounded-lg"
         >
           {/* Product Image */}
           <img
