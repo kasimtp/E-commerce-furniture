@@ -54,8 +54,8 @@ const CheckOut = () => {
   return (
     <div className="w-full font-Poppins sm:px-6 md:px-10 py-4">
       {/* Header */}
-      <div className="border-b border-gray-100 pb-2">
-        <p className="capitalize text-[16px] sm:text-2xl text-center text-gray-900 font-semibold">
+      <div className="border-b border-gray-100  pb-2">
+        <p className="capitalize text-[19px] sm:text-2xl text-center text-gray-900 font-semibold">
           Checkout
         </p>
       </div>
@@ -68,21 +68,24 @@ const CheckOut = () => {
         </p>
       </div>
 
-      <div className="flex flex-row gap-4 h-20">
-        <div className="mt-4 shadow-md w-60 rounded-lg px-3 pb-2 flex flex-col">
-          <p className="text-[15px] text-gray-800 font-medium">Address:</p>
-          <p className="text-[11px] text-gray-600">
-            216 St Paul's Rd, London N1 2LL,
-            <br /> UK Contact : +44-784232
-          </p>
-        </div>
-        <div
-          onClick={() => navigate("/shippingaddress")}
-          className="mt-5 w-14 shadow-md rounded-lg cursor-pointer px-3 pb-2 flex items-center justify-center hover:bg-gray-50"
-        >
-          <IoIosAddCircleOutline className="w-8 h-8 text-gray-600" />
-        </div>
-      </div>
+    <div className="flex flex-col sm:flex-row gap-4 bg-amber-000 sm:h-20">
+  <div className="mt-4 shadow-md w-full sm:w-60 rounded-lg px-3 pb-2 flex flex-col">
+    <p className="text-[13px] sm:text-[15px] text-gray-800 font-medium">
+      Address:
+    </p>
+    <p className="text-[11px] sm:text-[13px] text-gray-600 leading-snug">
+      216 St Paul's Rd, London N1 2LL,
+      <br /> UK Contact : +44-784232
+    </p>
+  </div>
+  <div
+    onClick={() => navigate("/shippingaddress")}
+    className="mt-2 sm:mt-5 w-12 sm:w-14 h-12 sm:h-auto shadow-md rounded-lg cursor-pointer px-3 pb-2 flex items-center justify-center hover:bg-gray-50"
+  >
+    <IoIosAddCircleOutline className="w-6 h-6 sm:w-8 sm:h-8 text-gray-600" />
+  </div>
+</div>
+
 
       {/* Product List */}
       {checkoutItems.map((item) => (
