@@ -26,19 +26,19 @@ const Categories = ({ onCategoryClick }) => {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-10 flex flex-col items-center space-y-8">
+    <div className="w-full max-w-7xl mx-auto px-4 py-20 lg:-mt-[500px] -mt-24 flex flex-col items-center space-y-8 font-poppins">
       {/* Header */}
       <div className="text-center space-y-2">
-        <p className="text-xs sm:text-sm lg:text-2xl text-[#6C757D] uppercase tracking-widest">
+        <p className="text-xs sm:text-sm lg:text-[18px] text-[#6C757D] uppercase tracking-widest">
           passion for fashion
         </p>
-        <h2 className="text-2xl sm:text-3xl lg:text-6xl font-bold text-[#212529]">
+        <h2 className="text-2xl sm:text-3xl lg:text-[44px] font-bold text-[#212529]">
           Shop By Categories
         </h2>
       </div>
 
       {/* Horizontal Scroll Categories */}
-      <div className="w-full overflow-x-auto scrollbar-hide">
+      <div className="w-full overflow-x-auto no-scrollbar">
         <div className="flex gap-6 lg:gap-12 px-2">
           {categoryData.map((item, index) => {
             const isActive = activeCategory === item.name;
@@ -50,15 +50,15 @@ const Categories = ({ onCategoryClick }) => {
               >
                 <div
                   className={`rounded-full flex items-center justify-center shadow-md overflow-hidden
-                    w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32
-                    bg-[#e8ebea] hover:scale-105 transition-transform duration-300 ease-in-out
+                    w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-24 lg:h-24
+                    bg-[#e8ebea] hover:scale-110 transition-transform duration-400 ease-in-out
                     ${isActive ? "ring-2 ring-green-600" : ""}
                   `}
                 >
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="object-contain w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-20 lg:h-20"
+                    className="object-contain w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 lg:w-24 lg:h-24"
                   />
                 </div>
                 <span

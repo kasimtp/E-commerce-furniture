@@ -234,10 +234,10 @@ const Navbar = () => {
       {/* 🔝 Top Navbar */}
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
         {/* Logo */}
-        <div className="flex items-center">
+        <div className="flex items-center ">
           <img src={logogreen} alt="Logo" className="h-8 md:h-10 w-auto mr-2" />
           <span className="hidden md:block text-2xl md:text-3xl font-bold text-[#4CB19A] font-Poppins">
-            Flipkert
+            lipkert
           </span>
         </div>
 
@@ -287,7 +287,7 @@ const Navbar = () => {
           {/* 👤 Account / Logout */}
           {token ? (
             <button onClick={handleLogout}>
-              <FiUser  className="size-7 md:text-2xl lg:text-3xl text-gray-800 hover:text-[#4CB19A]" />
+              <FiUser  className="size-8 md:text-2xl lg:text-3xl text-gray-800 hover:text-[#4CB19A]" />
             </button>
           ) : (
             <Link to="/login">
@@ -297,7 +297,7 @@ const Navbar = () => {
 
           {/* 🛒 Cart */}
           <Link to="/shoppingcart" className="relative">
-            <FiShoppingCart className="size-6 md:text-2xl lg:text-3xl text-gray-800 hover:text-green-700" />
+            <FiShoppingCart className="size-8 md:text-2xl lg:text-3xl text-gray-800 hover:text-green-700" />
             {cartItems.length > 0 && (
               <span className="absolute -top-1 -right-2 bg-[#4CB19A] text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
                 {cartItems.length}

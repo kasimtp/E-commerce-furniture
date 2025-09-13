@@ -1,34 +1,21 @@
 // tailwind.config.js
+import scrollbarHide from 'tailwind-scrollbar-hide';
+
+/** @type {import('tailwindcss').Config} */
 export default {
-    content: [
-      "./src/**/*.{js,jsx,ts,tsx}", // Adjust to match your file structure
-    ],
-    theme: {
-      extend: {
-        fontFamily: {
-            Ephesis: ['Ephesis', 'cursive'],
-            Outfit: ['Outfit','sans-serif;'],
-            Poppins: ['Poppins','sans-serif']
-
-        },
-        },
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}', // Adjust if needed
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        Ephesis: ['Ephesis', 'cursive'],
+        Outfit: ['Outfit', 'sans-serif'],
+        Poppins: ['Poppins', 'sans-serif'],
       },
-    plugins: [],
-  };
-  
-
-
-// // tailwind.config.js
-// module.exports = {
-//   content: [
-//     "./src/**/*.{js,jsx,ts,tsx}",
-//   ],
-//   theme: {
-//     extend: {
-//       fontFamily: {
-//         poppins: ['Poppins', 'sans-serif'], // 👉 ഇവിടെ add ചെയ്യുന്നു
-//       },
-//     },
-//   },
-//   plugins: [],
-// }
+    },
+  },
+  plugins: [
+    scrollbarHide,
+  ],
+};
