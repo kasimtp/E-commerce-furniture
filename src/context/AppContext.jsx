@@ -39,6 +39,24 @@ const AppContextProvider = ({ children }) => {
     }
   };
 
+
+
+
+  const deleteProductById = async (id) => {
+  try {
+    const res = await apiClient.delete(`/delete-product/${id}`);
+    console.log("Product deleted:", res.data);
+    return res.data; // Return the deleted product or message if needed
+  } catch (err) {
+    console.error("Error deleting product:", err);
+    throw err; // Rethrow in case the caller wants to handle the error
+  }
+};
+
+
+
+
+
   const increaseQuantity = async (id) => {
     setCartItems((prev) =>
       prev.map((item) =>
@@ -86,6 +104,7 @@ const AppContextProvider = ({ children }) => {
     decreaseQuantity,
     fetchCart,
     logout,
+    deleteProductById
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

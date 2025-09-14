@@ -1,19 +1,19 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { SlLocationPin } from "react-icons/sl";
-import { IoIosAddCircleOutline } from "react-icons/io";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 
 const CheckOut = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { cartItems, removeItemFromCart } = useContext(AppContext);
+  const { cartItems, removeItemFromCart, deleteProductById } =
+    useContext(AppContext);
 
-  // 🔹 Buy Now items (navigate ചെയ്യുമ്പോൾ state കൊണ്ട് pass ചെയ്‌താൽ മാത്രം ഉണ്ടാകും)
+  // 🔹 Buy Now item
   const buyNowItems = state?.product
     ? [
         {
-          _id: "buy-now", // dummy ID
+          _id: "buy-now",
           product: state.product,
           quantity: state.quantity || 1,
           from: "buyNow",
@@ -21,27 +21,21 @@ const CheckOut = () => {
       ]
     : [];
 
-  // 🔹 Cart items (state-ൽ നിന്ന് വന്നാലോ context-ൽ നിന്ന് വന്നാലോ)
+  // 🔹 Cart items
   const cartItemsadd = state?.cartItems || cartItems || [];
+  const cartWithFlag = cartItemsadd.map((item) => ({
+    ...item,
+    from: "cart",
+  }));
 
-  // 🔹 cart flag ചേർക്കുന്നു
-  const cartWithFlag = cartItemsadd.map((item) => ({ ...item, from: "cart" }));
-
-  // 🔹 Combine BuyNow + Cart
+  // 🔹 All checkout items
   const checkoutItems = [...buyNowItems, ...cartWithFlag];
 
-  // 🔹 Compute total price
+  // 🔹 Total price
   const total = checkoutItems.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
     0
   );
-
-  // Debugging logs
-  console.log("Location state:", state);
-  console.log("Buy Now Items:", buyNowItems);
-  console.log("Cart Items from Context:", cartItems);
-  console.log("Cart Items final:", cartItemsadd);
-  console.log("Checkout Items:", checkoutItems);
 
   if (!checkoutItems.length) {
     return (
@@ -52,85 +46,95 @@ const CheckOut = () => {
   }
 
   return (
-    <div className="w-full font-Poppins sm:px-6 md:px-10 py-4">
+    <div className="w-full font-Poppins px-4 sm:px-6 md:px-10 py-6 max-w-screen-lg mx-auto">
       {/* Header */}
-      <div className="border-b border-gray-100  pb-2">
-        <p className="capitalize text-[19px] sm:text-2xl text-center text-gray-900 font-semibold">
+      <div className="border-b border-gray-200 pb-3 mb-5">
+        <h2 className="capitalize text-xl sm:text-2xl text-center text-gray-900 font-semibold">
           Checkout
-        </p>
+        </h2>
       </div>
 
       {/* Delivery Address */}
-      <div className="flex px-3 items-center mt-4 shadow-xs rounded-xl pb-2 space-x-1">
-        <SlLocationPin className="w-4 h-4 text-gray-800" />
-        <p className="font-medium text-[13px] sm:text-base text-gray-800">
+      <div className="flex items-center gap-2 mb-3">
+        <SlLocationPin className="w-4 h-4 text-gray-700" />
+        <p className="font-medium text-sm sm:text-base text-gray-800">
           Delivery Address
         </p>
       </div>
 
-    <div className="flex flex-rol sm:flex-row gap-4 bg-amber-000 sm:h-20">
-  <div className="mt-4 bg-red-50 w-98 shadow-md  h-12 sm:w-60 rounded-lg px-3 pb-2 flex flex-col">
-    <p className="text-[13px] sm:text-[15px] text-gray-800 font-medium">
-      Address:
-    </p>
-    <p className="text-[11px] sm:text-[13px] text-gray-600 leading-snug">
-      216 St Paul's Rd, London N1 2LL,
-      <br /> UK Contact : +44-784232
-    </p>
-  </div>
-  <div
-    onClick={() => navigate("/shippingaddress")}
-    className="mt-2 sm:mt-5 w-12 sm:w-14 h-12 sm:h-auto shadow-md rounded-lg cursor-pointer px-3 pb-2 flex items-center justify-center hover:bg-gray-50"
-  >
-    <IoIosAddCircleOutline className="w-6 h-6 sm:w-8 sm:h-8 text-gray-600" />
-  </div>
-</div>
-
+      <div className="flex flex-col sm:flex-row gap-4 mb-8">
+        <div className="bg-white w-full sm:w-auto shadow-md p-3 rounded-lg">
+          <p className="text-sm sm:text-base font-medium text-gray-800">
+            Address:
+          </p>
+          <p className="text-xs sm:text-sm text-gray-600 leading-snug mt-1">
+            216 St Paul's Rd, London N1 2LL, <br /> UK <br />
+            Contact: +44-784232
+          </p>
+        </div>
+        <button
+          onClick={() => navigate("/shippingaddress")}
+          className="flex items-center justify-center px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-100 text-blue-500 text-sm font-medium"
+        >
+          Add New
+        </button>
+      </div>
 
       {/* Product List */}
-      {checkoutItems.map((item) => (
-        <div
-          key={item._id}
-          className="mt-6 bg-red-000 w-98 border-b border-gray-200 p-4 flex gap-6  max-w-lg mx-auto rounded-lg"
-        >
-          {/* Product Image */}
-          <img
-            src={item.product.image}
-            alt={item.product.name}
-            className="w-20 h-20 sm:w-32 sm:h-32 rounded-lg object-cover"
-          />
+      <div className="space-y-6">
+        {checkoutItems.map((item) => (
+          <div
+            key={item._id}
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-4 border-b border-gray-200 pb-4"
+          >
+            {/* Image */}
+            <img
+              src={item.product.image}
+              alt={item.product.name}
+              className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-md"
+            />
 
-          {/* Product Info */}
-          <div className="flex-1">
-            <p className="text-base sm:text-lg font-medium text-gray-700">
-              {item.product.name}
-            </p>
-            <p className="text-sm sm:text-base text-gray-600">
-              Quantity: <span className="font-medium">{item.quantity}</span>
-            </p>
-            <div className="mt-2 rounded-lg bg-gray-50 border border-gray-300 w-fit px-2 py-1">
-              <p className="text-lg sm:text-xl font-bold text-gray-700">
+            {/* Info */}
+            <div className="flex-1 w-full sm:w-auto">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800">
+                {item.product.name}
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600 mt-1">
+                Quantity:{" "}
+                <span className="font-medium text-gray-800">
+                  {item.quantity}
+                </span>
+              </p>
+              <p className="text-lg sm:text-xl font-bold text-gray-800 mt-2">
                 ₹{(item.product.price * item.quantity).toFixed(2)}
               </p>
             </div>
+
+            {/* Remove Button */}
+            <div>
+              <button
+                onClick={() => {
+                  if (item.from === "cart") {
+                    removeItemFromCart(item._id);
+                    deleteProductById(item.product._id);
+                  } else if (item.from === "buyNow") {
+                    navigate(-1); // Go back to previous page
+                  }
+                }}
+                className="text-red-500 text-sm hover:underline mt-2 sm:mt-0"
+              >
+                Remove
+              </button>
+            </div>
           </div>
+        ))}
+      </div>
 
-          {/* Remove button (only for cart items) */}
-        
-            <button
-              onClick={() => removeItemFromCart(item._id)}
-              className="text-red-500 text-sm hover:underline"
-            >
-              Remove
-            </button>
-         
-        </div>
-      ))}
-
-      {/* Order Summary */}
-      <div className="mt-6 w-full max-w-lg mx-auto shadow-md rounded-xl p-4 flex justify-between text-sm sm:text-base">
-        <p className="font-medium text-gray-700">
-          Total Order ({checkoutItems.length} items):
+      {/* Total Summary */}
+      <div className="mt-10 bg-white shadow-md border border-gray-200 rounded-xl px-5 py-4 flex justify-between text-sm sm:text-base">
+        <p className="font-medium text-gray-800">
+          Total Order ({checkoutItems.length} item
+          {checkoutItems.length > 1 ? "s" : ""}):
         </p>
         <p className="font-bold text-gray-900">₹{total.toFixed(2)}</p>
       </div>
