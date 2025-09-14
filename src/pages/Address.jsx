@@ -34,7 +34,7 @@ const Address = () => {
       const token = localStorage.getItem("token");
 
       const { data } = await apiClient.post(
-        "/addresses",
+        "/addresses",  
         addressData,
         {
           headers: {
