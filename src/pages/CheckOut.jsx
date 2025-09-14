@@ -49,7 +49,7 @@ const CheckOut = () => {
     <div className="w-full font-Poppins px-4 sm:px-6 md:px-10 py-6 max-w-screen-lg mx-auto">
       {/* Header */}
       <div className="border-b border-gray-200 pb-3 mb-5">
-        <h2 className="capitalize text-xl sm:text-2xl text-center text-gray-900 font-semibold">
+        <h2 className="capitalize text-xl sm:text-2xl text-center text-gray-900 font-medium">
           Checkout
         </h2>
       </div>
