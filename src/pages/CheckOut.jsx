@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SlLocationPin } from "react-icons/sl";
-import { AppContext } from "../context/AppContext";
-import { apiClient } from "../utils/api";
+import { AppContext } from "../context/AppContext.jsx";
+import { apiClient } from "../utils/api.js";
 
 const CheckOut = () => {
   const { state } = useLocation();
