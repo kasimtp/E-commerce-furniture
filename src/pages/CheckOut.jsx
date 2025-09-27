@@ -1,13 +1,39 @@
+import { useEffect, useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SlLocationPin } from "react-icons/sl";
-import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import { apiClient } from "../utils/api";
 
 const CheckOut = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { cartItems, removeItemFromCart, deleteProductById } =
-    useContext(AppContext);
+  const { cartItems, removeItemFromCart, deleteProductById } = useContext(AppContext);
+
+  const [savedAddress, setSavedAddress] = useState(null);
+
+  // 🔹 Fetch address from backend
+  useEffect(() => {
+    const fetchAddress = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const { data } = await apiClient.get("/addresses", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (data.success && data.addresses.length > 0) {
+          setSavedAddress(data.addresses[0]); // Showing the first address
+        } else {
+          setSavedAddress(null);
+        }
+      } catch (error) {
+        console.error("Error fetching address:", error);
+      }
+    };
+
+    fetchAddress();
+  }, []);
 
   // 🔹 Buy Now item
   const buyNowItems = state?.product
@@ -67,11 +93,25 @@ const CheckOut = () => {
           <p className="text-sm sm:text-base font-medium text-gray-800">
             Address:
           </p>
-          <p className="text-xs sm:text-sm text-gray-600 leading-snug mt-1">
-            216 St Paul's Rd, London N1 2LL, <br /> UK <br />
-            Contact: +44-784232
-          </p>
+          {savedAddress ? (
+            <p className="text-xs sm:text-sm text-gray-600 leading-snug mt-1">
+              {savedAddress.fullName},<br />
+              {savedAddress.address1},<br />
+              {savedAddress.district}, {savedAddress.state}, {savedAddress.country} -{" "}
+              {savedAddress.pinCode} <br />
+              Contact: {savedAddress.mobile}
+              {savedAddress.landmark && (
+                <>
+                  <br />
+                  Landmark: {savedAddress.landmark}
+                </>
+              )}
+            </p>
+          ) : (
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">No address saved</p>
+          )}
         </div>
+
         <button
           onClick={() => navigate("/shippingaddress", { state })}
           className="flex items-center justify-center px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-100 text-blue-500 text-sm font-medium"
@@ -118,7 +158,7 @@ const CheckOut = () => {
                     removeItemFromCart(item._id);
                     deleteProductById(item.product._id);
                   } else if (item.from === "buyNow") {
-                    navigate(-1); // Go back to previous page
+                    navigate(-1); // Go back
                   }
                 }}
                 className="text-red-500 text-sm hover:underline mt-2 sm:mt-0"
