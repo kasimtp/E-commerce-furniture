@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { apiClient } from "../utils/api"; // axios instance use cheyyunnu
+import { apiClient } from "../utils/api";
 
 const Address = () => {
   const navigate = useNavigate();
+    const { state } = useLocation(); 
 
   const indianStates = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -23,7 +24,7 @@ const Address = () => {
       fullName: e.target.fullName.value,
       mobile: e.target.mobile.value,
       address1: e.target.address1.value,
-      pincode: e.target.pincode.value,
+      pinCode: e.target.pincode.value, 
       district: e.target.district.value,
       state: e.target.state.value,
       country: e.target.country.value,
@@ -34,7 +35,7 @@ const Address = () => {
       const token = localStorage.getItem("token");
 
       const { data } = await apiClient.post(
-        "/addresses",  
+        "/addresses",   
         addressData,
         {
           headers: {
@@ -45,7 +46,8 @@ const Address = () => {
 
       if (data.success) {
         toast.success("✅ Address saved successfully!");
-        navigate("/checkout");
+       navigate("/checkout", { state }); 
+
       } else {
         toast.error(data.message || "Failed to save address");
       }

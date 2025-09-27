@@ -73,7 +73,7 @@ const CheckOut = () => {
           </p>
         </div>
         <button
-          onClick={() => navigate("/shippingaddress")}
+          onClick={() => navigate("/shippingaddress", { state })}
           className="flex items-center justify-center px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-100 text-blue-500 text-sm font-medium"
         >
           Add New
