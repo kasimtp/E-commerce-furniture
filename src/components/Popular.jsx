@@ -64,10 +64,11 @@ const Popular = ({ selectedCategory }) => {
   return (
     <div className="w-full -mt-6 bg-gray-50 font-Poppins">
       {/* Header */}
-      <div className="text-center mb-10">
-        <h2 className="text-2xl md:text-3xl lg:pt-6 pt-4 lg:text-4xl font-semibold text-[#212529]">
+      <div className="text-center mb-4">
+        <h2 className="text-[18px]  md:text-3xl lg:pt-6 pt-4 lg:text-4xl  font-semibold text-[#6C757D]  -tracking-tight font-Poppins ">
           Trending Now
         </h2>
+          
       </div>
 
       {/* Product Grid */}
@@ -75,7 +76,7 @@ const Popular = ({ selectedCategory }) => {
         {filteredProducts.map((item, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 flex flex-col justify-between"
+            className="bg-white rounded-lg shadow-xs hover:shadow-lg transition duration-300 flex flex-col h-44 justify-between"
           >
             {/* Image Section */}
             <div className="relative h-48 md:h-60 lg:h-72 overflow-hidden rounded-t-lg cursor-pointer">
@@ -97,12 +98,12 @@ const Popular = ({ selectedCategory }) => {
             </div>
 
             {/* Product Info */}
-            <div className="p-4 flex flex-col gap-2">
-              <p className="text-sm md:text-base font-medium text-gray-700 truncate">
+            <div className="p-4 flex flex-col gap-0">
+              <p className="text-[13px] md:text-base font-medium text-gray-700 truncate">
                 {item.name}
               </p>
 
-              <div className="text-[#4CB19A] font-bold text-lg md:text-xl">
+              <div className="text-[#4CB19A] font-bold text-xs md:text-xl">
                 ₹{item.price.toFixed(2)}
               </div>
 

@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Check, Trash2 } from "lucide-react";
 import { SlLocationPin } from "react-icons/sl";
 import { AppContext } from "../context/AppContext";
 import { apiClient } from "../utils/api.js";
@@ -131,7 +132,7 @@ const CheckOut = () => {
 
         <button
           onClick={() => navigate("/shippingaddress", { state })}
-          className="flex items-center justify-center px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-100 text-blue-500 text-sm font-medium"
+          className="flex items-center justify-center px-4 py-2 rounded-lg bg-[#4CB19A]  text-white capitalize  hover:bg-gray-100 text-blue text-sm font-medium"
         >
           Add New
         </button>
@@ -142,7 +143,7 @@ const CheckOut = () => {
         {checkoutItems.map((item) => (
           <div
             key={item._id}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-4 border-b border-gray-200 pb-4"
+            className="flex flex-row sm:flex-row items-start sm:items-center gap-4 border-b border-gray-200 pb-4"
           >
             {/* Image */}
             <img
@@ -153,16 +154,16 @@ const CheckOut = () => {
 
             {/* Info */}
             <div className="flex-1 w-full sm:w-auto">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800">
+              <h3 className="text-xs sm:text-lg font-normal  text-gray-600">
                 {item.product.name}
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 mt-1">
+              <p className="text-xs font-medium sm:text-base text-gray-600 mt-1">
                 Quantity:{" "}
                 <span className="font-medium text-gray-800">
                   {item.quantity}
                 </span>
               </p>
-              <p className="text-lg sm:text-xl font-bold text-gray-800 mt-2">
+              <p className="text-sm sm:text-xl font-bold text-gray-800 mt-1">
                 ₹{(item.product.price * item.quantity).toFixed(2)}
               </p>
             </div>
@@ -180,7 +181,7 @@ const CheckOut = () => {
                 }}
                 className="text-red-500 text-sm hover:underline mt-2 sm:mt-0"
               >
-                Remove
+               <Trash2  size={20} className="lg:text[84px] lg:ml-22 lg:h-14 lg:w-14" />
               </button>
             </div>
           </div>
