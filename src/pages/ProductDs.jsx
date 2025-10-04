@@ -161,7 +161,7 @@
 
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { apiClient } from "../utils/api.js";
 import { FiShoppingCart } from "react-icons/fi";
 import Footer from "../components/Footer.jsx";
@@ -204,8 +204,8 @@ const ProductDs = () => {
   if (!product) return <p className="text-center mt-10">Loading......!</p>;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+    <div className="max-w-7xl mx-auto px-4  py-8">
+      <div className="grid grid-cols-1 bg-red-000 md:grid-cols-2 gap-4 items-start">
         {/* Product Image */}
         <div className="flex justify-center">
           <img
@@ -216,24 +216,24 @@ const ProductDs = () => {
         </div>
 
         {/* Product Details */}
-        <div className="space-y-6">
+        <div className="space-y-2">
           <h2 className="text-2xl sm:text-3xl font-semibold text-gray-700">
             {product.name}
           </h2>
-          <p className="text-lg text-gray-600">{product.description}</p>
-          <p className="text-xl font-semibold text-gray-800">
+          <p className="text-sm  text-gray-600">{product.description}</p>
+          <p className="text-xl font-bold text-gray-800">
             ₹{product.price.toFixed(2)}
           </p>
 
           {/* Quantity Selector */}
-          <div className="flex items-center bg-[#4CB19A] text-white rounded-full px-5 py-2 w-fit space-x-4">
-            <button onClick={() => handleQuantityChange("decrement")}>−</button>
-            <span>{quantity}</span>
-            <button onClick={() => handleQuantityChange("increment")}>+</button>
+          <div className="flex items-center bg-white text-black rounded-full border-1 border-[#4CB19A] px-3 py-0 w-fit space-x-4">
+            <button onClick={() => handleQuantityChange("decrement")}className="font-bold" >−</button>
+            <span className="font-medium">{quantity}</span>
+            <button onClick={() => handleQuantityChange("increment")} className="font-bold">+</button>
           </div>
 
-          <p className="text-lg font-bold text-gray-700">
-            Total: ₹{(product.price * quantity).toFixed(2)}
+          <p className="text-lg font-bold  text-gray-700">
+            Total : ₹{(product.price * quantity).toFixed(2)}
           </p>
 
           {/* Action Buttons */}
@@ -248,8 +248,8 @@ const ProductDs = () => {
             <button
               className="bg-gray-600 hover:bg-[#4CB19A] text-white rounded-lg py-3 px-6 w-full sm:w-1/2 flex items-center justify-center"
             >
-              <FiShoppingCart className="text-xl mr-2" />
-              Add to Cart
+              {/* <FiShoppingCart className="text-xl mr-2" /> */}
+              Add to Cart  
             </button>
           </div>
         </div>
