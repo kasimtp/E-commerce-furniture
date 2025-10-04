@@ -211,7 +211,7 @@ const ProductDs = () => {
           <img
             src={product?.image}
             alt={product?.name}
-            className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl object-contain rounded-lg"
+            className="  w-46 h-46 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl object-contain rounded-lg"
           />
         </div>
 
@@ -232,9 +232,9 @@ const ProductDs = () => {
             <button onClick={() => handleQuantityChange("increment")} className="font-bold">+</button>
           </div>
 
-          <p className="text-lg font-bold  text-gray-700">
+          {/* <p className="text-lg font-bold  text-gray-700">
             Total : ₹{(product.price * quantity).toFixed(2)}
-          </p>
+          </p> */}
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mt-4">
