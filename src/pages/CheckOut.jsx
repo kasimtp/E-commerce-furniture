@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Trash2 } from "lucide-react";
@@ -15,7 +13,7 @@ const CheckOut = () => {
 
   const [savedAddress, setSavedAddress] = useState(null);
 
-  // 🔹 Fetch address from backend
+  // Fetch address from backend
   useEffect(() => {
     const fetchAddress = async () => {
       try {
@@ -25,7 +23,6 @@ const CheckOut = () => {
         });
 
         let addresses = [];
-
         if (Array.isArray(res.data)) {
           addresses = res.data;
         } else if (Array.isArray(res.data?.addresses)) {
@@ -33,10 +30,10 @@ const CheckOut = () => {
         }
 
         if (addresses.length > 0) {
-          setSavedAddress(addresses.at(-1)); // latest one
+          setSavedAddress(addresses.at(-1));
         } else {
           setSavedAddress(null);
-        } 
+        }
       } catch (error) {
         console.error("❌ Error fetching address:", error);
         setSavedAddress(null);
@@ -46,25 +43,16 @@ const CheckOut = () => {
     fetchAddress();
   }, []);
 
-  // 🔹 Total price
   const total = cartItems.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
     0
   );
 
-  // if (!cartItems.length) {
-  //   return (
-  //     <p className="text-center mt-10 text-gray-700 text-lg font-medium">
-  //       No product found. Please go back.
-  //     </p>
-  //   );
-  // }
-
   return (
     <div className="w-full font-Poppins px-4 sm:px-6 md:px-10 py-6 max-w-screen-lg mx-auto">
       {/* Header */}
       <div className="border-b border-gray-200 pb-1 mb-5">
-        <p className="capitalize text-[16px] sm:text-2xl  text-center text-gray-900 font-semibold">
+        <p className="capitalize text-[16px] sm:text-2xl text-center text-gray-900 font-semibold">
           Checkout
         </p>
       </div>
@@ -78,12 +66,12 @@ const CheckOut = () => {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
-        <div className="bg-white w-full sm:w-auto shadow-md p-3 rounded-lg">
+        <div className="bg-white w-full sm:w-auto shadow-md p-4 rounded-lg">
           <p className="text-sm sm:text-base font-medium text-gray-800">
-            Address:
+            Deliver to:
           </p>
           {savedAddress ? (
-            <p className="text-[10px] sm:text-sm text-gray-600 leading-snug mt-1  font-medium">
+            <p className="text-[10px] sm:text-sm text-gray-600 leading-snug mt-1 font-medium">
               {savedAddress.fullName},<br />
               {savedAddress.address1},<br />
               {savedAddress.district}, {savedAddress.state},{" "}
@@ -105,43 +93,38 @@ const CheckOut = () => {
 
         <button
           onClick={() => navigate("/shippingaddress")}
-          className="flex items-center justify-center px-4 py-2 rounded-lg bg-[#4CB19A] text-white capitalize hover:bg-gray-600 text-sm font-medium"
+          className="flex items-center justify-center px-4 py-2 rounded-lg bg-[#4CB19A] text-white capitalize hover:bg-[#3a8c7f] text-sm font-medium"
         >
           Add New
         </button>
       </div>
 
       {/* Product List */}
-      <div className="space-y-6">
+      <div className="space-y-6 mb-6">
         {cartItems.map((item, index) => (
           <div
             key={index}
             className="flex flex-row items-start sm:items-center gap-4 border-b border-gray-200 pb-4"
           >
-            {/* Image */}
             <img
               src={item.product.image}
               alt={item.product.name}
               className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-md"
             />
 
-            {/* Info */}
             <div className="flex-1 w-full sm:w-auto">
               <h3 className="text-xs sm:text-lg font-normal text-gray-600">
                 {item.product.name}
               </h3>
               <p className="text-xs font-medium sm:text-base text-gray-600 mt-1">
                 Quantity:{" "}
-                <span className="font-medium text-gray-800">
-                  {item.quantity}
-                </span>
+                <span className="font-medium text-gray-800">{item.quantity}</span>
               </p>
               <p className="text-sm sm:text-xl font-bold text-gray-800 mt-1">
                 ₹{(item.product.price * item.quantity).toFixed(2)}
               </p>
             </div>
 
-            {/* Remove Button */}
             <button
               onClick={() => dispatch(removeFromCart(index))}
               className="text-red-500 hover:text-red-700 mt-2 sm:mt-0"
@@ -152,22 +135,40 @@ const CheckOut = () => {
         ))}
       </div>
 
-      {/* Total Summary */}
-      <div className="mt-10 bg-white shadow-md border border-gray-200 rounded-xl px-5 py-4 flex justify-between text-sm sm:text-base">
-        <p className="font-medium text-gray-800">
-          Total Order ({cartItems.length} item
-          {cartItems.length > 1 ? "s" : ""}):
-        </p>
-        <p className="font-bold text-gray-900">₹{total.toFixed(2)}</p>
+      {/* Price Details */}
+      <div className="mt-4 bg-white shadow-lg border border-gray-100 rounded-2xl p-6">
+        <h2 className="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-3">
+          Price Details
+        </h2>
+
+        <div className="mt-4 space-y-3 text-sm sm:text-base text-gray-700">
+          <div className="flex justify-between">
+            <span>
+              Total Order ({cartItems.length} item
+              {cartItems.length > 1 ? "s" : ""})
+            </span>
+            <span className="font-medium">₹{total.toFixed(2)}</span>
+          </div>
+
+          <div className="flex justify-between">
+            <span>Shipping</span>
+            <span className="text-green-600 font-medium">Free</span>
+          </div>
+
+          <div className="border-t border-gray-200 pt-3 flex justify-between text-base font-semibold text-gray-900">
+            <span>Total Amount</span>
+            <span>₹{total.toFixed(2)}</span>
+          </div>
+        </div>
       </div>
 
-      {/* Clear All */}
-      <div className="flex justify-end mt-4 mb-10">
+      {/* Continue to Payment Button */}
+      <div className="mt-6 flex justify-end">
         <button
-          onClick={() => dispatch(clearCart())}
-          className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg"
+          onClick={() => navigate("/payment")}
+          className="w-full sm:w-auto bg-[#4CB19A] hover:bg-[#3a8c7f] text-white font-semibold py-3 px-6 rounded-lg text-sm sm:text-base transition-colors duration-300"
         >
-          Clear All
+          Continue to Payment
         </button>
       </div>
     </div>
@@ -175,4 +176,3 @@ const CheckOut = () => {
 };
 
 export default CheckOut;
-
