@@ -165,7 +165,7 @@ const CheckOut = () => {
       {/* Continue to Payment Button */}
       <div className="mt-6 flex justify-end">
         <button
-          onClick={() => navigate("/payment")}
+          onClick={() => navigate("/paymentcash")}
           className="w-full sm:w-auto bg-[#4CB19A] hover:bg-[#3a8c7f] text-white font-semibold py-3 px-6 rounded-lg text-sm sm:text-base transition-colors duration-300"
         >
           Continue to Payment

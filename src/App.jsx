@@ -114,6 +114,7 @@ import ProductDs from "./pages/ProductDs";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Address from "./pages/Address";
 import CheckOut from "./pages/CheckOut";
+import PaymentPage from "./pages/PaymentPage";
 
 const App = () => {
   const location = useLocation();
@@ -144,6 +145,7 @@ const App = () => {
         <Route path="/productdetiles/:id" element={<ProductDs />} />
         <Route path="/shippingaddress" element={<Address />} />
         <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/paymentcash" element={PaymentPage} />  
 
         {/* Protected Routes */}
         <Route

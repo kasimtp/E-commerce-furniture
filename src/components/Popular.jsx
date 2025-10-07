@@ -72,7 +72,7 @@ const Popular = ({ selectedCategory }) => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid gap-6 px-4 sm:px-6 md:px-12 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid gap-2 px-4 sm:px-6 md:px-12 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {filteredProducts.map((item, index) => (
           <div
             key={index}
