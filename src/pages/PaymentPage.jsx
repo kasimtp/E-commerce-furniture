@@ -1,67 +1,145 @@
-import { useState } from "react";
-import { FaMoneyBillWave, FaCreditCard, FaGooglePay, FaWallet } from "react-icons/fa";
-// import { Button } from "@/components/ui/button"; // optional if using shadcn
-import { useNavigate } from "react-router-dom";
+// import React from "react";
+// import { useNavigate, useLocation } from "react-router-dom";
+// import { toast } from "react-toastify";
+// import { apiClient } from "../utils/api"; // your axios instance
+
+// const PaymentPage = () => {
+//   const navigate = useNavigate();
+//   const location = useLocation();
+//   const amount = location.state?.amount || 100; // from checkout page (in rupees)
+
+//   const handlePayment = async () => {
+//     try {
+//       // 1️⃣ Create order on backend
+//       const { data } = await apiClient.post("/api/payment/orders/create", {
+//         amount: amount * 100, // convert to paise
+//       });
+
+//       const options = {
+//         key: data.key,
+//         amount: data.amount,
+//         currency: data.currency,
+//         name: "Furniture Store",
+//         description: "Order Payment",
+//         order_id: data.orderId,
+//         handler: async function (response) {
+//           const verifyRes = await apiClient.post("/api/payment/orders/verify", {
+//             razorpay_order_id: response.razorpay_order_id,
+//             razorpay_payment_id: response.razorpay_payment_id,
+//             razorpay_signature: response.razorpay_signature,
+//           });
+
+//           if (verifyRes.data.success) {
+//             toast.success("Payment Successful!");
+//             navigate("/"); // redirect to home or order success page
+//           } else {
+//             toast.error("Payment verification failed");
+//           }
+//         },
+//         prefill: {
+//           name: "Customer Name",
+//           email: "customer@example.com",
+//           contact: "9999999999",
+//         },
+//         theme: {
+//           color: "#2b8a3e",
+//         },
+//       };
+
+//       const razor = new window.Razorpay(options);
+//       razor.open();
+//     } catch (err) {
+//       console.error(err);
+//       toast.error("Payment failed to start");
+//     }
+//   };
+
+//   return (
+//     <div className="flex flex-col items-center justify-center h-[80vh]">
+//       <h1 className="text-2xl font-bold mb-4">Complete Your Payment</h1>
+//       <p className="mb-6 text-gray-600">Amount to pay: ₹{amount}</p>
+//       <button
+//         onClick={handlePayment}
+//         className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-all"
+//       >
+//         Pay Now
+//       </button>
+//     </div>
+//   );
+// };
+
+// export default PaymentPage;
+
+
+
+
+
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import { apiClient } from "../utils/api";
 
 const PaymentPage = () => {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState("");
+  const location = useLocation();
+  const amount = location.state?.amount || 100;
 
-  const handleContinue = () => {
-    if (!selected) {
-      alert("Please select a payment method");
-      return;
-    }
+  const handlePayment = async () => {
+    try {
+      // 1️⃣ Create order on backend
+      const { data } = await apiClient.post("/payment/orders/create", {
+        amount: amount * 100, // paise
+      });
 
-    if (selected === "razorpay") {
-      navigate("/payment"); // navigate to Razorpay page
-    } else if (selected === "cod") {
-      navigate("/order-success", { state: { method: "Cash on Delivery" } });
-    } else {
-      alert(`${selected} payment option coming soon!`);
+      const options = {
+        key: data.key,
+        amount: data.amount,
+        currency: data.currency,
+        name: "Furniture Store",
+        description: "Order Payment",
+        order_id: data.orderId,
+        handler: async function (response) {
+          const verifyRes = await apiClient.post("/payment/orders/verify", {
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+          });
+
+          if (verifyRes.data.success) {
+            toast.success("Payment Successful!");
+            navigate("/"); // Redirect after success
+          } else {
+            toast.error("Payment verification failed");
+          }
+        },
+        prefill: {
+          name: "Customer Name",
+          email: "customer@example.com",
+          contact: "9999999999",
+        },
+        theme: {
+          color: "#2b8a3e",
+        },
+      };
+
+      const razor = new window.Razorpay(options);
+      razor.open();
+    } catch (err) {
+      console.error(err);
+      toast.error("Payment failed to start");
     }
   };
 
-  const methods = [
-    { id: "razorpay", title: "Credit / Debit / UPI (Razorpay)", icon: <FaCreditCard className="text-blue-500" /> },
-    { id: "cod", title: "Cash on Delivery", icon: <FaMoneyBillWave className="text-green-500" /> },
-    { id: "upi", title: "UPI / Google Pay / PhonePe", icon: <FaGooglePay className="text-indigo-500" /> },
-    { id: "wallet", title: "Wallets (Paytm / Amazon Pay)", icon: <FaWallet className="text-orange-500" /> },
-  ];
-
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white rounded-2xl shadow">
-      <h2 className="text-2xl font-semibold mb-4 text-center">Select Payment Method</h2>
-
-      <div className="space-y-3">
-        {methods.map((m) => (
-          <div
-            key={m.id}
-            onClick={() => setSelected(m.id)}
-            className={`flex items-center justify-between border p-4 rounded-xl cursor-pointer transition 
-              ${selected === m.id ? "border-blue-500 bg-blue-50" : "border-gray-300 hover:bg-gray-50"}`}
-          >
-            <div className="flex items-center gap-3">
-              {m.icon}
-              <span className="font-medium">{m.title}</span>
-            </div>
-            <input
-              type="radio"
-              name="method"
-              checked={selected === m.id}
-              readOnly
-              className="accent-blue-500 scale-125"
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* <Button
-        onClick={handleContinue}
-        className="w-full mt-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl"
+    <div className="flex flex-col items-center justify-center h-[80vh]">
+      <h1 className="text-2xl font-bold mb-4">Complete Your Payment</h1>
+      <p className="mb-6 text-gray-600">Amount to pay: ₹{amount}</p>
+      <button
+        onClick={handlePayment}
+        className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-all"
       >
-        Continue
-      </Button> */}
+        Pay Now
+      </button>
     </div>
   );
 };
