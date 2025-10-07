@@ -152,7 +152,7 @@ const CheckOut = () => {
 
           <div className="flex justify-between">
             <span>Shipping</span>
-            <span className="text-green-600 font-medium">Free</span>
+            <span className="text-[#4CB19A] font-medium">Free</span>
           </div>
 
           <div className="border-t border-gray-200 pt-3 flex justify-between text-base font-semibold text-gray-900">
@@ -164,12 +164,15 @@ const CheckOut = () => {
 
       {/* Continue to Payment Button */}
       <div className="mt-6 flex justify-end">
+      
+
         <button
-          onClick={() => navigate("/paymentcash")}
-          className="w-full sm:w-auto bg-[#4CB19A] hover:bg-[#3a8c7f] text-white font-semibold py-3 px-6 rounded-lg text-sm sm:text-base transition-colors duration-300"
-        >
-          Continue to Payment
-        </button>
+  onClick={() => navigate("/paymentcash", { state: { amount: total } })}
+  className="w-full sm:w-auto bg-[#4CB19A] hover:bg-[#3a8c7f] text-white font-semibold py-3 px-6 rounded-lg text-sm sm:text-base transition-colors duration-300"
+>
+  Continue to Payment
+</button>
+
       </div>
     </div>
   );
