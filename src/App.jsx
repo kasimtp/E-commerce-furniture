@@ -22,6 +22,13 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Address from "./pages/Address";
 import CheckOut from "./pages/CheckOut";
 import PaymentPage from "./pages/PaymentPage";
+import TermsConditions from "./pages/TermsConditions";
+import Support  from ".//pages/Support"
+import Documentation from "./pages/Documentation";
+import HelpCenter from "./pages/HelpCenter";
+import GeneralFAQs from "./pages/GeneralFAQs";
+import Sitemap from "./pages/Sitemap";
+import Press from "./pages/Press";
 
 const App = () => {
   const location = useLocation();
@@ -53,6 +60,13 @@ const App = () => {
         <Route path="/shippingaddress" element={<Address />} />
         <Route path="/checkout" element={<CheckOut />} />
         <Route path="/paymentcash" element={<PaymentPage />} /> 
+        <Route path="/terms" element={<TermsConditions />} />
+         <Route path="/support"  element={<Support />} />
+         <Route path="/documentation" element={<Documentation />} />
+         <Route path="/help" element={<HelpCenter/>} />
+         <Route path="/faqs" element={<GeneralFAQs/>} />
+         <Route path="/Sitemap" element={<Sitemap />} />
+         <Route path="/Press" element={<Press/>} />
 
         {/* Protected Routes */}
         <Route
