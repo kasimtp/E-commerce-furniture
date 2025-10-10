@@ -38,28 +38,7 @@ const Footer = () => {
         </div>
 
         {/* Shop Section */}
-        <div className="flex flex-col gap-4">
-          <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800">
-            Shop
-          </h3>
-          <ul className="flex flex-col gap-2 text-sm sm:text-base lg:text-base">
-            <li>
-              <Link to="/terms" className="hover:text-gray-800 transition">
-                Terms & Conditions
-              </Link>
-            </li>
-            <li>
-              <Link to="/sitemap" className="hover:text-gray-800 transition">
-                Sitemap
-              </Link>
-            </li>
-            <li>
-              <Link to="/press" className="hover:text-gray-800 transition">
-                Press
-              </Link>
-            </li>
-          </ul>
-        </div>
+        
 
         {/* Support Section */}
         <div className="flex flex-col gap-4">

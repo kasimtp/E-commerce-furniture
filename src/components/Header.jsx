@@ -12,10 +12,10 @@ import airpodbanner from "../assets/airpodnew.png"
 import showebanner from "../assets/shoesnew.png"
 import hedsetbanner from "../assets/hedsetbannernew.png"
 import shoespanner from "../assets/shoes2.png"
-import powerbankpanner from "../assets/powerbank.png"
+// import powerbankpanner from "../assets/powerbank.png"
 
 
-const banners = [airpodbanner,powerbankpanner, shoespanner ,shoesbanner,hedsetbanner, showebanner];
+const banners = [airpodbanner, shoespanner ,shoesbanner,hedsetbanner, showebanner];
 
 const Header = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
