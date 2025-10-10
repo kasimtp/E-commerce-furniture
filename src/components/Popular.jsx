@@ -43,7 +43,7 @@ const Popular = ({ selectedCategory }) => {
   const handleClickwishList = async (id) => {
     const user = localStorage.getItem("id");
     if (!user) {
-      alert("Please login to add to wishlist.");
+      toast.warn("Please login to add to wishlist.");
       navigate("/Login");
       return;
     }
@@ -54,7 +54,7 @@ const Popular = ({ selectedCategory }) => {
         product: id,
         quantity: 1,
       });
-      toast.success("Product added to wishlist!");
+      toast.success("Added to wishlist!");
     } catch (err) {
       console.error("Wishlist error:", err);
       toast.error("Failed to add to wishlist.");
@@ -62,64 +62,94 @@ const Popular = ({ selectedCategory }) => {
   };
 
   return (
-    <div className="w-full -mt-6 bg-gray-50 font-Poppins">
+    <section className="w-full bg-gray-50 py-10 font-Poppins">
       {/* Header */}
-      <div className="text-center mb-4">
-        <h2 className="text-[18px]  md:text-3xl lg:pt-6 pt-4 lg:text-4xl  font-semibold text-[#6C757D]  -tracking-tight font-Poppins ">
-          Trending Now
+      <div className="text-center mb-10">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-700 tracking-tight">
+          ✨ Trending Now
         </h2>
-          
+        <p className="text-base md:text-lg text-gray-500 mt-2">
+          Discover what’s popular and trending today
+        </p>
       </div>
 
       {/* Product Grid */}
-      <div className="grid gap-2 px-4 sm:px-6 md:px-12 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div
+        className="
+          grid gap-6 px-3 sm:px-6 md:px-12
+          grid-cols-1 
+          sm:grid-cols-2 
+          md:grid-cols-3 
+          lg:grid-cols-4 
+          xl:grid-cols-5
+        "
+      >
         {filteredProducts.map((item, index) => (
           <div
-            key={index}
-            className="bg-white rounded-lg shadow-xs hover:shadow-lg transition duration-300 flex flex-col h-44 justify-between"
+            key={item._id}
+            className="
+              group bg-white rounded-2xl shadow transition-shadow duration-300 
+              flex flex-col overflow-hidden relative hover:shadow-2xl
+            "
           >
             {/* Image Section */}
-            <div className="relative h-48 md:h-60 lg:h-72 overflow-hidden rounded-t-lg cursor-pointer">
+            <div
+              className="relative w-full aspect-[4/5] overflow-hidden cursor-pointer"
+              onClick={() => navigate(`/productdetiles/${item._id}`)}
+            >
               <img
-                onClick={() => navigate(`/productdetiles/${item._id}`)}
                 src={item.image}
                 alt={item.name}
-                className="w-full h-full object-contain p-2 hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-contain bg-gray-50 p-4 group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
               />
               {item.discount && (
-                <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                <span className="absolute top-3 left-3 bg-red-600 text-white text-xs sm:text-sm font-bold px-2 py-1 rounded-full shadow">
                   {item.discount}% OFF
-                </div>
+                </span>
               )}
-              <CiHeart
-                onClick={() => handleClickwishList(item._id)}
-                className="absolute top-2 right-2 text-white bg-[#4CB19A] p-1 rounded-full text-2xl md:text-3xl hover:scale-110 transition"
-              />
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleClickwishList(item._id);
+                }}
+                aria-label="Add to wishlist"
+                className="absolute top-3 right-3 bg-white/90 hover:bg-teal-500 hover:text-white text-[#4CB19A] p-2 rounded-full transition duration-300 shadow"
+              >
+                <CiHeart className="text-lg sm:text-2xl" />
+              </button>
             </div>
 
             {/* Product Info */}
-            <div className="p-4 flex flex-col gap-0">
-              <p className="text-[13px] md:text-base font-medium text-gray-700 truncate">
+            <div className="p-4 flex flex-col gap-1 flex-1">
+              <h3 className="text-base md:text-lg font-medium text-gray-800 truncate">
                 {item.name}
-              </p>
-
-              <div className="text-[#4CB19A] font-bold text-xs md:text-xl">
+              </h3>
+              <div className="text-[#4CB19A] font-semibold text-base md:text-lg">
                 ₹{item.price.toFixed(2)}
               </div>
-
-              {/* Uncomment this for Add to Cart */}
-              {/* <button
-                onClick={() => handleClick(item._id)}
-                className="mt-2 flex items-center justify-center gap-2 bg-[#f0f0f0] hover:bg-[#e5e5e5] text-sm md:text-base font-medium px-4 py-2 rounded shadow"
+              <button
+                onClick={() => navigate(`/productdetiles/${item._id}`)}
+                className="
+                  mt-4 bg-[#4CB19A] text-white text-sm md:text-base py-2 px-3 font-semibold
+                  rounded-lg hover:bg-[#3b917f] transition-colors duration-300 shadow-sm
+                "
               >
-                <FiShoppingCart className="text-lg" />
-                Add to Cart
-              </button> */}
+                View Details
+              </button>
             </div>
           </div>
         ))}
       </div>
-    </div>
+
+      {/* Empty State */}
+      {filteredProducts.length === 0 && (
+        <div className="flex flex-col items-center justify-center py-12 text-gray-500">
+          <span className="text-5xl mb-3">🔎</span>
+          <p className="text-base md:text-lg">No products found in this category.</p>
+        </div>
+      )}
+    </section>
   );
 };
 

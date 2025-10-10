@@ -15,7 +15,7 @@ const Login = () => {
 
   const handleRegister = async () => {
     try {
-      const { data } = await apiClient.post("/user/register", { 
+      const { data } = await apiClient.post("/user/register", {
         name,
         email,
         password,
@@ -26,7 +26,7 @@ const Login = () => {
         localStorage.setItem("id", data.user._id);
         setToken(data.token);
         fetchCart();
-        toast.success("Registered successfully");
+        toast.success("Registered successfully 🎉");
       } else {
         toast.error(data.message || "Registration failed");
       }
@@ -37,17 +37,13 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const { data } = await apiClient.post("/user/login", {
-        email,
-        password,
-      });
-
+      const { data } = await apiClient.post("/user/login", { email, password });
       if (data.success) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("id", data.user._id);
         setToken(data.token);
         fetchCart();
-        toast.success("Logged in successfully");
+        toast.success("Logged in successfully 🎉");
       } else {
         toast.error(data.message || "Login failed");
       }
@@ -70,35 +66,46 @@ const Login = () => {
   }, [token, navigate]);
 
   return (
-    <form onSubmit={onSubmitHandler}>
-      <div className="min-h-screen bg-gray-100 font-semibold flex items-center justify-center">
-        <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md">
-          <h2 className="text-3xl font-bold text-center mb-6">
-            {state === "Sign Up" ? "Create Account" : "Login"}
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4">
+      <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
+        {/* Header Section */}
+        <div className="bg-blue-600 py-6 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-white">
+            {state === "Sign Up" ? "Create Account" : "Welcome Back"}
           </h2>
-
-          <p className="text-center mb-4">
-            Please {state === "Sign Up" ? "Sign Up" : "Log in"} to order now
+          <p className="text-blue-100 text-sm md:text-base mt-1">
+            {state === "Sign Up"
+              ? "Join us and start shopping today!"
+              : "Log in to continue your shopping experience"}
           </p>
+        </div>
 
+        {/* Form Section */}
+        <form onSubmit={onSubmitHandler} className="p-8 space-y-5">
           {state === "Sign Up" && (
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Full Name
               </label>
               <input
                 type="text"
                 id="name"
                 onChange={(e) => setName(e.target.value)}
-                className="border border-zinc-300 rounded w-full p-2 mt-1"
+                className="w-full border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="John Doe"
                 required
               />
             </div>
           )}
 
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Email
             </label>
             <input
@@ -106,14 +113,17 @@ const Login = () => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="you@example.com"
               required
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Password
             </label>
             <input
@@ -121,37 +131,39 @@ const Login = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="••••••••"
               required
             />
           </div>
 
-          <div className="flex justify-between items-center mb-4">
-            <div className="text-sm text-blue-600 hover:underline cursor-pointer">
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-blue-600 hover:underline cursor-pointer">
               Forgot password?
-            </div>
+            </span>
           </div>
 
           <button
             type="submit"
-            className="bg-blue-600 text-white w-full py-2 rounded-md text-base hover:bg-blue-700 transition"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-base font-semibold shadow-md transition duration-300"
           >
             {state === "Sign Up" ? "Create Account" : "Login"}
           </button>
 
-          <p className="text-sm text-center mt-4">
-            {state === "Sign Up" ? "Already have an account?" : "Create a new account?"}{" "}
+          <p className="text-center text-sm text-gray-600">
+            {state === "Sign Up"
+              ? "Already have an account?"
+              : "Don't have an account?"}{" "}
             <span
               onClick={() => setState(state === "Sign Up" ? "Login" : "Sign Up")}
-              className="text-blue-600 hover:underline cursor-pointer"
+              className="text-blue-600 font-medium hover:underline cursor-pointer"
             >
-              {state === "Sign Up" ? "Login here" : "Click here"}
+              {state === "Sign Up" ? "Login here" : "Sign up here"}
             </span>
           </p>
-        </div>
+        </form>
       </div>
-    </form>
+    </div>
   );
 };
 

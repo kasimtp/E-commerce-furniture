@@ -1,14 +1,7 @@
-
-
-
-
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FiHeart, FiShoppingCart, FiUser } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
-import { FaRegUser } from "react-icons/fa";
-import { CiUser } from "react-icons/ci";
-import { MdLogout } from "react-icons/md";
 import logogreen from "../assets/logogreen.png";
 import { AppContext } from "../context/AppContext";
 import { apiClient } from "../utils/api";
@@ -19,7 +12,6 @@ const Navbar = () => {
   const [searchResults, setSearchResults] = useState([]);
   const { cartItems, logout } = useContext(AppContext);
   const navigate = useNavigate();
-
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -32,7 +24,6 @@ const Navbar = () => {
     }
   }, []);
 
-  // 🔍 Search with debounce
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
       if (searchQuery.trim() !== "") {
@@ -44,7 +35,6 @@ const Navbar = () => {
         setSearchResults([]);
       }
     }, 300);
-
     return () => clearTimeout(delayDebounce);
   }, [searchQuery]);
 
@@ -54,106 +44,51 @@ const Navbar = () => {
     navigate("/login", { replace: true });
   };
 
-  const navLinks = (
-    <>
-      <Link to="/" className="hover:text-[#4CB19A] font-medium">
-        Home
-      </Link>
-      <Link to="/shop" className="hover:text-[#4CB19A] font-medium">
-        Products
-      </Link>
-      <Link to="/cart" className="hover:text-[#4CB19A] font-medium">
-        Cart
-      </Link>
-      <Link to="/contact" className="hover:text-[#4CB19A] font-medium">
-        Contact
-      </Link>
-    </>
-  );
-
   return (
-    <nav className="sticky top-0 w-full bg-[#e8ebea] z-50 shadow-sm">
-      {/* 🔝 Top Navbar */}
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
-        {/* Logo */}
-        <div className="flex items-center ">
-          <img src={logogreen} alt="Logo" className="h-8 md:h-10 w-auto mr-2" />
-          <span className="hidden md:block text-2xl md:text-3xl font-bold text-[#4CB19A] font-Poppins">
-            lipkert
-          </span>
-        </div>
+   <nav className="sticky top-0 w-full bg-[#e8ebea] shadow-md z-50 font-Poppins">
+ <div className="flex flex-row items-center justify-between w-full px-3 py-3 md:py-4 lg:py-5 gap-2">
+  
+  {/* Logo */}
+  <Link to="/" className="flex-shrink-0">
+    <div className="flex items-center gap-1">
+      <span className="text-2xl font-extrabold text-green-500">Joy</span>
+      <span className="text-2xl font-extrabold text-teal-500">Cart</span>
+    </div>
+  </Link>
 
-        {/* Search bar */}
-        <div className="relative flex items-center bg-white rounded-full px-2 md:px-4 w-[60%] md:w-[40%] lg:w-[50%] h-9 md:h-11">
-          <IoIosSearch className="text-gray-500 text-lg md:text-xl mr-2" />
-          <input
-            type="text"
-            placeholder="Search.."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-grow outline-none font-Poppins text-sm md:text-base text-gray-700 bg-transparent"
-          />
+  {/* Search Bar */}
+  <div className="flex-grow mx-2">
+    <div className="relative bg-white flex items-center rounded-full px-3 h-10 shadow w-full">
+      <IoIosSearch className="text-gray-500 text-xl mr-2" />
+      <input
+        type="text"
+        placeholder="Search products..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="flex-grow outline-none text-base text-gray-700 bg-transparent"
+      />
+    </div>
+  </div>
 
-          {/* 🔽 Search Results */}
-          {searchResults.length > 0 && (
-            <div className="absolute top-full left-0 mt-2 w-full max-h-[250px] overflow-y-auto bg-white shadow-md rounded-md z-50">
-              {searchResults.map((item) => (
-                <Link
-                  to={`/product/${item._id}`}
-                  key={item._id}
-                  onClick={() => {
-                    setSearchQuery("");
-                    setSearchResults([]);
-                  }}
-                  className="block px-4 py-2 hover:bg-gray-100 text-gray-800 text-sm"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
+  {/* Right Icons */}
+  <div className="flex items-center gap-3">
+    <Link to="/login">
+      <FiUser className="text-2xl text-gray-700" />
+    </Link>
+    <Link to="/shoppingcart" className="relative">
+      <FiShoppingCart className="text-2xl text-gray-800" />
+      {cartItems.length > 0 && (
+        <span className="absolute -top-2 -right-3 bg-green-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+          {cartItems.length}
+        </span>
+      )}
+    </Link>
+  </div>
 
-        {/* Right icons */}
-        <div className="flex items-center space-x-2 md:space-x-6">
-          {/* ❤️ Wishlist */}
-          <Link to="/wishlist" className="relative hidden sm:block">
-            <FiHeart className="text-xl md:text-2xl lg:text-3xl text-gray-800 hover:text-pink-500" />
-            {wishListItems.length > 0 && (
-              <span className="absolute -top-1 -right-2 bg-[#4CB19A] text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                {wishListItems.length}
-              </span>
-            )}
-          </Link>
+</div>
 
-          {/* 👤 Account / Logout */}
-          {token ? (
-            <button onClick={handleLogout}>
-              <FiUser  className="size-8 md:text-2xl lg:text-3xl text-gray-800 hover:text-[#4CB19A]" />
-            </button>
-          ) : (
-            <Link to="/login">
-              <FiUser className="text-22 md:text-2xl lg:text-3xl text-gray-800 hover:text-[#4CB19A]" />
-            </Link>
-          )}
+</nav>
 
-          {/* 🛒 Cart */}
-          <Link to="/shoppingcart" className="relative">
-            <FiShoppingCart className="size-8 md:text-2xl lg:text-3xl text-gray-800 hover:text-green-700" />
-            {cartItems.length > 0 && (
-              <span className="absolute -top-1 -right-2 bg-[#4CB19A] text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                {cartItems.length}
-              </span>
-            )}
-          </Link>
-        </div>
-      </div>
-
-      {/* ⬇ Bottom nav links for desktop */}
-      <div className="hidden md:flex justify-center space-x-8 bg-[#e8ebea] py-2 border-t border-gray-200">
-        {navLinks}
-      </div>
-    </nav>
   );
 };
 
