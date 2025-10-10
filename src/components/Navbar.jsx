@@ -45,23 +45,23 @@ const Navbar = () => {
   };
 
   return (
-   <nav className="sticky top-0 w-full bg-[#e8ebea] shadow-md z-50 font-Poppins">
-  <div className="max-w-7xl mx-auto bg-red-000 flex flex-row lg:flex-row items-center lg:items-center justify-between px-4 py-3 md:py-4 lg:py-5 gap-3 lg:gap-0">
+   <nav className="sticky top-0 w-full bg-[#e8ebea] shadow-md  z-50 font-Poppins">
+  <div className=" mx-auto  bg-red-000 flex flex-row lg:flex-row lg:space-x-84 justify-center   space-x-2 py-3 md:py-4 lg:py-5 lg:gap-0">
     
     {/* Logo */}
-    <Link to="/" className="flex items-center gap-2">
-      <div className="flex flex-row  bg-red-000 lg:flex-row items-start lg:items-center gap-0 lg:gap-2">
-        <span className="text-[12px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-500 tracking-wide drop-shadow-md">
+    <Link to="/" className="flex items-center gap-2 bg-red-000">
+      <div className="flex flex-rol  bg-red-000 lg:flex-row items-start lg:items-center gap-0 lg:gap-2">
+        <span className="text-[26px]  m-auto -mt-2  sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-transparent bg-clip-text bg-[#4CB19A]  tracking-wide ">
           Joy
         </span>
-        <span className="text-[12px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#4CB19A] tracking-wider -mt- sm:-mt-2 md:-mt-2 lg:-mt-3 xl:-mt-4 drop-shadow-sm">
+        <span className="text-[12px] hidden sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#4CB19A] tracking-wider  sm:-mt-2 md:-mt-2 lg:-mt-3 xl:-mt-4 drop-shadow-sm">
           Cart
         </span>
       </div>
     </Link>
 
     {/* Search Bar */}
-    <div className="relative bg-white flex items-center rounded-full px-4 md:px-6 lg:px-8 w-[52%] sm:w-[75%] md:w-[65%] lg:w-[50%] xl:w-[45%] h-8 md:h-14 lg:h-16 shadow-lg">
+    <div className="relative bg-white flex items-center rounded-full mt-1 px-4 md:px-6 lg:px-8 w-[52%] sm:w-[75%] md:w-[65%] lg:w-[50%] xl:w-[45%] h-8 md:h-14 lg:h-16 shadow-lg">
       <IoIosSearch className="text-gray-500 text-3xl md:text-4xl lg:text-5xl mr-3" />
       <input
         type="text"
