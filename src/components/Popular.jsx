@@ -62,7 +62,7 @@ const Popular = ({ selectedCategory }) => {
   };
 
   return (
-    <div className="w-full -mt-6 bg-[#e8ebea] font-Poppins">
+    <div className="w-full -mt-6 bg-[#edf0ef] font-Poppins">
       {/* Header */}
       <div className="text-center mb-4">
         <h2 className="text-[18px]  md:text-3xl lg:pt-6 pt-4 lg:text-4xl  font-semibold text-[#6C757D]  -tracking-tight font-Poppins ">
@@ -72,14 +72,14 @@ const Popular = ({ selectedCategory }) => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid gap-2 px-4 sm:px-6  md:px-12 grid-cols-2 sm:grid-cols-2 bg-[#e8ebea]   md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid  px-14 sm:px-6  md:px-12 grid-cols-2 sm:grid-cols-2    md:grid-cols-3 lg:grid-cols-4  space-y-5">
         {filteredProducts.map((item, index) => (
           <div
             key={index}
-            className=" rounded-lg shadow-xs bg-white hover:shadow-lg transition duration-300 flex flex-col h-44 lg:h-84 lg:w-[492px] "
+            className="   bg-white rounded-2xl  shadow-lg hover:shadow-2xl transition duration-300 flex flex-col h-44 lg:h-84 lg:w-[492px] "
           >
             {/* Image Section */}
-            <div className="relative bg-red-000 flex justify-center items-center  md:h-60 lg:h-72 overflow-hidden rounded-t-lg cursor-pointer">
+            <div className="relative bg-gray-100 flex justify-center items-center  md:h-60 lg:h-72 overflow-hidden rounded-t-lg cursor-pointer">
               <img
                 onClick={() => navigate(`/productdetiles/${item._id}`)}
                 src={item.image}
@@ -87,23 +87,23 @@ const Popular = ({ selectedCategory }) => {
                 className="w-full h-full lg:w-76 lg:h-76 object-contain p-2 hover:scale-105 transition-transform duration-300"
               />
               {item.discount && (
-                <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                <div className="absolute cursor-pointer top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
                   {item.discount}% OFF
                 </div>
               )}
               <CiHeart
                 onClick={() => handleClickwishList(item._id)}
-                className="absolute top-2 right-2 text-white bg-[#4CB19A] p-1 rounded-full text-2xl md:text-3xl hover:scale-110 transition"
+                className="absolute top-6 right-8 cursor-pointer text-white bg-[#4CB19A] p-1 rounded-full text-2xl md:text-4xl hover:scale-110 transition"
               />
             </div>
 
             {/* Product Info */}
-            <div className="p-4 flex flex-col gap-0">
-              <p className="text-[13px] md:text-base font-medium text-gray-700 truncate">
+            <div className="p-4 flex flex-col cursor-pointer gap-0">
+              <p className="text-[13px] md:text-base  font-medium text-gray-700 truncate">
                 {item.name}
               </p>
 
-              <div className="text-[#4CB19A] font-bold text-xs md:text-xl">
+              <div className="text-[#4CB19A] font-black text-xs md:text-xl">
                 ₹{item.price.toFixed(2)}
               </div>
 

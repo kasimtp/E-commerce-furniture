@@ -17,7 +17,7 @@ const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null); // add this line
 
   return (
-    <div>
+    <div className="bg-gray-50">
       {/* <Topbanner /> */}
    
         {/* <CheckOut/> */}

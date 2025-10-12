@@ -73,7 +73,7 @@ const Header = () => {
           animate="center"
           exit="exit"
           transition={{ duration: 0.5 }}
-          className="absolute w-full h-full object-contain object-center cursor-pointer"
+          className="absolute lg:h-full   lg:w-full w-full h-full object-contain object-center cursor-pointer"
           onClick={() => window.location.href = "/shop"}
         />
       </AnimatePresence>

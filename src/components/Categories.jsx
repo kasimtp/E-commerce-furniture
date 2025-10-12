@@ -6,7 +6,11 @@ import airpod from "../assets/airpod.png";
 import hedset from "../assets/hedset.png";
 import watch from "../assets/watch.png";
 import powerbank from "../assets/powerbank.png";
-import moreicon from "../assets/moreicon.png";
+import women from "../assets/women.png";
+import beauty from "../assets/beauty.png";
+import wallat from "../assets/wallat.png";
+import Footwear from "../assets/footwear.png";
+
 import men from "../assets/men.png";
 
 const Categories = ({ onCategoryClick }) => {
@@ -18,9 +22,9 @@ const Categories = ({ onCategoryClick }) => {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-20 lg:-mt-[500px] -mt-24 flex flex-col items-center space-y-8 font-poppins">
+    <div className="w-full max-w-7xl mx-auto px-4  py-20 lg:-mt-[500px]  -mt-24 flex flex-col items-center space-y-8 font-poppins">
       {/* Header */}
-      <div className="text-center space-y-2">
+      <div className="text-center ">
         <p className="text-xs sm:text-sm lg:text-[18px] text-[#6C757D] uppercase tracking-widest">
           passion for fashion
         </p>
@@ -30,9 +34,8 @@ const Categories = ({ onCategoryClick }) => {
       </div>
 
       {/* Horizontal Scroll Categories */}
-      <div className="w-full overflow-x-auto no-scrollbar">
-        <div className="flex gap-6 lg:gap-12 px-2">
-
+      <div className="w-screenfull overflow-x-auto bg-red-000  no-scrollbar">
+        <div className="flex gap-6 lg:gap-20 px-2">
           {/* Men's */}
           <div
             onClick={() => handleCategoryClick("Men's")}
@@ -41,7 +44,7 @@ const Categories = ({ onCategoryClick }) => {
             <div
               className={`rounded-full flex items-center justify-center shadow-md overflow-hidden
                 w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-24 lg:h-24
-                bg-[#e8ebea] hover:scale-110 transition-transform duration-400 ease-in-out
+                bg-gray-50 hover:scale-110 transition-transform duration-400 ease-in-out
                 ${activeCategory === "Men's" ? "ring-2 ring-green-600" : ""}`}
             >
               <img
@@ -52,7 +55,11 @@ const Categories = ({ onCategoryClick }) => {
             </div>
             <span
               className={`mt-3 text-xs sm:text-sm md:text-base lg:text-xl font-medium transition-colors duration-300 
-                ${activeCategory === "Men's" ? "text-green-800 font-semibold" : "text-gray-800"}`}
+                ${
+                  activeCategory === "Men's"
+                    ? "text-green-800 font-semibold"
+                    : "text-gray-800"
+                }`}
             >
               Men's
             </span>
@@ -77,7 +84,11 @@ const Categories = ({ onCategoryClick }) => {
             </div>
             <span
               className={`mt-3 text-xs sm:text-sm md:text-base lg:text-xl font-medium transition-colors duration-300 
-                ${activeCategory === "Headset" ? "text-green-800 font-semibold" : "text-gray-800"}`}
+                ${
+                  activeCategory === "Headset"
+                    ? "text-green-800 font-semibold"
+                    : "text-gray-800"
+                }`}
             >
               Headset
             </span>
@@ -102,7 +113,11 @@ const Categories = ({ onCategoryClick }) => {
             </div>
             <span
               className={`mt-3 text-xs sm:text-sm md:text-base lg:text-xl font-medium transition-colors duration-300 
-                ${activeCategory === "Airpod" ? "text-green-800 font-semibold" : "text-gray-800"}`}
+                ${
+                  activeCategory === "Airpod"
+                    ? "text-green-800 font-semibold"
+                    : "text-gray-800"
+                }`}
             >
               Airpod
             </span>
@@ -127,7 +142,11 @@ const Categories = ({ onCategoryClick }) => {
             </div>
             <span
               className={`mt-3 text-xs sm:text-sm md:text-base lg:text-xl font-medium transition-colors duration-300 
-                ${activeCategory === "Watches" ? "text-green-800 font-semibold" : "text-gray-800"}`}
+                ${
+                  activeCategory === "Watches"
+                    ? "text-green-800 font-semibold"
+                    : "text-gray-800"
+                }`}
             >
               Watches
             </span>
@@ -152,7 +171,11 @@ const Categories = ({ onCategoryClick }) => {
             </div>
             <span
               className={`mt-3 text-xs sm:text-sm md:text-base lg:text-xl font-medium transition-colors duration-300 
-                ${activeCategory === "Shoes" ? "text-green-800 font-semibold" : "text-gray-800"}`}
+                ${
+                  activeCategory === "Shoes"
+                    ? "text-green-800 font-semibold"
+                    : "text-gray-800"
+                }`}
             >
               Shoes
             </span>
@@ -167,7 +190,9 @@ const Categories = ({ onCategoryClick }) => {
               className={`rounded-full flex items-center justify-center shadow-md overflow-hidden
                 w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-24 lg:h-24
                 bg-[#e8ebea] hover:scale-110 transition-transform duration-400 ease-in-out
-                ${activeCategory === "Powerbank" ? "ring-2 ring-green-600" : ""}`}
+                ${
+                  activeCategory === "Powerbank" ? "ring-2 ring-green-600" : ""
+                }`}
             >
               <img
                 src={powerbank}
@@ -177,36 +202,143 @@ const Categories = ({ onCategoryClick }) => {
             </div>
             <span
               className={`mt-3 text-xs sm:text-sm md:text-base lg:text-xl font-medium transition-colors duration-300 
-                ${activeCategory === "Powerbank" ? "text-green-800 font-semibold" : "text-gray-800"}`}
+                ${
+                  activeCategory === "Powerbank"
+                    ? "text-green-800 font-semibold"
+                    : "text-gray-800"
+                }`}
             >
               Powerbank
             </span>
           </div>
 
-          {/* More items */}
-          {/* <div
-            onClick={() => handleCategoryClick("More items")}
+          {/* women's */}
+          <div
+            onClick={() => handleCategoryClick("Powerbank")}
             className="flex-shrink-0 flex flex-col items-center text-center cursor-pointer group"
           >
             <div
               className={`rounded-full flex items-center justify-center shadow-md overflow-hidden
                 w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-24 lg:h-24
                 bg-[#e8ebea] hover:scale-110 transition-transform duration-400 ease-in-out
-                ${activeCategory === "More items" ? "ring-2 ring-green-600" : ""}`}
+                ${
+                  activeCategory === "Powerbank" ? "ring-2 ring-green-600" : ""
+                }`}
             >
               <img
-                src={moreicon}
-                alt="More items"
-                className="object-contain w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 lg:w-84 lg:h-84 lg:mt-4"
+                src={women}
+                alt="women's"
+                className="object-contain w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 lg:w-19 lg:h-19"
               />
             </div>
             <span
               className={`mt-3 text-xs sm:text-sm md:text-base lg:text-xl font-medium transition-colors duration-300 
-                ${activeCategory === "More items" ? "text-green-800 font-semibold" : "text-gray-800"}`}
+                ${
+                  activeCategory === "Powerbank"
+                    ? "text-green-800 font-semibold"
+                    : "text-gray-800"
+                }`}
             >
-              More items
+              women's
             </span>
-          </div> */}
+          </div>
+
+          {/* beauty */}
+          <div
+            onClick={() => handleCategoryClick("Powerbank")}
+            className="flex-shrink-0 flex flex-col items-center text-center cursor-pointer group"
+          >
+            <div
+              className={`rounded-full flex items-center justify-center shadow-md overflow-hidden
+                w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-24 lg:h-24
+                bg-[#e8ebea] hover:scale-110 transition-transform duration-400 ease-in-out
+                ${
+                  activeCategory === "Powerbank" ? "ring-2 ring-green-600" : ""
+                }`}
+            >
+              <img
+                src={beauty}
+                alt="beauty"
+                className="object-contain w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 lg:w-19 lg:h-19"
+              />
+            </div>
+            <span
+              className={`mt-3 text-xs sm:text-sm md:text-base lg:text-xl font-medium transition-colors duration-300 
+                ${
+                  activeCategory === "Powerbank"
+                    ? "text-green-800 font-semibold"
+                    : "text-gray-800"
+                }`}
+            >
+              beauty
+            </span>
+          </div>
+
+           {/* Footwear */}
+          <div
+            onClick={() => handleCategoryClick("Powerbank")}
+            className="flex-shrink-0 flex flex-col items-center text-center cursor-pointer group"
+          >
+            <div
+              className={`rounded-full flex items-center justify-center shadow-md overflow-hidden
+                w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-24 lg:h-24
+                bg-[#e8ebea] hover:scale-110 transition-transform duration-400 ease-in-out
+                ${
+                  activeCategory === "Powerbank" ? "ring-2 ring-green-600" : ""
+                }`}
+            >
+              <img
+                src={Footwear}
+                alt="Footwear"
+                className="object-contain w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 lg:w-19 lg:h-19"
+              />
+            </div>
+            <span
+              className={`mt-3 text-xs sm:text-sm md:text-base lg:text-xl font-medium transition-colors duration-300 
+                ${
+                  activeCategory === "Powerbank"
+                    ? "text-green-800 font-semibold"
+                    : "text-gray-800"
+                }`}
+            >
+             Footwear
+            </span>
+          </div>
+
+
+   {/* wallat */}
+          <div
+            onClick={() => handleCategoryClick("Powerbank")}
+            className="flex-shrink-0 flex flex-col items-center text-center cursor-pointer group"
+          >
+            <div
+              className={`rounded-full flex items-center justify-center shadow-md overflow-hidden
+                w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-24 lg:h-24
+                bg-[#e8ebea] hover:scale-110 transition-transform duration-400 ease-in-out
+                ${
+                  activeCategory === "Powerbank" ? "ring-2 ring-green-600" : ""
+                }`}
+            >
+              <img
+                src={wallat}
+                alt="beauty"
+                className="object-contain w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 lg:w-19 lg:h-19"
+              />
+            </div>
+            <span
+              className={`mt-3 text-xs sm:text-sm md:text-base lg:text-xl font-medium transition-colors duration-300 
+                ${
+                  activeCategory === "Powerbank"
+                    ? "text-green-800 font-semibold"
+                    : "text-gray-800"
+                }`}
+            >
+             wallat
+            </span>
+          </div>
+
+
+
         </div>
       </div>
     </div>
