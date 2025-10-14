@@ -62,7 +62,7 @@ const Popular = ({ selectedCategory }) => {
   };
 
   return (
-    <div className="w-full -mt-6 bg-[#edf0ef] font-Poppins">
+    <div className="w-full -mt-6 bg-gray-50 font-Poppins">
       {/* Header */}
       <div className="text-center mb-12 pt-38">
         <h2 className="text-[18px] bg-red-000 -mt-30 md:text-3xl lg:pt-6 lg:pb-12   lg:text-5xl  font-semibold text-[#6C757D]  -tracking-tight font-Poppins ">

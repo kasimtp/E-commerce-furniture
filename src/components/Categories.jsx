@@ -46,7 +46,7 @@ const Categories = ({ onCategoryClick }) => {
       </div>
 
       {/* Scrollable Category Row */}
-      <div className="w-full overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar">
+      <div className="w-full overflow-x-auto bg-red-000 py-1 whitespace-nowrap scroll-smooth no-scrollbar">
         <div className="inline-flex gap-5 sm:gap-10 md:gap-14 lg:gap-20 px-4">
           {categories.map((category) => (
             <div
@@ -55,10 +55,10 @@ const Categories = ({ onCategoryClick }) => {
               className="flex-shrink-0 flex flex-col items-center text-center cursor-pointer group"
             >
               <div
-                className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 flex items-center justify-center rounded-full bg-gray-50 shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg overflow-hidden
+                className={`w-16 h-16 sm:w-20  sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 flex items-center justify-center rounded-full bg-gray-0 shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg overflow-hidden
                 ${
                   activeCategory === category.name
-                    ? "ring-2 ring-green-600"
+                    ? "ring-2 text-[#4CB19A]"
                     : "ring-0"
                 }`}
               >
@@ -71,7 +71,7 @@ const Categories = ({ onCategoryClick }) => {
               <span
                 className={`mt-3 text-sm sm:text-base lg:text-lg font-medium transition-colors duration-300 ${
                   activeCategory === category.name
-                    ? "text-green-700 font-semibold"
+                    ? "text-[#4CB19A] font-semibold"
                     : "text-gray-800"
                 }`}
               >
