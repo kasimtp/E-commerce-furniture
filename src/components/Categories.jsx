@@ -33,7 +33,7 @@ const Categories = ({ onCategoryClick }) => {
       </div>
 
       {/* Horizontal Scroll Categories */}
-      <div className="w-screenfull overflow-x-auto bg-red-000  no-scrollbar">
+      <div className="w-screenfull overflow-x-auto  whitespace-nowrap bg-red-000  no-scrollbar">
         <div className="flex gap-6 lg:gap-20 px-2">
           {/* Men's */}
           <div

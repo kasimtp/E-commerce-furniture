@@ -8,12 +8,13 @@
   --font-Poppins: 'Poppins', sans-serif;
 }
 
-/* Scrollbar hide styles */
 .no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
-
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
+body {
+  font-family: 'Poppins', sans-serif;
+} /* Default font for the body */     
