@@ -54,7 +54,7 @@ const Navbar = () => {
         <span className="text-[26px] text-bold m-auto -mt-2  sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-transparent bg-clip-text bg-[#4CB19A]  tracking-wide ">
           Joy
         </span>
-        <span className="text-[12px] text-bold hidden sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#4CB19A] tracking-wider  sm:-mt-2 md:-mt-2 lg:-mt-3 xl:-mt-4 drop-shadow-sm">
+        <span className="text-[12px] hidden sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#4CB19A] tracking-wider  sm:-mt-2 md:-mt-2 lg:-mt-3 xl:-mt-4 drop-shadow-sm">
           Cart
         </span>
       </div>
