@@ -62,7 +62,7 @@ const Popular = ({ selectedCategory }) => {
   };
 
   return (
-    <div className="w-full -mt-6 bg-gray-50 font-Poppins">
+    <div className="w-full -mt-6 lg:mt-12 bg-gray-50 font-Poppins">
       {/* Header */}
       <div className="text-center mb-12 pt-24 bg-red-000">
         <h2 className="text-[18px] bg-red-000 -mt-30 md:text-3xl lg:pt-6 lg:pb-12   lg:text-5xl  font-semibold text-[#6C757D]  -tracking-tight font-Poppins ">
@@ -72,7 +72,7 @@ const Popular = ({ selectedCategory }) => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid  px-3 space-x-3 sm:px-6 -mt-26   md:px-12 grid-cols-2 sm:grid-cols-2    md:grid-cols-3 lg:grid-cols-4  space-y-5">
+      <div className="grid  px-3 space-x-3 sm:px-6 -mt-26 lg:mt-12   md:px-12 grid-cols-2 sm:grid-cols-2    md:grid-cols-3 lg:grid-cols-4  space-y-5">
         {filteredProducts.map((item, index) => (
           <div
             key={index}

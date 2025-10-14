@@ -40,7 +40,7 @@ const Categories = ({ onCategoryClick }) => {
         <p className="text-xs sm:text-sm lg:text-[18px] text-[#6C757D] uppercase tracking-widest">
           passion for fashion
         </p>
-        <h2 className="text-2xl sm:text-3xl lg:text-[44px] font-bold text-[#212529]">
+        <h2 className="text-2xl sm:text-3xl lg:text-[44px] lg:mt-14 font-bold text-[#212529]">
           Shop By Categories
         </h2>
       </div>

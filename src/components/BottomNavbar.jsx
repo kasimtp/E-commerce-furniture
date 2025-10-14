@@ -35,8 +35,8 @@ const BottomNavbar = () => {
 
   const navItems = [
     { path: "/", label: "HOME", icon: FiHome },
-    { path: "/wishlist", label: "WISHLIST", icon: FiHeart },
     { path: "/shop", label: "PRODUCTS", icon: FiTag },
+    { path: "/wishlist", label: "WISHLIST", icon: FiHeart },
     { path: "/shoppingcart", label: "CART", icon: FiShoppingCart },
   ];
 

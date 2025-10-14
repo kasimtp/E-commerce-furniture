@@ -61,33 +61,16 @@ const Navbar = () => {
     </Link>
 
     {/* Search Bar */}
-    <div className="relative bg-white flex items-center rounded-full mt-1 px-4 md:px-6 lg:px-8 w-[52%] sm:w-[75%] md:w-[65%] lg:w-[50%] xl:w-[45%] h-8 md:h-14 lg:h-16 shadow-lg">
-      <IoIosSearch className="text-gray-500 text-3xl md:text-4xl lg:text-5xl mr-3" />
-      <input
-        type="text"
-        placeholder="Search products..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        className="flex-grow outline-none text-[10px] md:text-xl lg:text-2xl text-gray-700 bg-transparent font-medium"
-      />
-      {searchResults.length > 0 && (
-        <div className="absolute top-full left-0 mt-2 w-full max-h-[300px] overflow-y-auto bg-white shadow-xl rounded-xl z-50 border border-gray-200">
-          {searchResults.map((item) => (
-            <Link
-              to={`/product/${item._id}`}
-              key={item._id}
-              onClick={() => {
-                setSearchQuery("");
-                setSearchResults([]);
-              }}
-              className="block px-4 py-3 hover:bg-[#f0f7f6] text-gray-800 text-lg lg:text-xl"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
+<div className="relative bg-white flex items-center rounded-full mt-1 px-4 md:px-6 lg:px-8 w-[52%] sm:w-[75%] md:w-[65%] lg:w-[50%] xl:w-[45%] h-10 md:h-14 lg:h-16 shadow-lg">
+  <IoIosSearch className="text-black text-2xl md:text-3xl lg:text-4xl mr-3" />
+  <input
+    type="text"
+    placeholder="Search for products..."
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    className="flex-grow outline-none text-[10px] md:text-xl lg:text-2xl text-gray-700 bg-transparent font-medium"
+  />
+</div>
 
     {/* Right Icons */}
     <div className="flex items-center space-x-3 md:space-x-5 lg:space-x-8 mt-2 lg:mt-0">
