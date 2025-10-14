@@ -7,16 +7,13 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 
-import shoesbanner from "../assets/shoesnew.png"
-import airpodbanner from "../assets/airpodnew.png"
-import showebanner from "../assets/shoesnew.png"
-import hedsetbanner from "../assets/hedsetbannernew.png"
-import shoespanner from "../assets/shoes2.png"
-import newpanner from "../assets/newbanner.png" 
+import watchbanernew from "../assets/watchbanernew.png"
+import airpodnewbanner from "../assets/airpodnewbanner.png" 
+import newpanner from "../assets/newpanner.png" 
 // import powerbankpanner from "../assets/powerbank.png"
 
 
-const banners = [airpodbanner, newpanner, shoespanner ,shoesbanner,hedsetbanner, showebanner];
+const banners = [newpanner , watchbanernew ,airpodnewbanner ];
 
 const Header = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -60,7 +57,7 @@ const Header = () => {
 
   return (
     <div
-      className=" w-full relative  lg:-mt-[550px] -mt-16  lg:max-w-[4900px] lg:h-[1610px]  bg-amber-000 h-[240px] sm:h-[300px] md:h-[400px]  loverflow-hidden"
+      className=" w-full relative  lg:-mt-[420px] -mt-16  lg:max-w-[2122px] lg:h-[1510px]  bg-amber-000 h-[240px] sm:h-[300px] md:h-[400px]  loverflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
