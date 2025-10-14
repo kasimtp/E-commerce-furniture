@@ -51,10 +51,10 @@ const Navbar = () => {
     {/* Logo */}
     <Link to="/" className="flex items-center gap-2 bg-red-000">
       <div className="flex flex-rol  bg-red-000 lg:flex-row items-start lg:items-center gap-0 lg:gap-2">
-        <span className="text-[26px]  m-auto -mt-2  sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-transparent bg-clip-text bg-[#4CB19A]  tracking-wide ">
+        <span className="text-[26px] text-bold m-auto -mt-2  sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-transparent bg-clip-text bg-[#4CB19A]  tracking-wide ">
           Joy
         </span>
-        <span className="text-[12px] hidden sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#4CB19A] tracking-wider  sm:-mt-2 md:-mt-2 lg:-mt-3 xl:-mt-4 drop-shadow-sm">
+        <span className="text-[12px] text-bold hidden sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#4CB19A] tracking-wider  sm:-mt-2 md:-mt-2 lg:-mt-3 xl:-mt-4 drop-shadow-sm">
           Cart
         </span>
       </div>

@@ -10,7 +10,6 @@ import women from "../assets/women.png";
 import beauty from "../assets/beauty.png";
 import wallat from "../assets/wallat.png";
 import Footwear from "../assets/footwear.png";
-
 import men from "../assets/men.png";
 
 const Categories = ({ onCategoryClick }) => {
