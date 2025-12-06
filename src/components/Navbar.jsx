@@ -61,8 +61,8 @@ const Navbar = () => {
     </Link>
 
     {/* Search Bar */}
-<div className="relative bg-white flex items-center rounded-full mt-1 px-4 md:px-6 lg:px-8 w-[52%] sm:w-[75%] md:w-[65%] lg:w-[50%] xl:w-[45%] h-10 md:h-14 lg:h-16 shadow-lg">
-  <IoIosSearch className="text-black text-2xl md:text-3xl lg:text-4xl mr-3" />
+<div className="relative bg-white flex items-center rounded-full mt-1 px-2  md:px-6 lg:px-8 w-[62%] sm:w-[75%] md:w-[65%] lg:w-[50%] xl:w-[45%] h-10 md:h-14 lg:h-16 shadow-lg">
+  <IoIosSearch className=" text-gray-500 text-2xl md:text-3xl lg:text-4xl mr-3" />
   <input
     type="text"
     placeholder="Search for products..."
