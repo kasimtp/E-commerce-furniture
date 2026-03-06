@@ -46,7 +46,7 @@ const Navbar = () => {
 
   return (
    <nav className="sticky top-0 w-full bg-[#e8ebea] shadow-md  z-50 font-Poppins">
-  <div className=" mx-auto  bg-red-000 flex flex-row lg:flex-row lg:space-x-84 justify-center   space-x-2 py-3 md:py-4 lg:py-5 lg:gap-0">
+  <div className=" mx-auto  bg-red-000 flex flex-row lg:flex-row lg:space-x-84 justify-center     space-x-2 py-3 md:py-4 lg:py-5 lg:gap-0">
     
     {/* Logo */}
     <Link to="/" className="flex items-center gap-2 bg-red-000">
@@ -62,7 +62,7 @@ const Navbar = () => {
 
     {/* Search Bar */}
 <div className="relative bg-white flex items-center rounded-full mt-1 px-2  md:px-6 lg:px-8 w-[53%] sm:w-[75%] md:w-[65%] lg:w-[50%] xl:w-[45%] h-10 md:h-14 lg:h-16 shadow-lg">
-  <IoIosSearch className=" text-gray-500 text-2xl md:text-3xl lg:text-4xl mr-3" />
+  <IoIosSearch className=" text-gray-500 size-8 text-sm md:text-3xl lg:text-4xl mr-3" />
   <input
     type="text"
     placeholder="Search for products..."
