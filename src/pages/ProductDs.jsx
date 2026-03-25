@@ -204,53 +204,61 @@ const ProductDs = () => {
   if (!product) return <p className="text-center mt-10">Loading......!</p>;
 
   return (
-    <div className="max-w-7xl mx-auto px-4  py-8">
-      <div className="grid grid-cols-1 bg-red-000 md:grid-cols-2 gap-4 items-start">
-        {/* Product Image */}
-        <div className="flex justify-center">
-          <img
-            src={product?.image}
-            alt={product?.name}
-            className="  w-46 h-46 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl object-contain rounded-lg"
-          />
-        </div>
-
-        {/* Product Details */}
-        <div className="space-y-2">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-700">
-            {product.name}
-          </h2>
-          <p className="text-sm  text-gray-600">{product.description}</p>
-          <p className="text-xl font-bold text-gray-800">
-            ₹{product.price.toFixed(2)}
-          </p>
-
-          {/* Quantity Selector */}
-          <div className="flex items-center bg-white text-black rounded-full border-1 border-[#4CB19A] px-3 py-0 w-fit space-x-4">
-            <button onClick={() => handleQuantityChange("decrement")}className="font-bold" >−</button>
-            <span className="font-medium">{quantity}</span>
-            <button onClick={() => handleQuantityChange("increment")} className="font-bold">+</button>
+    <div className="w-full bg-gray-50 min-h-screen pt-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start bg-white p-6 md:p-8 lg:p-12 rounded-3xl shadow-sm">
+          {/* Product Image */}
+          <div className="flex justify-center items-center bg-gray-50 aspect-square rounded-2xl overflow-hidden p-6 md:p-10">
+            <img
+              src={product?.image}
+              alt={product?.name}
+              className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
+            />
           </div>
 
-          {/* <p className="text-lg font-bold  text-gray-700">
-            Total : ₹{(product.price * quantity).toFixed(2)}
-          </p> */}
+          {/* Product Details */}
+          <div className="space-y-6 flex flex-col justify-center h-full">
+            <div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
+                {product.name}
+              </h2>
+              <p className="text-base sm:text-lg text-gray-500 mt-4 leading-relaxed">
+                {product.description}
+              </p>
+            </div>
+            
+            <div className="pt-4 border-t border-gray-100">
+              <p className="text-3xl sm:text-4xl font-extrabold text-[#4CB19A]">
+                ₹{product.price.toFixed(2)}
+              </p>
+            </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-4">
-            <button
-              onClick={handleBuyNow}
-              className="bg-[#4CB19A] hover:bg-gray-600 text-white font-semibold rounded-lg py-3 px-6 w-full sm:w-1/2"
-            >
-              Buy Now
-            </button>
+            {/* Quantity Selector */}
+            <div className="pt-2">
+              <p className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wider">Quantity</p>
+              <div className="flex items-center bg-gray-100 text-black rounded-full px-4 py-2 w-fit space-x-6">
+                <button onClick={() => handleQuantityChange("decrement")} className="text-xl font-medium text-gray-600 hover:text-[#4CB19A] transition-colors" >−</button>
+                <span className="font-semibold text-lg w-4 text-center">{quantity}</span>
+                <button onClick={() => handleQuantityChange("increment")} className="text-xl font-medium text-gray-600 hover:text-[#4CB19A] transition-colors">+</button>
+              </div>
+            </div>
 
-            <button
-              className="bg-gray-600 hover:bg-[#4CB19A] text-white rounded-lg py-3 px-6 w-full sm:w-1/2 flex items-center justify-center"
-            >
-              {/* <FiShoppingCart className="text-xl mr-2" /> */}
-              Add to Cart  
-            </button>
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <button
+                onClick={handleBuyNow}
+                className="bg-[#4CB19A] hover:bg-[#3a8d7c] text-white font-semibold rounded-xl py-4 px-6 w-full sm:w-1/2 shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
+              >
+                Buy Now
+              </button>
+
+              <button
+                className="bg-gray-800 hover:bg-black text-white rounded-xl py-4 px-6 w-full sm:w-1/2 flex items-center justify-center font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
+              >
+                {/* <FiShoppingCart className="text-xl mr-2" /> */}
+                Add to Cart  
+              </button>
+            </div>
           </div>
         </div>
       </div>

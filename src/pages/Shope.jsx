@@ -102,33 +102,33 @@ const Shope = () => {
       </div>
 
       {/* Product Grid */}
-     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 md:px-10 lg:px-16">
+     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto">
   {filteredProducts.map((item, index) => (
     <div
       key={index}
-      className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-4 flex flex-col"
+      className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 p-3 sm:p-4 flex flex-col h-full"
     >
       {/* Image */}
       <div
         onClick={() => navigate(`/productdetiles/${item._id}`)}
-        className="relative w-full h-44 sm:h-52 md:h-64 lg:h-72 flex items-center justify-center bg-gray-50 rounded-xl cursor-pointer overflow-hidden"
+        className="relative w-full aspect-[4/5] sm:aspect-square flex items-center justify-center bg-gray-50 rounded-xl cursor-pointer overflow-hidden group"
       >
         <img
           src={item.image}
           alt={item.name}
-          className="h-full object-contain transition-transform duration-300 hover:scale-105"
+          className="w-full h-full object-contain p-2 sm:p-4 group-hover:scale-110 transition-transform duration-500"
           onError={(e) => (e.target.src = "/no-image.png")}
         />
         {/* Discount Badge */}
         {item.discount && (
-          <div className="absolute top-3 left-3 bg-red-500 text-white text-[11px] sm:text-xs font-bold px-2 py-1 rounded-full shadow-md">
+          <div className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-red-500 text-white text-[10px] sm:text-[11px] md:text-xs font-bold px-2 py-0.5 sm:py-1 rounded-full shadow-sm z-10">
             {item.discount}% OFF
           </div>
         )}
         {/* Tag Badge */}
         {item.tag && (
           <div
-            className={`absolute top-3 right-3 text-[11px] sm:text-xs font-semibold px-2 py-1 rounded-full text-white shadow-md
+            className={`absolute top-2 right-2 sm:top-3 sm:right-3 text-[10px] sm:text-[11px] md:text-xs font-semibold px-2 py-0.5 sm:py-1 rounded-full text-white shadow-sm z-10
               ${item.tag === "Popular" ? "bg-blue-500" : item.tag === "Latest Model" ? "bg-green-500" : "bg-purple-500"}`}
           >
             {item.tag}
@@ -136,25 +136,27 @@ const Shope = () => {
         )}
         {/* Wishlist Icon */}
         <CiHeart
-          onClick={() => handleClickwishList(item._id)}
-          className="absolute bottom-3 right-3 text-2xl bg-[#4CB19A] text-white p-1.5 rounded-full shadow-md cursor-pointer hover:scale-110 transition"
+          onClick={(e) => { e.stopPropagation(); handleClickwishList(item._id); }}
+          className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 text-2xl sm:text-3xl bg-white text-gray-400 hover:bg-[#4CB19A] hover:text-white p-1.5 sm:p-2 rounded-full shadow-md cursor-pointer transform hover:scale-110 transition-all z-10"
         />
       </div>
 
       {/* Details */}
-      <div className="mt-4 flex flex-col gap-1">
-        <p className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 capitalize">
-          {item.name}
-        </p>
-        {item.extraText && (
-          <p className="text-yellow-600 text-xs md:text-sm font-medium">{item.extraText}</p>
-        )}
-        <p className="text-lg md:text-xl font-bold text-[#4CB19A] mt-1">
-          ₹{item.price.toFixed(2)}
-        </p>
+      <div className="mt-3 sm:mt-4 flex flex-col gap-1 flex-grow justify-between">
+        <div>
+          <p className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 line-clamp-2 leading-snug">
+            {item.name}
+          </p>
+          {item.extraText && (
+            <p className="text-yellow-600 text-[11px] sm:text-xs md:text-sm font-medium mt-0.5">{item.extraText}</p>
+          )}
+          <p className="text-base sm:text-lg md:text-xl font-bold text-[#4CB19A] mt-1 sm:mt-2">
+            ₹{item.price.toFixed(2)}
+          </p>
+        </div>
         <button
           onClick={() => handleClick(item._id)}
-          className="mt-3 bg-[#4CB19A] text-white text-sm md:text-base font-medium px-4 py-2 rounded-lg shadow-md hover:bg-[#3a8d7c] transition"
+          className="mt-3 w-full bg-[#4CB19A] text-white text-xs sm:text-sm md:text-base font-semibold px-4 py-2 sm:py-2.5 rounded-lg shadow-sm hover:bg-[#3a8d7c] transition-colors"
         >
           Add to Cart
         </button>

@@ -57,41 +57,42 @@ const Header = () => {
 
   return (
     <div
-      className=" w-full relative  bg-red-000 lg:-mt-[399px] -mt-16  lg:max-w-full lg:h-[1510px]  bg-amber-000 h-[240px] sm:h-[300px] md:h-[400px]  loverflow-hidden"
+      className="relative w-full bg-gray-100 overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <AnimatePresence custom={direction}>
-        <motion.img
-          key={currentIndex}
-          src={banners[currentIndex]}
-          custom={direction}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{ duration: 0.5 }}
-          className="absolute lg:h-full   lg:w-full w-full h-full object-contain object-center cursor-pointer"
-          onClick={() => window.location.href = "/shop"}
-        />
-      </AnimatePresence>
+      <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] lg:aspect-[24/9]">
+        <AnimatePresence custom={direction}>
+          <motion.img
+            key={currentIndex}
+            src={banners[currentIndex]}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.5 }}
+            className="absolute top-0 left-0 w-full h-full object-contain xl:object-cover object-center cursor-pointer"
+            onClick={() => window.location.href = "/shop"}
+          />
+        </AnimatePresence>
 
-      {/* Optional Dots */}
-     {/* <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
-  {banners.map((_, i) => (
-    <div
-      key={i}
-      onClick={() => {
-        setDirection(i > currentIndex ? 1 : -1);
-        setCurrentIndex(i);
-      }}
-      className={`w-3 h-3 rounded-full ${
-        i === currentIndex ? "bg-black" : "bg-gray-300"
-      } cursor-pointer`}
-    />
-  ))}
-</div> */}
-
+        {/* Optional Dots */}
+        {/* <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+          {banners.map((_, i) => (
+            <div
+              key={i}
+              onClick={() => {
+                setDirection(i > currentIndex ? 1 : -1);
+                setCurrentIndex(i);
+              }}
+              className={`w-3 h-3 rounded-full ${
+                i === currentIndex ? "bg-black" : "bg-gray-300"
+              } cursor-pointer`}
+            />
+          ))}
+        </div> */}
+      </div>
     </div>
   );
 };

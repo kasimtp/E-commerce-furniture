@@ -62,62 +62,57 @@ const Popular = ({ selectedCategory }) => {
   };
 
   return (
-    <div className="w-full -mt-6 lg:mt-12 bg-gray-50 font-Poppins">
-      {/* Header */}
-      <div className="text-center mb-12 pt-24 bg-red-000">
-        <h2 className="text-[18px] bg-red-000 -mt-30 md:text-3xl lg:pt-6 lg:pb-12   lg:text-5xl  font-semibold text-[#6C757D]  -tracking-tight font-Poppins ">
-          Trending Now
-        </h2>
-          
-      </div>
+    <div className="w-full bg-gray-50 font-Poppins py-12 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+        {/* Header */}
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#212529] tracking-tight">
+            Trending Now
+          </h2>
+        </div>
 
-      {/* Product Grid */}
-      <div className="grid  px-3 space-x-3 sm:px-6 -mt-26 lg:mt-12   md:px-12 grid-cols-2 sm:grid-cols-2    md:grid-cols-3 lg:grid-cols-4  space-y-5">
-        {filteredProducts.map((item, index) => (
-          <div
-            key={index}
-            className="   bg-white rounded-2xl  shadow-lg hover:shadow-2xl transition duration-300 flex flex-col h-44 lg:h-84 lg:w-[492px] "
-          >
-            {/* Image Section */}
-            <div className="relative bg-gray-100 flex justify-center items-center  md:h-60 lg:h-72 overflow-hidden rounded-t-lg cursor-pointer">
-              <img
-                onClick={() => navigate(`/productdetiles/${item._id}`)}
-                src={item.image}
-                alt={item.name}
-                className="w-full h-full lg:w-76 lg:h-76 object-contain p-2 hover:scale-105 transition-transform duration-300"
-              />
-              {item.discount && (
-                <div className="absolute cursor-pointer top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                  {item.discount}% OFF
-                </div>
-              )}
-              <CiHeart
-                onClick={() => handleClickwishList(item._id)}
-                className="absolute top-6 right-8 cursor-pointer text-white bg-[#4CB19A] p-1 rounded-full text-2xl md:text-4xl hover:scale-110 transition"
-              />
-            </div>
-
-            {/* Product Info */}
-            <div className="p-4 flex flex-col cursor-pointer gap-0">
-              <p className="text-[13px] md:text-base  font-medium text-gray-700 truncate">
-                {item.name}
-              </p>
-
-              <div className="text-[#4CB19A] font-black text-xs md:text-xl">
-                ₹{item.price.toFixed(2)}
+        {/* Product Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          {filteredProducts.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 flex flex-col h-full overflow-hidden"
+            >
+              {/* Image Section */}
+              <div className="relative bg-gray-100 aspect-[4/5] sm:aspect-square flex justify-center items-center overflow-hidden cursor-pointer group">
+                <img
+                  onClick={() => navigate(`/productdetiles/${item._id}`)}
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500"
+                />
+                {item.discount && (
+                  <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md shadow-sm z-10">
+                    {item.discount}% OFF
+                  </div>
+                )}
+                <CiHeart
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleClickwishList(item._id);
+                  }}
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 cursor-pointer text-gray-400 bg-white hover:text-white hover:bg-[#4CB19A] p-1.5 sm:p-2 rounded-full text-2xl sm:text-3xl lg:text-4xl shadow-md transform hover:scale-110 transition-all z-10"
+                />
               </div>
 
-              {/* Uncomment this for Add to Cart */}
-              {/* <button
-                onClick={() => handleClick(item._id)}
-                className="mt-2 flex items-center justify-center gap-2 bg-[#f0f0f0] hover:bg-[#e5e5e5] text-sm md:text-base font-medium px-4 py-2 rounded shadow"
-              >
-                <FiShoppingCart className="text-lg" />
-                Add to Cart
-              </button> */}
+              {/* Product Info */}
+              <div className="p-3 sm:p-4 md:p-5 flex flex-col cursor-pointer flex-grow justify-between bg-white z-20">
+                <p className="text-sm sm:text-base md:text-lg font-medium text-gray-800 line-clamp-2 mb-2 leading-tight">
+                  {item.name}
+                </p>
+
+                <div className="text-[#4CB19A] font-bold text-sm sm:text-base md:text-xl">
+                  ₹{item.price.toFixed(2)}
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

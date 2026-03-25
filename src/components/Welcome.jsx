@@ -88,9 +88,9 @@ const Welcome = () => {
         </div>
 
         {/* Right Image */}
-        <div className="xl:w-1/2 m-auto">
+        <div className="w-full xl:w-1/2 m-auto mt-10 xl:mt-0 flex justify-center">
           <img
-            className="  lg:block lg:mt-6   w-[750px] h-[600px] xl:w-[700px] xl:h-[650px] object-cover"
+            className="w-full max-w-sm sm:max-w-md md:max-w-lg xl:max-w-none xl:w-[700px] aspect-square xl:aspect-auto xl:h-[650px] object-cover rounded-2xl shadow-lg"
             src={chair2}
             alt="Chair"
           />
@@ -99,7 +99,7 @@ const Welcome = () => {
 
       {/* .................bottom side.............. */}
 
-      <div className="bg-[#f8f8f8] py-10 px-20 mt-32 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 ">
+      <div className="bg-[#f8f8f8] py-10 px-6 sm:px-10 md:px-16 lg:px-20 mt-16 md:mt-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto rounded-3xl mb-12">
         <div className="flex sm:flex-row flex-col gap-6 items-center">
           <img src={shipping} alt="" />
           <div className="flex flex-col gap-2">
