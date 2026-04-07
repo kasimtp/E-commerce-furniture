@@ -17,7 +17,7 @@
 // src/utils/api.js
 import axios from "axios";
 
-export const baseUrl = "https://e-commerce-furniture-backend-gpxh.onrender.com/api";
+export const baseUrl = "https://e-commerce-furniture-backend-production.up.railway.app/api";
 
 export const apiClient = axios.create({
   baseURL: baseUrl,
