@@ -5,6 +5,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, clearCart } from "../redux/productSlice";
 import { apiClient } from "../utils/api";
+import { FaWhatsapp } from "react-icons/fa"; // WhatsApp icon from react-icons
 
 const CheckOut = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const CheckOut = () => {
 
   const [savedAddress, setSavedAddress] = useState(null);
 
-  // Fetch address from backend
+  // Fetch the user's saved delivery address from backend
   useEffect(() => {
     const fetchAddress = async () => {
       try {
@@ -29,13 +30,14 @@ const CheckOut = () => {
           addresses = res.data.addresses;
         }
 
+        // Use the most recently saved address
         if (addresses.length > 0) {
           setSavedAddress(addresses.at(-1));
         } else {
           setSavedAddress(null);
         }
       } catch (error) {
-        console.error("❌ Error fetching address:", error);
+        console.error("Error fetching address:", error);
         setSavedAddress(null);
       }
     };
@@ -43,10 +45,51 @@ const CheckOut = () => {
     fetchAddress();
   }, []);
 
+  // Calculate total price of all items in cart
   const total = cartItems.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
     0
   );
+
+  // ---- WHATSAPP ORDER ----
+  // Builds a message with all order details and opens WhatsApp
+  const handleWhatsAppOrder = () => {
+    // Build product list text
+    const productLines = cartItems
+      .map(
+        (item, i) =>
+          `${i + 1}. ${item.product.name} — Qty: ${item.quantity} — ₹${(
+            item.product.price * item.quantity
+          ).toFixed(2)}`
+      )
+      .join("\n");
+
+    // Build address text
+    const addressText = savedAddress
+      ? `${savedAddress.fullName}, ${savedAddress.address1}, ${savedAddress.district}, ${savedAddress.state}, ${savedAddress.country} - ${savedAddress.pinCode} | Contact: ${savedAddress.mobile}`
+      : "No address saved";
+
+    // Full WhatsApp message
+    const message = `
+🛒 *New Order from Albero Furniture*
+
+*Products:*
+${productLines}
+
+📦 *Delivery Address:*
+${addressText}
+
+💰 *Payment Method:* Cash on Delivery (COD)
+
+💵 *Total Amount: ₹${total.toFixed(2)}*
+
+Thank you! Please confirm my order.
+    `.trim();
+
+    // Encode the message for URL and open WhatsApp
+    const whatsappUrl = `https://wa.me/917592084226?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
 
   return (
     <div className="w-full font-Poppins px-4 sm:px-6 md:px-10 py-6 max-w-screen-lg mx-auto">
@@ -162,17 +205,26 @@ const CheckOut = () => {
         </div>
       </div>
 
-      {/* Continue to Payment Button */}
-      <div className="mt-6 flex justify-end">
-      
+      {/* Action Buttons */}
+      <div className="mt-6 flex flex-col sm:flex-row justify-end gap-3">
 
+        {/* WhatsApp Order Button */}
+        {/* Clicking this opens WhatsApp with a pre-filled message containing all order details */}
         <button
-  onClick={() => navigate("/paymentcash", { state: { amount: total } })}
-  className="w-full sm:w-auto bg-[#4CB19A] hover:bg-[#3a8c7f] text-white font-semibold py-3 px-6 rounded-lg text-sm sm:text-base transition-colors duration-300"
->
-  Continue to Payment
-</button>
+          onClick={handleWhatsAppOrder}
+          className="flex items-center justify-center gap-2 w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg text-sm sm:text-base transition-colors duration-300"
+        >
+          <FaWhatsapp size={20} />
+          Order via WhatsApp
+        </button>
 
+        {/* Regular payment page */}
+        <button
+          onClick={() => navigate("/paymentcash", { state: { amount: total } })}
+          className="w-full sm:w-auto bg-[#4CB19A] hover:bg-[#3a8c7f] text-white font-semibold py-3 px-6 rounded-lg text-sm sm:text-base transition-colors duration-300"
+        >
+          Continue to Payment
+        </button>
       </div>
     </div>
   );

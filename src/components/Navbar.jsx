@@ -96,15 +96,19 @@ const Navbar = () => {
             </Link>
           )}
 
-          {/* Cart */}
-          <Link to="/shoppingcart" className="relative" aria-label="Shopping Cart">
+          {/* Cart — opens login page if user is not logged in */}
+          <button
+            onClick={() => navigate(token ? "/shoppingcart" : "/login")}
+            className="relative"
+            aria-label="Shopping Cart"
+          >
             <FiShoppingCart className="text-2xl md:text-3xl text-gray-800 hover:text-green-700 transition" />
             {cartItems.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-[#4CB19A] text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
                 {cartItems.length}
               </span>
             )}
-          </Link>
+          </button>
         </div>
       </div>
     </nav>

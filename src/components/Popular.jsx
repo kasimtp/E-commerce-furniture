@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { getData } from "../ProductList";
-import { apiClient } from "../utils/api";
+// getData and apiClient both live in utils/api.js
+import { getData, apiClient } from "../utils/api";
 
 const Popular = ({ selectedCategory }) => {
   const dispatch = useDispatch();
