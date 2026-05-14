@@ -8,15 +8,14 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/productSlice";
 
 const ProductDs = () => {
-  const { id } = useParams();           // get product ID from URL e.g. /productdetiles/abc123
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [addingToCart, setAddingToCart] = useState(false); // loading state for button
+  const [addingToCart, setAddingToCart] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // Fetch product details from backend when page loads
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -30,7 +29,6 @@ const ProductDs = () => {
     fetchProduct();
   }, [id]);
 
-  // Increase or decrease quantity (minimum is 1)
   const handleQuantityChange = (type) => {
     setQuantity((prev) => {
       if (type === "decrement" && prev > 1) return prev - 1;
@@ -39,12 +37,9 @@ const ProductDs = () => {
     });
   };
 
-  // ---- ADD TO CART ----
-  // Saves item to backend database AND updates Redux store (for cart count in navbar)
   const handleAddToCart = async () => {
     const userId = localStorage.getItem("id");
 
-    // If user is not logged in, redirect to login
     if (!userId) {
       toast.error("Please login to add items to cart.");
       return navigate("/login");
@@ -53,16 +48,13 @@ const ProductDs = () => {
     try {
       setAddingToCart(true);
 
-      // Save to backend (MongoDB)
       await apiClient.post("/post-cart", {
         user: userId,
         product: product._id,
         quantity,
       });
 
-      // Also update Redux store so navbar cart count updates immediately
       dispatch(addToCart({ product, quantity }));
-
       toast.success("Added to cart!");
     } catch (error) {
       console.error("Add to cart failed:", error);
@@ -72,8 +64,6 @@ const ProductDs = () => {
     }
   };
 
-  // ---- BUY NOW ----
-  // Adds to Redux store and goes straight to checkout
   const handleBuyNow = () => {
     const userId = localStorage.getItem("id");
 
@@ -86,7 +76,6 @@ const ProductDs = () => {
     navigate("/checkout");
   };
 
-  // Show loading while product is being fetched
   if (!product) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -99,8 +88,6 @@ const ProductDs = () => {
     <div className="w-full bg-gray-50 min-h-screen pt-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start bg-white p-6 md:p-8 lg:p-12 rounded-3xl shadow-sm">
-
-          {/* Product Image */}
           <div className="flex justify-center items-center bg-gray-50 aspect-square rounded-2xl overflow-hidden p-6 md:p-10">
             <img
               src={product?.image}
@@ -109,7 +96,6 @@ const ProductDs = () => {
             />
           </div>
 
-          {/* Product Details */}
           <div className="space-y-6 flex flex-col justify-center h-full">
             <div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
@@ -120,14 +106,12 @@ const ProductDs = () => {
               </p>
             </div>
 
-            {/* Price */}
             <div className="pt-4 border-t border-gray-100">
               <p className="text-3xl sm:text-4xl font-extrabold text-[#4CB19A]">
                 ₹{product.price.toFixed(2)}
               </p>
             </div>
 
-            {/* Quantity Selector */}
             <div className="pt-2">
               <p className="text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wider">
                 Quantity
@@ -151,7 +135,6 @@ const ProductDs = () => {
               </div>
             </div>
 
-            {/* Total Price */}
             <p className="text-base font-semibold text-gray-600">
               Total:{" "}
               <span className="text-gray-900 text-lg">
@@ -159,9 +142,7 @@ const ProductDs = () => {
               </span>
             </p>
 
-            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              {/* Buy Now — goes to checkout directly */}
               <button
                 onClick={handleBuyNow}
                 className="bg-[#4CB19A] hover:bg-[#3a8d7c] text-white font-semibold rounded-xl py-4 px-6 w-full sm:w-1/2 shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
@@ -169,7 +150,6 @@ const ProductDs = () => {
                 Buy Now
               </button>
 
-              {/* Add to Cart — saves to DB and updates cart count */}
               <button
                 onClick={handleAddToCart}
                 disabled={addingToCart}
