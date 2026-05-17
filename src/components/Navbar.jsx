@@ -7,7 +7,7 @@ import { AppContext } from "../context/AppContext";
 import { apiClient } from "../utils/api";
 
 const SEARCH_PHRASES = [
-  "Search for products...",
+  "Search for products",
   "Search for items..."
   
 ];
