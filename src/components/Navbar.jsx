@@ -7,12 +7,9 @@ import { AppContext } from "../context/AppContext";
 import { apiClient } from "../utils/api";
 
 const SEARCH_PHRASES = [
-  "Search for sofas...",
-  "Search for dining tables...",
-  "Search for wardrobes...",
-  "Search for beds...",
-  "Search for chairs...",
-  "Search for lamps...",
+  "Search for products...",
+  "Search for items..."
+  
 ];
 
 const useTypewriterPlaceholder = (phrases, typingSpeed = 80, erasingSpeed = 40, pauseMs = 1600) => {
